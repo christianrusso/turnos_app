@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <ion-item>
+      <ion-input formControlName="email" placeholder="Email" type="email"></ion-input>
+    </ion-item>
+    <ion-row style="padding-top: 10px;"  *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched">
+      <span class="error">Email invalido</span>
+    </ion-row>
+
+    <ion-item>
+      <ion-input formControlName="clave" placeholder="Contraseña" type="password"></ion-input>
+    </ion-item>
+    <div style="padding-top: 5px;">
+      <button color="button-color" ion-button full type="submit" [disabled]="!loginForm.valid">Iniciar sessión</button>
+    </div>
+
+  </form>
+</ion-content>
