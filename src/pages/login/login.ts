@@ -32,7 +32,6 @@ export class LoginPage {
   }
 
   login() {
-    console.log('this.loginForm.value', this.loginForm.value);
     let params = {Email: this.loginForm.value.email, Password: this.loginForm.value.clave};
     let d = new Date().getMilliseconds();
     let url = this.constants.API_URL + 'account/login';
