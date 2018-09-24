@@ -1,24 +1,89 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
+<div class="homescreen-content">
+  <div class="split test1">
+    <div class="centered">
+      <table>
+        <tr>
+          <td><img src="../assets/icon/iso-blanco.png" style="width: 40%;"></td>
+        </tr>
+        <tr>
+          <td style="color: white; font-family: SfUiDisplayThin; font-size: 23pt;">Bienvenido</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <hr>
+  <div class="split test2">
+    <div class="centered">
+    </div>
+  </div>
+</div>
+<ion-content></ion-content>
+<ion-content padding style="height: 50%; width: 90%; left: 50%; margin-left: -45%; top:50%;">
+  <div style="position: absolute; width: 100%; height: 245px; background-color: #FFFFFF; border-radius: 10px; left:50%; margin-left: -50%; top: 0%;"></div>
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <ion-item>
-      <ion-input formControlName="email" placeholder="Email" type="email"></ion-input>
+      <ion-label stacked style="font-family: SfUiDisplayLight; font-size: 10pt;">Usuario</ion-label>
+      <ion-input formControlName="email" placeholder="" type="email"></ion-input>
     </ion-item>
     <ion-row style="padding-top: 10px;"  *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched">
       <span class="error">Email invalido</span>
     </ion-row>
 
     <ion-item>
-      <ion-input formControlName="clave" placeholder="Contraseña" type="password"></ion-input>
+      <ion-label floating style="font-family: SfUiDisplayLight; font-size: 14pt;">Contraseña</ion-label>
+      <ion-input formControlName="clave" type="password"></ion-input>
     </ion-item>
-    <div style="padding-top: 5px;">
-      <button color="button-color" ion-button full type="submit" [disabled]="!loginForm.valid">Iniciar sessión</button>
+    <div style="padding-top: 65px;">
+      <button color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" [disabled]="!loginForm.valid">Ingresar</button>
     </div>
 
   </form>
+  <table align="center">
+    <tr><br></tr>
+    <tr><br></tr>
+    <tr><br></tr>
+    <tr>
+      <td><span style="font-family: SfUiDisplayLight; font-size: 12pt;">¿No tenés cuenta?</span> <span style="font-family: SfUiDisplayBold; font-size: 12pt; color: #454EDB; cursor: pointer;" (click)="goToRegister()">REGISTRATE</span></td>
+    </tr>
+  </table>
 </ion-content>
+<style>
+  .homescreen-content {
+    height: 100%;
+    display: flex;
+  }
+  .split {
+
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+
+  }
+
+  .test1 {
+    left:0;
+    height: 55%;
+    width: 100%;
+    background-color: #454EDB;
+    border: none;
+  }
+
+  .test2 {
+
+    left:0;
+    top: 55%;
+    height: 50%;
+    width: 100%;
+    background-color: #F9F9F9;
+  }
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+</style>

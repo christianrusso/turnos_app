@@ -4,6 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import { UserService } from '../../services/user.service';
+import { RegisterPage} from '../register/register';
 
 @Component({
   selector: 'page-login',
@@ -57,6 +58,10 @@ export class LoginPage {
         alert.present();
       }
     );
+  }
+
+  goToRegister() {
+    this.navCtrl.push(RegisterPage);
   }
 
 }

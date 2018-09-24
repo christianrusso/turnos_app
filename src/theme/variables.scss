@@ -5,6 +5,23 @@
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
 
+@font-face {
+  font-family: 'SfUiDisplayLight';
+  src: url('../assets/fonts/SF UI Display Light.otf');
+}
+@font-face {
+  font-family: 'SfUiDisplayRegular';
+  src: url('../assets/fonts/SF UI Display Regular.otf');
+}
+@font-face {
+  font-family: 'SfUiDisplayThin';
+  src: url('../assets/fonts/SF UI Display Thin.otf');
+}
+@font-face {
+  font-family: 'SfUiDisplayBold';
+  src: url('../assets/fonts/SF UI Display Bold.otf');
+}
+
 
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
