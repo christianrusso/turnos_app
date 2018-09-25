@@ -4,6 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import { UserService } from '../../services/user.service';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-register',
@@ -12,8 +13,11 @@ import { UserService } from '../../services/user.service';
 export class RegisterPage {
 
   data = {
-    email: '',
-    clave: '',
+    email:    '',
+    clave:    '',
+    nombre:   '',
+    apellido: '',
+    reclave:  ''
   }
   registerForm: FormGroup;
 
@@ -26,10 +30,16 @@ export class RegisterPage {
       private userService: UserService
   ) {
     this.registerForm = this.formBuilder.group({
-      email:   [this.data['email'], [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      clave:   [this.data['clave'], Validators.required],
-      reclave: [this.data['clave'], Validators.required]
+      nombre:   [this.data['nombre'], Validators.required],
+      apellido: [this.data['apellido'], Validators.required],
+      email:    [this.data['email'], [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      clave:    [this.data['clave'], Validators.required],
+      reclave:  [this.data['reclave'], Validators.required]
     });
+  }
+
+  goToLogin() {
+    this.navCtrl.push(LoginPage);
   }
 
   register() {

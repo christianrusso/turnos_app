@@ -1,29 +1,105 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Register
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content class="">
+  <ion-grid class="splitDiv" style="">
+    <ion-grid style="text-align: center;">
+      <table>
+        <tr>
+          <td><img src="../assets/icon/iso-blanco.png" style="width: 18%;"></td>
+        </tr>
+        <tr><br></tr>
+        <tr><br></tr>
+        <tr>
+          <td style="color: white; font-family: SfUiDisplayThin; font-size: 23pt;">Crear cuenta</td>
+        </tr>
+      </table>
+    </ion-grid>
+    <ion-grid padding class="formPos">
+      <div style="position: absolute; width: 100%; height: 385px; background-color: #FFFFFF; border-radius: 10px; left:50%; margin-left: -50%; top: 0%;"></div>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <ion-item>
+          <ion-label stacked style="font-family: SfUiDisplayLight; font-size: 10pt;">Nombre</ion-label>
+          <ion-input formControlName="nombre" placeholder="" type="text"></ion-input>
+          <img item-right *ngIf="registerForm.controls.nombre.invalid && registerForm.controls.nombre.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
+          <img item-right *ngIf="registerForm.controls.nombre.valid && registerForm.controls.nombre.touched" src="../../assets/imgs/check.png" style="width: 10%;">
+        </ion-item>
+        <ion-item>
+          <ion-label floating style="font-family: SfUiDisplayLight; font-size: 10pt;">Apellido</ion-label>
+          <ion-input formControlName="apellido" placeholder="" type="text"></ion-input>
+          <img item-right *ngIf="registerForm.controls.apellido.invalid && registerForm.controls.apellido.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
+          <img item-right *ngIf="registerForm.controls.apellido.valid && registerForm.controls.apellido.touched" src="../../assets/imgs/check.png" style="width: 10%;">
+        </ion-item>
+        <ion-item>
+          <ion-label floating style="font-family: SfUiDisplayLight; font-size: 10pt;">Email</ion-label>
+          <ion-input formControlName="email" placeholder="" type="email"></ion-input>
+          <img item-right *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
+          <img item-right *ngIf="registerForm.controls.email.valid && registerForm.controls.email.touched" src="../../assets/imgs/check.png" style="width: 10%;">
+        </ion-item>
 
-<ion-content padding>
-  <form [formGroup]="registerForm" (ngSubmit)="register()">
-    <ion-item>
-      <ion-input formControlName="email" placeholder="Email" type="email"></ion-input>
-    </ion-item>
-    <ion-row style="padding-top: 10px;"  *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched">
-      <span class="error">Email invalido</span>
-    </ion-row>
+        <ion-item>
+          <ion-label floating style="font-family: SfUiDisplayLight; font-size: 10pt;">Contraseña</ion-label>
+          <ion-input formControlName="clave" placeholder="" type="password"></ion-input>
+          <img item-right *ngIf="registerForm.controls.clave.invalid && registerForm.controls.clave.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
+          <img item-right *ngIf="registerForm.controls.clave.valid && registerForm.controls.clave.touched" src="../../assets/imgs/check.png" style="width: 10%;">
+        </ion-item>
+        <ion-item>
+          <ion-label floating style="font-family: SfUiDisplayLight; font-size: 10pt;">Repita Contraseña</ion-label>
+          <ion-input formControlName="reclave" placeholder="" type="password"></ion-input>
+          <img item-right *ngIf="registerForm.value.clave != registerForm.value.reclave && registerForm.controls.reclave.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
+          <img item-right *ngIf="registerForm.value.clave == registerForm.value.reclave && registerForm.controls.reclave.touched" src="../../assets/imgs/check.png" style="width: 10%;">
+        </ion-item>
+        <div style="padding-top: 15px;">
+          <button color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" [disabled]="!registerForm.valid">Registrarme</button>
+        </div>
 
-    <ion-item>
-      <ion-input formControlName="clave" placeholder="Contraseña" type="password"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input formControlName="reclave" placeholder="Repita Contraseña" type="password"></ion-input>
-    </ion-item>
-    <div style="padding-top: 5px;">
-      <button color="button-color" ion-button full type="submit" [disabled]="!registerForm.valid">Registrarse</button>
-    </div>
-
-  </form>
+      </form>
+      <table align="center">
+        <tr><br></tr>
+        <tr><br></tr>
+        <tr><br></tr>
+        <tr>
+          <td><span style="font-family: SfUiDisplayLight; font-size: 12pt;">¿Ya tenés cuenta?</span> <span style="font-family: SfUiDisplayBold; font-size: 12pt; color: #454EDB; cursor: pointer;" (click)="goToLogin()">INGRESÁ</span></td>
+        </tr>
+      </table>
+    </ion-grid>
+  </ion-grid>
 </ion-content>
+
+<style>
+  .splitDiv {
+    background-color: #454EDB;
+    border-bottom: 430px solid #F9F9F9; height: 900px;
+  }
+
+  .formPos {
+    top: 868px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+  }
+
+  @media screen and (max-width: 400px) {
+    .splitDiv {
+      background-color: #454EDB;
+      border-bottom: 350px solid #F9F9F9; height: 700px;
+    }
+    .formPos {
+      top: 700px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+  }
+
+  @media screen and (max-width: 550px) and (min-width: 400px) {
+    .splitDiv {
+      background-color: #454EDB;
+      border-bottom: 447px solid #F9F9F9; height: 750px;
+    }
+    .formPos {
+      top: 700px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+  }
+
+  @media screen and (max-width: 1100px) and (min-width: 550px) {
+    .splitDiv {
+      background-color: #454EDB;
+      border-bottom: 394px solid #F9F9F9; height: 750px;
+    }
+    .formPos {
+      top: 752px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+  }
+</style>
