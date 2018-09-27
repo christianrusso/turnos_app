@@ -10,6 +10,7 @@ import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ProfilePage } from '../pages/profile/profile';
+import { PreSearchPage } from '../pages/pre-search/pre-search';
 import { Constants } from '../app/constants';
 import { UserService } from "../services/user.service";
 
@@ -25,7 +26,8 @@ import {IonicStorageModule} from "@ionic/storage";
     LoginPage,
     HomePage,
     ProfilePage,
-    TabsPage
+    TabsPage,
+    PreSearchPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import {IonicStorageModule} from "@ionic/storage";
     LoginPage,
     HomePage,
     TabsPage,
-    ProfilePage
+    ProfilePage,
+    PreSearchPage
   ],
   providers: [
     Constants,

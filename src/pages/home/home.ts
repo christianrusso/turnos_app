@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import { UserService } from '../../services/user.service';
 import { LoginPage } from '../login/login';
+import { PreSearchPage } from '../pre-search/pre-search';
 
 @Component({
   selector: 'page-home',
@@ -24,6 +25,12 @@ export class HomePage {
 
   goToLogin() {
     this.navCtrl.push(LoginPage);
+  }
+
+  goToPreSearch(category) {
+    this.navCtrl.push(PreSearchPage, {
+      category: category
+    });
   }
 
 }

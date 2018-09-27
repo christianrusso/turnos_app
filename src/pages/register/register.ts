@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, Tabs } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
@@ -27,8 +27,7 @@ export class RegisterPage {
       public alertCtrl: AlertController,
       private formBuilder: FormBuilder,
       private constants: Constants,
-      private userService: UserService,
-      private tab: Tabs
+      private userService: UserService
   ) {
     this.registerForm = this.formBuilder.group({
       nombre:   [this.data['nombre'], Validators.required],

@@ -1,0 +1,94 @@
+<ion-content class="">
+  <ion-grid class="splitDiv" style="padding: 0;">
+    <ion-grid style="text-align: center; padding: 0;">
+      <table>
+        <tr style="background-color: #3740C3; height: 63px;">
+          <td style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 30%;"></td>
+        </tr>
+        <tr><br></tr>
+        <tr><br></tr>
+        <tr>
+          <td style="color: white; font-family: SfUiDisplayThin; font-size: 20pt;">¿Qué vas a reservar hoy?</td>
+        </tr>
+      </table>
+    </ion-grid>
+    <ion-grid padding class="formPos">
+      <div style="position: absolute; width: 100%; height: 95px; background-color: #FFFFFF; border-radius: 10px; left:50%; margin-left: -50%; top: 0%;"></div>
+      <form>
+        <ion-item>
+          <span style="margin-right: 10px;">CATEGORÍA</span>
+          <select id="categorySelect" name="categorySelect" style="background-color:transparent;
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 200px;" [(ngModel)]="category">
+            <option value="medicina">Medicina</option>
+            <option value="esteticas">Esteticas</option>
+            <option value="restaurantes">Restaurantes</option>
+            <option value="futbol">Canchas de Fútbol</option>
+            <option value="tenis">Canchas de Tennis</option>
+            <option value="lubricentros">Lubricentros</option>
+          </select>
+        </ion-item>
+        <ion-item style="margin-top: 20%; background-color: transparent;">
+          <span style="margin-right: 10px;">UBICACIÓN</span>
+          <select id="positionSelect" name="positionSelect" style="background-color:transparent;
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 200px;">
+            <option value="">¿Dónde?</option>
+          </select>
+        </ion-item>
+        <ion-item style="margin-top: 20%; background-color: transparent;">
+          <span style="margin-right: 42px;">FECHA</span>
+          <select id="dateSelect" name="dateSelect" style="background-color:transparent;
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 200px;">
+            <option value="">¿Cuando?</option>
+          </select>
+        </ion-item>
+        <div style="padding-top: 65px;">
+          <button color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;">Buscar</button>
+        </div>
+
+      </form>
+      <table align="center">
+      </table>
+    </ion-grid>
+  </ion-grid>
+</ion-content>
+
+<style>
+  .splitDiv {
+    background-color: #454EDB;
+    border-bottom: 930px solid #F9F9F9; height: 1350px;
+  }
+
+  .formPos {
+    top: 868px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+  }
+
+  @media screen and (max-width: 400px) {
+    .splitDiv {
+      background-color: #454EDB;
+      border-bottom: 400px solid #F9F9F9; height: 700px;
+    }
+    .formPos {
+      top: 650px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+  }
+
+  @media screen and (max-width: 550px) and (min-width: 400px) {
+    .splitDiv {
+      background-color: #454EDB;
+      border-bottom: 547px solid #F9F9F9; height: 750px;
+    }
+    .formPos {
+      top: 650px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+  }
+
+  @media screen and (max-width: 1100px) and (min-width: 550px) {
+    .splitDiv {
+      background-color: #454EDB;
+      border-bottom: 1050px solid #F9F9F9; height: 1300px;
+    }
+    .formPos {
+      top: 702px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+  }
+</style>
