@@ -9,11 +9,13 @@ import { RegisterPage } from '../pages/register/register';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { ProfilePage } from '../pages/profile/profile';
 import { Constants } from '../app/constants';
 import { UserService } from "../services/user.service";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {IonicStorageModule} from "@ionic/storage";
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     RegisterPage,
     LoginPage,
     HomePage,
+    ProfilePage,
     TabsPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,7 +40,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     RegisterPage,
     LoginPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ProfilePage
   ],
   providers: [
     Constants,

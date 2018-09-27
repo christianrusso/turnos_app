@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 export class UserService {
     user;
     token;
+    myIndex = 0;
     constructor(
     ) {
 

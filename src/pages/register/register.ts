@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, Tabs } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import { UserService } from '../../services/user.service';
-import { LoginPage } from '../login/login';
+import {LoginPage} from "../login/login";
 
 @Component({
   selector: 'page-register',
@@ -27,7 +27,8 @@ export class RegisterPage {
       public alertCtrl: AlertController,
       private formBuilder: FormBuilder,
       private constants: Constants,
-      private userService: UserService
+      private userService: UserService,
+      private tab: Tabs
   ) {
     this.registerForm = this.formBuilder.group({
       nombre:   [this.data['nombre'], Validators.required],
@@ -56,6 +57,7 @@ export class RegisterPage {
               buttons: ['OK']
             });
             alert.present();
+            this.goToLogin();
           },
           error => {
             console.log(error);

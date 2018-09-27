@@ -1,8 +1,9 @@
-<ion-tabs selectedIndex="0">
+<ion-tabs [selectedIndex]="myIndex">
   <ion-tab [root]="tab1Root" tabTitle="" tabIcon="search"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="" tabIcon="heart"></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="" tabIcon="calendar"></ion-tab>
   <ion-tab [root]="tab4Root" tabTitle="" tabIcon="notifications"></ion-tab>
-  <ion-tab [root]="tab5Root" tabTitle="" tabIcon="login" tabIcon="person"></ion-tab>
+  <ion-tab [root]="tab5Root" [show]= "this.userService.getUserLogin() == null || this.userService.getUserLogin() == ''" tabTitle="" tabIcon="login" tabIcon="person" (ionSelect)="checkLogin()"></ion-tab>
+  <ion-tab [root]="tab6Root" [show]= "this.userService.getUserLogin() != null && this.userService.getUserLogin() != ''" tabTitle="" tabIcon="profile" tabIcon="person"></ion-tab>
   <ion-icon name="heart"></ion-icon>
 </ion-tabs>

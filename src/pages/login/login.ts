@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, Tabs } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import { UserService } from '../../services/user.service';
-import { RegisterPage} from '../register/register';
+import { RegisterPage } from '../register/register';
 
 @Component({
   selector: 'page-login',
@@ -24,7 +24,8 @@ export class LoginPage {
       public alertCtrl: AlertController,
       private formBuilder: FormBuilder,
       private constants: Constants,
-      private userService: UserService
+      private userService: UserService,
+      private tab: Tabs
   ) {
     this.loginForm = this.formBuilder.group({
       email: [this.data['email'], [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
@@ -47,6 +48,7 @@ export class LoginPage {
         alert.present();
         this.userService.setUserLogin(this.loginForm.value.email);
         this.userService.setUserToken(success.token);
+        this.goToHome();
       },
       error => {
         console.log(error);
@@ -62,6 +64,10 @@ export class LoginPage {
 
   goToRegister() {
     this.navCtrl.push(RegisterPage);
+  }
+
+  goToHome() {
+    this.tab.select(0);
   }
 
 }

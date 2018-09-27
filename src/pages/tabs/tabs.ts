@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-
+import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { HomePage } from '../home/home';
+import { ProfilePage } from '../profile/profile';
+import { UserService } from '../../services/user.service';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -13,8 +15,18 @@ export class TabsPage {
   tab3Root = '';
   tab4Root = '';
   tab5Root = LoginPage;
+  tab6Root = ProfilePage;
+  myIndex = 0;
 
-  constructor() {
+  constructor(
+      private userService: UserService,
+      public navCtrl: NavController
+  ) {
+  }
 
+  checkLogin() {
+    if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != "") {
+      this.myIndex = 5;
+    }
   }
 }
