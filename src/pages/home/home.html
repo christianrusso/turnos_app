@@ -1,6 +1,8 @@
 <ion-content class="">
-  <ion-grid class="splitDiv" style="padding: 0;">
-    <ion-grid style="text-align: center; padding: 0;">
+  <ion-grid style="padding: 0;">
+    <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; height: 250px; z-index: 2;"></div>
+    <div style="position: absolute; background-color: #F9F9F9; top:0px; left:0px; width: 100%; height: 100%; z-index: 1;"></div>
+    <ion-grid style="text-align: center; padding: 0; z-index: 3;">
       <table>
         <tr style="background-color: #3740C3; height: 63px;">
           <td style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 30%;"></td>
@@ -12,17 +14,17 @@
         </tr>
       </table>
     </ion-grid>
-    <ion-grid padding class="formPos">
+    <ion-grid padding class="formPos" style="z-index: 3;">
       <table>
         <tr>
           <td>
-            <div (click)="goToPreSearch('medicina')" style="width: 95%; height: 44%; background-color: #FFFFFF; border-radius: 10px; left:50%; margin-left: 3%; top: 0%;">
+            <div (click)="goToPreSearch('medicina')" class="bigButton">
               <img src="../../assets/icon/medicos.png" style="width: 50%; left: 50%; margin-left: 25%; top:50%; margin-top: 15%;">
               <p style="text-align: center; color: #454EDB;">Médicos</p>
             </div>
           </td>
           <td>
-            <div (click)="goToPreSearch('esteticas')" style="width: 95%; height: 44%; background-color: #FFFFFF; border-radius: 10px; left:50%; margin-left: 3%; top: 0%;">
+            <div (click)="goToPreSearch('esteticas')" class="bigButton">
               <img src="../../assets/icon/estetica.png" style="width: 50%; left: 50%; margin-left: 21%; top:50%; margin-top: 15%;">
               <p style="text-align: center; color: #454EDB;">Estéticas</p>
             </div>
@@ -31,13 +33,13 @@
         <tr><br></tr>
         <tr>
           <td>
-            <div (click)="goToPreSearch('restaurantes')" style="width: 95%; height: 44%; background-color: #FFFFFF; border-radius: 10px; left:50%; margin-left: 3%; top: 0%;">
+            <div (click)="goToPreSearch('restaurantes')" class="bigButton">
               <img src="../../assets/icon/resto.png" style="width: 50%; left: 50%; margin-left: 25%; top:50%; margin-top: 15%;">
               <p style="text-align: center; color: #454EDB;">Restaurantes</p>
             </div>
           </td>
           <td>
-            <div (click)="goToPreSearch('futbol')" style="width: 95%; height: 44%; background-color: #FFFFFF; border-radius: 10px; left:50%; margin-left: 3%; top: 0%;">
+            <div (click)="goToPreSearch('futbol')" class="bigButton">
               <img src="../../assets/icon/football.png" style="width: 50%; left: 50%; margin-left: 25.5%; top:50%; margin-top: 15%;">
               <p style="text-align: center; color: #454EDB;">Canchas de Fútbol</p>
             </div>
@@ -46,13 +48,13 @@
         <tr><br></tr>
         <tr>
           <td>
-            <div (click)="goToPreSearch('tenis')" style="width: 95%; height: 44%; background-color: #FFFFFF; border-radius: 10px; left:50%; margin-left: 3%; top: 0%;">
+            <div (click)="goToPreSearch('tenis')" class="bigButton">
               <img src="../../assets/icon/tennis.png" style="width: 50%; left: 50%; margin-left: 24%; top:50%; margin-top: 15%;">
               <p style="text-align: center; color: #454EDB;">Canchas de Tennis</p>
             </div>
           </td>
           <td>
-            <div (click)="goToPreSearch('lubricentros')" style="width: 95%; height: 44%; background-color: #FFFFFF; border-radius: 10px; left:50%; margin-left: 3%; top: 0%;">
+            <div (click)="goToPreSearch('lubricentros')" class="bigButton">
               <img src="../../assets/icon/wheel.png" style="width: 50%; left: 50%; margin-left: 26%; top:50%; margin-top: 15%;">
               <p style="text-align: center; color: #454EDB;">Lubricentros</p>
             </div>
@@ -64,42 +66,82 @@
 </ion-content>
 
 <style>
-  .splitDiv {
-    background-color: #454EDB;
-    border-bottom: 1170px solid #F9F9F9; height: 1850px;
-  }
-
   .formPos {
     top: 868px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
   }
 
-  @media screen and (max-width: 400px) {
-    .splitDiv {
-      background-color: #454EDB;
-      border-bottom: 400px solid #F9F9F9; height: 700px;
-    }
+  @media screen and (max-width: 320px) {
     .formPos {
       top: 650px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+    .bigButton {
+      width: 60%;
+      height: 44%;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: 19%;
+      top: 0%;
     }
   }
 
-  @media screen and (max-width: 550px) and (min-width: 400px) {
-    .splitDiv {
-      background-color: #454EDB;
-      border-bottom: 487px solid #F9F9F9; height: 750px;
-    }
+  @media screen and (max-width: 400px) and (min-width: 321px) {
     .formPos {
       top: 650px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+    .bigButton {
+      width: 78%;
+      height: 44%;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: 11%;
+      top: 0%;
+    }
+  }
+
+  @media screen and (max-width: 450px) and (min-width: 400px) {
+    .formPos {
+      top: 650px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+    .bigButton {
+      width: 90%;
+      height: 44%;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: 5%;
+      top: 0%;
+    }
+  }
+
+  @media screen and (max-width: 550px) and (min-width: 450px) {
+    .formPos {
+      top: 650px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+    .bigButton {
+      width: 95%;
+      height: 44%;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: 5%;
+      top: 0%;
     }
   }
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
-    .splitDiv {
-      background-color: #454EDB;
-      border-bottom: 864px solid #F9F9F9; height: 1300px;
-    }
     .formPos {
       top: 702px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+    .bigButton {
+      width: 83%;
+      height: 44%;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: 9%;
+      top: 0%;
     }
   }
 </style>
