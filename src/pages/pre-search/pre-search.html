@@ -1,7 +1,6 @@
-<ion-content class="">
+<ion-content class="" style="background-color: #F9F9F9; top:0px; left:0px; width: 100%; height: 100%;">
   <ion-grid class="" style="padding: 0;">
     <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; z-index: 2;" class="heightBlue"></div>
-    <div style="position: absolute; background-color: #F9F9F9; top:0px; left:0px; width: 100%; height: 100%; z-index: 1;"></div>
     <ion-grid style="text-align: center; padding: 0; z-index: 3;">
       <table>
         <tr style="background-color: #3740C3; height: 63px;">
@@ -21,7 +20,7 @@
         <ion-item no-lines style="text-align: center;">
           <span style="margin-right: 10px; font-family: SfUiDisplayBold;">CATEGORÍA</span>
           <select id="categorySelect" name="categorySelect" style="background-color:transparent;
-              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 180px;" [(ngModel)]="category">
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px;" [(ngModel)]="category">
             <option value="medicina">Medicina</option>
             <option value="esteticas">Esteticas</option>
             <option value="restaurantes">Restaurantes</option>
@@ -33,7 +32,7 @@
         <ion-item no-lines class="separator">
           <span style="margin-right: 10px; font-family: SfUiDisplayBold;">UBICACIÓN</span>
           <select id="positionSelect" name="positionSelect" style="background-color:transparent;
-              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 180px;">
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px;">
             <option value="">¿Dónde?</option>
             <option *ngFor="let cat of categories; let i = index" value="cat.id">
               {{cat.text}}
@@ -43,12 +42,12 @@
         <ion-item no-lines class="separator">
           <span style="margin-right: 42px; font-family: SfUiDisplayBold;">FECHA</span>
           <select id="dateSelect" name="dateSelect" style="background-color:transparent;
-              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 180px;">
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px;">
             <option value="">¿Cuando?</option>
           </select>
         </ion-item>
         <div class="separatorButton">
-          <button color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;">Buscar</button>
+          <button color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" (click)="search()">Buscar</button>
         </div>
 
       </form>

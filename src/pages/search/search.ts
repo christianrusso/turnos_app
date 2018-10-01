@@ -3,16 +3,15 @@ import { NavController, AlertController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
-import { SearchPage } from '../search/search';
 
 @Component({
-  selector: 'page-presearch',
-  templateUrl: 'pre-search.html'
+  selector: 'page-search',
+  templateUrl: 'search.html'
 })
-export class PreSearchPage {
+export class SearchPage {
 
   private category = "";
-  private categories;
+  public  results;
 
   constructor(
       public navCtrl: NavController,
@@ -23,12 +22,20 @@ export class PreSearchPage {
   ) {
     this.category = navParams.get("category");
 
-    let url = this.constants.API_URL + 'Data/GetCitiesForSelect';
-    let msj = '';
-    this.http.post(url, "").subscribe(
+    let url = this.constants.API_URL + 'Clinic/GetByFilter';
+    let options = {
+      "Cities": [],
+      "Specialties": [],
+      "Subspecialties": [],
+      "MedicalInsurances": [],
+      "medicalPlans": [],
+      "Score": "",
+      "ScoreQuantity": ""
+    };
+    this.http.post(url, options).subscribe(
         (success: any) => {
           console.log(success);
-          this.categories = success;
+          this.results = success;
         },
         error => {
           console.log(error);
@@ -40,19 +47,6 @@ export class PreSearchPage {
           alert.present();
         }
     );
-  }
-
-  search() {
-    var elt = document.getElementById("categorySelect");
-    var result = elt.options[elt.selectedIndex].text;
-
-    this.navCtrl.push(SearchPage, {
-      category: result
-    });
-  }
-
-  goToLogin() {
-    this.navCtrl.push(LoginPage);
   }
 
 }

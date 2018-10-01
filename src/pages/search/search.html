@@ -1,0 +1,212 @@
+<ion-content class="" style="background-color: #F9F9F9; top:0px; left:0px; width: 100%; height: 100%;">
+  <ion-grid class="" style="padding: 0;">
+    <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; z-index: 2;" class="heightBlue"></div>
+    <ion-grid style="text-align: center; padding: 0; z-index: 3;">
+      <table>
+        <tr style="background-color: #3740C3; height: 63px;">
+          <td style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 30%;"></td>
+        </tr>
+        <tr><br></tr>
+        <tr><br></tr>
+        <tr>
+          <td style="color: white; font-family: SfUiDisplayThin; font-size: 20pt;">{{category}}</td>
+        </tr>
+      </table>
+    </ion-grid>
+    <ion-grid padding class="formPos" style="z-index: 3;">
+      <div class="backOrdenar">
+        <div class="filtrarStyleText">
+          <ion-icon span name="reorder" class="filtrarStyle"></ion-icon>
+          <span style="display: table-cell; vertical-align: middle; color: #3740C3;">&nbsp;Ordenar</span>
+        </div>
+      </div>
+      <div class="backFiltrar">
+        <div class="filtrarStyleText">
+          <ion-icon span name="funnel" class="filtrarStyle"></ion-icon>
+          <span style="display: table-cell; vertical-align: middle; color: #3740C3;">&nbsp;Filtros</span></div>
+        </div>
+      <div class="backMapa">
+        <div class="mapaStyleText">
+          <ion-icon span name="pin" class="filtrarStyle"></ion-icon>
+          <span style="display: table-cell; vertical-align: middle; color: #3740C3;">&nbsp;Ver Mapa</span>
+        </div>
+      </div>
+    </ion-grid>
+    <ion-grid padding class="resultsPos">
+      <div style="padding-bottom: 13px; margin-bottom: 13px; border-bottom: 1px grey solid;" *ngFor="let result of results; let i = index">
+        <table>
+          <tr>
+            <td class="verticalTop topInfo"><img src="{{result.logo}}"></td>
+            <td class="verticalTop centerInfo">
+              <table>
+                <tr class="spaceUnder">
+                  <td style="font-family: SfUiDisplayBold;" class="centerName">{{result.name}}</td>
+                </tr>
+                <tr class="spaceUnder">
+                  <td style="font-family: SfUiDisplayLight;"><ion-icon name="pin"></ion-icon> {{result.city}}</td>
+                </tr>
+                <tr style="display: table;">
+                  <td>
+                    <span style="background-color: #454EDB; color:white; vertical-align: middle;" class="scoreSize">{{result.score}}</span>
+                    <ion-icon name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 0"></ion-icon>
+                    <ion-icon name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 1"></ion-icon>
+                    <ion-icon name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 2"></ion-icon>
+                    <ion-icon name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 3"></ion-icon>
+                    <ion-icon name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 4"></ion-icon>
+                    <ion-icon name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 0"></ion-icon>
+                    <ion-icon name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 1"></ion-icon>
+                    <ion-icon name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 2"></ion-icon>
+                    <ion-icon name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 3"></ion-icon>
+                    <ion-icon name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 4"></ion-icon>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td class="verticalTop">
+              <table>
+                <tr>
+                  <td><button color="button-color" ion-button full type="" style="border-radius: 6px; width: 119px; height: 39px; background-color: #00B901; font-family: SfUiDisplayRegular; font-size: 10pt;">RESERVAR</button></td>
+                </tr>
+                <tr>
+                  <td><button color="button-color" ion-button full type="" style="border-radius: 6px; width: 119px; height: 39px; background-color: transparent; font-family: SfUiDisplayRegular; font-size: 10pt; color: #3740C3; border-color: #3740C3; border: 1px solid;">MÁS INFO</button></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </ion-grid>
+  </ion-grid>
+</ion-content>
+
+<style>
+  .formPos {
+    top: 868px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+  }
+  .verticalTop {
+    vertical-align: top;
+    padding-right: 12px;
+    padding: 0 !important;
+  }
+
+  @media screen and (max-width: 320px) {
+    .formPos {
+      top: 670px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+    .heightBlue {
+      height: 210px;
+    }
+  }
+
+    @media screen and (max-width: 400px) and (min-width: 321px) {
+    .formPos {
+      top: 652px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+    .resultsPos {
+      top: 210px; position: absolute; width: 95%; left: 50%; margin-left: -47.2%; padding: 0 !important;
+    }
+    .backOrdenar {
+      position: absolute;
+      width: 32%;
+      height: 45px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: -50%;
+      top: 0%;
+      text-align: center;
+      display: table;
+    }
+    .backFiltrar {
+      position: absolute;
+      width: 32%;
+      height: 45px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: -16%;
+      top: 0%;
+      text-align: right;
+      display: table !important;
+      vertical-align: middle;
+    }
+    .filtrarStyle {
+      color: #3740C3;
+      display: table-cell !important;
+      vertical-align: middle;
+    }
+    .filtrarStyleText {
+      margin-left: 25px;
+      margin-top: 14px;
+    }
+    .backMapa {
+      position: absolute;
+      width: 32%;
+      height: 45px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: 18%;
+      top: 0%;
+      text-align: center;
+      display: table;
+    }
+    .mapaStyleText {
+      margin-left: 19px;
+      margin-top: 14px;
+    }
+    .centerInfo {
+      width: 142px;
+    }
+    .centerName {
+      font-size: 15pt;
+    }
+    .topInfo {
+      width: 100px;
+    }
+    .scoreSize {
+      width: 32px;
+      display: inline-table;
+      text-align: center;
+      height: 19px;
+      border: none;
+      border-radius: 4px;
+    }
+    tr.spaceUnder>td {
+      padding-bottom: 8px;
+    }
+    .heightBlue {
+      height: 175px;
+    }
+  }
+
+  @media screen and (max-width: 450px) and (min-width: 400px) {
+    .formPos {
+      top: 690px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+    .heightBlue {
+      height: 200px;
+    }
+  }
+
+  @media screen and (max-width: 550px) and (min-width: 450px) {
+    .formPos {
+      top: 650px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+    .formPos {
+      top: 670px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+    .heightBlue {
+      height: 210px;
+    }
+  }
+
+  @media screen and (max-width: 1100px) and (min-width: 550px) {
+    .formPos {
+      top: 770px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+    .heightBlue {
+      height: 310px;
+    }
+  }
+</style>
