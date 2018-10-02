@@ -43,11 +43,8 @@ export class PreSearchPage {
   }
 
   search() {
-    var elt = document.getElementById("categorySelect");
-    var result = elt.options[elt.selectedIndex].text;
-
     this.navCtrl.push(SearchPage, {
-      category: result
+      category: this.category
     });
   }
 
