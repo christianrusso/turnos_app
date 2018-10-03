@@ -12,6 +12,7 @@ export class SearchPage {
 
   private category = "";
   public  results;
+  private place = "";
 
   constructor(
       public navCtrl: NavController,
@@ -21,10 +22,16 @@ export class SearchPage {
       private constants: Constants
   ) {
     this.category = navParams.get("category");
+    this.place    = navParams.get("place");
+    console.log(this.place);
 
     let url = this.constants.API_URL + 'Clinic/GetByFilter';
+    let cities = [];
+    if (this.place != "" && this.place != null) {
+      cities.push(this.place.toString());
+    }
     let options = {
-      "Cities": [],
+      "Cities": cities,
       "Specialties": [],
       "Subspecialties": [],
       "MedicalInsurances": [],

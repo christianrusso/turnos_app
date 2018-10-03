@@ -32,9 +32,9 @@
         <ion-item no-lines class="separator">
           <span style="margin-right: 10px; font-family: SfUiDisplayBold;">UBICACIÓN</span>
           <select id="positionSelect" name="positionSelect" style="background-color:transparent;
-              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px;">
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px;" [(ngModel)]="place">
             <option value="">¿Dónde?</option>
-            <option *ngFor="let cat of categories; let i = index" value="cat.id">
+            <option *ngFor="let cat of categories; let i = index" value="{{cat.id}}">
               {{cat.text}}
             </option>
           </select>

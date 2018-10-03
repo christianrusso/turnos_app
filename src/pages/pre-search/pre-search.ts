@@ -13,6 +13,7 @@ export class PreSearchPage {
 
   private category = "";
   private categories;
+  private place = "";
 
   constructor(
       public navCtrl: NavController,
@@ -44,7 +45,8 @@ export class PreSearchPage {
 
   search() {
     this.navCtrl.push(SearchPage, {
-      category: this.category
+      category: this.category,
+      place:    this.place
     });
   }
 
