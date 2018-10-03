@@ -9,7 +9,7 @@
         <tr><br></tr>
         <tr><br></tr>
         <tr>
-          <td style="color: white; font-family: SfUiDisplayThin; font-size: 20pt;">¿Qué vas a reservar hoy?</td>
+          <td class="reservaText">¿Qué vas a reservar hoy?</td>
         </tr>
       </table>
     </ion-grid>
@@ -19,13 +19,13 @@
           <td>
             <div (click)="goToPreSearch('medicina')" class="bigButton">
               <img src="../../assets/icon/medicos.png" style="width: 50%; left: 50%; margin-left: 25%; top:50%; margin-top: 15%;">
-              <p style="text-align: center; color: #454EDB;">Médicos</p>
+              <p class="itemsText">Médicos</p>
             </div>
           </td>
           <td>
             <div (click)="goToPreSearch('esteticas')" class="bigButton">
               <img src="../../assets/icon/estetica.png" style="width: 50%; left: 50%; margin-left: 21%; top:50%; margin-top: 15%;">
-              <p style="text-align: center; color: #454EDB;">Estéticas</p>
+              <p class="itemsText">Estéticas</p>
             </div>
           </td>
         </tr>
@@ -34,13 +34,13 @@
           <td>
             <div (click)="goToPreSearch('restaurantes')" class="bigButton">
               <img src="../../assets/icon/resto.png" style="width: 50%; left: 50%; margin-left: 25%; top:50%; margin-top: 15%;">
-              <p style="text-align: center; color: #454EDB;">Restaurantes</p>
+              <p class="itemsText">Restaurantes</p>
             </div>
           </td>
           <td>
             <div (click)="goToPreSearch('futbol')" class="bigButton">
               <img src="../../assets/icon/football.png" style="width: 50%; left: 50%; margin-left: 25.5%; top:50%; margin-top: 15%;">
-              <p style="text-align: center; color: #454EDB;">Canchas de Fútbol</p>
+              <p class="itemsText">Canchas de Fútbol</p>
             </div>
           </td>
         </tr>
@@ -49,13 +49,13 @@
           <td>
             <div (click)="goToPreSearch('tenis')" class="bigButton">
               <img src="../../assets/icon/tennis.png" style="width: 50%; left: 50%; margin-left: 24%; top:50%; margin-top: 15%;">
-              <p style="text-align: center; color: #454EDB;">Canchas de Tennis</p>
+              <p class="itemsText">Canchas de Tennis</p>
             </div>
           </td>
           <td>
             <div (click)="goToPreSearch('lubricentros')" class="bigButton">
               <img src="../../assets/icon/wheel.png" style="width: 50%; left: 50%; margin-left: 26%; top:50%; margin-top: 15%;">
-              <p style="text-align: center; color: #454EDB;">Lubricentros</p>
+              <p class="itemsText">Lubricentros</p>
             </div>
           </td>
         </tr>
@@ -82,6 +82,15 @@
       margin-left: 19%;
       top: 0%;
     }
+    .reservaText {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 20pt;
+    }
+    .itemsText {
+      text-align: center;
+      color: #454EDB;
+    }
   }
 
   @media screen and (max-width: 400px) and (min-width: 321px) {
@@ -96,6 +105,15 @@
       left:50%;
       margin-left: 11%;
       top: 0%;
+    }
+    .reservaText {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 20pt;
+    }
+    .itemsText {
+      text-align: center;
+      color: #454EDB;
     }
   }
 
@@ -112,6 +130,16 @@
       margin-left: 5%;
       top: 0%;
     }
+    .reservaText {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 20pt;
+    }
+    .itemsText {
+      text-align: center;
+      color: #454EDB;
+      font-size: 12pt;
+    }
   }
 
   @media screen and (max-width: 550px) and (min-width: 450px) {
@@ -127,6 +155,16 @@
       margin-left: 5%;
       top: 0%;
     }
+    .reservaText {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 26pt;
+    }
+    .itemsText {
+      text-align: center;
+      color: #454EDB;
+      font-size: 15pt;
+    }
   }
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
@@ -141,6 +179,16 @@
       left:50%;
       margin-left: 9%;
       top: 0%;
+    }
+    .reservaText {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 31pt;
+    }
+    .itemsText {
+      text-align: center;
+      color: #454EDB;
+      font-size: 20pt;
     }
   }
 </style>

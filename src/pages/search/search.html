@@ -9,7 +9,7 @@
         <tr><br></tr>
         <tr><br></tr>
         <tr>
-          <td style="color: white; font-family: SfUiDisplayThin; font-size: 20pt;">{{category}}</td>
+          <td class="categoryStyle">{{category}}</td>
         </tr>
       </table>
     </ion-grid>
@@ -36,28 +36,28 @@
       <div style="padding-bottom: 13px; margin-bottom: 13px; border-bottom: 1px grey solid;" *ngFor="let result of results; let i = index">
         <table>
           <tr>
-            <td class="verticalTop topInfo"><img src="{{result.logo}}"></td>
+            <td class="verticalTop topInfo" style="text-align: center;"><img src="{{result.logo}}"></td>
             <td class="verticalTop centerInfo">
               <table>
                 <tr class="spaceUnder">
                   <td style="font-family: SfUiDisplayBold;" class="centerName">{{result.name}}</td>
                 </tr>
-                <tr class="spaceUnder">
+                <tr class="spaceUnder cityText">
                   <td style="font-family: SfUiDisplayLight;"><ion-icon name="pin"></ion-icon> {{result.city}}</td>
                 </tr>
                 <tr style="display: table;">
                   <td>
                     <span style="background-color: #454EDB; color:white; vertical-align: middle;" class="scoreSize">{{result.score}}</span>
-                    <ion-icon name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 0"></ion-icon>
-                    <ion-icon name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 1"></ion-icon>
-                    <ion-icon name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 2"></ion-icon>
-                    <ion-icon name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 3"></ion-icon>
-                    <ion-icon name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 4"></ion-icon>
-                    <ion-icon name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 0"></ion-icon>
-                    <ion-icon name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 1"></ion-icon>
-                    <ion-icon name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 2"></ion-icon>
-                    <ion-icon name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 3"></ion-icon>
-                    <ion-icon name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 4"></ion-icon>
+                    <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 0"></ion-icon>
+                    <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 1"></ion-icon>
+                    <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 2"></ion-icon>
+                    <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 3"></ion-icon>
+                    <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 4"></ion-icon>
+                    <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 0"></ion-icon>
+                    <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 1"></ion-icon>
+                    <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 2"></ion-icon>
+                    <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 3"></ion-icon>
+                    <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 4"></ion-icon>
                   </td>
                 </tr>
               </table>
@@ -65,10 +65,10 @@
             <td class="verticalTop">
               <table>
                 <tr>
-                  <td><button color="button-color" ion-button full type="" style="border-radius: 6px; width: 119px; height: 39px; background-color: #00B901; font-family: SfUiDisplayRegular; font-size: 10pt;">RESERVAR</button></td>
+                  <td><button color="button-color" ion-button full type="" class="reservarButton">RESERVAR</button></td>
                 </tr>
                 <tr>
-                  <td><button color="button-color" ion-button full type="" style="border-radius: 6px; width: 119px; height: 39px; background-color: transparent; font-family: SfUiDisplayRegular; font-size: 10pt; color: #3740C3; border-color: #3740C3; border: 1px solid;">MÁS INFO</button></td>
+                  <td><button color="button-color" ion-button full type="" class="infoButton">MÁS INFO</button></td>
                 </tr>
               </table>
             </td>
@@ -91,10 +91,113 @@
 
   @media screen and (max-width: 320px) {
     .formPos {
-      top: 670px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+      top: 652px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+    .resultsPos {
+      top: 210px; position: absolute; width: 95%; left: 50%; margin-left: -47.2%; padding: 0 !important;
+    }
+    .backOrdenar {
+      position: absolute;
+      width: 32%;
+      height: 45px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: -50%;
+      top: 0%;
+      text-align: center;
+      display: table;
+    }
+    .backFiltrar {
+      position: absolute;
+      width: 32%;
+      height: 45px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: -16%;
+      top: 0%;
+      text-align: right;
+      display: table !important;
+      vertical-align: middle;
+    }
+    .filtrarStyle {
+      color: #3740C3;
+      display: table-cell !important;
+      vertical-align: middle;
+    }
+    .filtrarStyleText {
+      margin-left: 18px;
+      margin-top: 14px;
+    }
+    .backMapa {
+      position: absolute;
+      width: 32%;
+      height: 45px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: 18%;
+      top: 0%;
+      text-align: center;
+      display: table;
+    }
+    .mapaStyleText {
+      margin-left: 11px;
+      margin-top: 14px;
+    }
+    .centerInfo {
+      width: 142px;
+    }
+    .centerName {
+      font-size: 15pt;
+    }
+    .topInfo {
+      width: 90px;
+    }
+    .scoreSize {
+      width: 32px;
+      display: inline-table;
+      text-align: center;
+      height: 19px;
+      border: none;
+      border-radius: 4px;
+    }
+    tr.spaceUnder>td {
+      padding-bottom: 8px;
     }
     .heightBlue {
-      height: 210px;
+      height: 175px;
+    }
+    .reservarButton {
+      border-radius: 6px;
+      width: 106px;
+      height: 39px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 9pt;
+    }
+    .infoButton {
+      border-radius: 6px;
+      width: 106px;
+      height: 39px;
+      background-color: transparent;
+      font-family: SfUiDisplayRegular;
+      font-size: 9pt;
+      color: #3740C3;
+      border-color: #3740C3;
+      border: 1px solid;
+    }
+    .cityText {
+      font-size: 10pt;
+    }
+    .starFont {
+      font-size: 1.2em;
+    }
+    .categoryStyle {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 20pt;
     }
   }
 
@@ -178,35 +281,377 @@
     .heightBlue {
       height: 175px;
     }
+    .reservarButton {
+      border-radius: 6px;
+      width: 119px;
+      height: 39px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 10pt;
+    }
+    .infoButton {
+      border-radius: 6px;
+      width: 119px;
+      height: 39px;
+      background-color: transparent;
+      font-family: SfUiDisplayRegular;
+      font-size: 10pt;
+      color: #3740C3;
+      border-color: #3740C3;
+      border: 1px solid;
+    }
+    .cityText {
+      font-size: 10pt;
+    }
+    .starFont {
+      font-size: 1.2em;
+    }
+    .categoryStyle {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 20pt;
+    }
   }
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
     .formPos {
-      top: 690px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+      top: 652px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+    .resultsPos {
+      top: 210px; position: absolute; width: 95%; left: 50%; margin-left: -47.2%; padding: 0 !important;
+    }
+    .backOrdenar {
+      position: absolute;
+      width: 32%;
+      height: 45px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: -50%;
+      top: 0%;
+      text-align: center;
+      display: table;
+    }
+    .backFiltrar {
+      position: absolute;
+      width: 32%;
+      height: 45px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: -16%;
+      top: 0%;
+      text-align: right;
+      display: table !important;
+      vertical-align: middle;
+    }
+    .filtrarStyle {
+      color: #3740C3;
+      display: table-cell !important;
+      vertical-align: middle;
+    }
+    .filtrarStyleText {
+      margin-left: 25px;
+      margin-top: 14px;
+    }
+    .backMapa {
+      position: absolute;
+      width: 32%;
+      height: 45px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: 18%;
+      top: 0%;
+      text-align: center;
+      display: table;
+    }
+    .mapaStyleText {
+      margin-left: 19px;
+      margin-top: 14px;
+    }
+    .centerInfo {
+      width: 150px;
+    }
+    .centerName {
+      font-size: 15pt;
+    }
+    .topInfo {
+      width: 125px;
+    }
+    .scoreSize {
+      width: 32px;
+      display: inline-table;
+      text-align: center;
+      height: 19px;
+      border: none;
+      border-radius: 4px;
+    }
+    tr.spaceUnder>td {
+      padding-bottom: 8px;
     }
     .heightBlue {
-      height: 200px;
+      height: 175px;
+    }
+    .reservarButton {
+      border-radius: 6px;
+      width: 119px;
+      height: 39px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 10pt;
+    }
+    .infoButton {
+      border-radius: 6px;
+      width: 119px;
+      height: 39px;
+      background-color: transparent;
+      font-family: SfUiDisplayRegular;
+      font-size: 10pt;
+      color: #3740C3;
+      border-color: #3740C3;
+      border: 1px solid;
+    }
+    .cityText {
+      font-size: 10pt;
+    }
+    .starFont {
+      font-size: 1.2em;
+    }
+    .categoryStyle {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 20pt;
     }
   }
 
   @media screen and (max-width: 550px) and (min-width: 450px) {
     .formPos {
-      top: 650px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+      top: 652px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
     }
-    .formPos {
-      top: 670px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    .resultsPos {
+      top: 210px; position: absolute; width: 95%; left: 50%; margin-left: -47.2%; padding: 0 !important;
+    }
+    .backOrdenar {
+      position: absolute;
+      width: 32%;
+      height: 45px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: -50%;
+      top: 0%;
+      text-align: center;
+      display: table;
+    }
+    .backFiltrar {
+      position: absolute;
+      width: 32%;
+      height: 45px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: -16%;
+      top: 0%;
+      text-align: right;
+      display: table !important;
+      vertical-align: middle;
+    }
+    .filtrarStyle {
+      color: #3740C3;
+      display: table-cell !important;
+      vertical-align: middle;
+    }
+    .filtrarStyleText {
+      margin-left: 30px;
+      margin-top: 14px;
+      font-size: 13pt;
+    }
+    .backMapa {
+      position: absolute;
+      width: 32%;
+      height: 45px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: 18%;
+      top: 0%;
+      text-align: center;
+      display: table;
+    }
+    .mapaStyleText {
+      margin-left: 23px;
+      margin-top: 14px;
+      font-size: 13pt;
+    }
+    .centerInfo {
+      width: 165px;
+    }
+    .centerName {
+      font-size: 19pt;
+    }
+    .topInfo {
+      width: 125px;
+    }
+    .scoreSize {
+      width: 32px;
+      display: inline-table;
+      text-align: center;
+      height: 19px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14pt;
+    }
+    tr.spaceUnder>td {
+      padding-bottom: 8px;
     }
     .heightBlue {
-      height: 210px;
+      height: 175px;
+    }
+    .reservarButton {
+      border-radius: 6px;
+      width: 161px;
+      height: 39px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 13pt;
+    }
+    .infoButton {
+      border-radius: 6px;
+      width: 161px;
+      height: 39px;
+      background-color: transparent;
+      font-family: SfUiDisplayRegular;
+      font-size: 13pt;
+      color: #3740C3;
+      border-color: #3740C3;
+      border: 1px solid;
+    }
+    .cityText {
+      font-size: 13pt;
+    }
+    .starFont {
+      font-size: 19px;
+    }
+    .categoryStyle {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 20pt;
     }
   }
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
     .formPos {
-      top: 770px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+      top: 690px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    }
+    .resultsPos {
+      top: 260px; position: absolute; width: 95%; left: 50%; margin-left: -47.2%; padding: 0 !important;
+    }
+    .backOrdenar {
+      position: absolute;
+      width: 32%;
+      height: 50px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: -50%;
+      top: 0%;
+      text-align: center;
+      display: table;
+    }
+    .backFiltrar {
+      position: absolute;
+      width: 32%;
+      height: 50px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: -16%;
+      top: 0%;
+      text-align: right;
+      display: table !important;
+      vertical-align: middle;
+    }
+    .filtrarStyle {
+      color: #3740C3;
+      display: table-cell !important;
+      vertical-align: middle;
+    }
+    .filtrarStyleText {
+      margin-left: 50px;
+      margin-top: 14px;
+      font-size: 19pt;
+    }
+    .backMapa {
+      position: absolute;
+      width: 32%;
+      height: 50px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      left:50%;
+      margin-left: 18%;
+      top: 0%;
+      text-align: center;
+      display: table;
+    }
+    .mapaStyleText {
+      margin-left: 38px;
+      margin-top: 14px;
+      font-size: 19pt;
+    }
+    .centerInfo {
+      width: 250px;
+    }
+    .centerName {
+      font-size: 29pt;
+    }
+    .topInfo {
+      width: 246px;
+    }
+    .scoreSize {
+      width: 32px;
+      display: inline-table;
+      text-align: center;
+      height: 19px;
+      border: none;
+      border-radius: 4px;
+      font-size: 20pt;
+    }
+    tr.spaceUnder>td {
+      padding-bottom: 8px;
     }
     .heightBlue {
-      height: 310px;
+      height: 212px;
+    }
+    .reservarButton {
+      border-radius: 6px;
+      width: 226px;
+      height: 53px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 19pt;
+    }
+    .infoButton {
+      border-radius: 6px;
+      width: 226px;
+      height: 53px;
+      background-color: transparent;
+      font-family: SfUiDisplayRegular;
+      font-size: 19pt;
+      color: #3740C3;
+      border-color: #3740C3;
+      border: 1px solid;
+    }
+    .cityText {
+      font-size: 18pt;
+    }
+    .starFont {
+      font-size: 28.5px;
+    }
+    .categoryStyle {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 33pt;
     }
   }
 </style>
