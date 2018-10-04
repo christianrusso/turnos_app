@@ -1,37 +1,34 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, NavParams } from 'ionic-angular';
-import { InfoclinicaPage } from '../infoclinica/infoclinica';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
+import * as moment from 'moment';
 
 @Component({
-  selector: 'page-search',
-  templateUrl: 'search.html'
+  selector: 'page-infoclinica',
+  templateUrl: 'infoclinica.html'
 })
-export class SearchPage {
+export class InfoclinicaPage {
 
-  private category = "";
-  public  results;
-  private place = "";
+  private id = "";
+  private results;
+  private moment = moment();
+  private day;
 
   constructor(
       public navCtrl: NavController,
       public alertCtrl: AlertController,
       public navParams: NavParams,
       private http: HttpClient,
-      private constants: Constants
+      private constants: Constants,
   ) {
-    this.category = navParams.get("category");
-    this.place    = navParams.get("place");
-    console.log(this.place);
+    this.id = navParams.get("id");
+    this.day = this.moment.day();
 
     let url = this.constants.API_URL + 'Clinic/GetByFilter';
-    let cities = [];
-    if (this.place != "" && this.place != null) {
-      cities.push(this.place.toString());
-    }
     let options = {
-      "Cities": cities,
+      "clinicId": this.id,
+      "Cities": [],
       "Specialties": [],
       "Subspecialties": [],
       "MedicalInsurances": [],
@@ -54,12 +51,6 @@ export class SearchPage {
           alert.present();
         }
     );
-  }
-
-  goToClinicInfo(id) {
-    this.navCtrl.push(InfoclinicaPage, {
-      id: id
-    });
   }
 
 }
