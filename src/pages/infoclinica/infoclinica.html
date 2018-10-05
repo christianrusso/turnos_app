@@ -9,7 +9,7 @@
       </table>
     </ion-grid>
     <ion-grid padding class="resultsPos" style="z-index: 4;">
-      <div style="" *ngFor="let result of results; let i = index">
+      <div style="" *ngFor="let result of results; let i = index;">
         <table style="width: 100%;">
           <tr>
             <td class="verticalTop topInfo" style="text-align: center;"><img src="{{result.logo}}"></td>
@@ -84,7 +84,7 @@
               </table>
             </td>
           </tr>
-          <tr>
+          <tr class="mapContainer">
             <td class="verticalTop centerInfo" colspan="3">
               <table style="width: 100%;">
                 <tr>
@@ -139,6 +139,7 @@
       </div>
     </ion-grid>
   </ion-grid>
+  <div id="map"></div>
 </ion-content>
 
 <style>
@@ -242,6 +243,17 @@
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
       font-size: 10pt;
+    }
+    #map {
+      width: 100%;
+      height: 120px;
+      opacity: 1;
+      display: block;
+      z-index: 5;
+      top: 418px;
+    }
+    .mapContainer {
+      height: 195px;
     }
   }
 

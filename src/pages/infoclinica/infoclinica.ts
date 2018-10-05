@@ -14,6 +14,7 @@ export class InfoclinicaPage {
   private results;
   private moment = moment();
   private day;
+  map:any;
 
   constructor(
       public navCtrl: NavController,
@@ -40,6 +41,7 @@ export class InfoclinicaPage {
         (success: any) => {
           console.log(success);
           this.results = success;
+          this.loadMap(success[0].latitude, success[0].longitude);
         },
         error => {
           console.log(error);
@@ -51,6 +53,31 @@ export class InfoclinicaPage {
           alert.present();
         }
     );
+  }
+
+  loadMap(lat, lng){
+    let latitude = lat;
+    let longitude = lng;
+    console.log(latitude, longitude);
+
+    // create a new map by passing HTMLElement
+    let mapEle: HTMLElement = document.getElementById('map');
+
+    // create LatLng object
+    var latlng = new google.maps.LatLng(latitude, longitude);
+
+    // create map
+    this.map = new google.maps.Map(mapEle, {
+      center: latlng,
+      zoom: 14
+    });
+
+    google.maps.event.addListenerOnce(this.map, 'idle', () => {
+      let marker = new google.maps.Marker({
+        position: latlng,
+        map: this.map
+      });
+    });
   }
 
 }
