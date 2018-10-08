@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { GoogleMaps } from '@ionic-native/google-maps';
 
 import { AboutPage } from '../pages/about/about';
 import { RegisterPage } from '../pages/register/register';
@@ -56,7 +55,6 @@ import {IonicStorageModule} from "@ionic/storage";
   providers: [
     Constants,
     UserService,
-    GoogleMaps,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import * as moment from 'moment';
 
+declare var google: any;
+
 @Component({
   selector: 'page-infoclinica',
   templateUrl: 'infoclinica.html'
@@ -64,7 +66,7 @@ export class InfoclinicaPage {
     let mapEle: HTMLElement = document.getElementById('map');
 
     // create LatLng object
-    /*var latlng = new google.maps.LatLng(latitude, longitude);
+    var latlng = new google.maps.LatLng(latitude, longitude);
 
     // create map
     this.map = new google.maps.Map(mapEle, {
@@ -77,7 +79,7 @@ export class InfoclinicaPage {
         position: latlng,
         map: this.map
       });
-    });*/
+    });
   }
 
 }

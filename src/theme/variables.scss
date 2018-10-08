@@ -21,6 +21,14 @@ $font-path: "../assets/fonts";
   font-family: 'SfUiDisplayBold';
   src: url('../assets/fonts/SF UI Display Bold.otf');
 }
+@font-face {
+  font-family: 'SfUiDisplayMedium';
+  src: url('../assets/fonts/SF UI Display Medium.otf');
+}
+@font-face {
+  font-family: 'SfUiDisplaySemiBold';
+  src: url('../assets/fonts/SF UI Display Semibold.otf');
+}
 
 
 // The app direction is used to include

@@ -16,7 +16,7 @@
             <td class="verticalTop centerInfo">
               <table>
                 <tr class="">
-                  <td style="font-family: SfUiDisplayBold;" class="centerName">{{result.name}}</td>
+                  <td style="font-family: SfUiDisplayMedium;" class="centerName">{{result.name}}</td>
                 </tr>
                 <tr class="spaceUnder cityText">
                   <td style="font-family: SfUiDisplayLight;"><ion-icon name="pin"></ion-icon> {{result.city}}</td>
@@ -53,15 +53,15 @@
             <td class="verticalTop centerInfo" colspan="3">
               <table style="width: 100%;">
                 <tr>
-                  <td style="font-family: SfUiDisplayBold;">INFORMACIÓN</td>
+                  <td style="font-family: SfUiDisplaySemiBold;">INFORMACIÓN</td>
                 </tr>
                 <tr><br></tr>
                 <tr>
-                  <td>{{result.description}}</td>
+                  <td style="font-family: SfUiDisplayLight">{{result.description}}</td>
                 </tr>
                 <tr><br></tr>
                 <tr>
-                  <td style="font-family: SfUiDisplayBold;">HORARIOS DE ATENCIÓN</td>
+                  <td style="font-family: SfUiDisplaySemiBold;">HORARIOS DE ATENCIÓN</td>
                 </tr>
                 <tr *ngFor="let hour of result.openCloseHours;">
                   <td *ngIf="hour.dayNumber == 0"><button ion-button type="" [ngClass]="day-1 == 0 ? 'todayDayButton' : 'notTodayDayButton'"><span style='font-family: SfUiDisplayBold;'>{{day-1 == 0 ? 'Hoy' : 'Lunes'}}</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button></td>
@@ -88,11 +88,11 @@
             <td class="verticalTop centerInfo" colspan="3">
               <table style="width: 100%;">
                 <tr>
-                  <td style="font-family: SfUiDisplayBold;">UBICACIÓN</td>
+                  <td style="font-family: SfUiDisplaySemiBold;">UBICACIÓN</td>
                 </tr>
                 <tr><br></tr>
                 <tr>
-                  <td>{{result.address}}</td>
+                  <td style="font-family: SfUiDisplayLight">{{result.address}}</td>
                 </tr>
                 <tr><br></tr>
               </table>
@@ -111,20 +111,20 @@
             <td class="verticalTop centerInfo" colspan="3">
               <table style="width: 100%;">
                 <tr>
-                  <td style="font-family: SfUiDisplayBold;">COMENTARIOS</td>
+                  <td style="font-family: SfUiDisplaySemiBold;">COMENTARIOS</td>
                 </tr>
                 <tr *ngFor="let rating of result.ratings;">
                   <td>
                     <table>
                       <tr>
                         <td rowspan="2"><button ion-button type="" [ngClass]="rating.score > 0 && rating.score < 4 ? 'scoreButtonRed' : rating.score >= 4 && rating.score < 7 ? 'scoreButtonYellow' : rating.score >= 7 ? 'scoreButtonGreen' : ''"><span style='font-family: SfUiDisplayBold;'>{{rating.score}}</span></button></td>
-                        <td>{{rating.user}}</td>
+                        <td style="font-family: SfUiDisplaySemiBold;">{{rating.user}}</td>
                       </tr>
                       <tr class="vertical">
-                        <td>{{rating.dateTime}}</td>
+                        <td style="font-family: SfUiDisplayRegular;">{{rating.dateTime}}</td>
                       </tr>
                       <tr>
-                        <td colspan="2">{{rating.comment}}</td>
+                        <td colspan="2" style="font-family: SfUiDisplayLight;">{{rating.comment}}</td>
                       </tr>
                     </table>
                   </td>
