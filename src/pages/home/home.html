@@ -1,62 +1,63 @@
 <ion-content class="" style="background-color: #F9F9F9; top:0px; left:0px; width: 100%; height: 100%;">
   <ion-grid style="padding: 0;">
-    <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; height: 250px; z-index: 2;"></div>
+    <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; z-index: 2;" class="blueHeight"></div>
     <ion-grid style="text-align: center; padding: 0; z-index: 3;">
       <table>
         <tr style="background-color: #3740C3; height: 63px;">
           <td style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 30%;"></td>
         </tr>
-        <tr><br></tr>
-        <tr><br></tr>
         <tr>
           <td class="reservaText">¿Qué vas a reservar hoy?</td>
         </tr>
-      </table>
-    </ion-grid>
-    <ion-grid padding class="formPos" style="z-index: 3;">
-      <table>
-        <tr>
-          <td>
-            <div (click)="goToPreSearch('medicina')" class="bigButton">
-              <img src="../../assets/icon/medicos.png" style="width: 50%; left: 50%; margin-left: 25%; top:50%; margin-top: 15%;">
-              <p class="itemsText">Médicos</p>
-            </div>
-          </td>
-          <td>
-            <div (click)="goToPreSearch('esteticas')" class="bigButton">
-              <img src="../../assets/icon/estetica.png" style="width: 50%; left: 50%; margin-left: 21%; top:50%; margin-top: 15%;">
-              <p class="itemsText">Estéticas</p>
-            </div>
-          </td>
-        </tr>
         <tr><br></tr>
         <tr>
-          <td>
-            <div (click)="goToPreSearch('restaurantes')" class="bigButton">
-              <img src="../../assets/icon/resto.png" style="width: 50%; left: 50%; margin-left: 25%; top:50%; margin-top: 15%;">
-              <p class="itemsText">Restaurantes</p>
-            </div>
-          </td>
-          <td>
-            <div (click)="goToPreSearch('futbol')" class="bigButton">
-              <img src="../../assets/icon/football.png" style="width: 50%; left: 50%; margin-left: 25.5%; top:50%; margin-top: 15%;">
-              <p class="itemsText">Canchas de Fútbol</p>
-            </div>
-          </td>
-        </tr>
-        <tr><br></tr>
-        <tr>
-          <td>
-            <div (click)="goToPreSearch('tenis')" class="bigButton">
-              <img src="../../assets/icon/tennis.png" style="width: 50%; left: 50%; margin-left: 24%; top:50%; margin-top: 15%;">
-              <p class="itemsText">Canchas de Tennis</p>
-            </div>
-          </td>
-          <td>
-            <div (click)="goToPreSearch('lubricentros')" class="bigButton">
-              <img src="../../assets/icon/wheel.png" style="width: 50%; left: 50%; margin-left: 26%; top:50%; margin-top: 15%;">
-              <p class="itemsText">Lubricentros</p>
-            </div>
+          <td padding class="formPos" style="z-index: 3;">
+            <table>
+              <tr>
+                <td>
+                  <div (click)="goToPreSearch('medicina')" class="bigButton">
+                    <img src="../../assets/icon/medicos.png" style="width: 50%; left: 50%; top:50%; margin-top: 15%;">
+                    <p class="itemsText">Médicos</p>
+                  </div>
+                </td>
+                <td>
+                  <div (click)="goToPreSearch('esteticas')" class="bigButton">
+                    <img src="../../assets/icon/estetica.png" style="width: 50%; left: 50%; top:50%; margin-top: 15%;">
+                    <p class="itemsText">Estéticas</p>
+                  </div>
+                </td>
+              </tr>
+              <tr><br></tr>
+              <tr>
+                <td>
+                  <div (click)="goToPreSearch('restaurantes')" class="bigButton">
+                    <img src="../../assets/icon/resto.png" style="width: 50%; left: 50%; top:50%; margin-top: 15%;">
+                    <p class="itemsText">Restaurantes</p>
+                  </div>
+                </td>
+                <td>
+                  <div (click)="goToPreSearch('futbol')" class="bigButton">
+                    <img src="../../assets/icon/football.png" style="width: 50%; left: 50%; top:50%; margin-top: 15%;">
+                    <p class="itemsText">Canchas de Fútbol</p>
+                  </div>
+                </td>
+              </tr>
+              <tr><br></tr>
+              <tr>
+                <td>
+                  <div (click)="goToPreSearch('tenis')" class="bigButton">
+                    <img src="../../assets/icon/tennis.png" style="width: 50%; left: 50%; top:50%; margin-top: 15%;">
+                    <p class="itemsText">Canchas de Tennis</p>
+                  </div>
+                </td>
+                <td>
+                  <div (click)="goToPreSearch('lubricentros')" class="bigButton">
+                    <img src="../../assets/icon/wheel.png" style="width: 50%; left: 50%; top:50%; margin-top: 15%;">
+                    <p class="itemsText">Lubricentros</p>
+                  </div>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
       </table>
@@ -65,27 +66,27 @@
 </ion-content>
 
 <style>
-  .formPos {
-    top: 868px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+  .blueHeight {
+    height: 250px;
   }
 
   @media screen and (max-width: 320px) {
     .formPos {
-      top: 650px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
     }
     .bigButton {
-      width: 60%;
+      width: 84%;
       height: 44%;
       background-color: #FFFFFF;
       border-radius: 10px;
       left:50%;
-      margin-left: 19%;
+      margin-left: 8.6%;
       top: 0%;
     }
     .reservaText {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 20pt;
+      padding-top: 30px;
     }
     .itemsText {
       text-align: center;
@@ -95,7 +96,6 @@
 
   @media screen and (max-width: 400px) and (min-width: 321px) {
     .formPos {
-      top: 650px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
     }
     .bigButton {
       width: 78%;
@@ -110,6 +110,7 @@
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 20pt;
+      padding-top: 30px;
     }
     .itemsText {
       text-align: center;
@@ -119,7 +120,6 @@
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
     .formPos {
-      top: 650px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
     }
     .bigButton {
       width: 90%;
@@ -134,6 +134,7 @@
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 20pt;
+      padding-top: 30px;
     }
     .itemsText {
       text-align: center;
@@ -144,7 +145,6 @@
 
   @media screen and (max-width: 550px) and (min-width: 450px) {
     .formPos {
-      top: 650px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
     }
     .bigButton {
       width: 95%;
@@ -152,13 +152,14 @@
       background-color: #FFFFFF;
       border-radius: 10px;
       left:50%;
-      margin-left: 5%;
+      margin-left: 4.05%;
       top: 0%;
     }
     .reservaText {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 26pt;
+      padding-top: 30px;
     }
     .itemsText {
       text-align: center;
@@ -169,7 +170,6 @@
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
     .formPos {
-      top: 702px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
     }
     .bigButton {
       width: 83%;
@@ -184,11 +184,15 @@
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 31pt;
+      padding-top: 40px;
     }
     .itemsText {
       text-align: center;
       color: #454EDB;
       font-size: 20pt;
+    }
+    .blueHeight {
+      height: 380px;
     }
   }
 </style>

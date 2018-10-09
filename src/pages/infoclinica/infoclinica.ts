@@ -62,24 +62,26 @@ export class InfoclinicaPage {
     let longitude = lng;
     console.log(latitude, longitude);
 
-    // create a new map by passing HTMLElement
-    let mapEle: HTMLElement = document.getElementById('map');
+    setTimeout(() => {
+      // create a new map by passing HTMLElement
+      let mapEle: HTMLElement = document.getElementById('map');
 
-    // create LatLng object
-    var latlng = new google.maps.LatLng(latitude, longitude);
+      // create LatLng object
+      var latlng = new google.maps.LatLng(latitude, longitude);
 
-    // create map
-    this.map = new google.maps.Map(mapEle, {
-      center: latlng,
-      zoom: 14
-    });
-
-    google.maps.event.addListenerOnce(this.map, 'idle', () => {
-      let marker = new google.maps.Marker({
-        position: latlng,
-        map: this.map
+      // create map
+      this.map = new google.maps.Map(mapEle, {
+        center: latlng,
+        zoom: 14
       });
-    });
+
+      google.maps.event.addListenerOnce(this.map, 'idle', () => {
+        let marker = new google.maps.Marker({
+          position: latlng,
+          map: this.map
+        });
+      });
+    }, 1000);
   }
 
 }
