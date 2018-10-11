@@ -16,6 +16,7 @@ export class InfoclinicaPage {
   private results;
   private moment = moment();
   private day;
+  private isOpenDays = false;
   map:any;
 
   constructor(
@@ -41,7 +42,6 @@ export class InfoclinicaPage {
     };
     this.http.post(url, options).subscribe(
         (success: any) => {
-          console.log(success);
           this.results = success;
           this.loadMap(success[0].latitude, success[0].longitude);
         },
@@ -60,7 +60,6 @@ export class InfoclinicaPage {
   loadMap(lat, lng){
     let latitude = lat;
     let longitude = lng;
-    console.log(latitude, longitude);
 
     setTimeout(() => {
       // create a new map by passing HTMLElement
@@ -82,6 +81,29 @@ export class InfoclinicaPage {
         });
       });
     }, 1000);
+  }
+
+  showHorarios() {
+    let elements;
+    if (!this.isOpenDays) {
+      elements = document.querySelectorAll('.notShow');
+    } else {
+      elements = document.querySelectorAll('.show');
+    }
+    for (let i = 0; i < elements.length; i++) {
+      if (!this.isOpenDays) {
+        elements[i].classList.remove('notShow');
+        elements[i].classList.add('show');
+      } else {
+        elements[i].classList.remove('show');
+        elements[i].classList.add('notShow');
+      }
+    }
+    if (!this.isOpenDays) {
+      this.isOpenDays = true;
+    } else {
+      this.isOpenDays = false;
+    }
   }
 
 }

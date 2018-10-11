@@ -62,14 +62,14 @@
                       <tr>
                         <td style="font-family: SfUiDisplaySemiBold;" class="infoTitle">HORARIOS DE ATENCIÓN</td>
                       </tr>
-                      <tr *ngFor="let hour of result.openCloseHours;">
-                        <td *ngIf="hour.dayNumber == 0"><button ion-button type="" [ngClass]="day-1 == 0 ? 'todayDayButton' : 'notTodayDayButton'"><span style='font-family: SfUiDisplayBold;'>Lunes</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button></td>
-                        <td *ngIf="hour.dayNumber == 1"><button ion-button type="" [ngClass]="day-1 == 1 ? 'todayDayButton' : 'notTodayDayButton'"><span style='font-family: SfUiDisplayBold;'>Martes</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button></td>
-                        <td *ngIf="hour.dayNumber == 2"><button ion-button type="" [ngClass]="day-1 == 2 ? 'todayDayButton' : 'notTodayDayButton'"><span style='font-family: SfUiDisplayBold;'>Miércoles</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button></td>
-                        <td *ngIf="hour.dayNumber == 3"><button ion-button type="" [ngClass]="day-1 == 3 ? 'todayDayButton' : 'notTodayDayButton'"><span style='font-family: SfUiDisplayBold;'>Jueves</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button></td>
-                        <td *ngIf="hour.dayNumber == 4"><button ion-button type="" [ngClass]="day-1 == 4 ? 'todayDayButton' : 'notTodayDayButton'"><span style='font-family: SfUiDisplayBold;'>Viernes</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button></td>
-                        <td *ngIf="hour.dayNumber == 5"><button ion-button type="" [ngClass]="day-1 == 5 ? 'todayDayButton' : 'notTodayDayButton'"><span style='font-family: SfUiDisplayBold;'>Sábado</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button></td>
-                        <td *ngIf="hour.dayNumber == 6"><button ion-button type="" [ngClass]="day-1 == -1 ? 'todayDayButton' : 'notTodayDayButton'"><span style='font-family: SfUiDisplayBold;'>Domingo</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button></td>
+                      <tr *ngFor="let hour of result.openCloseHours; let myIndex = index;">
+                        <td *ngIf="hour.dayNumber == 0" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type="" [ngClass]="day-1 == 0 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span style='font-family: SfUiDisplayBold;'>Lunes</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;" *ngIf="myIndex == 0" (click)="showHorarios();">Ver todos los días<ion-icon *ngIf="isOpenDays == false" name="arrow-dropup"></ion-icon><ion-icon *ngIf="isOpenDays == true" name="arrow-dropdown"></ion-icon></span></td>
+                        <td *ngIf="hour.dayNumber == 1" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type="" [ngClass]="day-1 == 1 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span style='font-family: SfUiDisplayBold;'>Martes</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;" *ngIf="myIndex == 0" (click)="showHorarios();">Ver todos los días<ion-icon *ngIf="isOpenDays == false" name="arrow-dropup"></ion-icon><ion-icon *ngIf="isOpenDays == true" name="arrow-dropdown"></ion-icon></span></td>
+                        <td *ngIf="hour.dayNumber == 2" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type="" [ngClass]="day-1 == 2 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span style='font-family: SfUiDisplayBold;'>Miércoles</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;" *ngIf="myIndex == 0" (click)="showHorarios();">Ver todos los días<ion-icon *ngIf="isOpenDays == false" name="arrow-dropup"></ion-icon><ion-icon *ngIf="isOpenDays == true" name="arrow-dropdown"></ion-icon></span></td>
+                        <td *ngIf="hour.dayNumber == 3" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type="" [ngClass]="day-1 == 3 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span style='font-family: SfUiDisplayBold;'>Jueves</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;" *ngIf="myIndex == 0" (click)="showHorarios();">Ver todos los días<ion-icon *ngIf="isOpenDays == false" name="arrow-dropup"></ion-icon><ion-icon *ngIf="isOpenDays == true" name="arrow-dropdown"></ion-icon></span></td>
+                        <td *ngIf="hour.dayNumber == 4" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type="" [ngClass]="day-1 == 4 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span style='font-family: SfUiDisplayBold;'>Viernes</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;" *ngIf="myIndex == 0" (click)="showHorarios();">Ver todos los días<ion-icon *ngIf="isOpenDays == false" name="arrow-dropup"></ion-icon><ion-icon *ngIf="isOpenDays == true" name="arrow-dropdown"></ion-icon></span></td>
+                        <td *ngIf="hour.dayNumber == 5" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type="" [ngClass]="day-1 == 5 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span style='font-family: SfUiDisplayBold;'>Sábado</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;" *ngIf="myIndex == 0" (click)="showHorarios();">Ver todos los días<ion-icon *ngIf="isOpenDays == false" name="arrow-dropup"></ion-icon><ion-icon *ngIf="isOpenDays == true" name="arrow-dropdown"></ion-icon></span></td>
+                        <td *ngIf="hour.dayNumber == 6" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type="" [ngClass]="day-1 == -1 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span style='font-family: SfUiDisplayBold;'>Domingo</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;" *ngIf="myIndex == 0" (click)="showHorarios();">Ver todos los días<ion-icon *ngIf="isOpenDays == false" name="arrow-dropup"></ion-icon><ion-icon *ngIf="isOpenDays == true" name="arrow-dropdown"></ion-icon></span></td>
                       </tr>
                     </table>
                   </td>
@@ -93,6 +93,7 @@
                       <tr>
                         <td style="font-family: SfUiDisplayLight" class="infoTitle">{{result.address}}</td>
                       </tr>
+                      <tr><br></tr>
                       <tr>
                         <td><div id="map"></div></td>
                       </tr>
@@ -116,16 +117,19 @@
                       </tr>
                       <tr *ngFor="let rating of result.ratings;">
                         <td>
-                          <table>
+                          <table style="width: 100%;">
                             <tr>
-                              <td rowspan="2"><button ion-button type="" [ngClass]="rating.score > 0 && rating.score < 4 ? 'scoreButtonRed' : rating.score >= 4 && rating.score < 7 ? 'scoreButtonYellow' : rating.score >= 7 ? 'scoreButtonGreen' : ''"><span style='font-family: SfUiDisplayBold;'>{{rating.score}}</span></button></td>
+                              <td rowspan="2" style="padding-right: 8px; width: 1px;"><button ion-button type="" [ngClass]="rating.score > 0 && rating.score < 4 ? 'scoreButtonRed' : rating.score >= 4 && rating.score < 7 ? 'scoreButtonYellow' : rating.score >= 7 ? 'scoreButtonGreen' : ''"><span style='font-family: SfUiDisplayBold;'>{{rating.score}}</span></button></td>
                               <td style="font-family: SfUiDisplaySemiBold;" class="commentUser">{{rating.user}}</td>
                             </tr>
                             <tr class="vertical">
                               <td style="font-family: SfUiDisplayRegular;" class="dateText">{{rating.dateTime}}</td>
                             </tr>
                             <tr>
-                              <td colspan="2" style="font-family: SfUiDisplayLight;" class="infoTitle">{{rating.comment}}</td>
+                              <td colspan="2" style="font-family: SfUiDisplayLight; padding-top: 5px;" class="infoTitle">{{rating.comment}}</td>
+                            </tr>
+                            <tr>
+                              <td colspan="2"><hr></td>
                             </tr>
                           </table>
                         </td>
@@ -153,6 +157,12 @@
   }
   .vertical {
     vertical-align: top;
+  }
+  .notShow {
+    display: none;
+  }
+  .show {
+    display: block;
   }
 
   @media screen and (max-width: 320px) {
@@ -192,23 +202,25 @@
     }
     .notTodayDayButton {
       border-radius: 6px;
-      height: 39px;
+      height: 27px;
       background-color: transparent;
       font-family: SfUiDisplayRegular;
       font-size: 11pt;
       color: #00B901;
       border-color: #00B901 !important;
       border: 1px solid;
+      box-shadow: none;
     }
     .todayDayButton {
       border-radius: 6px;
-      height: 39px;
+      height: 27px;
       background-color: transparent;
       font-family: SfUiDisplayRegular;
       font-size: 11pt;
       color: #3740C3;
       border-color: #3740C3 !important;
       border: 1px solid;
+      box-shadow: none;
     }
     .scoreButtonRed {
       background-color: transparent;
@@ -300,23 +312,25 @@
     }
     .notTodayDayButton {
       border-radius: 6px;
-      height: 39px;
+      height: 30px;
       background-color: transparent;
       font-family: SfUiDisplayRegular;
       font-size: 11pt;
       color: #00B901;
       border-color: #00B901 !important;
       border: 1px solid;
+      box-shadow: none;
     }
     .todayDayButton {
       border-radius: 6px;
-      height: 39px;
+      height: 30px;
       background-color: transparent;
       font-family: SfUiDisplayRegular;
       font-size: 11pt;
       color: #3740C3;
       border-color: #3740C3 !important;
       border: 1px solid;
+      box-shadow: none;
     }
     .scoreButtonRed {
       background-color: transparent;
@@ -404,23 +418,25 @@
     }
     .notTodayDayButton {
       border-radius: 6px;
-      height: 39px;
+      height: 32px;
       background-color: transparent;
       font-family: SfUiDisplayRegular;
       font-size: 11pt;
       color: #00B901;
       border-color: #00B901 !important;
       border: 1px solid;
+      box-shadow: none;
     }
     .todayDayButton {
       border-radius: 6px;
-      height: 39px;
+      height: 32px;
       background-color: transparent;
       font-family: SfUiDisplayRegular;
       font-size: 11pt;
       color: #3740C3;
       border-color: #3740C3 !important;
       border: 1px solid;
+      box-shadow: none;
     }
     .scoreButtonRed {
       background-color: transparent;
@@ -508,23 +524,25 @@
     }
     .notTodayDayButton {
       border-radius: 6px;
-      height: 39px;
+      height: 35px;
       background-color: transparent;
       font-family: SfUiDisplayRegular;
       font-size: 12.5pt;
       color: #00B901;
       border-color: #00B901 !important;
       border: 1px solid;
+      box-shadow: none;
     }
     .todayDayButton {
       border-radius: 6px;
-      height: 39px;
+      height: 35px;
       background-color: transparent;
       font-family: SfUiDisplayRegular;
       font-size: 12.5pt;
       color: #3740C3;
       border-color: #3740C3 !important;
       border: 1px solid;
+      box-shadow: none;
     }
     .scoreButtonRed {
       background-color: transparent;
@@ -619,6 +637,7 @@
       color: #00B901;
       border-color: #00B901 !important;
       border: 1px solid;
+      box-shadow: none;
     }
     .todayDayButton {
       border-radius: 6px;
@@ -629,6 +648,7 @@
       color: #3740C3;
       border-color: #3740C3 !important;
       border: 1px solid;
+      box-shadow: none;
     }
     .scoreButtonRed {
       background-color: transparent;
