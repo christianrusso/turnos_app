@@ -21,7 +21,7 @@ export class SearchPage {
       private http: HttpClient,
       private constants: Constants
   ) {
-    this.category = navParams.get("category");
+    this.category = navParams.get("category")[0].toUpperCase() + navParams.get("category").slice(1).toLowerCase();
     this.place    = navParams.get("place");
     console.log(this.place);
 
