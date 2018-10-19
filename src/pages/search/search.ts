@@ -13,6 +13,8 @@ export class SearchPage {
   private category = "";
   public  results;
   private place = "";
+  private AvailableAppointmentStartDate = "";
+  private AvailableAppointmentEndDate = "";
 
   constructor(
       public navCtrl: NavController,
@@ -23,7 +25,8 @@ export class SearchPage {
   ) {
     this.category = navParams.get("category")[0].toUpperCase() + navParams.get("category").slice(1).toLowerCase();
     this.place    = navParams.get("place");
-    console.log(this.place);
+    this.AvailableAppointmentStartDate = navParams.get("AvailableAppointmentStartDate");
+    this.AvailableAppointmentEndDate = navParams.get("AvailableAppointmentEndDate");
 
     let url = this.constants.API_URL + 'Clinic/GetByFilter';
     let cities = [];
@@ -37,7 +40,9 @@ export class SearchPage {
       "MedicalInsurances": [],
       "medicalPlans": [],
       "Score": "",
-      "ScoreQuantity": ""
+      "ScoreQuantity": "",
+      "AvailableAppointmentStartDate": this.AvailableAppointmentStartDate,
+      "AvailableAppointmentEndDate": this.AvailableAppointmentEndDate
     };
     this.http.post(url, options).subscribe(
         (success: any) => {

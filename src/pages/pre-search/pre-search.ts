@@ -4,6 +4,7 @@ import { LoginPage } from '../login/login';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import { SearchPage } from '../search/search';
+import * as moment from 'moment';
 
 @Component({
   selector: 'page-presearch',
@@ -14,6 +15,8 @@ export class PreSearchPage {
   private category = "";
   private categories;
   private place = "";
+  private days = [];
+  private when = "";
 
   constructor(
       public navCtrl: NavController,
@@ -41,12 +44,38 @@ export class PreSearchPage {
           alert.present();
         }
     );
+
+    moment.locale('es');
+    for (var i = 0; i < 30; i++) {
+      this.days.push(
+          {
+            name: moment().add(i, 'days').format('LL'),
+            value: moment().add(i, 'days').format('YYYY-MM-DD')
+          }
+      )
+    }
   }
 
   search() {
+    let start = this.when;
+    let end   = this.when;
+
+    if (this.when != "") {
+      if (this.when == "7") {
+        start = moment().format('YYYY-MM-DD');
+        end = moment().add(7, 'days').format('YYYY-MM-DD');
+      }
+      if (this.when == "14") {
+        start = moment().format('YYYY-MM-DD');
+        end = moment().add(14, 'days').format('YYYY-MM-DD');
+      }
+    }
+
     this.navCtrl.push(SearchPage, {
       category: this.category,
-      place:    this.place
+      place:    this.place,
+      AvailableAppointmentStartDate: start,
+      AvailableAppointmentEndDate: end
     });
   }
 

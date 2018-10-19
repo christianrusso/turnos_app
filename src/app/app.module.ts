@@ -15,6 +15,7 @@ import { InfoclinicaPage } from '../pages/infoclinica/infoclinica';
 import { SearchPage } from '../pages/search/search';
 import { Constants } from '../app/constants';
 import { UserService } from "../services/user.service";
+import { CalendarModule } from "ion2-calendar";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -37,7 +38,8 @@ import {IonicStorageModule} from "@ionic/storage";
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    IonicStorageModule
+    IonicStorageModule,
+    CalendarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

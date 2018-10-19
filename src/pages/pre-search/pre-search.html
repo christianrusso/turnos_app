@@ -38,9 +38,12 @@
               </ion-item>
               <ion-item no-lines class="separator">
                 <span style="margin-right: 42px; font-family: SfUiDisplaySemiBold;">FECHA</span>
-                <select id="dateSelect" name="dateSelect" style="background-color:transparent;
+                <select id="dateSelect" name="dateSelect" [(ngModel)]="when" style="background-color:transparent;
               -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px;">
                   <option value="">¿Cuando?</option>
+                  <option value="7">Próximos 7 días</option>
+                  <option value="14">Próximos 14 días</option>
+                  <option *ngFor="let day of days" value="{{day.value}}">{{day.name}}</option>
                 </select>
               </ion-item>
               <div class="separatorButton">
