@@ -13,6 +13,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { PreSearchPage } from '../pages/pre-search/pre-search';
 import { InfoclinicaPage } from '../pages/infoclinica/infoclinica';
 import { SearchPage } from '../pages/search/search';
+import { AyudaPage } from '../pages/ayuda/ayuda';
 import { Constants } from '../app/constants';
 import { UserService } from "../services/user.service";
 import { CalendarModule } from "ion2-calendar";
@@ -32,7 +33,8 @@ import {IonicStorageModule} from "@ionic/storage";
     TabsPage,
     PreSearchPage,
     SearchPage,
-    InfoclinicaPage
+    InfoclinicaPage,
+    AyudaPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import {IonicStorageModule} from "@ionic/storage";
     ProfilePage,
     PreSearchPage,
     SearchPage,
-    InfoclinicaPage
+    InfoclinicaPage,
+    AyudaPage
   ],
   providers: [
     Constants,

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import { UserService } from '../../services/user.service';
 import { RegisterPage } from '../register/register';
+import { AyudaPage } from '../ayuda/ayuda';
 
 @Component({
   selector: 'page-login',
@@ -64,6 +65,10 @@ export class LoginPage {
 
   goToRegister() {
     this.navCtrl.push(RegisterPage);
+  }
+
+  goToAyuda() {
+    this.navCtrl.push(AyudaPage);
   }
 
   goToHome() {
