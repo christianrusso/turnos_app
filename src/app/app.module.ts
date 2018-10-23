@@ -14,6 +14,7 @@ import { PreSearchPage } from '../pages/pre-search/pre-search';
 import { InfoclinicaPage } from '../pages/infoclinica/infoclinica';
 import { SearchPage } from '../pages/search/search';
 import { AyudaPage } from '../pages/ayuda/ayuda';
+import { FavoritesPage } from '../pages/favorites/favorites';
 import { Constants } from '../app/constants';
 import { UserService } from "../services/user.service";
 import { CalendarModule } from "ion2-calendar";
@@ -34,7 +35,8 @@ import {IonicStorageModule} from "@ionic/storage";
     PreSearchPage,
     SearchPage,
     InfoclinicaPage,
-    AyudaPage
+    AyudaPage,
+    FavoritesPage
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import {IonicStorageModule} from "@ionic/storage";
     PreSearchPage,
     SearchPage,
     InfoclinicaPage,
-    AyudaPage
+    AyudaPage,
+    FavoritesPage
   ],
   providers: [
     Constants,

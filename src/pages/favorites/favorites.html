@@ -1,0 +1,463 @@
+<ion-content class="" style="background-color: #F9F9F9; top:0px; left:0px; width: 100%; height: 100%;">
+  <ion-grid style="padding: 0;">
+    <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; z-index: 2;" class="heightBlue"></div>
+    <ion-grid style="text-align: center; padding: 0; z-index: 3;">
+      <table>
+        <tr style="background-color: #3740C3; height: 63px;">
+          <td colspan="3" style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 30%;"></td>
+        </tr>
+        <tr><br></tr>
+        <tr>
+          <td colspan="3" class="categoryStyle">Mis favoritos</td>
+        </tr>
+        <tr><br></tr>
+        <tr>
+          <td padding class="resultsPos">
+            <div style="padding-bottom: 13px; margin-bottom: 13px; border-bottom: 1px grey solid;" *ngFor="let result of results; let i = index">
+              <table>
+                <tr>
+                  <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo" src="{{result.logo}}"></td>
+                  <td class="verticalTop centerInfo">
+                    <table>
+                      <tr class="spaceUnder">
+                        <td style="font-family: SfUiDisplayMedium;" class="centerName">{{result.name}}</td>
+                      </tr>
+                      <tr class="spaceUnder cityText">
+                        <td style="font-family: SfUiDisplayLight;"><ion-icon name="pin"></ion-icon> {{result.city}}</td>
+                      </tr>
+                      <tr style="display: table;">
+                        <td>
+                          <span style="background-color: #454EDB; color:white; vertical-align: middle;" class="scoreSize">{{result.score}}</span>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 0"></ion-icon>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 1"></ion-icon>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 2"></ion-icon>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 3"></ion-icon>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 4"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 0"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 1"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 2"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 3"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 4"></ion-icon>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td class="verticalTop">
+                    <table>
+                      <tr>
+                        <td><button color="button-color" ion-button full type="" (click)="goToClinicInfo(result.clinicId)" class="reservarButton">VER MÁS</button></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </ion-grid>
+  </ion-grid>
+</ion-content>
+
+<style>
+  .verticalTop {
+    vertical-align: top;
+    padding-right: 12px;
+    padding: 0 !important;
+  }
+
+  @media screen and (max-width: 320px) {
+    .resultsPos {
+    }
+    .centerInfo {
+      width: 158px;
+    }
+    .centerName {
+      font-size: 15pt;
+      text-align: left;
+    }
+    .topInfo {
+      width: 78px;
+    }
+    .imageLogo {
+      max-width: 58px;
+      border-radius: 6px;
+    }
+    .scoreSize {
+      width: 25px;
+      display: inline-table;
+      text-align: center;
+      height: 19px;
+      border: none;
+      border-radius: 4px;
+    }
+    tr.spaceUnder>td {
+      padding-bottom: 8px;
+    }
+    .heightBlue {
+      height: 145px;
+    }
+    .reservarButton {
+      border-radius: 17px;
+      width: 84px;
+      height: 26px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 9pt;
+      box-shadow: none;
+    }
+    .infoButton {
+      border-radius: 17px;
+      width: 84px;
+      height: 26px;
+      background-color: transparent;
+      font-family: SfUiDisplayRegular;
+      font-size: 9pt;
+      color: #3740C3;
+      border-color: #3740C3;
+      border: 1px solid;
+      box-shadow: none;
+    }
+    .cityText {
+      font-size: 10pt;
+      text-align: left;
+    }
+    .starFont {
+      font-size: 1.2em;
+    }
+    .categoryStyle {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 20pt;
+    }
+  }
+
+    @media screen and (max-width: 400px) and (min-width: 321px) {
+    .resultsPos {
+    }
+    .centerInfo {
+      width: 154px;
+    }
+    .centerName {
+      font-size: 15pt;
+      text-align: left;
+    }
+    .topInfo {
+      width: 100px;
+    }
+    .imageLogo {
+      max-width: 63px;
+      border-radius: 6px;
+    }
+    .scoreSize {
+      width: 32px;
+      display: inline-table;
+      text-align: center;
+      height: 19px;
+      border: none;
+      border-radius: 4px;
+    }
+    tr.spaceUnder>td {
+      padding-bottom: 8px;
+    }
+    .heightBlue {
+      height: 128px;
+    }
+    .reservarButton {
+      border-radius: 17px;
+      width: 108px;
+      height: 28px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 10pt;
+      box-shadow: none;
+    }
+    .infoButton {
+      border-radius: 17px;
+      width: 108px;
+      height: 28px;
+      background-color: transparent;
+      font-family: SfUiDisplayRegular;
+      font-size: 10pt;
+      color: #3740C3;
+      border-color: #3740C3;
+      border: 1px solid;
+      box-shadow: none;
+    }
+    .cityText {
+      font-size: 10pt;
+      text-align: left;
+    }
+    .starFont {
+      font-size: 1.2em;
+    }
+    .categoryStyle {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 18pt;
+    }
+  }
+
+  @media screen and (max-width: 450px) and (min-width: 400px) {
+    .resultsPos {
+    }
+    .backOrdenar {
+      width: 113px;
+      height: 37px;
+      background-color: #FFFFFF;
+      border-radius: 8px;
+      left:50%;
+      text-align: center;
+      display: inline-table;
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    }
+    .backOrdenarAndFiltrar {
+      margin-right: 10px;
+    }
+    .ordenarIcon {
+      margin-top: 8px;
+      margin-left: 8px;
+      color: rgb(69 78 219);
+    }
+    .filterText {
+      font-size: 10.5pt;
+    }
+    .centerInfo {
+      width: 150px;
+    }
+    .centerName {
+      font-size: 15pt;
+      text-align: left;
+    }
+    .topInfo {
+      width: 125px;
+    }
+    .imageLogo {
+      max-width: 100px;
+      border-radius: 6px;
+    }
+    .scoreSize {
+      width: 32px;
+      display: inline-table;
+      text-align: center;
+      height: 19px;
+      border: none;
+      border-radius: 4px;
+    }
+    tr.spaceUnder>td {
+      padding-bottom: 8px;
+    }
+    .heightBlue {
+      height: 150px;
+    }
+    .reservarButton {
+      border-radius: 17px;
+      width: 119px;
+      height: 30px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 10pt;
+      box-shadow: none;
+    }
+    .infoButton {
+      border-radius: 17px;
+      width: 119px;
+      height: 30px;
+      background-color: transparent;
+      font-family: SfUiDisplayRegular;
+      font-size: 10pt;
+      color: #3740C3;
+      border-color: #3740C3;
+      border: 1px solid;
+      box-shadow: none;
+    }
+    .cityText {
+      font-size: 10pt;
+      text-align: left;
+    }
+    .starFont {
+      font-size: 1.2em;
+    }
+    .categoryStyle {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 20pt;
+    }
+  }
+
+  @media screen and (max-width: 550px) and (min-width: 450px) {
+    .resultsPos {
+    }
+    .backOrdenar {
+      width: 139px;
+      height: 47px;
+      background-color: #FFFFFF;
+      border-radius: 8px;
+      left:50%;
+      text-align: center;
+      display: inline-table;
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    }
+    .backOrdenarAndFiltrar {
+      margin-right: 10px;
+    }
+    .ordenarIcon {
+      margin-top: 14px;
+      margin-left: 10px;
+      color: rgb(69 78 219);
+    }
+    .filterText {
+      font-size: 14pt;
+    }
+    .centerInfo {
+      width: 175px;
+    }
+    .centerName {
+      font-size: 19pt;
+      text-align: left;
+    }
+    .topInfo {
+      width: 130px;
+    }
+    .imageLogo {
+      max-width: 125px;
+      border-radius: 6px;
+    }
+    .scoreSize {
+      width: 32px;
+      display: inline-table;
+      text-align: center;
+      height: 19px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14pt;
+    }
+    tr.spaceUnder>td {
+      padding-bottom: 8px;
+    }
+    .heightBlue {
+      height: 155px;
+    }
+    .reservarButton {
+      border-radius: 17px;
+      width: 151px;
+      height: 30px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 13pt;
+      box-shadow: none;
+    }
+    .infoButton {
+      border-radius: 17px;
+      width: 151px;
+      height: 30px;
+      background-color: transparent;
+      font-family: SfUiDisplayRegular;
+      font-size: 13pt;
+      color: #3740C3;
+      border-color: #3740C3;
+      border: 1px solid;
+      box-shadow: none;
+    }
+    .cityText {
+      font-size: 13pt;
+      text-align: left;
+    }
+    .starFont {
+      font-size: 19px;
+    }
+    .categoryStyle {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 20pt;
+    }
+  }
+
+  @media screen and (max-width: 1100px) and (min-width: 550px) {
+    .resultsPos {
+    }
+    .backOrdenar {
+      width: 193px;
+      height: 55px;
+      background-color: #FFFFFF;
+      border-radius: 8px;
+      left:50%;
+      text-align: center;
+      display: inline-table;
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    }
+    .backOrdenarAndFiltrar {
+      margin-right: 10px;
+    }
+    .ordenarIcon {
+      margin-top: 18px;
+      margin-left: 10px;
+      color: rgb(69 78 219);
+    }
+    .filterText {
+      font-size: 18pt;
+    }
+    .centerInfo {
+      width: 250px;
+    }
+    .centerName {
+      font-size: 29pt;
+      text-align: left;
+    }
+    .topInfo {
+      width: 246px;
+    }
+    .imageLogo {
+      max-width: 225px;
+      border-radius: 6px;
+    }
+    .scoreSize {
+      width: 32px;
+      display: inline-table;
+      text-align: center;
+      height: 19px;
+      border: none;
+      border-radius: 4px;
+      font-size: 20pt;
+    }
+    tr.spaceUnder>td {
+      padding-bottom: 8px;
+    }
+    .heightBlue {
+      height: 192px;
+    }
+    .reservarButton {
+      border-radius: 17px;
+      width: 226px;
+      height: 47px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 19pt;
+      box-shadow: none;
+    }
+    .infoButton {
+      border-radius: 17px;
+      width: 226px;
+      height: 47px;
+      background-color: transparent;
+      font-family: SfUiDisplayRegular;
+      font-size: 19pt;
+      color: #3740C3;
+      border-color: #3740C3;
+      border: 1px solid;
+      box-shadow: none;
+    }
+    .cityText {
+      font-size: 18pt;
+      text-align: left;
+    }
+    .starFont {
+      font-size: 28.5px;
+    }
+    .categoryStyle {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 33pt;
+    }
+  }
+</style>
