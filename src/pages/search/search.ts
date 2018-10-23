@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, NavParams } from 'ionic-angular';
+import { NavController, AlertController, NavParams, ModalController } from 'ionic-angular';
 import { InfoclinicaPage } from '../infoclinica/infoclinica';
+import { OrderPage } from '../order/order';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 
@@ -21,7 +22,8 @@ export class SearchPage {
       public alertCtrl: AlertController,
       public navParams: NavParams,
       private http: HttpClient,
-      private constants: Constants
+      private constants: Constants,
+      public modalCtrl: ModalController
   ) {
     this.category = navParams.get("category")[0].toUpperCase() + navParams.get("category").slice(1).toLowerCase();
     this.place    = navParams.get("place");
@@ -65,6 +67,12 @@ export class SearchPage {
     this.navCtrl.push(InfoclinicaPage, {
       id: id
     });
+  }
+
+  showOrder() {
+    console.log("inn");
+    let orderModal = this.modalCtrl.create(OrderPage);
+    orderModal.present();
   }
 
 }
