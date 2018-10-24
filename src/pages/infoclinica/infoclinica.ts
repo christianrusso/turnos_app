@@ -3,6 +3,7 @@ import { NavController, AlertController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import * as moment from 'moment';
+import { UserService } from '../../services/user.service';
 
 declare var google: any;
 
@@ -25,6 +26,7 @@ export class InfoclinicaPage {
       public navParams: NavParams,
       private http: HttpClient,
       private constants: Constants,
+      private userService: UserService
   ) {
     this.id = navParams.get("id");
     this.day = this.moment.day();
@@ -103,6 +105,28 @@ export class InfoclinicaPage {
       this.isOpenDays = true;
     } else {
       this.isOpenDays = false;
+    }
+  }
+
+  favoriteClinic() {
+    if (this.userService.getUserLogin() == null || this.userService.getUserLogin() == '') {
+      this.navCtrl.parent.select(4);
+    } else {
+      let url = this.constants.API_URL + 'Client/AddFavoriteClinic';
+      let options = {id: this.id};
+      this.http.post(url, options).subscribe(
+          (success: any) => {
+          },
+          error => {
+            console.log(error);
+            let alert = this.alertCtrl.create({
+              title: 'Error!',
+              subTitle: error.error,
+              buttons: ['OK']
+            });
+            alert.present();
+          }
+      );
     }
   }
 

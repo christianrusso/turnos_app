@@ -42,6 +42,8 @@ export class SearchPage {
   }
 
   showOrder() {
+    (document.querySelector('#backBlack') as HTMLElement).style.visibility = 'visible';
+    (document.querySelector('#backBlack') as HTMLElement).style.opacity    = '0.7';
     let orderModal = this.modalCtrl.create(OrderPage);
     orderModal.onDidDismiss(data => {
       this.sort  = data.sort;
@@ -49,6 +51,8 @@ export class SearchPage {
       if (data.sort != '') {
         this.search();
       }
+      (document.querySelector('#backBlack') as HTMLElement).style.visibility = 'hidden';
+      (document.querySelector('#backBlack') as HTMLElement).style.opacity    = '0';
     });
     orderModal.present();
   }
