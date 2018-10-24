@@ -16,6 +16,8 @@ export class SearchPage {
   private place = "";
   private AvailableAppointmentStartDate = "";
   private AvailableAppointmentEndDate = "";
+  private sort;
+  private order;
 
   constructor(
       public navCtrl: NavController,
@@ -30,6 +32,28 @@ export class SearchPage {
     this.AvailableAppointmentStartDate = navParams.get("AvailableAppointmentStartDate");
     this.AvailableAppointmentEndDate = navParams.get("AvailableAppointmentEndDate");
 
+    this.search();
+  }
+
+  goToClinicInfo(id) {
+    this.navCtrl.push(InfoclinicaPage, {
+      id: id
+    });
+  }
+
+  showOrder() {
+    let orderModal = this.modalCtrl.create(OrderPage);
+    orderModal.onDidDismiss(data => {
+      this.sort  = data.sort;
+      this.order = data.order;
+      if (data.sort != '') {
+        this.search();
+      }
+    });
+    orderModal.present();
+  }
+
+  search() {
     let url = this.constants.API_URL + 'Clinic/GetByFilter';
     let cities = [];
     if (this.place != "" && this.place != null) {
@@ -44,8 +68,16 @@ export class SearchPage {
       "Score": "",
       "ScoreQuantity": "",
       "AvailableAppointmentStartDate": this.AvailableAppointmentStartDate,
-      "AvailableAppointmentEndDate": this.AvailableAppointmentEndDate
+      "AvailableAppointmentEndDate": this.AvailableAppointmentEndDate,
+      "SortField": "",
+      "AscendingOrder": ""
     };
+    if (this.sort != 'undefined' && this.sort != "") {
+      options.SortField = this.sort;
+    }
+    if (this.order != 'undefined' && this.order != "") {
+      options.AscendingOrder = this.order;
+    }
     this.http.post(url, options).subscribe(
         (success: any) => {
           console.log(success);
@@ -61,18 +93,6 @@ export class SearchPage {
           alert.present();
         }
     );
-  }
-
-  goToClinicInfo(id) {
-    this.navCtrl.push(InfoclinicaPage, {
-      id: id
-    });
-  }
-
-  showOrder() {
-    console.log("inn");
-    let orderModal = this.modalCtrl.create(OrderPage);
-    orderModal.present();
   }
 
 }

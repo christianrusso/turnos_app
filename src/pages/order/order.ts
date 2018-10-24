@@ -7,6 +7,9 @@ import { NavController, AlertController, ViewController } from 'ionic-angular';
 })
 export class OrderPage {
 
+  private sort  = "";
+  private order = "";
+
   constructor(
       public navCtrl: NavController,
       private viewCtrl: ViewController,
@@ -14,8 +17,15 @@ export class OrderPage {
   ) {
   }
 
-  cancel(){
-    this.viewCtrl.dismiss();
+  select(sort, order) {
+    this.sort  = sort;
+    this.order = order;
+    this.cancel();
+  }
+
+  cancel() {
+    let data = {sort: this.sort, order: this.order};
+    this.viewCtrl.dismiss(data);
   }
 
 }
