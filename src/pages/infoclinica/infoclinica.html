@@ -17,6 +17,8 @@
                     <table>
                       <tr class="">
                         <td style="font-family: SfUiDisplayMedium;" class="centerName">{{result.name}}</td>
+                        <td *ngIf="!result.isFavorite" rowspan="3"><img class="hearthMargin" (click)="favoriteClinic()" src="../../assets/icon/corazon_empty.png"></td>
+                        <td *ngIf="result.isFavorite" rowspan="3"><img class="hearthMargin" (click)="removeFavoriteClinic()" src="../../assets/icon/corazon_full.png" style="width: 28px;"></td>
                       </tr>
                       <tr class="spaceUnder cityText">
                         <td style="font-family: SfUiDisplayLight;"><ion-icon name="pin"></ion-icon> {{result.city}}</td>
@@ -282,6 +284,10 @@
     .seeEveryDay {
       margin-right: 3px;
     }
+    .hearthMargin {
+      margin-top: 31px;
+      margin-left: 14px;
+    }
   }
 
     @media screen and (max-width: 400px) and (min-width: 321px) {
@@ -401,6 +407,10 @@
     .seeEveryDay {
       margin-right: 3px;
     }
+    .hearthMargin {
+      margin-top: 31px;
+      margin-left: 14px;
+    }
   }
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
@@ -515,6 +525,10 @@
     }
     .seeEveryDay {
       margin-right: 3px;
+    }
+    .hearthMargin {
+      margin-top: 34px;
+      margin-left: 15px;
     }
   }
 
@@ -631,6 +645,10 @@
     .seeEveryDay {
       margin-right: 3px;
     }
+    .hearthMargin {
+      margin-top: 34px;
+      margin-left: 20px;
+    }
   }
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
@@ -745,6 +763,10 @@
     }
     .seeEveryDay {
       margin-right: 3px;
+    }
+    .hearthMargin {
+      margin-top: 38px;
+      margin-left: 22px;
     }
   }
 </style>

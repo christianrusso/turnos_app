@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, NavParams } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import * as moment from 'moment';
 import { UserService } from '../../services/user.service';
@@ -30,7 +30,17 @@ export class InfoclinicaPage {
   ) {
     this.id = navParams.get("id");
     this.day = this.moment.day();
+  }
 
+  ionViewWillEnter() {
+    this.search();
+  }
+
+  search() {
+    let headers = new HttpHeaders();
+    if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
+      headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
+    }
     let url = this.constants.API_URL + 'Clinic/GetByFilter';
     let options = {
       "clinicId": this.id,
@@ -42,7 +52,7 @@ export class InfoclinicaPage {
       "Score": "",
       "ScoreQuantity": ""
     };
-    this.http.post(url, options).subscribe(
+    this.http.post(url, options, {headers}).subscribe(
         (success: any) => {
           this.results = success;
           this.loadMap(success[0].latitude, success[0].longitude);
@@ -113,9 +123,13 @@ export class InfoclinicaPage {
       this.navCtrl.parent.select(4);
     } else {
       let url = this.constants.API_URL + 'Client/AddFavoriteClinic';
-      let options = {id: this.id};
-      this.http.post(url, options).subscribe(
+      let headers = new HttpHeaders({
+        'Authorization': 'Bearer ' + this.userService.getUserToken(),
+      });
+      let options = {headers};
+      this.http.post(url, {Id: this.id}, options).subscribe(
           (success: any) => {
+            this.results[0].isFavorite = true;
           },
           error => {
             console.log(error);
@@ -128,6 +142,28 @@ export class InfoclinicaPage {
           }
       );
     }
+  }
+
+  removeFavoriteClinic() {
+    let url = this.constants.API_URL + 'Client/RemoveFavoriteClinic';
+    let headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.userService.getUserToken(),
+    });
+    let options = {headers};
+    this.http.post(url, {Id: this.id}, options).subscribe(
+        (success: any) => {
+          this.results[0].isFavorite = false;
+        },
+        error => {
+          console.log(error);
+          let alert = this.alertCtrl.create({
+            title: 'Error!',
+            subTitle: error.error,
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+    );
   }
 
 }
