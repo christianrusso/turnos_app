@@ -13,7 +13,7 @@
         <tr><br></tr>
         <tr>
           <td padding class="resultsPos">
-            <div style="padding-bottom: 13px; margin-bottom: 13px; border-bottom: 1px grey solid;" *ngFor="let result of results; let i = index">
+            <div style="padding-bottom: 13px; margin-bottom: 13px; border-bottom: 1px grey solid;" *ngFor="let result of results; let i = index" (click)="goToClinicInfo(result.clinicId)">
               <table>
                 <tr>
                   <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo" src="{{result.logo}}"></td>
@@ -39,13 +39,6 @@
                           <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 3"></ion-icon>
                           <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 4"></ion-icon>
                         </td>
-                      </tr>
-                    </table>
-                  </td>
-                  <td class="verticalTop">
-                    <table>
-                      <tr>
-                        <td><button color="button-color" ion-button full type="" (click)="goToClinicInfo(result.clinicId)" class="reservarButton">VER MÁS</button></td>
                       </tr>
                     </table>
                   </td>
@@ -96,15 +89,6 @@
     }
     .heightBlue {
       height: 123px;
-    }
-    .reservarButton {
-      border-radius: 17px;
-      width: 84px;
-      height: 26px;
-      background-color: #00B901;
-      font-family: SfUiDisplayRegular;
-      font-size: 9pt;
-      box-shadow: none;
     }
     .infoButton {
       border-radius: 17px;
@@ -163,15 +147,6 @@
     .heightBlue {
       height: 128px;
     }
-    .reservarButton {
-      border-radius: 17px;
-      width: 108px;
-      height: 28px;
-      background-color: #00B901;
-      font-family: SfUiDisplayRegular;
-      font-size: 10pt;
-      box-shadow: none;
-    }
     .infoButton {
       border-radius: 17px;
       width: 108px;
@@ -228,15 +203,6 @@
     }
     .heightBlue {
       height: 127px;
-    }
-    .reservarButton {
-      border-radius: 17px;
-      width: 119px;
-      height: 30px;
-      background-color: #00B901;
-      font-family: SfUiDisplayRegular;
-      font-size: 10pt;
-      box-shadow: none;
     }
     .infoButton {
       border-radius: 17px;
@@ -296,15 +262,6 @@
     .heightBlue {
       height: 131px;
     }
-    .reservarButton {
-      border-radius: 17px;
-      width: 151px;
-      height: 30px;
-      background-color: #00B901;
-      font-family: SfUiDisplayRegular;
-      font-size: 13pt;
-      box-shadow: none;
-    }
     .infoButton {
       border-radius: 17px;
       width: 151px;
@@ -362,15 +319,6 @@
     }
     .heightBlue {
       height: 172px;
-    }
-    .reservarButton {
-      border-radius: 17px;
-      width: 226px;
-      height: 47px;
-      background-color: #00B901;
-      font-family: SfUiDisplayRegular;
-      font-size: 19pt;
-      box-shadow: none;
     }
     .infoButton {
       border-radius: 17px;
