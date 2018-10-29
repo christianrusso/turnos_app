@@ -23,7 +23,7 @@ export class FavoritesPage {
   ) {
   }
 
-  ionViewWillEnter() {
+  ionViewDidEnter() {
     this.checkLogin();
   }
 
