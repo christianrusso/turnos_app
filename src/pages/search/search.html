@@ -24,7 +24,7 @@
         </tr>
         <tr>
           <td padding class="resultsPos">
-            <div style="padding-bottom: 13px; margin-bottom: 13px; border-bottom: 1px grey solid;" *ngFor="let result of results; let i = index">
+            <div style="padding-bottom: 13px; margin-bottom: 13px; border-bottom: 1px grey solid;" *ngFor="let result of results; let i = index" (click)="goToClinicInfo(result.clinicId)">
               <table>
                 <tr>
                   <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo" src="{{result.logo}}"></td>
@@ -36,9 +36,21 @@
                       <tr class="spaceUnder cityText">
                         <td style="font-family: SfUiDisplayLight;"><ion-icon name="pin"></ion-icon> {{result.city}}</td>
                       </tr>
+                      <tr style="text-align: left; font-family: SfUiDisplayRegular; color: #454EDB;" class="commentsSize">
+                        <td *ngIf="result.ratings.length == 1">{{result.ratings.length}} comentario</td>
+                        <td *ngIf="result.ratings.length == 0 || result.ratings.length > 1">{{result.ratings.length}} comentarios</td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td class="verticalTop">
+                    <table>
+                      <tr>
+                        <td><span style="background-color: #454EDB; color:white; vertical-align: middle;" class="scoreSize">
+                          <p>{{result.score}}</p>
+                        </span></td>
+                      </tr>
                       <tr style="display: table;">
                         <td>
-                          <span style="background-color: #454EDB; color:white; vertical-align: middle;" class="scoreSize">{{result.score}}</span>
                           <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 0"></ion-icon>
                           <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 1"></ion-icon>
                           <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 2"></ion-icon>
@@ -50,16 +62,6 @@
                           <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 3"></ion-icon>
                           <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 4"></ion-icon>
                         </td>
-                      </tr>
-                    </table>
-                  </td>
-                  <td class="verticalTop">
-                    <table>
-                      <tr>
-                        <td><button color="button-color" ion-button full type="" class="reservarButton">RESERVAR</button></td>
-                      </tr>
-                      <tr>
-                        <td><button color="button-color" ion-button full type="" class="infoButton" (click)="goToClinicInfo(result.clinicId)">MÁS INFO</button></td>
                       </tr>
                     </table>
                   </td>
@@ -105,7 +107,7 @@
       font-size: 10.5pt;
     }
     .centerInfo {
-      width: 158px;
+      width: 117px;
     }
     .centerName {
       font-size: 15pt;
@@ -119,12 +121,17 @@
       border-radius: 6px;
     }
     .scoreSize {
-      width: 25px;
+      width: 43px;
       display: inline-table;
       text-align: center;
       height: 19px;
       border: none;
       border-radius: 4px;
+      font-size: 10pt;
+      font-family: SfUiDisplayBold;
+    }
+    .commentsSize {
+      font-size: 14px;
     }
     tr.spaceUnder>td {
       padding-bottom: 8px;
@@ -192,7 +199,7 @@
       font-size: 10.5pt;
     }
     .centerInfo {
-      width: 154px;
+      width: 147px;
     }
     .centerName {
       font-size: 15pt;
@@ -206,12 +213,17 @@
       border-radius: 6px;
     }
     .scoreSize {
-      width: 32px;
+      width: 48px;
       display: inline-table;
       text-align: center;
       height: 19px;
       border: none;
       border-radius: 4px;
+      font-size: 12pt;
+      font-family: SfUiDisplayBold;
+    }
+    .commentsSize {
+      font-size: 14px;
     }
     tr.spaceUnder>td {
       padding-bottom: 8px;
@@ -293,12 +305,17 @@
       border-radius: 6px;
     }
     .scoreSize {
-      width: 32px;
+      width: 48px;
       display: inline-table;
       text-align: center;
       height: 19px;
       border: none;
       border-radius: 4px;
+      font-size: 12pt;
+      font-family: SfUiDisplayBold;
+    }
+    .commentsSize {
+      font-size: 15px;
     }
     tr.spaceUnder>td {
       padding-bottom: 8px;
@@ -366,7 +383,7 @@
       font-size: 14pt;
     }
     .centerInfo {
-      width: 175px;
+      width: 198px;
     }
     .centerName {
       font-size: 19pt;
@@ -380,13 +397,17 @@
       border-radius: 6px;
     }
     .scoreSize {
-      width: 32px;
+      width: 48px;
       display: inline-table;
       text-align: center;
       height: 19px;
       border: none;
       border-radius: 4px;
       font-size: 14pt;
+      font-family: SfUiDisplayBold;
+    }
+    .commentsSize {
+      font-size: 18px;
     }
     tr.spaceUnder>td {
       padding-bottom: 8px;
@@ -468,13 +489,17 @@
       border-radius: 6px;
     }
     .scoreSize {
-      width: 32px;
+      width: 75px;
       display: inline-table;
       text-align: center;
       height: 19px;
       border: none;
       border-radius: 4px;
       font-size: 20pt;
+      font-family: SfUiDisplayBold;
+    }
+    .commentsSize {
+      font-size: 24px;
     }
     tr.spaceUnder>td {
       padding-bottom: 8px;

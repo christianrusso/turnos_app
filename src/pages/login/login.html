@@ -14,29 +14,34 @@
         <tr>
           <td style="color: white; font-family: SfUiDisplayThin; font-size: 13pt;">Complete los datos para ingresar</td>
         </tr>
+        <tr><br></tr>
+        <tr>
+          <td padding style="z-index: 3;">
+            <div style="background-color: #FFFFFF; border-radius: 12px; height: 186px;">
+            <!--<div class="backWhite"></div>-->
+              <form [formGroup]="loginForm" (ngSubmit)="login()" style="padding-top: 5px;">
+                <ion-item>
+                  <ion-label stacked style="font-family: SfUiDisplayLight; font-size: 10pt;">Usuario</ion-label>
+                  <ion-input formControlName="email" placeholder="" type="email"></ion-input>
+                  <img item-right *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
+                  <img item-right *ngIf="loginForm.controls.email.valid && loginForm.controls.email.touched" src="../../assets/imgs/check.png" style="width: 10%;">
+                </ion-item>
+
+                <ion-item>
+                  <ion-label floating style="font-family: SfUiDisplayLight; font-size: 14pt;">Contraseña</ion-label>
+                  <ion-input formControlName="clave" type="password"></ion-input>
+                  <img item-right *ngIf="loginForm.controls.clave.invalid && loginForm.controls.clave.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
+                  <img item-right *ngIf="loginForm.controls.clave.valid && loginForm.controls.clave.touched" src="../../assets/imgs/check.png" style="width: 10%;">
+                </ion-item>
+                <div class="buttonIng">
+                  <button color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" [disabled]="!loginForm.valid">Ingresar</button>
+                </div>
+
+              </form>
+            </div>
+          </td>
+        </tr>
       </table>
-    </ion-grid>
-    <ion-grid padding class="formPos" style="z-index: 3;">
-      <div class="backWhite"></div>
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <ion-item>
-          <ion-label stacked style="font-family: SfUiDisplayLight; font-size: 10pt;">Usuario</ion-label>
-          <ion-input formControlName="email" placeholder="" type="email"></ion-input>
-          <img item-right *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
-          <img item-right *ngIf="loginForm.controls.email.valid && loginForm.controls.email.touched" src="../../assets/imgs/check.png" style="width: 10%;">
-        </ion-item>
-
-        <ion-item>
-          <ion-label floating style="font-family: SfUiDisplayLight; font-size: 14pt;">Contraseña</ion-label>
-          <ion-input formControlName="clave" type="password"></ion-input>
-          <img item-right *ngIf="loginForm.controls.clave.invalid && loginForm.controls.clave.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
-          <img item-right *ngIf="loginForm.controls.clave.valid && loginForm.controls.clave.touched" src="../../assets/imgs/check.png" style="width: 10%;">
-        </ion-item>
-        <div class="buttonIng">
-          <button color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" [disabled]="!loginForm.valid">Ingresar</button>
-        </div>
-
-      </form>
       <table align="center">
         <tr><br></tr>
         <tr>
@@ -73,7 +78,7 @@
     top: 0%;
   }
   .buttonIng {
-    padding-top: 65px;
+    padding-top: 15px;
   }
 
   @media screen and (max-width: 320px) {
@@ -94,7 +99,7 @@
       top: 0%;
     }
     .buttonIng {
-      padding-top: 25px;
+      padding-top: 15px;
     }
   }
 
@@ -138,7 +143,7 @@
       top: 0%;
     }
     .buttonIng {
-      padding-top: 65px;
+      padding-top: 15px;
     }
   }
 
@@ -160,7 +165,7 @@
       top: 0%;
     }
     .buttonIng {
-      padding-top: 65px;
+      padding-top: 15px;
     }
   }
 
@@ -182,7 +187,7 @@
       top: 0%;
     }
     .buttonIng {
-      padding-top: 65px;
+      padding-top: 15px;
     }
   }
 </style>
