@@ -18,6 +18,8 @@ export class SearchPage {
   private AvailableAppointmentEndDate = "";
   private sort;
   private order;
+  public from = 0;
+  public showLoading = true;
 
   constructor(
       public navCtrl: NavController,
@@ -32,7 +34,7 @@ export class SearchPage {
     this.AvailableAppointmentStartDate = navParams.get("AvailableAppointmentStartDate");
     this.AvailableAppointmentEndDate = navParams.get("AvailableAppointmentEndDate");
 
-    this.search();
+    this.search(false);
   }
 
   goToClinicInfo(id) {
@@ -49,7 +51,7 @@ export class SearchPage {
       this.sort  = data.sort;
       this.order = data.order;
       if (data.sort != '') {
-        this.search();
+        this.search(false);
       }
       (document.querySelector('#backBlack') as HTMLElement).style.visibility = 'hidden';
       (document.querySelector('#backBlack') as HTMLElement).style.opacity    = '0';
@@ -57,7 +59,8 @@ export class SearchPage {
     orderModal.present();
   }
 
-  search() {
+  search(page) {
+    this.showLoading = true;
     let url = this.constants.API_URL + 'Clinic/GetByFilter';
     let cities = [];
     if (this.place != "" && this.place != null) {
@@ -74,7 +77,9 @@ export class SearchPage {
       "AvailableAppointmentStartDate": this.AvailableAppointmentStartDate,
       "AvailableAppointmentEndDate": this.AvailableAppointmentEndDate,
       "SortField": "",
-      "AscendingOrder": ""
+      "AscendingOrder": "",
+      "From": 0,
+      "to": 0
     };
     if (this.sort != 'undefined' && this.sort != "") {
       options.SortField = this.sort;
@@ -82,10 +87,30 @@ export class SearchPage {
     if (this.order != 'undefined' && this.order != "") {
       options.AscendingOrder = this.order;
     }
+    if (page != 'undefined' && page == true) {
+      options.to = this.from;
+      var actualClinics = this.results.length;
+    } else {
+      this.results = null;
+      var actualClinics = 0;
+      this.from = 0;
+      options.to = this.constants.quantityOfResultsToShow;
+    }
     this.http.post(url, options).subscribe(
         (success: any) => {
           console.log(success);
           this.results = success;
+          if (this.from == 0) {
+            this.from = this.from + success.length + this.constants.quantityOfResultsToShow;
+          } else {
+            this.from = this.from + (success.length - actualClinics);
+          }
+          if ((success.length - actualClinics) == this.constants.quantityOfResultsToShow) {
+            (document.querySelector('#verMasButton') as HTMLElement).style.display = 'block';
+          } else {
+            (document.querySelector('#verMasButton') as HTMLElement).style.display = 'none';
+          }
+          this.showLoading = false;
         },
         error => {
           console.log(error);
@@ -95,6 +120,7 @@ export class SearchPage {
             buttons: ['OK']
           });
           alert.present();
+          this.showLoading = false;
         }
     );
   }
