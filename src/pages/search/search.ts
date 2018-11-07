@@ -20,6 +20,7 @@ export class SearchPage {
   private order;
   public from = 0;
   public showLoading = true;
+  public actualClinics: any;
 
   constructor(
       public navCtrl: NavController,
@@ -89,10 +90,10 @@ export class SearchPage {
     }
     if (page != 'undefined' && page == true) {
       options.to = this.from;
-      var actualClinics = this.results.length;
+      this.actualClinics = this.results.length;
     } else {
       this.results = null;
-      var actualClinics = 0;
+      this.actualClinics = 0;
       this.from = 0;
       options.to = this.constants.quantityOfResultsToShow;
     }
@@ -103,9 +104,9 @@ export class SearchPage {
           if (this.from == 0) {
             this.from = this.from + success.length + this.constants.quantityOfResultsToShow;
           } else {
-            this.from = this.from + (success.length - actualClinics);
+            this.from = this.from + (success.length - this.actualClinics);
           }
-          if ((success.length - actualClinics) == this.constants.quantityOfResultsToShow) {
+          if ((success.length - this.actualClinics) == this.constants.quantityOfResultsToShow) {
             (document.querySelector('#verMasButton') as HTMLElement).style.display = 'block';
           } else {
             (document.querySelector('#verMasButton') as HTMLElement).style.display = 'none';
