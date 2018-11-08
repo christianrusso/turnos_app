@@ -18,6 +18,7 @@ import { OrderPage } from '../pages/order/order';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { Constants } from '../app/constants';
 import { UserService } from "../services/user.service";
+import { TurnosPage } from '../pages/turnos/turnos';
 import { CalendarModule } from "ion2-calendar";
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -38,7 +39,8 @@ import {IonicStorageModule} from "@ionic/storage";
     InfoclinicaPage,
     AyudaPage,
     FavoritesPage,
-    OrderPage
+    OrderPage,
+    TurnosPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import {IonicStorageModule} from "@ionic/storage";
     InfoclinicaPage,
     AyudaPage,
     FavoritesPage,
-    OrderPage
+    OrderPage,
+    TurnosPage
   ],
   providers: [
     Constants,
