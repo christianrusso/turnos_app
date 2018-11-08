@@ -10,7 +10,9 @@
         </tr>
         <tr>
           <td padding class="resultsPos">
-            <ion-calendar [(ngModel)]="date"
+            <ion-calendar *ngIf="options.daysConfig.length > 0" [(ngModel)]="date"
+                          [options] = options
+                          (onChange)="showDayEvents($event)"
                           [type]="type"
                           [format]="'YYYY-MM-DD'">
             </ion-calendar>
