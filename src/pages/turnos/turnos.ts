@@ -128,8 +128,13 @@ export class TurnosPage {
           clinics.forEach(element => {
             if (element.appointments.length > 0) {
               element.appointments.forEach(appoint => {
+                var date = new Date(appoint.dateTime);
+                var minutes = date.getMinutes().toString();
+                if (minutes == "0") {
+                  minutes = "00";
+                }
                 data.push({
-                  date: new Date(appoint.dateTime).getHours() + ":" + new Date(appoint.dateTime).getMinutes(),
+                  date: date.getHours() + ":" + minutes,
                   doctor: appoint.doctor,
                   clinica: appoint.clinic
                 });
