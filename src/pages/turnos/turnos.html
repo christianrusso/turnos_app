@@ -10,12 +10,32 @@
         </tr>
         <tr>
           <td padding class="resultsPos">
-            <ion-calendar *ngIf="options.daysConfig.length > 0" [(ngModel)]="date"
-                          [options] = options
-                          (onChange)="showDayEvents($event)"
-                          [type]="type"
-                          [format]="'YYYY-MM-DD'">
-            </ion-calendar>
+            <table>
+              <tr>
+                <td>
+                  <ion-calendar *ngIf="options.daysConfig.length > 0" [(ngModel)]="date"
+                                [options] = options
+                                (onChange)="showDayEvents($event)"
+                                [type]="type"
+                                [format]="'YYYY-MM-DD'">
+                  </ion-calendar>
+                </td>
+              </tr>
+              <tr>
+                <td><br></td>
+              </tr>
+              <tr>
+                <td>
+                    <div *ngIf="appointments.length > 0" style="font-family: SfUiDisplayMedium; font-size: 15px;">
+                      <div *ngFor="let appoint of appointments; let i = index" style="display: flex;">
+                        <div>{{appoint.clinica}} - </div>
+                        <div>{{appoint.doctor}} - </div>
+                        <div>{{appoint.date}}</div>
+                      </div>
+                    </div>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
       </table>

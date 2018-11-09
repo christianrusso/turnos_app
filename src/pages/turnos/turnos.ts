@@ -16,6 +16,7 @@ export class TurnosPage {
   public  results;
   public  alertTurn = [];
   private moment = moment();
+  public appointments = [];
   public options: CalendarModalOptions = {
     daysConfig: []
   };
@@ -56,10 +57,16 @@ export class TurnosPage {
             clinics.forEach(element => {
               if (element.appointments.length > 0) {
                 element.appointments.forEach(appoint => {
+                  var quantity = element.appointments.length;
+                  if (quantity == 1) {
+                    quantity += " turno";
+                  } else {
+                    quantity += " turnos";
+                  }
                   _daysConfig.push({
                     date: new Date(appoint.dateTime),
                     marked: true,
-                    subTitle: element.appointments.length + " turnos",
+                    subTitle: quantity,
                     cssClass: 'Event'
                   })
                 })
@@ -68,10 +75,16 @@ export class TurnosPage {
             hairdress.forEach(element => {
               if (element.appointments.length > 0) {
                 element.appointments.forEach(appoint => {
+                  var quantity = element.appointments.length;
+                  if (quantity == 1) {
+                    quantity += " turno";
+                  } else {
+                    quantity += " turnos";
+                  }
                   _daysConfig.push({
                     date: new Date(appoint.dateTime),
                     marked: true,
-                    subTitle: element.appointments.length + " turnos",
+                    subTitle: quantity,
                     cssClass: 'Event'
                   })
                 })
@@ -93,44 +106,33 @@ export class TurnosPage {
   }
 
   showDayEvents(event) {
-    console.log(event);
+    var date = new Date(event._d);
+    this.appointments = this.searchSpecificDay(date.getFullYear(), date.getMonth(), date.getDate());
   }
 
-  searchSpecificDay(startDate, endDate) {
+  searchSpecificDay(year, month, day) {
+    this.appointments = [];
     let url = this.constants.API_URL + "client/GetWeekForClient";
     let headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.userService.getUserToken(),
     });
     let options = {
-      "startDate": startDate + ".000Z",
-      "endDate": endDate + ".000Z"
+      "startDate": year + "-" + (month + 1) + "-" + day + "T00:00:00" + ".000Z",
+      "endDate": year + "-" + (month + 1) + "-" + day + "T23:59:00" + ".000Z",
     };
+    let data = [];
     this.http.post(url, options, {headers}).subscribe(
         (success: any) => {
-          let data = [];
           var clinics = success.clinic_GetWeekForClient;
           var hairdress = success.hairdressing_GetWeekForClient;
           clinics.forEach(element => {
             if (element.appointments.length > 0) {
               element.appointments.forEach(appoint => {
                 data.push({
-                  date: new Date(appoint.dateTime),
-                  marked: true,
-                  subTitle: element.appointments.length + " turnos",
-                  cssClass: 'Event'
-                })
-              })
-            }
-          });
-          hairdress.forEach(element => {
-            if (element.appointments.length > 0) {
-              element.appointments.forEach(appoint => {
-                data.push({
-                  date: new Date(appoint.dateTime),
-                  marked: true,
-                  subTitle: element.appointments.length + " turnos",
-                  cssClass: 'Event'
-                })
+                  date: new Date(appoint.dateTime).getHours() + ":" + new Date(appoint.dateTime).getMinutes(),
+                  doctor: appoint.doctor,
+                  clinica: appoint.clinic
+                });
               })
             }
           });
@@ -145,6 +147,7 @@ export class TurnosPage {
           alert.present();
         }
     );
+    return data;
   }
 
 }
