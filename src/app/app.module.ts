@@ -19,8 +19,8 @@ import { FavoritesPage } from '../pages/favorites/favorites';
 import { Constants } from '../app/constants';
 import { UserService } from "../services/user.service";
 import { TurnosPage } from '../pages/turnos/turnos';
+import { CuentaPage } from '../pages/cuenta/cuenta';
 import { CalendarModule } from "ion2-calendar";
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {IonicStorageModule} from "@ionic/storage";
@@ -40,7 +40,8 @@ import {IonicStorageModule} from "@ionic/storage";
     AyudaPage,
     FavoritesPage,
     OrderPage,
-    TurnosPage
+    TurnosPage,
+    CuentaPage
   ],
   imports: [
     BrowserModule,
@@ -64,7 +65,8 @@ import {IonicStorageModule} from "@ionic/storage";
     AyudaPage,
     FavoritesPage,
     OrderPage,
-    TurnosPage
+    TurnosPage,
+    CuentaPage
   ],
   providers: [
     Constants,

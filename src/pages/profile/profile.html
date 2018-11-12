@@ -14,10 +14,28 @@
         <tr><br></tr>
         <tr><br></tr>
         <tr (click)="goToReservas()">
-          <td class="lineStyle"><p style="width: 170px; margin-left: 10px;">Mis reservas</p></td>
+          <td class="lineStyle"><p style="width: 200px; margin-left: 10px;">Mis reservas</p></td>
+        </tr>
+        <tr (click)="openCuenta()">
+          <td class="lineStyle"><p style="width: 200px; margin-left: 10px;">Mi cuenta</p></td>
+        </tr>
+        <tr id="cuenta" style="display: none;">
+          <td>
+            <table class="cuentaStyle">
+              <tr style="border-bottom: 1px grey solid;" (click)="openDatosDeCuenta()">
+                <td><p style="margin-left: 10px;">Datos de cuenta</p></td>
+              </tr>
+              <tr style="border-bottom: 1px grey solid;">
+                <td><p style="margin-left: 10px;">Datos personales</p></td>
+              </tr>
+              <tr style="border-bottom: 1px grey solid;">
+                <td><p style="margin-left: 10px;">Notificaciones</p></td>
+              </tr>
+            </table>
+          </td>
         </tr>
         <tr (click)="closeSession()">
-          <td class="lineStyle"><p style="width: 170px; margin-left: 10px;">Cerrar sesión</p></td>
+          <td class="lineStyle"><p style="width: 200px; margin-left: 10px;">Cerrar sesión</p></td>
         </tr>
       </table>
     </ion-grid>
@@ -35,7 +53,29 @@
   }
 
   @media screen and (max-width: 320px) {
-
+    .heightBlue {
+      height: 126px;
+    }
+    .title {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 17pt;
+    }
+    .lineStyle {
+      border-bottom: 1px grey solid;
+      font-family: SfUiDisplayMedium;
+      font-size: 13pt;
+      text-align: left;
+      padding-bottom: 11px;
+      padding-top: 1px;
+    }
+    .cuentaStyle {
+      background-color: white;
+      width: 100%;
+      font-family: SfUiDisplayLight;
+      font-size: 11pt;
+      text-align: left;
+    }
   }
 
   @media screen and (max-width: 400px) and (min-width: 321px) {
@@ -55,17 +95,90 @@
       padding-bottom: 11px;
       padding-top: 1px;
     }
+    .cuentaStyle {
+      background-color: white;
+      width: 100%;
+      font-family: SfUiDisplayLight;
+      font-size: 13pt;
+      text-align: left;
+    }
   }
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
-
+    .heightBlue {
+      height: 126px;
+    }
+    .title {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 18pt;
+    }
+    .lineStyle {
+      border-bottom: 1px grey solid;
+      font-family: SfUiDisplayMedium;
+      font-size: 16pt;
+      text-align: left;
+      padding-bottom: 11px;
+      padding-top: 1px;
+    }
+    .cuentaStyle {
+      background-color: white;
+      width: 100%;
+      font-family: SfUiDisplayLight;
+      font-size: 14pt;
+      text-align: left;
+    }
   }
 
   @media screen and (max-width: 550px) and (min-width: 450px) {
-
+    .heightBlue {
+      height: 126px;
+    }
+    .title {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 20pt;
+    }
+    .lineStyle {
+      border-bottom: 1px grey solid;
+      font-family: SfUiDisplayMedium;
+      font-size: 18pt;
+      text-align: left;
+      padding-bottom: 11px;
+      padding-top: 1px;
+    }
+    .cuentaStyle {
+      background-color: white;
+      width: 100%;
+      font-family: SfUiDisplayLight;
+      font-size: 16pt;
+      text-align: left;
+    }
   }
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
-
+    .heightBlue {
+      height: 160px;
+    }
+    .title {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 30pt;
+    }
+    .lineStyle {
+      border-bottom: 1px grey solid;
+      font-family: SfUiDisplayMedium;
+      font-size: 23pt;
+      text-align: left;
+      padding-bottom: 11px;
+      padding-top: 1px;
+    }
+    .cuentaStyle {
+      background-color: white;
+      width: 100%;
+      font-family: SfUiDisplayLight;
+      font-size: 21pt;
+      text-align: left;
+    }
   }
 </style>

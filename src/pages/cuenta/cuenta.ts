@@ -4,13 +4,16 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import { UserService } from '../../services/user.service';
-import { CuentaPage } from '../cuenta/cuenta';
+import { LoginPage } from '../login/login';
 
 @Component({
-  selector: 'page-profile',
-  templateUrl: 'profile.html'
+  selector: 'page-cuenta',
+  templateUrl: 'cuenta.html'
 })
-export class ProfilePage {
+export class CuentaPage {
+
+  image;
+  username;
 
   constructor(
       public navCtrl: NavController,
@@ -20,27 +23,12 @@ export class ProfilePage {
       private constants: Constants,
       private userService: UserService
   ) {
-  }
-
-  goToReservas() {
-    this.navCtrl.parent.select(2);
-  }
-
-  openCuenta() {
-    if (document.getElementById("cuenta").style.display == "table-row") {
-      document.getElementById("cuenta").style.display = "none";
+    if (this.userService.getUserImage() != null) {
+      this.image = this.userService.getUserImage();
     } else {
-      document.getElementById("cuenta").style.display = "table-row";
+      this.image = "/assets/icon/user.jpg";
     }
-  }
-
-  openDatosDeCuenta() {
-    this.navCtrl.push(CuentaPage);
-  }
-
-  closeSession() {
-    this.userService.destroyUserLogin();
-    this.navCtrl.parent.select(0);
+    this.username = this.userService.getUserLogin();
   }
 
 }
