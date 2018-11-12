@@ -22,4 +22,13 @@ export class ProfilePage {
   ) {
   }
 
+  goToReservas() {
+    this.navCtrl.parent.select(2);
+  }
+
+  closeSession() {
+    this.userService.destroyUserLogin();
+    this.navCtrl.parent.select(0);
+  }
+
 }
