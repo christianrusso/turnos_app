@@ -49,6 +49,7 @@ export class LoginPage {
         alert.present();
         this.userService.setUserLogin(this.loginForm.value.email);
         this.userService.setUserToken(success.token);
+        this.userService.setUserImage(success.logo);
         this.goToHome();
       },
       error => {

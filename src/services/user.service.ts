@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 export class UserService {
     user;
     token;
+    userImage;
     myIndex = 0;
     constructor(
     ) {
@@ -18,12 +19,20 @@ export class UserService {
         this.token = token;
     }
 
+    setUserImage(image) {
+        this.userImage = image;
+    }
+
     getUserLogin() {
         return this.user;
     }
 
     getUserToken() {
         return this.token;
+    }
+
+    getUserImage() {
+        return this.userImage;
     }
 
     destroyUserLogin() {

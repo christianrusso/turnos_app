@@ -4,7 +4,9 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import { UserService } from '../../services/user.service';
-import { LoginPage } from '../login/login';
+import { CuentaPage } from '../cuenta/cuenta';
+import { PersonalesPage } from '../personales/personales';
+import { NotificacionesPage } from '../notificaciones/notificaciones';
 
 @Component({
   selector: 'page-profile',
@@ -20,6 +22,35 @@ export class ProfilePage {
       private constants: Constants,
       private userService: UserService
   ) {
+  }
+
+  goToReservas() {
+    this.navCtrl.parent.select(2);
+  }
+
+  openCuenta() {
+    if (document.getElementById("cuenta").style.display == "table-row") {
+      document.getElementById("cuenta").style.display = "none";
+    } else {
+      document.getElementById("cuenta").style.display = "table-row";
+    }
+  }
+
+  openDatosDeCuenta() {
+    this.navCtrl.push(CuentaPage);
+  }
+
+  openDatosPersonales() {
+    this.navCtrl.push(PersonalesPage);
+  }
+
+  openNotificaciones() {
+    this.navCtrl.push(NotificacionesPage);
+  }
+
+  closeSession() {
+    this.userService.destroyUserLogin();
+    this.navCtrl.parent.select(0);
   }
 
 }
