@@ -14,11 +14,13 @@ import { PreSearchPage } from '../pages/pre-search/pre-search';
 import { InfoclinicaPage } from '../pages/infoclinica/infoclinica';
 import { SearchPage } from '../pages/search/search';
 import { AyudaPage } from '../pages/ayuda/ayuda';
+import { NotificacionesPage } from '../pages/notificaciones/notificaciones';
 import { OrderPage } from '../pages/order/order';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { Constants } from '../app/constants';
 import { UserService } from "../services/user.service";
 import { TurnosPage } from '../pages/turnos/turnos';
+import { PersonalesPage } from '../pages/personales/personales';
 import { CuentaPage } from '../pages/cuenta/cuenta';
 import { CalendarModule } from "ion2-calendar";
 import { StatusBar } from '@ionic-native/status-bar';
@@ -41,7 +43,9 @@ import {IonicStorageModule} from "@ionic/storage";
     FavoritesPage,
     OrderPage,
     TurnosPage,
-    CuentaPage
+    CuentaPage,
+    PersonalesPage,
+    NotificacionesPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +70,9 @@ import {IonicStorageModule} from "@ionic/storage";
     FavoritesPage,
     OrderPage,
     TurnosPage,
-    CuentaPage
+    CuentaPage,
+    PersonalesPage,
+    NotificacionesPage
   ],
   providers: [
     Constants,
