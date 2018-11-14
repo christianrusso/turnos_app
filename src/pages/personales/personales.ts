@@ -12,6 +12,8 @@ import { LoginPage } from '../login/login';
 })
 export class PersonalesPage {
 
+  isEditing = false;
+
   constructor(
       public navCtrl: NavController,
       private http: HttpClient,
@@ -20,6 +22,10 @@ export class PersonalesPage {
       private constants: Constants,
       private userService: UserService
   ) {
+  }
+
+  enableEdit() {
+    this.isEditing = true;
   }
 
 }

@@ -14,6 +14,7 @@ export class CuentaPage {
 
   image;
   username;
+  isEditing = false;
 
   constructor(
       public navCtrl: NavController,
@@ -29,6 +30,10 @@ export class CuentaPage {
       this.image = "/assets/icon/user.jpg";
     }
     this.username = this.userService.getUserLogin();
+  }
+
+  enableEdit() {
+    this.isEditing = true;
   }
 
 }

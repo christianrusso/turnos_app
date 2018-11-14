@@ -24,24 +24,25 @@
             <form style="padding-top: 5px;">
               <ion-item style="background-color: #F4F4F4;">
                 <ion-label stacked class="fields">Nombre de usuario</ion-label>
-                <ion-input type="text" value="{{username}}"></ion-input>
+                <ion-input type="text" value="{{username}}" [readonly]="!isEditing"></ion-input>
               </ion-item>
 
               <ion-item style="background-color: #F4F4F4;">
                 <ion-label stacked class="fields">Contraseña Actual</ion-label>
-                <ion-input type="password"></ion-input>
+                <ion-input type="password" [readonly]="!isEditing"></ion-input>
               </ion-item>
 
               <ion-item style="background-color: #F4F4F4;">
                 <ion-label stacked class="fields">Contraseña Nueva</ion-label>
-                <ion-input type="password"></ion-input>
+                <ion-input type="password" [readonly]="!isEditing"></ion-input>
               </ion-item>
               <p class="passCars">Debe ser de al menos 8 caracteres y contener mayúscula, números</p>
 
               <br/>
 
               <div class="buttonIng">
-                <button color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" [disabled]="">Modificar</button>
+                <button *ngIf="!isEditing" (click)="enableEdit()" color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" [disabled]="">Modificar</button>
+                <button *ngIf="isEditing" color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" [disabled]="">Confirmar</button>
               </div>
 
             </form>

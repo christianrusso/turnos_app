@@ -18,38 +18,39 @@
             <form style="padding-top: 5px;">
               <ion-item style="background-color: #F4F4F4;">
                 <ion-label stacked class="fields">Nombre</ion-label>
-                <ion-input type="text" value="aa"></ion-input>
+                <ion-input type="text" value="aa" [readonly]="!isEditing"></ion-input>
               </ion-item>
 
               <ion-item style="background-color: #F4F4F4;">
                 <ion-label stacked class="fields">Apellido</ion-label>
-                <ion-input type="text" value="bbb"></ion-input>
+                <ion-input type="text" value="bbb" [readonly]="!isEditing"></ion-input>
               </ion-item>
 
               <ion-item style="background-color: #F4F4F4;">
                 <ion-label stacked class="fields">DNI</ion-label>
-                <ion-input type="text" value="dddd"></ion-input>
+                <ion-input type="text" value="dddd" [readonly]="!isEditing"></ion-input>
               </ion-item>
 
               <ion-item style="background-color: #F4F4F4;">
                 <ion-label stacked class="fields">Dirección</ion-label>
-                <ion-input type="text" value="tttt"></ion-input>
+                <ion-input type="text" value="tttt" [readonly]="!isEditing"></ion-input>
               </ion-item>
 
               <ion-item style="background-color: #F4F4F4;">
                 <ion-label stacked class="fields">Email</ion-label>
-                <ion-input type="text" value="@"></ion-input>
+                <ion-input type="text" value="@" [readonly]="!isEditing"></ion-input>
               </ion-item>
 
               <ion-item style="background-color: #F4F4F4;">
                 <ion-label stacked class="fields">Teléfono</ion-label>
-                <ion-input type="text" value="1561616161"></ion-input>
+                <ion-input type="text" value="1561616161" [readonly]="!isEditing"></ion-input>
               </ion-item>
 
               <br/>
 
               <div class="buttonIng">
-                <button color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" [disabled]="">Modificar</button>
+                <button *ngIf="!isEditing" (click)="enableEdit()" color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" [disabled]="">Modificar</button>
+                <button *ngIf="isEditing" color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" [disabled]="">Confirmar</button>
               </div>
 
             </form>
