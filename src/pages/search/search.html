@@ -1,6 +1,6 @@
 <div id="backBlack" style="position: absolute; background-color: black; opacity: 0; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: hidden; transition: all 0.2s linear;"></div>
 <ion-content class="" style="background-color: #F9F9F9; top:0px; left:0px; width: 100%; height: 100%;">
-  <ion-grid style="padding: 0;">
+  <ion-grid style="padding: 0; height: 100%;">
     <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; z-index: 2;" class="heightBlue"></div>
     <ion-grid style="text-align: center; padding: 0; z-index: 3;">
       <table>
@@ -13,16 +13,18 @@
         </tr>
         <tr><br></tr>
         <tr>
-          <td padding class="backOrdenar backOrdenarAndFiltrar" (click)="showOrder()" style="z-index: 3; font-family: SfUiDisplayLight;">
+          <td *ngIf="isListado" padding class="backOrdenar backOrdenarAndFiltrar" (click)="showOrder()" style="z-index: 3; font-family: SfUiDisplayLight;">
                 <ion-icon span name="reorder" class="ordenarIcon"></ion-icon>
             <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;" class="filterText">&nbsp;Ordenar</span></td>
             <td class="backOrdenar backOrdenarAndFiltrar">
                 <ion-icon span name="funnel" class="ordenarIcon"></ion-icon>
               <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;" class="filterText">&nbsp;Filtros</span></td>
-                <td class="backOrdenar"><ion-icon span name="pin" class="ordenarIcon"></ion-icon>
+                <td *ngIf="isListado" (click)="showMap()" class="backOrdenar"><ion-icon span name="pin" class="ordenarIcon"></ion-icon>
                 <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;" class="filterText">&nbsp;Ver Mapa</span></td>
+          <td *ngIf="!isListado" (click)="showListado()" class="backOrdenar"><ion-icon span name="reorder" class="ordenarIcon"></ion-icon>
+            <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;" class="filterText">&nbsp;Ver Listado</span></td>
         </tr>
-        <tr>
+        <tr *ngIf="isListado">
           <td padding class="resultsPos">
             <div style="padding-bottom: 13px; margin-bottom: 13px; border-bottom: 1px grey solid;" *ngFor="let result of results; let i = index" (click)="goToClinicInfo(result.clinicId)">
               <table>
@@ -74,6 +76,11 @@
             <div style="text-align: center; margin-top: 10px; display: none;" id="verMasButton">
               <button style="background: #50ae20; color: #fff; border-radius: 50px; padding: 10px 3px; transition: all 0.3s ease-in-out; font-family: SfUiDisplaySemiBold; width: 150px;" (click)="search(true);">VER MÁS</button>
             </div>
+          </td>
+        </tr>
+        <tr *ngIf="!isListado">
+          <td>
+            <div id="map"></div>
           </td>
         </tr>
       </table>
@@ -182,6 +189,13 @@
 
     @media screen and (max-width: 400px) and (min-width: 321px) {
     .resultsPos {
+    }
+    #map {
+      width: 100%;
+      height: 100px;
+      opacity: 1;
+      display: block;
+      z-index: 5;
     }
     .backOrdenar {
       width: 96px;

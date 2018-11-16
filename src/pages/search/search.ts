@@ -5,6 +5,8 @@ import { OrderPage } from '../order/order';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 
+declare var google: any;
+
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html'
@@ -21,6 +23,8 @@ export class SearchPage {
   public from = 0;
   public showLoading = true;
   public actualClinics: any;
+  public isListado = true;
+  map:any;
 
   constructor(
       public navCtrl: NavController,
@@ -124,6 +128,41 @@ export class SearchPage {
           this.showLoading = false;
         }
     );
+  }
+
+  showMap() {
+    this.isListado = false;
+    this.loadMap(-34.533092, -58.479169);
+  }
+
+  showListado() {
+    this.isListado = true;
+  }
+
+  loadMap(lat, lng){
+    let latitude = lat;
+    let longitude = lng;
+
+    setTimeout(() => {
+      // create a new map by passing HTMLElement
+      let mapEle: HTMLElement = document.getElementById('map');
+
+      // create LatLng object
+      var latlng = new google.maps.LatLng(latitude, longitude);
+
+      // create map
+      this.map = new google.maps.Map(mapEle, {
+        center: latlng,
+        zoom: 14
+      });
+
+      google.maps.event.addListenerOnce(this.map, 'idle', () => {
+        let marker = new google.maps.Marker({
+          position: latlng,
+          map: this.map
+        });
+      });
+    }, 1000);
   }
 
 }
