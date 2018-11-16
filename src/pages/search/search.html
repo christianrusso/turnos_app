@@ -78,8 +78,8 @@
             </div>
           </td>
         </tr>
-        <tr *ngIf="!isListado">
-          <td style="position: absolute; top: 200px; left: 40px; background-color: white; border-radius: 10px; width: 60%; z-index: 100;">
+        <tr *ngIf="!isListado && infoName != null">
+          <td class="info" style="z-index: 100;">
             <table>
               <tr>
                 <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo" src="{{infoLogo}}"></td>
@@ -90,6 +90,10 @@
                     </tr>
                     <tr class="spaceUnder cityText">
                       <td style="font-family: SfUiDisplayLight;"><ion-icon name="pin"></ion-icon> {{infoCity}}</td>
+                    </tr>
+                    <tr style="text-align: left; font-family: SfUiDisplayRegular; color: #454EDB;" class="commentsSize">
+                      <td *ngIf="infoComments.length == 1">{{infoComments.length}} comentario</td>
+                      <td *ngIf="infoComments.length == 0 || infoComments.length > 1">{{infoComments.length}} comentarios</td>
                     </tr>
                   </table>
                 </td>
@@ -238,6 +242,16 @@
       opacity: 1;
       display: block;
       z-index: 5;
+    }
+    .info {
+      position: absolute;
+      top: 172px;
+      left: 15px;
+      background-color: white;
+      border-radius: 10px;
+      width: 342px;
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
     .backOrdenar {
       width: 96px;
