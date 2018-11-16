@@ -25,6 +25,11 @@ export class SearchPage {
   public actualClinics: any;
   public isListado = true;
   map:any;
+  public infoName;
+  public infoCity;
+  public infoComments;
+  public infoRating;
+  public infoLogo;
 
   constructor(
       public navCtrl: NavController,
@@ -103,7 +108,6 @@ export class SearchPage {
     }
     this.http.post(url, options).subscribe(
         (success: any) => {
-          console.log(success);
           this.results = success;
           if (this.from == 0) {
             this.from = this.from + success.length + this.constants.quantityOfResultsToShow;
@@ -136,6 +140,7 @@ export class SearchPage {
   }
 
   showListado() {
+    (document.querySelector('#data') as HTMLElement).style.height = '';
     this.isListado = true;
   }
 
@@ -143,26 +148,52 @@ export class SearchPage {
     let latitude = lat;
     let longitude = lng;
 
+    (document.querySelector('#data') as HTMLElement).style.height = '100%';
+
     setTimeout(() => {
       // create a new map by passing HTMLElement
       let mapEle: HTMLElement = document.getElementById('map');
 
       // create LatLng object
-      var latlng = new google.maps.LatLng(latitude, longitude);
+      var latlng = new google.maps.LatLng(-34.5432596, 5.76293);
 
       // create map
       this.map = new google.maps.Map(mapEle, {
         center: latlng,
-        zoom: 14
+        zoom: 14,
+        disableDefaultUI: true,
+        zoomControl: true
       });
 
-      google.maps.event.addListenerOnce(this.map, 'idle', () => {
+      var bounds = new google.maps.LatLngBounds();
+
+      var that = this;
+
+      for (var i = 0; i < this.results.length; i++) {
         let marker = new google.maps.Marker({
-          position: latlng,
-          map: this.map
+          position: new google.maps.LatLng(this.results[i].latitude, this.results[i].longitude),
+          map: this.map,
+          name:     this.results[i].name,
+          logo:     this.results[i].logo,
+          city:     this.results[i].city,
+          score:    this.results[i].score,
+          comments: this.results[i].ratings.length
         });
-      });
+        google.maps.event.addListener(marker, 'click', function (event) {
+          that.setInfoData(marker);
+        });
+        bounds.extend(new google.maps.LatLng(this.results[i].latitude, this.results[i].longitude));
+      }
+
+      // Fit these bounds to the map
+      this.map.fitBounds(bounds);
+      this.map.panToBounds(bounds);
+      //this.map.setZoom(12);
     }, 1000);
+  }
+
+  setInfoData(data) {
+    this.infoName = data.name;
   }
 
 }
