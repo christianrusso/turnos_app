@@ -79,7 +79,46 @@
           </td>
         </tr>
         <tr *ngIf="!isListado">
-          <td style="position: absolute; top: 200px; left: 40px; background-color: white; border-radius: 10px; width: 60%; z-index: 100;">{{infoName}}</td>
+          <td style="position: absolute; top: 200px; left: 40px; background-color: white; border-radius: 10px; width: 60%; z-index: 100;">
+            <table>
+              <tr>
+                <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo" src="{{infoLogo}}"></td>
+                <td class="verticalTop centerInfo">
+                  <table>
+                    <tr class="spaceUnder">
+                      <td style="font-family: SfUiDisplayMedium;" class="centerName">{{infoName}}</td>
+                    </tr>
+                    <tr class="spaceUnder cityText">
+                      <td style="font-family: SfUiDisplayLight;"><ion-icon name="pin"></ion-icon> {{infoCity}}</td>
+                    </tr>
+                  </table>
+                </td>
+                <td class="verticalTop">
+                  <table>
+                    <tr>
+                      <td><span style="background-color: #454EDB; color:white; vertical-align: middle;" class="scoreSize">
+                          <p>{{infoRating | number:'1.0-1'}}</p>
+                        </span></td>
+                    </tr>
+                    <tr style="display: table;">
+                      <td>
+                        <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) > 0"></ion-icon>
+                        <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) > 1"></ion-icon>
+                        <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) > 3"></ion-icon>
+                        <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) > 4"></ion-icon>
+                        <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) > 2"></ion-icon>
+                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) <= 0"></ion-icon>
+                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) <= 1"></ion-icon>
+                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) <= 2"></ion-icon>
+                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) <= 3"></ion-icon>
+                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) <= 4"></ion-icon>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
         </tr>
         <tr *ngIf="!isListado" style="height: 100%;">
           <td>

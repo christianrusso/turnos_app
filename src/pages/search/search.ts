@@ -177,7 +177,7 @@ export class SearchPage {
           logo:     this.results[i].logo,
           city:     this.results[i].city,
           score:    this.results[i].score,
-          comments: this.results[i].ratings.length
+          comments: this.results[i].ratings
         });
         google.maps.event.addListener(marker, 'click', function (event) {
           that.setInfoData(marker);
@@ -193,7 +193,11 @@ export class SearchPage {
   }
 
   setInfoData(data) {
-    this.infoName = data.name;
+    this.infoName     = data.name;
+    this.infoLogo     = data.logo;
+    this.infoCity     = data.city;
+    this.infoRating   = data.score;
+    this.infoComments = data.comments;
   }
 
 }
