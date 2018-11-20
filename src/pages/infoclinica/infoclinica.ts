@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import * as moment from 'moment';
 import { UserService } from '../../services/user.service';
+import { ReservaPage } from '../reserva/reserva';
 
 declare var google: any;
 
@@ -164,6 +165,12 @@ export class InfoclinicaPage {
           alert.present();
         }
     );
+  }
+
+  book() {
+    this.navCtrl.push(ReservaPage, {
+      clinicId: this.id
+    });
   }
 
 }
