@@ -51,6 +51,11 @@ export class PersonalesPage {
     this.http.post(url, options, {headers}).subscribe(
         (success: any) => {
           this.isEditing = false;
+          let alert = this.alertCtrl.create({
+            subTitle: "Datos modificados con exito",
+            buttons: ['OK']
+          });
+          alert.present();
         },
         error => {
           console.log(error);
