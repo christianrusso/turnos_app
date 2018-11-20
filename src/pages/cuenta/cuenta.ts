@@ -65,4 +65,35 @@ export class CuentaPage {
     );
   }
 
+  ionViewWillEnter() {
+    this.getData();
+  }
+
+  getData() {
+    let headers = new HttpHeaders();
+    if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
+      headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
+    }
+    let url = this.constants.API_URL + 'Client/GetProfile';
+    let options = {
+    };
+    this.http.post(url, options, {headers}).subscribe(
+        (success: any) => {
+          this.image = success.logo;
+          if (this.image == null) {
+            this.image = "/assets/icon/user.jpg";
+          }
+        },
+        error => {
+          console.log(error);
+          let alert = this.alertCtrl.create({
+            title: 'Error!',
+            subTitle: error.error,
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+    );
+  }
+
 }

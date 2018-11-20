@@ -136,11 +136,13 @@ export class SearchPage {
 
   showMap() {
     this.isListado = false;
+    (document.querySelector('#listadoTr') as HTMLElement).style.backgroundColor = '#454EDB';
     this.loadMap(-34.533092, -58.479169);
   }
 
   showListado() {
     (document.querySelector('#data') as HTMLElement).style.height = '';
+    (document.querySelector('#listadoTr') as HTMLElement).style.backgroundColor = 'transparent';
     this.isListado = true;
   }
 

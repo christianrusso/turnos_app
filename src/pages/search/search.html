@@ -12,7 +12,7 @@
           <td colspan="3" class="categoryStyle">{{category}}</td>
         </tr>
         <tr><br></tr>
-        <tr>
+        <tr id="listadoTr">
           <td *ngIf="isListado" padding class="backOrdenar backOrdenarAndFiltrar" (click)="showOrder()" style="z-index: 3; font-family: SfUiDisplayLight;">
                 <ion-icon span name="reorder" class="ordenarIcon"></ion-icon>
             <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;" class="filterText">&nbsp;Ordenar</span></td>
@@ -143,6 +143,23 @@
 
   @media screen and (max-width: 320px) {
     .resultsPos {
+    }
+    #map {
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      display: block;
+      z-index: 5;
+    }
+    .info {
+      position: absolute;
+      top: 170px;
+      left: 9px;
+      background-color: white;
+      border-radius: 10px;
+      width: 303px;
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
     .backOrdenar {
       width: 96px;
@@ -345,6 +362,23 @@
   @media screen and (max-width: 450px) and (min-width: 400px) {
     .resultsPos {
     }
+    #map {
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      display: block;
+      z-index: 5;
+    }
+    .info {
+      position: absolute;
+      top: 172px;
+      left: 15px;
+      background-color: white;
+      border-radius: 10px;
+      width: 384px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
     .backOrdenar {
       width: 113px;
       height: 37px;
@@ -437,6 +471,23 @@
   @media screen and (max-width: 550px) and (min-width: 450px) {
     .resultsPos {
     }
+    #map {
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      display: block;
+      z-index: 5;
+    }
+    .info {
+      position: absolute;
+      top: 183px;
+      left: 15px;
+      background-color: white;
+      border-radius: 10px;
+      width: 451px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
     .backOrdenar {
       width: 139px;
       height: 47px;
@@ -528,6 +579,23 @@
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
     .resultsPos {
+    }
+    #map {
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      display: block;
+      z-index: 5;
+    }
+    .info {
+      position: absolute;
+      top: 240px;
+      left: 51px;
+      background-color: white;
+      border-radius: 10px;
+      width: 665px;
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
     .backOrdenar {
       width: 193px;

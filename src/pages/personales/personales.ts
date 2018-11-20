@@ -64,4 +64,37 @@ export class PersonalesPage {
     );
   }
 
+  ionViewWillEnter() {
+    this.getData();
+  }
+
+  getData() {
+    let headers = new HttpHeaders();
+    if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
+      headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
+    }
+    let url = this.constants.API_URL + 'Client/GetProfile';
+    let options = {
+    };
+    this.http.post(url, options, {headers}).subscribe(
+        (success: any) => {
+          this.firstName = success.firstName;
+          this.lastName  = success.lastName;
+          this.address   = success.address;
+          this.dni       = success.dni;
+          this.phone     = success.phoneNumber;
+          this.email     = this.userService.getUserLogin();
+        },
+        error => {
+          console.log(error);
+          let alert = this.alertCtrl.create({
+            title: 'Error!',
+            subTitle: error.error,
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+    );
+  }
+
 }
