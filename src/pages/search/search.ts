@@ -170,19 +170,26 @@ export class SearchPage {
       var bounds = new google.maps.LatLngBounds();
 
       var that = this;
+      var markers = [];
 
       for (var i = 0; i < this.results.length; i++) {
         let marker = new google.maps.Marker({
           position: new google.maps.LatLng(this.results[i].latitude, this.results[i].longitude),
-          map: this.map,
+          map:      this.map,
           name:     this.results[i].name,
           logo:     this.results[i].logo,
           city:     this.results[i].city,
           score:    this.results[i].score,
-          comments: this.results[i].ratings
+          comments: this.results[i].ratings,
+          icon:     '/assets/icon/marker.png'
         });
+        markers.push(marker);
         google.maps.event.addListener(marker, 'click', function (event) {
+          for (var j = 0; j < markers.length; j++) {
+            markers[j].setIcon('/assets/icon/marker.png');
+          }
           that.setInfoData(marker);
+          marker.setIcon('/assets/icon/marker_selected.png');
         });
         bounds.extend(new google.maps.LatLng(this.results[i].latitude, this.results[i].longitude));
       }
