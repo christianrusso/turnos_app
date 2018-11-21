@@ -9,18 +9,19 @@
         <tr style="background-color: white; border-bottom: 2px solid #454EDB;">
           <td>
             <div style="display: flex;">
-              <div class="circleFirst positionFirstNumber" style="background-color: #454EDB;">
+              <div id="firstStep" class="circleFirst positionFirstNumber" style="background-color: #454EDB;">
                 <p>1</p>
               </div>
-              <div class="circleSecond positionSecondNumber" style="background-color: transparent;">
+              <div id="secondStep" class="circleSecond positionSecondNumber" style="background-color: transparent;">
                 <p>2</p>
               </div>
-              <div class="circleSecond positionSecondNumber" style="background-color: transparent;">
+              <div id="thirdStep" class="circleSecond positionSecondNumber" style="background-color: transparent;">
                 <p>3</p>
               </div>
             </div>
             <div>
               <div class="arrow-up firstArrow"></div>
+              <div class="arrow-up secondArrow" style="display: none;"></div>
             </div>
           </td>
         </tr>
@@ -40,7 +41,7 @@
         <tr *ngIf="step == 1">
           <td>
             <table class="tableStyle">
-              <tr style="border-bottom: 1px solid grey;">
+              <tr style="border-bottom: 0.1em solid grey;">
                 <td style="text-align: left; padding-left: 10px;"><span class="especialidadText">ESPECIALIDAD</span></td>
                 <td>
                   <select style="background-color:transparent;
@@ -50,7 +51,7 @@
                   </select>
                 </td>
               </tr>
-              <tr style="border-bottom: 1px solid grey;">
+              <tr style="border-bottom: 0.1em solid grey;">
                 <td style="text-align: left; padding-left: 10px;"><span class="especialidadText">SUBESPECIALIDAD</span></td>
                 <td>
                   <select style="background-color:transparent;
@@ -60,7 +61,7 @@
                   </select>
                 </td>
               </tr>
-              <tr style="border-bottom: 1px solid grey;">
+              <tr style="border-bottom: 0.1em solid grey;">
                 <td style="text-align: left; padding-left: 10px;"><span class="especialidadText">MÉDICO</span></td>
                 <td>
                   <select style="background-color:transparent;
@@ -144,11 +145,11 @@
     }
     .titleText {
       font-family: SfUiDisplayRegular;
-      font-size: 13pt;
+      font-size: 12pt;
     }
     .especialidadText {
       font-family: SfUiDisplaySemiBold;
-      font-size: 10pt;
+      font-size: 9pt;
     }
     .tableStyle {
       width: 295px;
@@ -160,6 +161,9 @@
     }
     .firstArrow {
       margin-left: 88px;
+    }
+    .secondArrow {
+      margin-left: 148px;
     }
     .nextButton {
       border-radius: 20px;
@@ -215,11 +219,11 @@
     }
     .titleText {
       font-family: SfUiDisplayRegular;
-      font-size: 14pt;
+      font-size: 13pt;
     }
     .especialidadText {
       font-family: SfUiDisplaySemiBold;
-      font-size: 10pt;
+      font-size: 9pt;
     }
     .tableStyle {
       width: 328px;
@@ -231,6 +235,9 @@
     }
     .firstArrow {
       margin-left: 122px;
+    }
+    .secondArrow {
+      margin-left: 181px;
     }
     .nextButton {
       border-radius: 20px;
@@ -286,11 +293,11 @@
     }
     .titleText {
       font-family: SfUiDisplayRegular;
-      font-size: 15pt;
+      font-size: 14pt;
     }
     .especialidadText {
       font-family: SfUiDisplaySemiBold;
-      font-size: 13pt;
+      font-size: 12pt;
     }
     .tableStyle {
       width: 363px;
@@ -302,6 +309,9 @@
     }
     .firstArrow {
       margin-left: 136px;
+    }
+    .secondArrow {
+      margin-left: 196px;
     }
     .nextButton {
       border-radius: 20px;
@@ -357,11 +367,11 @@
     }
     .titleText {
       font-family: SfUiDisplayRegular;
-      font-size: 17pt;
+      font-size: 16pt;
     }
     .especialidadText {
       font-family: SfUiDisplaySemiBold;
-      font-size: 13pt;
+      font-size: 12pt;
     }
     .tableStyle {
       width: 435px;
@@ -373,6 +383,9 @@
     }
     .firstArrow {
       margin-left: 160px;
+    }
+    .secondArrow {
+      margin-left: 229px;
     }
     .nextButton {
       border-radius: 20px;
@@ -428,11 +441,11 @@
     }
     .titleText {
       font-family: SfUiDisplayRegular;
-      font-size: 20pt;
+      font-size: 19pt;
     }
     .especialidadText {
       font-family: SfUiDisplaySemiBold;
-      font-size: 13pt;
+      font-size: 12pt;
     }
     .tableStyle {
       width: 716px;
@@ -444,6 +457,9 @@
     }
     .firstArrow {
       margin-left: 293px;
+    }
+    .secondArrow {
+      margin-left: 374px;
     }
     .nextButton {
       border-radius: 20px;
