@@ -22,6 +22,7 @@ import { UserService } from "../services/user.service";
 import { TurnosPage } from '../pages/turnos/turnos';
 import { PersonalesPage } from '../pages/personales/personales';
 import { CuentaPage } from '../pages/cuenta/cuenta';
+import { HourPage } from '../pages/hour/hour';
 import { ReservaPage } from '../pages/reserva/reserva';
 import { CalendarModule } from "ion2-calendar";
 import { StatusBar } from '@ionic-native/status-bar';
@@ -47,7 +48,8 @@ import {IonicStorageModule} from "@ionic/storage";
     CuentaPage,
     PersonalesPage,
     NotificacionesPage,
-    ReservaPage
+    ReservaPage,
+    HourPage
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,8 @@ import {IonicStorageModule} from "@ionic/storage";
     CuentaPage,
     PersonalesPage,
     NotificacionesPage,
-    ReservaPage
+    ReservaPage,
+    HourPage
   ],
   providers: [
     Constants,

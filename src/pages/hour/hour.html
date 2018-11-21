@@ -1,0 +1,92 @@
+<ion-content class="" style="background: transparent;">
+  <ion-grid style="width: 100%; height: 100%; z-index: 1;"></ion-grid>
+  <ion-grid class="modal">
+    <ion-grid style="text-align: center; padding: 0;">
+      <table>
+        <tr><br></tr>
+        <tr>
+          <td colspan="2" class="titleFirst">Seleccione médico y horario</td>
+        </tr>
+        <tr><br></tr>
+        <tr *ngIf="!isFirst || doctor == null">
+          <td class="medico">Médico</td>
+          <td class="selectSize">
+            <select style="background-color:transparent;
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize" [(ngModel)]="doctor" (change)="searchHours($event.target.value);">
+              <option value=""></option>
+              <option *ngFor="let doctor of doctors; let i = index" value="{{doctor.id}}">{{doctor.firstName}} {{doctor.lastName}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="medico">Horario</td>
+          <td class="selectSize">
+            <select style="background-color:transparent;
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize" [(ngModel)]="hour">
+              <option value=""></option>
+              <option *ngFor="let ho of hours; let i = index" value="{{i}}">{{ho}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr><br></tr>
+        <tr><br></tr>
+        <tr>
+          <td colspan="2">
+            <button color="button-color" ion-button full type="submit" class="nextButton" (click)="returnData()">Seleccionar</button>
+          </td>
+        </tr>
+      </table>
+    </ion-grid>
+  </ion-grid>
+</ion-content>
+
+<style>
+
+  @media screen and (max-width: 320px) {
+  }
+
+  @media screen and (max-width: 400px) and (min-width: 321px) {
+    .titleFirst {
+      font-family: SfUiDisplayLight;
+      font-size: 14pt;
+    }
+    .medico {
+      font-family: SfUiDisplaySemiBold;
+      font-size: 14pt;
+    }
+    .modal {
+      height: 300px;
+      position: absolute;
+      bottom: 0px;
+      background: white;
+      z-index: 2;
+      width: 300px;
+      top: 100px;
+      left: 50%;
+      margin-left: -150px;
+      border-radius: 10px;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 160px;
+      height: 48px;
+      left: 50%;
+      margin-left: -80px;
+      background-color: #454EDB;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+    .selectSize {
+      width: 150px;
+    }
+  }
+
+  @media screen and (max-width: 450px) and (min-width: 400px) {
+  }
+
+  @media screen and (max-width: 550px) and (min-width: 450px) {
+  }
+
+  @media screen and (max-width: 1100px) and (min-width: 550px) {
+  }
+</style>

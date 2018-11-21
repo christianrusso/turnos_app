@@ -1,4 +1,4 @@
-<div id="backBlack" style="position: absolute; background-color: black; opacity: 0; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: hidden; transition: all 0.2s linear;"></div>
+<div id="backBlackReserva" style="position: absolute; background-color: black; opacity: 0; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: hidden; transition: all 0.2s linear;"></div>
 <ion-content class="" style="background-color: #F4F4F4; top:0px; left:0px; width: 100%; height: 100%;">
   <ion-grid style="padding: 0;">
     <ion-grid style="text-align: center; padding: 0; z-index: 3;">
@@ -25,14 +25,19 @@
           </td>
         </tr>
         <tr><br></tr>
-        <tr>
+        <tr *ngIf="step == 1">
           <td>
             <span class="titleText">Seleccione la especialidad<br/>y profesional que está buscando</span>
           </td>
         </tr>
+        <tr *ngIf="step == 2">
+          <td>
+            <span class="titleText">Seleccione día y hora</span>
+          </td>
+        </tr>
         <tr><br></tr>
         <tr><br></tr>
-        <tr>
+        <tr *ngIf="step == 1">
           <td>
             <table class="tableStyle">
               <tr style="border-bottom: 1px solid grey;">
@@ -59,20 +64,30 @@
                 <td style="text-align: left; padding-left: 10px;"><span class="especialidadText">MÉDICO</span></td>
                 <td>
                   <select style="background-color:transparent;
-              -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize">
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize" [(ngModel)]="doctor">
                     <option value=""></option>
-                    <option *ngFor="let doctor of doctors; let i = index" value="{{doctor.id}}">{{doctor.firstName}} {{doctor.lastName}}</option>
+                    <option *ngFor="let doctor of doctors; let i = index" value="{{i}}">{{doctor.firstName}} {{doctor.lastName}}</option>
                   </select>
                 </td>
               </tr>
             </table>
           </td>
         </tr>
+        <tr *ngIf="step == 2">
+          <td>
+            <ion-calendar *ngIf="options.daysConfig.length > 0" [(ngModel)]="date"
+                          [options] = options
+                          (onChange)="showDayHours($event)"
+                          [type]="type"
+                          [format]="'YYYY-MM-DD'">
+            </ion-calendar>
+          </td>
+        </tr>
         <tr><br></tr>
         <tr><br></tr>
         <tr>
           <td>
-            <button color="button-color" ion-button full type="submit" class="nextButton">SIGUIENTE</button>
+            <button color="button-color" ion-button full type="submit" class="nextButton" (click)="nextStep();">SIGUIENTE</button>
           </td>
         </tr>
       </table>
