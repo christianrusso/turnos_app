@@ -22,6 +22,7 @@
             <div>
               <div class="arrow-up firstArrow"></div>
               <div class="arrow-up secondArrow" style="display: none;"></div>
+              <div class="arrow-up thirdArrow" style="display: none;"></div>
             </div>
           </td>
         </tr>
@@ -34,6 +35,11 @@
         <tr *ngIf="step == 2">
           <td>
             <span class="titleText">Seleccione día y hora</span>
+          </td>
+        </tr>
+        <tr *ngIf="step == 3">
+          <td>
+            <span class="titleText">Confirme su reserva</span>
           </td>
         </tr>
         <tr><br></tr>
@@ -84,11 +90,49 @@
             </ion-calendar>
           </td>
         </tr>
+        <tr *ngIf="step == 3">
+          <td>
+            <table class="tableStyle" style="text-align: left;">
+              <tr>
+                <td style="padding-top: 22px;" class="paddingLeft"><span class="clinicName">{{clinicName}}</span></td>
+              </tr>
+              <tr style="border-bottom: 0.1em solid grey;">
+                <td style="padding-bottom: 30px;" class="paddingLeft"><span class="clinicAddress">{{clinicAddress}},{{clinicCity}}</span></td>
+              </tr>
+              <tr><br></tr>
+              <tr>
+                <td style="padding-top: 25px;" class="paddingLeft"><span class="especialidadTitle">Especialidad</span></td>
+              </tr>
+              <tr>
+                <td class="paddingLeft"><span class="especialidadDesc">{{specialities[speciality].description}}</span></td>
+              </tr>
+              <tr><br></tr>
+              <tr>
+                <td class="paddingLeft"><span class="especialidadTitle">Profesional</span></td>
+              </tr>
+              <tr>
+                <td class="paddingLeft"><span class="especialidadDesc">{{doctorName}}</span></td>
+              </tr>
+              <tr><br></tr>
+              <tr>
+                <td class="paddingLeft"><span class="especialidadTitle">Fecha y hora de la reserva</span></td>
+              </tr>
+              <tr>
+                <td style="padding-bottom: 25px;" class="paddingLeft"><span class="especialidadDesc">{{day}} {{hour}}</span></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
         <tr><br></tr>
         <tr><br></tr>
-        <tr>
+        <tr *ngIf="step != 3">
           <td>
             <button color="button-color" ion-button full type="submit" class="nextButton" (click)="nextStep();">SIGUIENTE</button>
+          </td>
+        </tr>
+        <tr *ngIf="step == 3">
+          <td>
+            <button color="button-color" ion-button full type="submit" class="confirmButton" (click)="nextStep();">CONFIRMAR RESERVA</button>
           </td>
         </tr>
       </table>
@@ -165,6 +209,9 @@
     .secondArrow {
       margin-left: 148px;
     }
+    .thirdArrow {
+      margin-left: 207px;
+    }
     .nextButton {
       border-radius: 20px;
       width: 160px;
@@ -239,6 +286,9 @@
     .secondArrow {
       margin-left: 181px;
     }
+    .thirdArrow {
+      margin-left: 241px;
+    }
     .nextButton {
       border-radius: 20px;
       width: 160px;
@@ -249,8 +299,41 @@
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+    .confirmButton {
+      border-radius: 20px;
+      width: 160px;
+      height: 48px;
+      left: 50%;
+      margin-left: -80px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
     .selectSize {
       width: 170px;
+    }
+    .clinicName {
+      font-size: 15pt;
+      font-family: SfUiDisplayBold;
+      color: #454EDB;
+    }
+    .clinicAddress {
+      font-family: SfUiDisplayRegular;
+      font-size: 15pt;
+      color: #454EDB;
+    }
+    .especialidadTitle {
+      font-family: SfUiDisplayBold;
+      font-size: 12pt;
+      color: black;
+    }
+    .especialidadDesc {
+      font-family: SfUiDisplayLight;
+      font-size: 15pt;
+      color: black;
+    }
+    .paddingLeft {
+      padding-left: 15px;
     }
   }
 
@@ -312,6 +395,9 @@
     }
     .secondArrow {
       margin-left: 196px;
+    }
+    .thirdArrow {
+      margin-left: 256px;
     }
     .nextButton {
       border-radius: 20px;
@@ -387,6 +473,9 @@
     .secondArrow {
       margin-left: 229px;
     }
+    .thirdArrow {
+      margin-left: 297px;
+    }
     .nextButton {
       border-radius: 20px;
       width: 160px;
@@ -460,6 +549,9 @@
     }
     .secondArrow {
       margin-left: 374px;
+    }
+    .thirdArrow {
+      margin-left: 454px;
     }
     .nextButton {
       border-radius: 20px;

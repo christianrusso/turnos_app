@@ -15,6 +15,9 @@ import { HourPage } from '../hour/hour';
 export class ReservaPage {
 
   clinicId;
+  clinicName;
+  clinicAddress;
+  clinicCity;
   specialities;
   subspecialities;
   doctors;
@@ -23,11 +26,13 @@ export class ReservaPage {
   step = 1;
   moment = moment();
   doctor;
+  doctorName;
   turnos = [];
   public options: CalendarModalOptions = {
     daysConfig: []
   };
   hour;
+  day;
 
   constructor(
       public navCtrl: NavController,
@@ -69,7 +74,10 @@ export class ReservaPage {
     if (this.userService.getUserLogin() == null || this.userService.getUserLogin() == '') {
       this.navCtrl.parent.select(4);
     } else {
-      this.clinicId = this.navParams.get("clinicId");
+      this.clinicId      = this.navParams.get("clinicId");
+      this.clinicName    = this.navParams.get("clinicName");
+      this.clinicAddress = this.navParams.get("clinicAddress");
+      this.clinicCity    = this.navParams.get("clinicCity");
       this.getSpecialities();
     }
   }
@@ -167,10 +175,18 @@ export class ReservaPage {
     if (this.doctor != null) {
       data.doctor = this.doctors[this.doctor].id;
     }
+
+    this.day = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+
     let orderModal = this.modalCtrl.create(HourPage, data);
     orderModal.onDidDismiss(data => {
       this.hour   = data.hour;
       this.doctor = data.doctor;
+      for (var i = 0; i < this.doctors.length; i++) {
+        if (this.doctors[i].id == this.doctor) {
+          this.doctorName = this.doctors[i].firstName + " " + this.doctors[i].lastName;
+        }
+      }
       (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';
       (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0';
       this.nextStep();
@@ -183,9 +199,6 @@ export class ReservaPage {
       if (this.speciality != null && this.subspeciality != null) {
         this.getTurnos();
         this.step = 2;
-        (document.querySelector('#firstStep') as HTMLElement).style.color = "#454EDB";
-        (document.querySelector('#firstStep') as HTMLElement).style.backgroundColor = "transparent";
-
         (document.querySelector('#secondStep') as HTMLElement).style.color = "white";
         (document.querySelector('#secondStep') as HTMLElement).style.backgroundColor = "#454EDB";
 
@@ -193,13 +206,15 @@ export class ReservaPage {
         (document.querySelector('.secondArrow') as HTMLElement).style.display = "block";
       }
     }
-    if (this.step == 2 && this.hour != null && this.doctor != null) {
-      this.step = 3;
-      (document.querySelector('#secondStep') as HTMLElement).classList.remove('positionFirstNumber');
-      (document.querySelector('#secondStep') as HTMLElement).classList.add('positionSecondNumber');
+    if (this.step == 2) {
+      if (this.step == 2 && this.hour != null && this.doctor != null) {
+        this.step = 3;
+        (document.querySelector('#thirdStep') as HTMLElement).style.color = "white";
+        (document.querySelector('#thirdStep') as HTMLElement).style.backgroundColor = "#454EDB";
 
-      (document.querySelector('#thirdStep') as HTMLElement).classList.remove('positionSecondNumber');
-      (document.querySelector('#thirdStep') as HTMLElement).classList.add('positionFirstNumber');
+        (document.querySelector('.secondArrow') as HTMLElement).style.display = "none";
+        (document.querySelector('.thirdArrow') as HTMLElement).style.display = "block";
+      }
     }
   }
 

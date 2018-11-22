@@ -18,7 +18,7 @@
                       <tr class="">
                         <td style="font-family: SfUiDisplayMedium;" class="centerName">{{result.name}}</td>
                         <td *ngIf="!result.isFavorite" rowspan="3"><img class="hearthMargin" (click)="favoriteClinic()" src="../../assets/icon/corazon_empty.png"></td>
-                        <td *ngIf="result.isFavorite" rowspan="3"><img class="hearthMargin" (click)="removeFavoriteClinic()" src="../../assets/icon/corazon_full.png" style="width: 28px;"></td>
+                        <td *ngIf="result.isFavorite" rowspan="3"><img class="hearthMargin hearthSize" (click)="removeFavoriteClinic()" src="../../assets/icon/corazon_full.gif" style=""></td>
                       </tr>
                       <tr class="spaceUnder cityText">
                         <td style="font-family: SfUiDisplayLight;"><ion-icon name="pin"></ion-icon> {{result.city}}</td>
@@ -287,6 +287,7 @@
     .hearthMargin {
       margin-top: 31px;
       margin-left: 14px;
+      width: 51px;
     }
   }
 
@@ -410,6 +411,7 @@
     .hearthMargin {
       margin-top: 31px;
       margin-left: 14px;
+      width: 60px;
     }
   }
 
@@ -529,6 +531,7 @@
     .hearthMargin {
       margin-top: 34px;
       margin-left: 15px;
+      width: 75px;
     }
   }
 
@@ -648,6 +651,7 @@
     .hearthMargin {
       margin-top: 34px;
       margin-left: 20px;
+      width: 85px;
     }
   }
 
@@ -767,6 +771,9 @@
     .hearthMargin {
       margin-top: 38px;
       margin-left: 22px;
+    }
+    .hearthSize {
+      width: 107px;
     }
   }
 </style>

@@ -168,9 +168,14 @@ export class InfoclinicaPage {
   }
 
   book() {
-    this.navCtrl.push(ReservaPage, {
-      clinicId: this.id
-    });
+    var data = {
+      clinicId:      this.id,
+      clinicName:    this.results[0].name,
+      clinicAddress: this.results[0].address,
+      clinicCity:    this.results[0].city
+    };
+
+    this.navCtrl.push(ReservaPage, data);
   }
 
 }
