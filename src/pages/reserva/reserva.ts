@@ -33,6 +33,7 @@ export class ReservaPage {
   };
   hour;
   day;
+  dayUnmodified;
 
   constructor(
       public navCtrl: NavController,
@@ -166,7 +167,8 @@ export class ReservaPage {
 
   showDayHours(event) {
     var date = new Date(event._d);
-    var day = this.moment.format(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + "T00:00:00.000Z");
+    var dayFirst = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    var day = this.moment.format(dayFirst + "T00:00:00.000Z");
 
     (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
     (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
@@ -177,6 +179,7 @@ export class ReservaPage {
     }
 
     this.day = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+    this.dayUnmodified = dayFirst;
 
     let orderModal = this.modalCtrl.create(HourPage, data);
     orderModal.onDidDismiss(data => {
@@ -205,8 +208,7 @@ export class ReservaPage {
         (document.querySelector('.firstArrow') as HTMLElement).style.display = "none";
         (document.querySelector('.secondArrow') as HTMLElement).style.display = "block";
       }
-    }
-    if (this.step == 2) {
+    } else if (this.step == 2) {
       if (this.step == 2 && this.hour != null && this.doctor != null) {
         this.step = 3;
         (document.querySelector('#thirdStep') as HTMLElement).style.color = "white";
@@ -215,6 +217,71 @@ export class ReservaPage {
         (document.querySelector('.secondArrow') as HTMLElement).style.display = "none";
         (document.querySelector('.thirdArrow') as HTMLElement).style.display = "block";
       }
+    } else if (this.step == 3) {
+      //Check if user is patient of clinic
+      let headers = new HttpHeaders();
+      if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
+        headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
+      }
+      let url = this.constants.API_URL + 'Clinic/IsPatientOfClinic';
+      let options = {
+        "id": this.clinicId
+      };
+      this.http.post(url, options, {headers}).subscribe(
+          (success: any) => {
+            var urlRequest = this.constants.API_URL + "Appointment";
+            var optionsRequest;
+            if (success == true) {
+              //IS PATIENT
+              urlRequest += "/RequestAppointmentByPatient";
+              optionsRequest = {
+                "clinicId": this.clinicId,
+                "day": this.dayUnmodified + "T" + this.hour + ".000Z",
+                "time": this.dayUnmodified + "T" + this.hour + ".000Z",
+                "doctorId": this.doctor
+              };
+            } else if (success == false) {
+              //IS NOT PATIENT
+              urlRequest += "/RequestAppointmentByClient";
+              optionsRequest = {
+                "clinicId": this.clinicId,
+                "day": this.dayUnmodified + "T" + this.hour + ".000Z",
+                "time": this.dayUnmodified + "T" + this.hour + ".000Z",
+                "doctorId": this.doctor,
+                "firstName": "string",
+                "lastName": "string",
+                "address": "string",
+                "phoneNumber": "string",
+                "dni": "string",
+                "medicalPlanId": 0
+              };
+            }
+            //MAKE APPOINTMENT
+            this.http.post(urlRequest, optionsRequest, {headers}).subscribe(
+              (success: any) => {
+                this.navCtrl.parent.select(0);
+              },
+              error => {
+                console.log(error);
+                let alert = this.alertCtrl.create({
+                  title: 'Error!',
+                  subTitle: error.error,
+                  buttons: ['OK']
+                });
+                alert.present();
+              }
+            );
+          },
+          error => {
+            console.log(error);
+            let alert = this.alertCtrl.create({
+              title: 'Error!',
+              subTitle: error.error,
+              buttons: ['OK']
+            });
+            alert.present();
+          }
+      );
     }
   }
 
