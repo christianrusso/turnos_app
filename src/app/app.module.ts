@@ -19,15 +19,19 @@ import { OrderPage } from '../pages/order/order';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { Constants } from '../app/constants';
 import { UserService } from "../services/user.service";
+import { FiltersService } from "../services/filters.service";
 import { TurnosPage } from '../pages/turnos/turnos';
 import { PersonalesPage } from '../pages/personales/personales';
 import { CuentaPage } from '../pages/cuenta/cuenta';
 import { HourPage } from '../pages/hour/hour';
+import { FiltrosPage } from '../pages/filtros/filtros';
+import { FiltrosDetailPage } from '../pages/filtros-detail/filtros-detail';
 import { ReservaPage } from '../pages/reserva/reserva';
 import { CalendarModule } from "ion2-calendar";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {IonicStorageModule} from "@ionic/storage";
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -49,11 +53,18 @@ import {IonicStorageModule} from "@ionic/storage";
     PersonalesPage,
     NotificacionesPage,
     ReservaPage,
-    HourPage
+    HourPage,
+    FiltrosPage,
+    FiltrosDetailPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      backButtonText: '',
+      backButtonIcon: 'ios-arrow-back',
+      iconMode: 'ios',
+      tabsPlacement: 'bottom'
+    }),
     HttpClientModule,
     IonicStorageModule,
     CalendarModule
@@ -78,13 +89,17 @@ import {IonicStorageModule} from "@ionic/storage";
     PersonalesPage,
     NotificacionesPage,
     ReservaPage,
-    HourPage
+    HourPage,
+    FiltrosPage,
+    FiltrosDetailPage
   ],
   providers: [
     Constants,
     UserService,
+    FiltersService,
     StatusBar,
     SplashScreen,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

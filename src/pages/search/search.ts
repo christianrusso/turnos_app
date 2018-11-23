@@ -2,8 +2,12 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, NavParams, ModalController } from 'ionic-angular';
 import { InfoclinicaPage } from '../infoclinica/infoclinica';
 import { OrderPage } from '../order/order';
+import { FiltrosPage } from '../filtros/filtros';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
+import { FiltersService } from '../../services/filters.service';
+import * as moment from 'moment';
+import { Geolocation } from '@ionic-native/geolocation';
 
 declare var google: any;
 
@@ -37,12 +41,28 @@ export class SearchPage {
       public navParams: NavParams,
       private http: HttpClient,
       private constants: Constants,
-      public modalCtrl: ModalController
+      public modalCtrl: ModalController,
+      public filtersService: FiltersService,
+      private geolocation: Geolocation
   ) {
-    this.category = navParams.get("category")[0].toUpperCase() + navParams.get("category").slice(1).toLowerCase();
-    this.place    = navParams.get("place");
-    this.AvailableAppointmentStartDate = navParams.get("AvailableAppointmentStartDate");
-    this.AvailableAppointmentEndDate = navParams.get("AvailableAppointmentEndDate");
+    if (navParams.get("category")) {
+      this.category = navParams.get("category")[0].toUpperCase() + navParams.get("category").slice(1).toLowerCase();
+      this.filtersService.category = this.category;
+      this.place    = navParams.get("place");
+      this.AvailableAppointmentStartDate = navParams.get("AvailableAppointmentStartDate");
+      this.AvailableAppointmentEndDate = navParams.get("AvailableAppointmentEndDate");
+      this.filtersService.specialities = [];
+      this.filtersService.subspecialities = [];
+      this.filtersService.stars = 0;
+      this.filtersService.distance = 0;
+      this.filtersService.locations = [];
+      this.filtersService.score = 0;
+      this.filtersService.obrassociales = [];
+    } else {
+      this.category = this.filtersService.category;
+      this.AvailableAppointmentStartDate = moment().format('YYYY-MM-DD');
+      this.AvailableAppointmentEndDate = moment().add(14, 'days').format('YYYY-MM-DD');
+    }
 
     this.search(false);
   }
@@ -51,6 +71,10 @@ export class SearchPage {
     this.navCtrl.push(InfoclinicaPage, {
       id: id
     });
+  }
+
+  goToFilters() {
+    this.navCtrl.push(FiltrosPage);
   }
 
   showOrder() {
@@ -82,14 +106,19 @@ export class SearchPage {
       "Subspecialties": [],
       "MedicalInsurances": [],
       "medicalPlans": [],
-      "Score": "",
-      "ScoreQuantity": "",
+      "Score": 0,
+      "ScoreQuantity": 0,
       "AvailableAppointmentStartDate": this.AvailableAppointmentStartDate,
       "AvailableAppointmentEndDate": this.AvailableAppointmentEndDate,
       "SortField": "",
       "AscendingOrder": "",
       "From": 0,
-      "to": 0
+      "to": 0,
+      "location": {
+        "latitude": 0,
+        "longitude": 0,
+        "radiusInMeters": 0
+      }
     };
     if (this.sort != 'undefined' && this.sort != "") {
       options.SortField = this.sort;
@@ -106,51 +135,92 @@ export class SearchPage {
       this.from = 0;
       options.to = this.constants.quantityOfResultsToShow;
     }
-    this.http.post(url, options).subscribe(
-        (success: any) => {
-          this.results = success;
-          if (this.from == 0) {
-            this.from = this.from + success.length + this.constants.quantityOfResultsToShow;
-          } else {
-            this.from = this.from + (success.length - this.actualClinics);
-          }
-          if ((success.length - this.actualClinics) == this.constants.quantityOfResultsToShow) {
-            (document.querySelector('#verMasButton') as HTMLElement).style.display = 'block';
-          } else {
-            (document.querySelector('#verMasButton') as HTMLElement).style.display = 'none';
-          }
-          this.showLoading = false;
-        },
-        error => {
-          console.log(error);
-          let alert = this.alertCtrl.create({
-            title: 'Error!',
-            subTitle: error.error,
-            buttons: ['OK']
-          });
-          alert.present();
-          this.showLoading = false;
+    if (this.filtersService.specialities.length > 0) {
+      for (var i = 0; i < this.filtersService.specialities.length; i++) {
+        if (this.filtersService.specialities[i].checked == true) {
+          options.Specialties.push(this.filtersService.specialities[i].id);
         }
-    );
+      }
+    }
+    if (this.filtersService.subspecialities.length > 0) {
+      for (var i = 0; i < this.filtersService.subspecialities.length; i++) {
+        if (this.filtersService.subspecialities[i].checked == true) {
+          options.Subspecialties.push(this.filtersService.subspecialities[i].id);
+        }
+      }
+    }
+    if (this.filtersService.locations.length > 0) {
+      for (var i = 0; i < this.filtersService.locations.length; i++) {
+        if (this.filtersService.locations[i].checked == true) {
+          options.Cities.push(this.filtersService.locations[i].id);
+        }
+      }
+    }
+    if (this.filtersService.obrassociales.length > 0) {
+      for (var i = 0; i < this.filtersService.obrassociales.length; i++) {
+        if (this.filtersService.obrassociales[i].checked == true) {
+          options.MedicalInsurances.push(this.filtersService.obrassociales[i].id);
+        }
+      }
+    }
+    if (this.filtersService.score > 0) {
+      options.Score = this.filtersService.score;
+    }
+    if (this.filtersService.stars > 0) {
+      options.ScoreQuantity = this.filtersService.stars;
+    }
+    this.geolocation.getCurrentPosition().then((resp) => {
+      options.location.latitude = resp.coords.latitude;
+      options.location.longitude = resp.coords.longitude;
+      if (this.filtersService.distance > 0) {
+        options.location.radiusInMeters = this.filtersService.distance * 1000;
+      } else {
+        delete options.location;
+      }
+
+      this.http.post(url, options).subscribe(
+          (success: any) => {
+            this.results = success;
+            if (this.from == 0) {
+              this.from = this.from + success.length + this.constants.quantityOfResultsToShow;
+            } else {
+              this.from = this.from + (success.length - this.actualClinics);
+            }
+            if ((success.length - this.actualClinics) == this.constants.quantityOfResultsToShow) {
+              (document.querySelector('#verMasButton') as HTMLElement).style.display = 'block';
+            } else {
+              (document.querySelector('#verMasButton') as HTMLElement).style.display = 'none';
+            }
+            this.showLoading = false;
+          },
+          error => {
+            console.log(error);
+            let alert = this.alertCtrl.create({
+              title: 'Error!',
+              subTitle: error.error,
+              buttons: ['OK']
+            });
+            alert.present();
+            this.showLoading = false;
+          }
+      );
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
   }
 
   showMap() {
     this.isListado = false;
-    (document.querySelector('#listadoTr') as HTMLElement).style.backgroundColor = '#454EDB';
     this.loadMap(-34.533092, -58.479169);
   }
 
   showListado() {
-    (document.querySelector('#data') as HTMLElement).style.height = '';
-    (document.querySelector('#listadoTr') as HTMLElement).style.backgroundColor = 'transparent';
     this.isListado = true;
   }
 
   loadMap(lat, lng){
     let latitude = lat;
     let longitude = lng;
-
-    (document.querySelector('#data') as HTMLElement).style.height = '100%';
 
     setTimeout(() => {
       // create a new map by passing HTMLElement

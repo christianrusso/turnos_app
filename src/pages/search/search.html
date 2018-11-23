@@ -3,7 +3,7 @@
   <ion-grid style="padding: 0; height: 100%;">
     <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; z-index: 2;" class="heightBlue"></div>
     <ion-grid style="text-align: center; padding: 0; z-index: 3; height: 100%;">
-      <table id="data">
+      <table id="data" [ngStyle]="{'height': isListado == true ? '' : '100%' }">
         <tr style="background-color: #3740C3; height: 63px;">
           <td colspan="3" style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 30%;"></td>
         </tr>
@@ -12,11 +12,11 @@
           <td colspan="3" class="categoryStyle">{{category}}</td>
         </tr>
         <tr><br></tr>
-        <tr id="listadoTr">
+        <tr id="listadoTr" [ngStyle]="{'backgroundColor': isListado == true ? 'transparent' : '#454EDB' }">
           <td *ngIf="isListado" padding class="backOrdenar backOrdenarAndFiltrar" (click)="showOrder()" style="z-index: 3; font-family: SfUiDisplayLight;">
                 <ion-icon span name="reorder" class="ordenarIcon"></ion-icon>
             <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;" class="filterText">&nbsp;Ordenar</span></td>
-            <td class="backOrdenar backOrdenarAndFiltrar">
+            <td class="backOrdenar backOrdenarAndFiltrar" (click)="goToFilters()">
                 <ion-icon span name="funnel" class="ordenarIcon"></ion-icon>
               <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;" class="filterText">&nbsp;Filtros</span></td>
                 <td *ngIf="isListado" (click)="showMap()" class="backOrdenar"><ion-icon span name="pin" class="ordenarIcon"></ion-icon>
