@@ -41,7 +41,7 @@
           <td colspan="2">
             <table style="width: 100%;">
               <tr *ngFor="let especialidad of specialities; let i = index" style="border-bottom: 0.1em solid grey;">
-                <td><input type="checkbox" id="{{especialidad.id}}" value="{{especialidad.id}}" [(ngModel)]="specialities[i].checked"></td>
+                <td><input type="checkbox" style="transform:scale(1.5); width: 40px;" id="{{especialidad.id}}" value="{{especialidad.id}}" [(ngModel)]="specialities[i].checked"></td>
                 <td style="text-align: left;"><span class="especialidad">{{especialidad.text}}</span></td>
               </tr>
               <tr><br></tr>
@@ -58,7 +58,7 @@
           <td colspan="2">
             <table style="width: 100%;">
               <tr *ngFor="let subespecialidad of subspecialities; let i = index" style="border-bottom: 0.1em solid grey;">
-                <td><input type="checkbox" id="{{subespecialidad.id}}" value="{{subespecialidad.id}}" [(ngModel)]="subspecialities[i].checked"></td>
+                <td><input type="checkbox" style="transform:scale(1.5); width: 40px;" id="{{subespecialidad.id}}" value="{{subespecialidad.id}}" [(ngModel)]="subspecialities[i].checked"></td>
                 <td style="text-align: left;"><span class="especialidad">{{subespecialidad.text}}</span></td>
               </tr>
               <tr><br></tr>
@@ -75,7 +75,7 @@
           <td colspan="2">
             <table style="width: 100%;">
               <tr *ngFor="let obrasocial of obrassociales; let i = index" style="border-bottom: 0.1em solid grey;">
-                <td><input type="checkbox" id="{{obrasocial.id}}" value="{{obrasocial.id}}" [(ngModel)]="obrassociales[i].checked"></td>
+                <td><input type="checkbox" style="transform:scale(1.5);" id="{{obrasocial.id}}" value="{{obrasocial.id}}" [(ngModel)]="obrassociales[i].checked"></td>
                 <td style="text-align: left;"><span class="especialidad">{{obrasocial.text}}</span></td>
               </tr>
               <tr><br></tr>
@@ -92,29 +92,29 @@
           <td colspan="2">
             <table style="width: 100%; font-size: 1.7em;">
               <tr style="border-bottom: 0.1em solid grey; display: inline-block; width: 100%;" class="startLineHeight">
-                <td><input type="checkbox" id="1" [(ngModel)]="star" style="width: 40px;"></td>
+                <td><input type="checkbox" id="1" [(ngModel)]="star" style="width: 40px; transform: scale(1.5);"></td>
                 <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
               </tr>
               <tr style="border-bottom: 0.1em solid grey; display: inline-block; width: 100%;" class="startLineHeight">
-                <td><input type="checkbox" id="2" [(ngModel)]="star" style="width: 40px;"></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-              </tr>
-              <tr style="border-bottom: 0.1em solid grey; display: inline-block; width: 100%;" class="startLineHeight">
-                <td><input type="checkbox" id="3" [(ngModel)]="star" style="width: 40px;"></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
+                <td><input type="checkbox" id="2" [(ngModel)]="star" style="width: 40px; transform: scale(1.5);"></td>
                 <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
                 <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
               </tr>
               <tr style="border-bottom: 0.1em solid grey; display: inline-block; width: 100%;" class="startLineHeight">
-                <td><input type="checkbox" id="4" [(ngModel)]="star" style="width: 40px;"></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
+                <td><input type="checkbox" id="3" [(ngModel)]="star" style="width: 40px; transform: scale(1.5);"></td>
                 <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
                 <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
                 <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
               </tr>
               <tr style="border-bottom: 0.1em solid grey; display: inline-block; width: 100%;" class="startLineHeight">
-                <td><input type="checkbox" id="5" [(ngModel)]="star" style="width: 40px;"></td>
+                <td><input type="checkbox" id="4" [(ngModel)]="star" style="width: 40px; transform: scale(1.5);"></td>
+                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
+                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
+                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
+                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
+              </tr>
+              <tr style="border-bottom: 0.1em solid grey; display: inline-block; width: 100%;" class="startLineHeight">
+                <td><input type="checkbox" id="5" [(ngModel)]="star" style="width: 40px; transform: scale(1.5);"></td>
                 <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
                 <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
                 <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
@@ -154,7 +154,7 @@
           <td colspan="2">
             <table style="width: 100%;">
               <tr *ngFor="let ubicacion of ubicaciones; let i = index" style="border-bottom: 0.1em solid grey;">
-                <td><input type="checkbox" id="{{ubicacion.id}}" value="{{ubicacion.id}}" [(ngModel)]="ubicaciones[i].checked"></td>
+                <td><input type="checkbox" style="transform:scale(1.5);" id="{{ubicacion.id}}" value="{{ubicacion.id}}" [(ngModel)]="ubicaciones[i].checked"></td>
                 <td style="text-align: left;"><span class="especialidad">{{ubicacion.text}}</span></td>
               </tr>
               <tr><br></tr>
