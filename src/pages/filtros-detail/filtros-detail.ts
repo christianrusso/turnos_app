@@ -41,7 +41,7 @@ export class FiltrosDetailPage {
     this.obrassociales = this.filtersService.obrassociales;
     this.ubicaciones = this.filtersService.locations;
     this.distancia = this.filtersService.distance;
-    this.puntuacion = this.filtersService.score;
+    this.puntuacion = this.filtersService.score * 2;
     this.star = this.filtersService.stars;
     if (this.type == 'especialidades' || this.type == 'subespecialidades' || this.type == 'obrasocial' || this.type == 'ubicacion') {
       this.searchData();
@@ -114,7 +114,7 @@ export class FiltrosDetailPage {
     this.filtersService.obrassociales = this.obrassociales;
     this.filtersService.locations = this.ubicaciones;
     this.filtersService.distance = this.distancia;
-    this.filtersService.score = this.puntuacion;
+    this.filtersService.score = this.puntuacion / 2;
     this.filtersService.stars = this.star;
     this.navCtrl.push(SearchPage);
   }
