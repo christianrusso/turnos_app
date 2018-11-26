@@ -24,6 +24,7 @@ import { TurnosPage } from '../pages/turnos/turnos';
 import { PersonalesPage } from '../pages/personales/personales';
 import { CuentaPage } from '../pages/cuenta/cuenta';
 import { HourPage } from '../pages/hour/hour';
+import { ReservaGeneradaPage } from '../pages/reserva-generada/reserva-generada';
 import { FiltrosPage } from '../pages/filtros/filtros';
 import { FiltrosDetailPage } from '../pages/filtros-detail/filtros-detail';
 import { ReservaPage } from '../pages/reserva/reserva';
@@ -55,7 +56,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     ReservaPage,
     HourPage,
     FiltrosPage,
-    FiltrosDetailPage
+    FiltrosDetailPage,
+    ReservaGeneradaPage
   ],
   imports: [
     BrowserModule,
@@ -91,7 +93,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     ReservaPage,
     HourPage,
     FiltrosPage,
-    FiltrosDetailPage
+    FiltrosDetailPage,
+    ReservaGeneradaPage
   ],
   providers: [
     Constants,

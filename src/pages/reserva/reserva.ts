@@ -7,6 +7,7 @@ import { UserService } from '../../services/user.service';
 import * as moment from 'moment';
 import { CalendarModalOptions, DayConfig, CalendarModal } from "ion2-calendar";
 import { HourPage } from '../hour/hour';
+import { ReservaGeneradaPage } from '../reserva-generada/reserva-generada';
 
 @Component({
   selector: 'page-reserva',
@@ -259,7 +260,7 @@ export class ReservaPage {
             //MAKE APPOINTMENT
             this.http.post(urlRequest, optionsRequest, {headers}).subscribe(
               (success: any) => {
-                this.navCtrl.parent.select(0);
+                this.navCtrl.push(ReservaGeneradaPage);
               },
               error => {
                 console.log(error);
