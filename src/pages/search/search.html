@@ -73,6 +73,18 @@
             <div *ngIf="showLoading" style="width: 100%; text-align: center;">
               <div class=""><img src="/assets/icon/loader.gif" style="width: 50%;" /></div>
             </div>
+            <div *ngIf="!showLoading && results.length == 0" style="width: 100%; text-align: center; margin-top: 20px;">
+              <div class=""><img src="/assets/imgs/resultados.png" style="" /></div>
+              <div style="margin-top: 20px; margin-bottom: 20px;">
+                <span class="loSentimos">¡ LO SENTIMOS !</span>
+              </div>
+              <div style="margin-bottom: 20px;">
+                <span class="resultados">No hemos encontrado resultados para su búsqueda</span>
+              </div>
+              <div>
+                <button color="button-color" ion-button full type="submit" class="nextButton" (click)="goToFilters();">VOLVER A LA BÚSQUEDA</button>
+              </div>
+            </div>
             <div style="text-align: center; margin-top: 10px; display: none;" id="verMasButton">
               <button style="background: #50ae20; color: #fff; border-radius: 50px; padding: 10px 3px; transition: all 0.3s ease-in-out; font-family: SfUiDisplaySemiBold; width: 150px;" (click)="search(true);">VER MÁS</button>
             </div>
@@ -215,27 +227,6 @@
     .heightBlue {
       height: 145px;
     }
-    .reservarButton {
-      border-radius: 17px;
-      width: 84px;
-      height: 26px;
-      background-color: #00B901;
-      font-family: SfUiDisplayRegular;
-      font-size: 9pt;
-      box-shadow: none;
-    }
-    .infoButton {
-      border-radius: 17px;
-      width: 84px;
-      height: 26px;
-      background-color: transparent;
-      font-family: SfUiDisplayRegular;
-      font-size: 9pt;
-      color: #3740C3;
-      border-color: #3740C3;
-      border: 1px solid;
-      box-shadow: none;
-    }
     .cityText {
       font-size: 10pt;
       text-align: left;
@@ -247,6 +238,26 @@
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 20pt;
+    }
+    .loSentimos {
+      font-family: SfUiDisplayHeavy;
+      font-size: 12pt;
+      color: #454EDB;
+    }
+    .resultados {
+      font-family: SfUiDisplayLight;
+      font-size: 18pt;
+      color: #454EDB;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 212px;
+      height: 48px;
+      left: 50%;
+      margin-left: -104px;
+      background-color: #454EDB;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
     }
   }
 
@@ -324,27 +335,6 @@
     .heightBlue {
       height: 147px;
     }
-    .reservarButton {
-      border-radius: 17px;
-      width: 108px;
-      height: 28px;
-      background-color: #00B901;
-      font-family: SfUiDisplayRegular;
-      font-size: 10pt;
-      box-shadow: none;
-    }
-    .infoButton {
-      border-radius: 17px;
-      width: 108px;
-      height: 28px;
-      background-color: transparent;
-      font-family: SfUiDisplayRegular;
-      font-size: 10pt;
-      color: #3740C3;
-      border-color: #3740C3;
-      border: 1px solid;
-      box-shadow: none;
-    }
     .cityText {
       font-size: 10pt;
       text-align: left;
@@ -356,6 +346,26 @@
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 20pt;
+    }
+    .loSentimos {
+      font-family: SfUiDisplayHeavy;
+      font-size: 12pt;
+      color: #454EDB;
+    }
+    .resultados {
+      font-family: SfUiDisplayLight;
+      font-size: 18pt;
+      color: #454EDB;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 212px;
+      height: 48px;
+      left: 50%;
+      margin-left: -104px;
+      background-color: #454EDB;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
     }
   }
 
@@ -433,27 +443,6 @@
     .heightBlue {
       height: 150px;
     }
-    .reservarButton {
-      border-radius: 17px;
-      width: 119px;
-      height: 30px;
-      background-color: #00B901;
-      font-family: SfUiDisplayRegular;
-      font-size: 10pt;
-      box-shadow: none;
-    }
-    .infoButton {
-      border-radius: 17px;
-      width: 119px;
-      height: 30px;
-      background-color: transparent;
-      font-family: SfUiDisplayRegular;
-      font-size: 10pt;
-      color: #3740C3;
-      border-color: #3740C3;
-      border: 1px solid;
-      box-shadow: none;
-    }
     .cityText {
       font-size: 10pt;
       text-align: left;
@@ -465,6 +454,26 @@
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 20pt;
+    }
+    .loSentimos {
+      font-family: SfUiDisplayHeavy;
+      font-size: 12pt;
+      color: #454EDB;
+    }
+    .resultados {
+      font-family: SfUiDisplayLight;
+      font-size: 18pt;
+      color: #454EDB;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 212px;
+      height: 48px;
+      left: 50%;
+      margin-left: -104px;
+      background-color: #454EDB;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
     }
   }
 
@@ -542,27 +551,6 @@
     .heightBlue {
       height: 155px;
     }
-    .reservarButton {
-      border-radius: 17px;
-      width: 151px;
-      height: 30px;
-      background-color: #00B901;
-      font-family: SfUiDisplayRegular;
-      font-size: 13pt;
-      box-shadow: none;
-    }
-    .infoButton {
-      border-radius: 17px;
-      width: 151px;
-      height: 30px;
-      background-color: transparent;
-      font-family: SfUiDisplayRegular;
-      font-size: 13pt;
-      color: #3740C3;
-      border-color: #3740C3;
-      border: 1px solid;
-      box-shadow: none;
-    }
     .cityText {
       font-size: 13pt;
       text-align: left;
@@ -574,6 +562,26 @@
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 20pt;
+    }
+    .loSentimos {
+      font-family: SfUiDisplayHeavy;
+      font-size: 12pt;
+      color: #454EDB;
+    }
+    .resultados {
+      font-family: SfUiDisplayLight;
+      font-size: 18pt;
+      color: #454EDB;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 212px;
+      height: 48px;
+      left: 50%;
+      margin-left: -104px;
+      background-color: #454EDB;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
     }
   }
 
@@ -651,27 +659,6 @@
     .heightBlue {
       height: 192px;
     }
-    .reservarButton {
-      border-radius: 17px;
-      width: 226px;
-      height: 47px;
-      background-color: #00B901;
-      font-family: SfUiDisplayRegular;
-      font-size: 19pt;
-      box-shadow: none;
-    }
-    .infoButton {
-      border-radius: 17px;
-      width: 226px;
-      height: 47px;
-      background-color: transparent;
-      font-family: SfUiDisplayRegular;
-      font-size: 19pt;
-      color: #3740C3;
-      border-color: #3740C3;
-      border: 1px solid;
-      box-shadow: none;
-    }
     .cityText {
       font-size: 18pt;
       text-align: left;
@@ -683,6 +670,26 @@
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 33pt;
+    }
+    .loSentimos {
+      font-family: SfUiDisplayHeavy;
+      font-size: 16pt;
+      color: #454EDB;
+    }
+    .resultados {
+      font-family: SfUiDisplayLight;
+      font-size: 23pt;
+      color: #454EDB;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 276px;
+      height: 48px;
+      left: 50%;
+      margin-left: -138px;
+      background-color: #454EDB;
+      font-family: SfUiDisplayRegular;
+      font-size: 16pt;
     }
   }
 </style>

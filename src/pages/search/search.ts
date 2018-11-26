@@ -260,6 +260,7 @@ export class SearchPage {
           }
           that.setInfoData(marker);
           marker.setIcon('/assets/icon/marker_selected.png');
+          this.map.setCenter(marker.getPosition());
         });
         bounds.extend(new google.maps.LatLng(this.results[i].latitude, this.results[i].longitude));
       }
