@@ -108,6 +108,7 @@ export class SearchPage {
       "medicalPlans": [],
       "Score": 0,
       "ScoreQuantity": 0,
+      "Stars": 0,
       "AvailableAppointmentStartDate": this.AvailableAppointmentStartDate,
       "AvailableAppointmentEndDate": this.AvailableAppointmentEndDate,
       "SortField": "",
@@ -167,7 +168,7 @@ export class SearchPage {
       options.Score = this.filtersService.score;
     }
     if (this.filtersService.stars > 0) {
-      options.ScoreQuantity = this.filtersService.stars;
+      options.Stars = this.filtersService.stars;
     }
     this.geolocation.getCurrentPosition().then((resp) => {
       options.location.latitude = resp.coords.latitude;
