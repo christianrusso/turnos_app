@@ -35,8 +35,11 @@
         <tr *ngIf="type == 'ubicacion'">
           <td colspan="2" class="title">Ubicación</td>
         </tr>
-        <tr><br></tr>
-        <tr><br></tr>
+        <tr>
+          <td colspan="2">
+            <button color="button-color" ion-button full type="" (click)="applyFilters()" class="filtroButton" style="z-index: 100;">APLICAR FILTROS</button>
+          </td>
+        </tr>
         <tr *ngIf="type == 'especialidades'">
           <td colspan="2">
             <table style="width: 100%;">
@@ -171,7 +174,6 @@
     </ion-grid>
   </ion-grid>
 </ion-content>
-<button color="button-color" ion-button full type="" (click)="applyFilters()" class="filtroButton" style="z-index: 100;">APLICAR FILTROS</button>
 
 <style>
   @media screen and (max-width: 320px) {
@@ -213,10 +215,7 @@
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
       font-size: 14pt;
-      position: absolute;
       z-index: 5;
-      bottom: 80px;
-      left: 0px;
     }
   }
 
@@ -259,10 +258,7 @@
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
       font-size: 14pt;
-      position: absolute;
       z-index: 5;
-      bottom: 80px;
-      left: 0px;
     }
   }
 
@@ -305,10 +301,7 @@
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
       font-size: 14pt;
-      position: absolute;
       z-index: 5;
-      bottom: 80px;
-      left: 0px;
     }
   }
 
@@ -351,10 +344,7 @@
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
       font-size: 14pt;
-      position: absolute;
       z-index: 5;
-      bottom: 80px;
-      left: 0px;
     }
   }
 
@@ -397,10 +387,7 @@
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
       font-size: 14pt;
-      position: absolute;
       z-index: 5;
-      bottom: 80px;
-      left: 0px;
     }
   }
 </style>

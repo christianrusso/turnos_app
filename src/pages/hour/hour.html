@@ -1,15 +1,15 @@
 <ion-content class="" style="background: transparent;">
   <ion-grid style="width: 100%; height: 100%; z-index: 1;"></ion-grid>
   <ion-grid class="modal">
-    <ion-grid style="text-align: center; padding: 0;">
+    <ion-grid style="text-align: center; padding: 0; padding-right: 6px; padding-left: 6px;">
       <table>
         <tr><br></tr>
         <tr>
-          <td colspan="2" class="titleFirst">Seleccione médico y horario</td>
+          <td colspan="2" class="titleFirst">Seleccione profesional y horario</td>
         </tr>
         <tr><br></tr>
-        <tr *ngIf="!isFirst || doctor == null">
-          <td class="medico">Médico</td>
+        <tr *ngIf="!isFirst || doctor == null" style="border-bottom: 1px grey solid; text-align: left;">
+          <td class="medico">Profesional</td>
           <td class="selectSize">
             <select style="background-color:transparent;
               -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize" [(ngModel)]="doctor" (change)="searchHours($event.target.value);">
@@ -18,7 +18,7 @@
             </select>
           </td>
         </tr>
-        <tr>
+        <tr style="border-bottom: 1px grey solid; text-align: left;">
           <td class="medico">Horario</td>
           <td class="selectSize">
             <select style="background-color:transparent;
@@ -32,7 +32,7 @@
         <tr><br></tr>
         <tr>
           <td colspan="2">
-            <button color="button-color" ion-button full type="submit" class="nextButton" (click)="returnData()">Seleccionar</button>
+            <button color="button-color" ion-button full type="submit" class="nextButton" (click)="returnData()">ACEPTAR</button>
           </td>
         </tr>
       </table>
@@ -43,16 +43,14 @@
 <style>
 
   @media screen and (max-width: 320px) {
-  }
-
-  @media screen and (max-width: 400px) and (min-width: 321px) {
     .titleFirst {
       font-family: SfUiDisplayLight;
       font-size: 14pt;
     }
     .medico {
-      font-family: SfUiDisplaySemiBold;
-      font-size: 14pt;
+      font-family: SfUiDisplayMedium;
+      font-size: 12pt;
+      line-height: 65px;
     }
     .modal {
       height: 300px;
@@ -68,11 +66,48 @@
     }
     .nextButton {
       border-radius: 20px;
-      width: 160px;
-      height: 48px;
+      width: 155px;
+      height: 46px;
       left: 50%;
       margin-left: -80px;
-      background-color: #454EDB;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+    .selectSize {
+      width: 150px;
+    }
+  }
+
+  @media screen and (max-width: 400px) and (min-width: 321px) {
+    .titleFirst {
+      font-family: SfUiDisplayLight;
+      font-size: 14pt;
+    }
+    .medico {
+      font-family: SfUiDisplayMedium;
+      font-size: 12pt;
+      line-height: 65px;
+    }
+    .modal {
+      height: 300px;
+      position: absolute;
+      bottom: 0px;
+      background: white;
+      z-index: 2;
+      width: 300px;
+      top: 100px;
+      left: 50%;
+      margin-left: -150px;
+      border-radius: 10px;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 155px;
+      height: 46px;
+      left: 50%;
+      margin-left: -80px;
+      background-color: #00B901;
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
@@ -82,11 +117,113 @@
   }
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
+    .titleFirst {
+      font-family: SfUiDisplayLight;
+      font-size: 14pt;
+    }
+    .medico {
+      font-family: SfUiDisplayMedium;
+      font-size: 12pt;
+      line-height: 65px;
+    }
+    .modal {
+      height: 300px;
+      position: absolute;
+      bottom: 0px;
+      background: white;
+      z-index: 2;
+      width: 300px;
+      top: 100px;
+      left: 50%;
+      margin-left: -150px;
+      border-radius: 10px;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 155px;
+      height: 46px;
+      left: 50%;
+      margin-left: -80px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+    .selectSize {
+      width: 150px;
+    }
   }
 
   @media screen and (max-width: 550px) and (min-width: 450px) {
+    .titleFirst {
+      font-family: SfUiDisplayLight;
+      font-size: 14pt;
+    }
+    .medico {
+      font-family: SfUiDisplayMedium;
+      font-size: 12pt;
+      line-height: 65px;
+    }
+    .modal {
+      height: 300px;
+      position: absolute;
+      bottom: 0px;
+      background: white;
+      z-index: 2;
+      width: 300px;
+      top: 100px;
+      left: 50%;
+      margin-left: -150px;
+      border-radius: 10px;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 155px;
+      height: 46px;
+      left: 50%;
+      margin-left: -80px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+    .selectSize {
+      width: 150px;
+    }
   }
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
+    .titleFirst {
+      font-family: SfUiDisplayLight;
+      font-size: 14pt;
+    }
+    .medico {
+      font-family: SfUiDisplayMedium;
+      font-size: 12pt;
+      line-height: 65px;
+    }
+    .modal {
+      height: 300px;
+      position: absolute;
+      bottom: 0px;
+      background: white;
+      z-index: 2;
+      width: 300px;
+      top: 100px;
+      left: 50%;
+      margin-left: -150px;
+      border-radius: 10px;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 155px;
+      height: 46px;
+      left: 50%;
+      margin-left: -80px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+    .selectSize {
+      width: 150px;
+    }
   }
 </style>
