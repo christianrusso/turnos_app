@@ -51,6 +51,7 @@ export class InfoclinicaPage {
       "MedicalInsurances": [],
       "medicalPlans": [],
       "Score": "",
+      "Stars": [],
       "ScoreQuantity": ""
     };
     this.http.post(url, options, {headers}).subscribe(
