@@ -4,7 +4,13 @@ import { Injectable } from '@angular/core';
 export class FiltersService {
     specialities = [];
     subspecialities = [];
-    stars = 0;
+    stars = [
+        {value:1, checked: false},
+        {value:2, checked: false},
+        {value:3, checked: false},
+        {value:4, checked: false},
+        {value:5, checked: false}
+    ];
     distance = 0;
     locations = [];
     score = 0;

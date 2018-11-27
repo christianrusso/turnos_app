@@ -94,35 +94,13 @@
         <tr *ngIf="type == 'estrellas'">
           <td colspan="2">
             <table style="width: 100%; font-size: 1.7em;">
-              <tr style="border-bottom: 0.1em solid grey; display: inline-block; width: 100%;" class="startLineHeight">
-                <td><input type="radio" [value]="1" [(ngModel)]="star" style="width: 40px; transform: scale(1.5);"></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-              </tr>
-              <tr style="border-bottom: 0.1em solid grey; display: inline-block; width: 100%;" class="startLineHeight">
-                <td><input type="radio" [value]="2" [(ngModel)]="star" style="width: 40px; transform: scale(1.5);"></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-              </tr>
-              <tr style="border-bottom: 0.1em solid grey; display: inline-block; width: 100%;" class="startLineHeight">
-                <td><input type="radio" [value]="3" [(ngModel)]="star" style="width: 40px; transform: scale(1.5);"></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-              </tr>
-              <tr style="border-bottom: 0.1em solid grey; display: inline-block; width: 100%;" class="startLineHeight">
-                <td><input type="radio" [value]="4" [(ngModel)]="star" style="width: 40px; transform: scale(1.5);"></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-              </tr>
-              <tr style="border-bottom: 0.1em solid grey; display: inline-block; width: 100%;" class="startLineHeight">
-                <td><input type="radio" [value]="5" [(ngModel)]="star" style="width: 40px; transform: scale(1.5);"></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
-                <td style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
+              <tr style="border-bottom: 0.1em solid grey; display: inline-block; width: 100%;" class="startLineHeight" *ngFor="let st of star; let i = index">
+                <td><input type="checkbox" [(ngModel)]="star[i].checked" style="width: 40px; transform: scale(1.5);"></td>
+                <td *ngIf="i >= 0" style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
+                <td *ngIf="i >= 1" style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
+                <td *ngIf="i >= 2" style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
+                <td *ngIf="i >= 3" style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
+                <td *ngIf="i >= 4" style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
               </tr>
             </table>
           </td>

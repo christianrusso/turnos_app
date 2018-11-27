@@ -53,7 +53,13 @@ export class SearchPage {
       this.AvailableAppointmentEndDate = navParams.get("AvailableAppointmentEndDate");
       this.filtersService.specialities = [];
       this.filtersService.subspecialities = [];
-      this.filtersService.stars = 0;
+      this.filtersService.stars = [
+        {value:1, checked: false},
+        {value:2, checked: false},
+        {value:3, checked: false},
+        {value:4, checked: false},
+        {value:5, checked: false}
+      ];
       this.filtersService.distance = 0;
       this.filtersService.locations = [];
       this.filtersService.score = 0;
@@ -108,7 +114,7 @@ export class SearchPage {
       "medicalPlans": [],
       "Score": 0,
       "ScoreQuantity": 0,
-      "Stars": 0,
+      "Stars": [],
       "AvailableAppointmentStartDate": this.AvailableAppointmentStartDate,
       "AvailableAppointmentEndDate": this.AvailableAppointmentEndDate,
       "SortField": "",
@@ -167,8 +173,12 @@ export class SearchPage {
     if (this.filtersService.score > 0) {
       options.Score = this.filtersService.score;
     }
-    if (this.filtersService.stars > 0) {
-      options.Stars = this.filtersService.stars;
+    if (this.filtersService.stars.length > 0) {
+      for (var i = 0; i < this.filtersService.stars.length; i++) {
+        if (this.filtersService.stars[i].checked == true) {
+          options.Stars.push(this.filtersService.stars[i].value);
+        }
+      }
     }
     this.geolocation.getCurrentPosition().then((resp) => {
       options.location.latitude = resp.coords.latitude;

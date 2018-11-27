@@ -20,7 +20,13 @@ export class FiltrosDetailPage {
   distancia = 0;
   puntuacion = 0.0;
   ubicaciones = [];
-  star = 0;
+  star = [
+    {value:1, checked: false},
+    {value:2, checked: false},
+    {value:3, checked: false},
+    {value:4, checked: false},
+    {value:5, checked: false}
+  ];
 
   constructor(
       public navCtrl: NavController,
