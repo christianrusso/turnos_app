@@ -21,6 +21,7 @@ import { Constants } from '../app/constants';
 import { UserService } from "../services/user.service";
 import { FiltersService } from "../services/filters.service";
 import { TurnosPage } from '../pages/turnos/turnos';
+import { MisNotificacionesPage } from '../pages/mis-notificaciones/misnotificaciones';
 import { PersonalesPage } from '../pages/personales/personales';
 import { CuentaPage } from '../pages/cuenta/cuenta';
 import { HourPage } from '../pages/hour/hour';
@@ -57,7 +58,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     HourPage,
     FiltrosPage,
     FiltrosDetailPage,
-    ReservaGeneradaPage
+    ReservaGeneradaPage,
+    MisNotificacionesPage
   ],
   imports: [
     BrowserModule,
@@ -94,7 +96,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     HourPage,
     FiltrosPage,
     FiltrosDetailPage,
-    ReservaGeneradaPage
+    ReservaGeneradaPage,
+    MisNotificacionesPage
   ],
   providers: [
     Constants,
