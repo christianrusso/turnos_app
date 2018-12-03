@@ -54,6 +54,10 @@ export class FiltrosDetailPage {
     }
   }
 
+  ionViewWillLeave() {
+    this.filtersService.specialities = this.specialities;
+  }
+
   searchData() {
     var url = "";
     var options = {};
@@ -65,8 +69,15 @@ export class FiltrosDetailPage {
     }
     if (this.type == 'subespecialidades') {
       url = this.constants.API_URL + 'Data/GetSubspecialtiesForSelect';
+      var subChecked = [];
+      for (var i = 0; i < this.specialities.length; i++) {
+        if (this.specialities[i].checked == true) {
+          subChecked.push(this.specialities[i].id);
+        }
+      }
       options = {
-        "rubro": 1
+        "rubro": 1,
+        "ids": subChecked
       };
     }
     if (this.type == 'obrasocial') {
@@ -83,7 +94,7 @@ export class FiltrosDetailPage {
               this.specialities[i].checked = false;
             }
           }
-          if (this.type == 'subespecialidades' && this.filtersService.subspecialities.length == 0) {
+          if (this.type == 'subespecialidades') {
             this.subspecialities = success;
             for (var i = 0; i < this.subspecialities.length; i++) {
               this.subspecialities[i].checked = false;
