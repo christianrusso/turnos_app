@@ -17,6 +17,7 @@ import { AyudaPage } from '../pages/ayuda/ayuda';
 import { NotificacionesPage } from '../pages/notificaciones/notificaciones';
 import { OrderPage } from '../pages/order/order';
 import { FavoritesPage } from '../pages/favorites/favorites';
+import { NotpacientPage } from '../pages/not-pacient/notpacient';
 import { Constants } from '../app/constants';
 import { UserService } from "../services/user.service";
 import { FiltersService } from "../services/filters.service";
@@ -59,7 +60,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     FiltrosPage,
     FiltrosDetailPage,
     ReservaGeneradaPage,
-    MisNotificacionesPage
+    MisNotificacionesPage,
+    NotpacientPage
   ],
   imports: [
     BrowserModule,
@@ -97,7 +99,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     FiltrosPage,
     FiltrosDetailPage,
     ReservaGeneradaPage,
-    MisNotificacionesPage
+    MisNotificacionesPage,
+    NotpacientPage
   ],
   providers: [
     Constants,

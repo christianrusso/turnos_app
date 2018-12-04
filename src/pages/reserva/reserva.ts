@@ -7,6 +7,7 @@ import { UserService } from '../../services/user.service';
 import * as moment from 'moment';
 import { CalendarModalOptions, DayConfig, CalendarModal } from "ion2-calendar";
 import { HourPage } from '../hour/hour';
+import { NotpacientPage } from '../not-pacient/notpacient';
 import { ReservaGeneradaPage } from '../reserva-generada/reserva-generada';
 
 @Component({
@@ -35,6 +36,7 @@ export class ReservaPage {
   hour;
   day;
   dayUnmodified;
+  medicalPlan;
 
   constructor(
       public navCtrl: NavController,
@@ -241,37 +243,60 @@ export class ReservaPage {
                 "time": this.dayUnmodified + "T" + this.hour + ".000Z",
                 "doctorId": this.doctor
               };
+
+              //MAKE APPOINTMENT
+              this.http.post(urlRequest, optionsRequest, {headers}).subscribe(
+                  (success: any) => {
+                    this.navCtrl.push(ReservaGeneradaPage);
+                  },
+                  error => {
+                    console.log(error);
+                    let alert = this.alertCtrl.create({
+                      title: 'Error!',
+                      subTitle: error.error,
+                      buttons: ['OK']
+                    });
+                    alert.present();
+                  }
+              );
             } else if (success == false) {
               //IS NOT PATIENT
-              urlRequest += "/RequestAppointmentByClient";
-              optionsRequest = {
-                "clinicId": this.clinicId,
-                "day": this.dayUnmodified + "T" + this.hour + ".000Z",
-                "time": this.dayUnmodified + "T" + this.hour + ".000Z",
-                "doctorId": this.doctor,
-                "firstName": "string",
-                "lastName": "string",
-                "address": "string",
-                "phoneNumber": "string",
-                "dni": "string",
-                "medicalPlanId": 0
-              };
+              (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
+              (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
+
+              let orderModal = this.modalCtrl.create(NotpacientPage, {clinic: this.clinicId});
+              orderModal.onDidDismiss(data => {
+                this.medicalPlan = data.plan;
+                urlRequest += "/RequestAppointmentByClient";
+                optionsRequest = {
+                  "clinicId": this.clinicId,
+                  "day": this.dayUnmodified + "T" + this.hour + ".000Z",
+                  "time": this.dayUnmodified + "T" + this.hour + ".000Z",
+                  "doctorId": this.doctor,
+                  "medicalPlanId": this.medicalPlan
+                };
+
+                (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';
+                (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0';
+
+                //MAKE APPOINTMENT
+                this.http.post(urlRequest, optionsRequest, {headers}).subscribe(
+                    (success: any) => {
+                      this.navCtrl.push(ReservaGeneradaPage);
+                    },
+                    error => {
+                      console.log(error);
+                      let alert = this.alertCtrl.create({
+                        title: 'Error!',
+                        subTitle: error.error,
+                        buttons: ['OK']
+                      });
+                      alert.present();
+                    }
+                );
+              });
+              orderModal.present();
             }
-            //MAKE APPOINTMENT
-            this.http.post(urlRequest, optionsRequest, {headers}).subscribe(
-              (success: any) => {
-                this.navCtrl.push(ReservaGeneradaPage);
-              },
-              error => {
-                console.log(error);
-                let alert = this.alertCtrl.create({
-                  title: 'Error!',
-                  subTitle: error.error,
-                  buttons: ['OK']
-                });
-                alert.present();
-              }
-            );
           },
           error => {
             console.log(error);
