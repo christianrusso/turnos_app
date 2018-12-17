@@ -148,12 +148,13 @@ export class ReservaPage {
               quantity += " turnos";
             }
             _daysConfig.push({
-              date: new Date(appoint.day),
+              date: new Date(appoint.day.substr(0, 4) + "-" + appoint.day.substr(5, 2) + "-" + appoint.day.substr(8, 2) + " " + appoint.day.substr(11, 8)),
               marked: true,
               subTitle: quantity,
               cssClass: 'Event'
             })
           });
+          console.log(_daysConfig);
           this.options.daysConfig = _daysConfig;
         },
         error => {
