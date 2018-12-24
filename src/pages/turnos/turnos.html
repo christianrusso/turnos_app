@@ -13,7 +13,7 @@
             <table>
               <tr>
                 <td>
-                  <ion-calendar *ngIf="options.daysConfig.length > 0" [(ngModel)]="date"
+                  <ion-calendar *ngIf="options.daysConfig.length > 0 || hasAppeared" [(ngModel)]="date"
                                 [options] = options
                                 (onChange)="showDayEvents($event)"
                                 [type]="type"

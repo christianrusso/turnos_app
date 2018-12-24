@@ -20,6 +20,7 @@ export class TurnosPage {
   public options: CalendarModalOptions = {
     daysConfig: []
   };
+  public hasAppeared = false;
 
   constructor(
       public navCtrl: NavController,
@@ -44,6 +45,9 @@ export class TurnosPage {
       let headers = new HttpHeaders({
         'Authorization': 'Bearer ' + this.userService.getUserToken(),
       });
+      if (this.hasAppeared) {
+        this.moment.subtract(30, 'days');
+      }
       let options = {
         "startDate": this.moment.format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z",
         "endDate": this.moment.add(30, 'days').format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z"
@@ -91,6 +95,7 @@ export class TurnosPage {
               }
             });
             this.options.daysConfig = _daysConfig;
+            this.hasAppeared = true;
           },
           error => {
             console.log(error);
