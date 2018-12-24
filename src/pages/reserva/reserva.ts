@@ -242,7 +242,8 @@ export class ReservaPage {
                 "clinicId": this.clinicId,
                 "day": this.dayUnmodified + "T" + this.hour + ".000Z",
                 "time": this.dayUnmodified + "T" + this.hour + ".000Z",
-                "doctorId": this.doctor
+                "doctorId": this.doctor,
+                "Source": this.constants.source
               };
 
               //MAKE APPOINTMENT
@@ -274,7 +275,8 @@ export class ReservaPage {
                   "day": this.dayUnmodified + "T" + this.hour + ".000Z",
                   "time": this.dayUnmodified + "T" + this.hour + ".000Z",
                   "doctorId": this.doctor,
-                  "medicalPlanId": this.medicalPlan
+                  "medicalPlanId": this.medicalPlan,
+                  "Source": this.constants.source
                 };
 
                 (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';

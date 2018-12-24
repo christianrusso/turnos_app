@@ -41,6 +41,9 @@ export class TurnosPage {
     if (this.userService.getUserLogin() == null || this.userService.getUserLogin() == '') {
       this.navCtrl.parent.select(4);
     } else {
+      let _daysConfig: DayConfig[] = [];
+      this.options.daysConfig = _daysConfig;
+
       let url = this.constants.API_URL + "client/GetWeekForClient";
       let headers = new HttpHeaders({
         'Authorization': 'Bearer ' + this.userService.getUserToken(),
@@ -55,7 +58,6 @@ export class TurnosPage {
 
       this.http.post(url, options, {headers}).subscribe(
           (success: any) => {
-            let _daysConfig: DayConfig[] = [];
             var clinics = success.clinic_GetWeekForClient;
             var hairdress = success.hairdressing_GetWeekForClient;
             clinics.forEach(element => {
