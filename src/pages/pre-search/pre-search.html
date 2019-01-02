@@ -4,20 +4,19 @@
     <ion-grid style="text-align: center; padding: 0; z-index: 3;">
       <table>
         <tr style="background-color: #3740C3; height: 63px;">
-          <td style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 30%;"></td>
+          <td style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 26%;"></td>
         </tr>
         <tr>
           <td class="reservaText">¿Qué vas a reservar hoy?</td>
         </tr>
         <tr><br></tr>
-        <tr><br></tr>
         <tr>
           <td padding class="formPos" style="z-index: 3;">
             <form style="font-family: SfUiDisplayLight; font-size: 10pt;">
               <ion-item no-lines style="text-align: center; background-color: white; border-radius: 10px;" class="backCat">
-                <span style="margin-right: 10px; font-family: SfUiDisplaySemiBold;">CATEGORÍA</span>
+                <span class="titlesCss">CATEGORÍA</span>
                 <select id="categorySelect" name="categorySelect" style="background-color:transparent;
-              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px;" [(ngModel)]="category">
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px; height: 35px;" [(ngModel)]="category">
                   <option value="medicina">Medicina</option>
                   <option value="esteticas">Esteticas</option>
                   <option value="restaurantes">Restaurantes</option>
@@ -27,19 +26,19 @@
                 </select>
               </ion-item>
               <ion-item no-lines class="separator">
-                <span style="margin-right: 10px; font-family: SfUiDisplaySemiBold;">UBICACIÓN</span>
+                <span class="titlesCss">UBICACIÓN</span>
                 <select id="positionSelect" name="positionSelect" style="background-color:transparent;
-              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px;" [(ngModel)]="place">
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px; height: 35px;" [(ngModel)]="place">
                   <option value="">¿Dónde?</option>
                   <option *ngFor="let cat of categories; let i = index" value="{{cat.id}}">
                     {{cat.text}}
                   </option>
                 </select>
               </ion-item>
-              <ion-item no-lines class="separator">
-                <span style="margin-right: 42px; font-family: SfUiDisplaySemiBold;">FECHA</span>
+              <ion-item no-lines class="separatorFecha">
+                <span class="titlesCss marginLeftFecha">FECHA</span>
                 <select id="dateSelect" name="dateSelect" [(ngModel)]="when" style="background-color:transparent;
-              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px;">
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; height: 35px;" class="widthFecha">
                   <option value="">¿Cuando?</option>
                   <option value="7">Próximos 7 días</option>
                   <option value="14">Próximos 14 días</option>
@@ -47,7 +46,7 @@
                 </select>
               </ion-item>
               <div class="separatorButton">
-                <button color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" (click)="search()">Buscar</button>
+                <button color="button-color" ion-button full type="submit" style="border-radius: 30px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 10pt;" (click)="search()">BUSCAR</button>
               </div>
 
             </form>
@@ -81,6 +80,7 @@
     .backCat {
       width: 97%;
       margin-left: 6px;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
     .separatorButton {
       padding-top: 15px;
@@ -94,15 +94,32 @@
       font-size: 20pt;
       padding-top: 30px;
     }
+    .titlesCss {
+      margin-right: 10px;
+      font-family: SfUiDisplaySemiBold;
+      font-size: 14px;
+    }
+    .marginLeftFecha {
+    }
+    .widthFecha {
+      width: 200px;
+    }
   }
 
     @media screen and (max-width: 400px) and (min-width: 321px) {
     .formPos {
     }
     .separator {
-      margin-top: 15%;
+      margin-top: 9%;
       background-color: transparent;
-      padding-top: 24px;
+      padding-top: 18px;
+      border-top: 1px #dedede solid;
+      text-align: center;
+    }
+    .separatorFecha {
+      margin-top: 4%;
+      background-color: transparent;
+      padding-top: 18px;
       border-top: 1px #dedede solid;
       text-align: center;
     }
@@ -112,15 +129,28 @@
     .backCat {
       width: 97%;
       margin-left: 6px;
+      height: 74px;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
     .heightBlue {
-      height: 200px;
+      height: 192px;
     }
     .reservaText {
       color: white;
       font-family: SfUiDisplayThin;
-      font-size: 20pt;
+      font-size: 16pt;
       padding-top: 30px;
+    }
+    .titlesCss {
+      margin-right: 10px;
+      font-family: SfUiDisplaySemiBold;
+      font-size: 14px;
+    }
+    .marginLeftFecha {
+      margin-left: 2px;
+    }
+    .widthFecha {
+      width: 196px;
     }
   }
 
@@ -128,7 +158,7 @@
     .formPos {
     }
     .separator {
-      margin-top: 20%;
+      margin-top: 14%;
       background-color: transparent;
       padding-top: 24px;
       border-top: 1px #dedede solid;
@@ -140,6 +170,7 @@
     .backCat {
       width: 97%;
       margin-left: 6px;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
     .heightBlue {
       height: 200px;
@@ -149,6 +180,16 @@
       font-family: SfUiDisplayThin;
       font-size: 20pt;
       padding-top: 30px;
+    }
+    .titlesCss {
+      margin-right: 10px;
+      font-family: SfUiDisplaySemiBold;
+      font-size: 14px;
+    }
+    .marginLeftFecha {
+    }
+    .widthFecha {
+      width: 200px;
     }
   }
 
@@ -168,6 +209,7 @@
     .backCat {
       width: 97%;
       margin-left: 6px;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
     .heightBlue {
       height: 205px;
@@ -177,6 +219,16 @@
       font-family: SfUiDisplayThin;
       font-size: 20pt;
       padding-top: 30px;
+    }
+    .titlesCss {
+      margin-right: 10px;
+      font-family: SfUiDisplaySemiBold;
+      font-size: 14px;
+    }
+    .marginLeftFecha {
+    }
+    .widthFecha {
+      width: 200px;
     }
   }
 
@@ -196,6 +248,7 @@
     .backCat {
       width: 97%;
       margin-left: 6px;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
     .heightBlue {
       height: 260px;
@@ -205,6 +258,16 @@
       font-family: SfUiDisplayThin;
       font-size: 31pt;
       padding-top: 40px;
+    }
+    .titlesCss {
+      margin-right: 10px;
+      font-family: SfUiDisplaySemiBold;
+      font-size: 14px;
+    }
+    .marginLeftFecha {
+    }
+    .widthFecha {
+      width: 200px;
     }
   }
 </style>

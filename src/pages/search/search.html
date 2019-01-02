@@ -5,7 +5,7 @@
     <ion-grid style="text-align: center; padding: 0; z-index: 3; height: 100%;">
       <table id="data" [ngStyle]="{'height': isListado == true ? '' : '100%' }">
         <tr style="background-color: #3740C3; height: 63px;">
-          <td colspan="3" style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 30%;"></td>
+          <td colspan="3" style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 26%;"></td>
         </tr>
         <tr><br></tr>
         <tr>
@@ -26,7 +26,7 @@
         </tr>
         <tr *ngIf="isListado">
           <td padding class="resultsPos">
-            <div style="padding-bottom: 13px; margin-bottom: 13px; border-bottom: 1px grey solid;" *ngFor="let result of results; let i = index" (click)="goToClinicInfo(result.clinicId)">
+            <div style="padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px #dedede solid;" *ngFor="let result of results; let i = index" (click)="goToClinicInfo(result.clinicId)">
               <table>
                 <tr>
                   <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo" src="{{result.logo}}"></td>
@@ -70,7 +70,7 @@
                 </tr>
               </table>
             </div>
-            <div *ngIf="showLoading" style="width: 100%; text-align: center;">
+            <div *ngIf="showLoading" style="width: 50%; text-align: center; top: 50%; position: absolute; left: 50%; margin-left: -25%;">
               <div class=""><img src="/assets/icon/loader.gif" style="width: 50%;" /></div>
             </div>
             <div *ngIf="!showLoading && results.length == 0" style="width: 100%; text-align: center; margin-top: 20px;">
@@ -181,7 +181,7 @@
       left:50%;
       text-align: center;
       display: inline-table;
-      box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
     .backOrdenarAndFiltrar {
       margin-right: 10px;
@@ -289,7 +289,7 @@
       left:50%;
       text-align: center;
       display: inline-table;
-      box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
     .backOrdenarAndFiltrar {
       margin-right: 10px;
@@ -306,7 +306,7 @@
       width: 147px;
     }
     .centerName {
-      font-size: 15pt;
+      font-size: 12pt;
       text-align: left;
     }
     .topInfo {
@@ -333,7 +333,7 @@
       padding-bottom: 8px;
     }
     .heightBlue {
-      height: 147px;
+      height: 138px;
     }
     .cityText {
       font-size: 10pt;
@@ -345,7 +345,7 @@
     .categoryStyle {
       color: white;
       font-family: SfUiDisplayThin;
-      font-size: 20pt;
+      font-size: 14pt;
     }
     .loSentimos {
       font-family: SfUiDisplayHeavy;
@@ -397,7 +397,7 @@
       left:50%;
       text-align: center;
       display: inline-table;
-      box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
     .backOrdenarAndFiltrar {
       margin-right: 10px;
@@ -505,7 +505,7 @@
       left:50%;
       text-align: center;
       display: inline-table;
-      box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
     .backOrdenarAndFiltrar {
       margin-right: 10px;
@@ -613,7 +613,7 @@
       left:50%;
       text-align: center;
       display: inline-table;
-      box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
     .backOrdenarAndFiltrar {
       margin-right: 10px;
@@ -691,5 +691,9 @@
       font-family: SfUiDisplayRegular;
       font-size: 16pt;
     }
+  }
+
+  .resultsPos {
+    padding-top: 25px !important;
   }
 </style>

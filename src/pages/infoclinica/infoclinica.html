@@ -8,7 +8,7 @@
           <td style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 30%;"></td>
         </tr>
         <tr>
-          <td padding class="resultsPos" style="z-index: 4; text-align: left;">
+          <td padding class="resultsPos" style="z-index: 4; text-align: left; padding-left: 0px; padding-right: 0px;">
             <div style="" *ngFor="let result of results; let i = index;">
               <table style="width: 100%;">
                 <tr>
@@ -57,11 +57,15 @@
                       <tr>
                         <td style="font-family: SfUiDisplaySemiBold;" class="infoTitle">INFORMACIÓN</td>
                       </tr>
-                      <tr><br></tr>
+                      <tr style="height: 6px;"></tr>
                       <tr>
                         <td style="font-family: SfUiDisplayLight" class="infoTitle">{{result.description}}</td>
                       </tr>
-                      <tr><br></tr>
+                      <tr style="height: 11px;"></tr>
+                      <tr>
+                        <td><hr></td>
+                      </tr>
+                      <tr style="height: 6px;"></tr>
                       <tr>
                         <td style="font-family: SfUiDisplaySemiBold;" class="infoTitle">HORARIOS DE ATENCIÓN</td>
                       </tr>
@@ -74,6 +78,7 @@
                         <td *ngIf="hour.dayNumber == 6" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type="" [ngClass]="day-1 == 5 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span style='font-family: SfUiDisplayBold;'>Sábado</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;" *ngIf="myIndex == 0" (click)="showHorarios();"><span class="seeEveryDay">Ver todos los días</span><ion-icon style="vertical-align: middle;" *ngIf="isOpenDays == false" name="arrow-dropup"></ion-icon><ion-icon *ngIf="isOpenDays == true" name="arrow-dropdown"></ion-icon></span></td>
                         <td *ngIf="hour.dayNumber == 0" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type="" [ngClass]="day-1 == -1 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span style='font-family: SfUiDisplayBold;'>Domingo</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;" *ngIf="myIndex == 0" (click)="showHorarios();"><span class="seeEveryDay">Ver todos los días</span><ion-icon style="vertical-align: middle;" *ngIf="isOpenDays == false" name="arrow-dropup"></ion-icon><ion-icon *ngIf="isOpenDays == true" name="arrow-dropdown"></ion-icon></span></td>
                       </tr>
+                      <tr style="height: 11px;"></tr>
                     </table>
                   </td>
                 </tr>
@@ -92,7 +97,7 @@
                       <tr>
                         <td style="font-family: SfUiDisplaySemiBold;" class="infoTitle">UBICACIÓN</td>
                       </tr>
-                      <tr><br></tr>
+                      <tr style="height: 6px;"></tr>
                       <tr>
                         <td style="font-family: SfUiDisplayLight" class="infoTitle">{{result.address}}</td>
                       </tr>
@@ -100,6 +105,7 @@
                       <tr>
                         <td><div id="map"></div></td>
                       </tr>
+                      <tr style="height: 11px;"></tr>
                     </table>
                   </td>
                 </tr>
@@ -118,6 +124,7 @@
                       <tr>
                         <td style="font-family: SfUiDisplaySemiBold;" class="infoTitle">COMENTARIOS</td>
                       </tr>
+                      <tr style="height: 6px;"></tr>
                       <tr *ngFor="let rating of result.ratings;">
                         <td>
                           <table style="width: 100%;">
@@ -160,6 +167,7 @@
     vertical-align: top;
     padding-right: 12px;
     padding: 0 !important;
+    padding-top: 11px !important;
   }
   .vertical {
     vertical-align: top;
@@ -402,13 +410,13 @@
       height: 174px;
     }
     .infoTitle {
-      font-size: 10.5pt;
+      font-size: 10pt;
     }
     .commentUser {
-      font-size: 10.5pt;
+      font-size: 10pt;
     }
     .dateText {
-      font-size: 10.5pt;
+      font-size: 10pt;
     }
     .seeEveryDay {
       margin-right: 3px;
