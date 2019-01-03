@@ -4,22 +4,19 @@
     <ion-grid style="text-align: center; padding-top: 5%; z-index: 3;">
       <table>
         <tr>
-          <td><img src="../assets/icon/logo-blanco.png" style="width: 50%;"></td>
+          <td><img src="../assets/icon/iso-blanco.png" style="width: 12%;"></td>
         </tr>
         <tr><br></tr>
         <tr><br></tr>
         <tr>
-          <td style="color: white; font-family: SfUiDisplayThin; font-size: 23pt;">Bienvenido</td>
-        </tr>
-        <tr>
-          <td style="color: white; font-family: SfUiDisplayThin; font-size: 13pt;">Complete los datos para ingresar</td>
+          <td class="title">Iniciar sesión</td>
         </tr>
         <tr><br></tr>
         <tr>
           <td padding style="z-index: 3;">
             <div style="background-color: #FFFFFF; border-radius: 12px; height: 186px;">
             <!--<div class="backWhite"></div>-->
-              <form [formGroup]="loginForm" (ngSubmit)="login()" style="padding-top: 5px;">
+              <form [formGroup]="loginForm" (ngSubmit)="login()" style="padding: 17px;">
                 <ion-item>
                   <ion-label stacked style="font-family: SfUiDisplayLight; font-size: 10pt;">Usuario</ion-label>
                   <ion-input formControlName="email" placeholder="" type="email"></ion-input>
@@ -43,6 +40,8 @@
         </tr>
       </table>
       <table align="center">
+        <tr><br></tr>
+        <tr><br></tr>
         <tr><br></tr>
         <tr>
           <td><button ion-button full style="background-color: #3b5998; color:White;">Login with Facebook</button></td>
@@ -101,6 +100,11 @@
     .buttonIng {
       padding-top: 15px;
     }
+    .title {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 16pt;
+    }
   }
 
   @media screen and (max-width: 400px) and (min-width: 321px) {
@@ -123,6 +127,11 @@
     .buttonIng {
       padding-top: 15px;
     }
+    .title {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 16pt;
+    }
   }
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
@@ -130,7 +139,7 @@
       top: 700px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
     }
     .heightBlue {
-      height: 250px;
+      height: 265px;
     }
     .backWhite {
       position: absolute;
@@ -144,6 +153,11 @@
     }
     .buttonIng {
       padding-top: 15px;
+    }
+    .title {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 19pt;
     }
   }
 
@@ -152,7 +166,7 @@
       top: 720px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
     }
     .heightBlue {
-      height: 250px;
+      height: 282px;
     }
     .backWhite {
       position: absolute;
@@ -166,6 +180,11 @@
     }
     .buttonIng {
       padding-top: 15px;
+    }
+    .title {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 20pt;
     }
   }
 
@@ -174,7 +193,7 @@
       top: 802px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
     }
     .heightBlue {
-      height: 320px;
+      height: 345px;
     }
     .backWhite {
       position: absolute;
@@ -188,6 +207,11 @@
     }
     .buttonIng {
       padding-top: 15px;
+    }
+    .title {
+      color: white;
+      font-family: SfUiDisplayThin;
+      font-size: 28pt;
     }
   }
 </style>

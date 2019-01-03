@@ -245,7 +245,7 @@ export class SearchPage {
         center: latlng,
         zoom: 14,
         disableDefaultUI: true,
-        zoomControl: true
+        zoomControl: false
       });
 
       var bounds = new google.maps.LatLngBounds();

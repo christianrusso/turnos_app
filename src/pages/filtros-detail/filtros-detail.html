@@ -1,4 +1,5 @@
-<ion-content class="" style="background-color: #F4F4F4; top:0px; left:0px; width: 100%; height: 100%;">
+<button color="button-color" ion-button full type="" (click)="applyFilters()" class="filtroButton" style="z-index: 100;">APLICAR FILTROS</button>
+<ion-content class="" style="background-color: white; top:0px; left:0px; width: 100%; height: 100%;">
   <ion-grid style="padding: 0;">
     <div style="position: absolute; background-color: #EEEEEE; top:0px; left:0px; width: 100%; z-index: 2;" class="heightBlue"></div>
     <ion-grid style="text-align: center; padding: 0; z-index: 3;">
@@ -11,7 +12,7 @@
               </button>
             </ion-navbar>
           </td>
-          <td colspan="3" style="vertical-align: bottom;"><img class="logoPosition" src="../assets/icon/logo-blanco.png" style="width: 30%;"></td>
+          <td colspan="3" style="vertical-align: bottom;"><img class="logoPosition" src="../assets/icon/logo-blanco.png" style="width: 26%;"></td>
         </tr>
         <tr><br></tr>
         <tr *ngIf="type == 'especialidades'">
@@ -35,21 +36,20 @@
         <tr *ngIf="type == 'ubicacion'">
           <td colspan="2" class="title">Ubicación</td>
         </tr>
-        <tr>
+        <!--<tr>
           <td colspan="2">
-            <button color="button-color" ion-button full type="" (click)="applyFilters()" class="filtroButton" style="z-index: 100;">APLICAR FILTROS</button>
+
           </td>
-        </tr>
+        </tr>-->
+        <tr><td><br></td></tr>
+        <tr><td><br></td></tr>
         <tr *ngIf="type == 'especialidades'">
           <td colspan="2">
             <table style="width: 100%;">
-              <tr *ngFor="let especialidad of specialities; let i = index" style="border-bottom: 0.1em solid grey;">
+              <tr *ngFor="let especialidad of specialities; let i = index" style="border-bottom: 0.1em solid #dedede;">
                 <td><input type="checkbox" style="transform:scale(1.5); width: 40px;" id="{{especialidad.id}}" value="{{especialidad.id}}" [(ngModel)]="specialities[i].checked"></td>
                 <td style="text-align: left;"><span class="especialidad">{{especialidad.text}}</span></td>
               </tr>
-              <tr><br></tr>
-              <tr><br></tr>
-              <tr><br></tr>
               <tr><br></tr>
               <tr><br></tr>
               <tr><br></tr>
@@ -60,13 +60,10 @@
         <tr *ngIf="type == 'subespecialidades'">
           <td colspan="2">
             <table style="width: 100%;">
-              <tr *ngFor="let subespecialidad of subspecialities; let i = index" style="border-bottom: 0.1em solid grey;">
+              <tr *ngFor="let subespecialidad of subspecialities; let i = index" style="border-bottom: 0.1em solid #dedede;">
                 <td><input type="checkbox" style="transform:scale(1.5); width: 40px;" id="{{subespecialidad.id}}" value="{{subespecialidad.id}}" [(ngModel)]="subspecialities[i].checked"></td>
                 <td style="text-align: left;"><span class="especialidad">{{subespecialidad.text}}</span></td>
               </tr>
-              <tr><br></tr>
-              <tr><br></tr>
-              <tr><br></tr>
               <tr><br></tr>
               <tr><br></tr>
               <tr><br></tr>
@@ -77,13 +74,10 @@
         <tr *ngIf="type == 'obrasocial'">
           <td colspan="2">
             <table style="width: 100%;">
-              <tr *ngFor="let obrasocial of obrassociales; let i = index" style="border-bottom: 0.1em solid grey;">
+              <tr *ngFor="let obrasocial of obrassociales; let i = index" style="border-bottom: 0.1em solid #dedede;">
                 <td><input type="checkbox" style="transform:scale(1.5);" id="{{obrasocial.id}}" value="{{obrasocial.id}}" [(ngModel)]="obrassociales[i].checked"></td>
                 <td style="text-align: left;"><span class="especialidad">{{obrasocial.text}}</span></td>
               </tr>
-              <tr><br></tr>
-              <tr><br></tr>
-              <tr><br></tr>
               <tr><br></tr>
               <tr><br></tr>
               <tr><br></tr>
@@ -94,7 +88,7 @@
         <tr *ngIf="type == 'estrellas'">
           <td colspan="2">
             <table style="width: 100%; font-size: 1.7em;">
-              <tr style="border-bottom: 0.1em solid grey; display: inline-block; width: 100%;" class="startLineHeight" *ngFor="let st of star; let i = index">
+              <tr style="border-bottom: 0.1em solid #dedede; display: inline-block; width: 100%;" class="startLineHeight" *ngFor="let st of star; let i = index">
                 <td><input type="checkbox" [(ngModel)]="star[i].checked" style="width: 40px; transform: scale(1.5);"></td>
                 <td *ngIf="i >= 0" style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
                 <td *ngIf="i >= 1" style="text-align: left;"><ion-icon class="starFont" name="star" style="color: #FDD309;"></ion-icon></td>
@@ -134,13 +128,10 @@
         <tr *ngIf="type == 'ubicacion'">
           <td colspan="2">
             <table style="width: 100%;">
-              <tr *ngFor="let ubicacion of ubicaciones; let i = index" style="border-bottom: 0.1em solid grey;">
+              <tr *ngFor="let ubicacion of ubicaciones; let i = index" style="border-bottom: 0.1em solid #dedede;">
                 <td><input type="checkbox" style="transform:scale(1.5);" id="{{ubicacion.id}}" value="{{ubicacion.id}}" [(ngModel)]="ubicaciones[i].checked"></td>
                 <td style="text-align: left;"><span class="especialidad">{{ubicacion.text}}</span></td>
               </tr>
-              <tr><br></tr>
-              <tr><br></tr>
-              <tr><br></tr>
               <tr><br></tr>
               <tr><br></tr>
               <tr><br></tr>
@@ -161,11 +152,11 @@
     .title {
       color: black;
       font-family: SfUiDisplayThin;
-      font-size: 17pt;
+      font-size: 13pt;
     }
     .especialidad {
       font-family: SfUiDisplayLight;
-      font-size: 16pt;
+      font-size: 14pt;
       line-height: 50px;
     }
     .logoPosition {
@@ -192,8 +183,10 @@
       height: 44px;
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
-      font-size: 14pt;
+      font-size: 13pt;
       z-index: 5;
+      position: absolute;
+      bottom: 46px;
     }
   }
 
@@ -204,7 +197,7 @@
     .title {
       color: black;
       font-family: SfUiDisplayMedium;
-      font-size: 14pt;
+      font-size: 12pt;
     }
     .especialidad {
       font-family: SfUiDisplayLight;
@@ -237,10 +230,57 @@
       font-family: SfUiDisplayRegular;
       font-size: 14pt;
       z-index: 5;
+      position: absolute;
+      bottom: 46px;
     }
   }
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
+    .heightBlue {
+      height: 126px;
+    }
+    .title {
+      color: black;
+      font-family: SfUiDisplayThin;
+      font-size: 15pt;
+    }
+    .especialidad {
+      font-family: SfUiDisplayLight;
+      font-size: 16pt;
+      line-height: 50px;
+    }
+    .logoPosition {
+      margin-left: -40px;
+    }
+    .startLineHeight {
+      line-height: 53px;
+    }
+    .kilometersPosition {
+      text-align: right;
+      padding-right: 25px;
+    }
+    .kilometersText {
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 10px;
+    }
+    .puntuacionText {
+      font-family: SfUiDisplayLight;
+      font-size: 12pt;
+    }
+    .filtroButton {
+      width: 100%;
+      height: 44px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 14pt;
+      z-index: 5;
+      position: absolute;
+      bottom: 48px;
+    }
+  }
+
+  @media screen and (max-width: 550px) and (min-width: 450px) {
     .heightBlue {
       height: 126px;
     }
@@ -278,51 +318,10 @@
       height: 44px;
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
-      font-size: 14pt;
+      font-size: 15pt;
       z-index: 5;
-    }
-  }
-
-  @media screen and (max-width: 550px) and (min-width: 450px) {
-    .heightBlue {
-      height: 126px;
-    }
-    .title {
-      color: black;
-      font-family: SfUiDisplayThin;
-      font-size: 20pt;
-    }
-    .especialidad {
-      font-family: SfUiDisplayLight;
-      font-size: 16pt;
-      line-height: 50px;
-    }
-    .logoPosition {
-      margin-left: -40px;
-    }
-    .startLineHeight {
-      line-height: 53px;
-    }
-    .kilometersPosition {
-      text-align: right;
-      padding-right: 25px;
-    }
-    .kilometersText {
-      border: 1px solid black;
-      border-radius: 10px;
-      padding: 10px;
-    }
-    .puntuacionText {
-      font-family: SfUiDisplayLight;
-      font-size: 12pt;
-    }
-    .filtroButton {
-      width: 100%;
-      height: 44px;
-      background-color: #00B901;
-      font-family: SfUiDisplayRegular;
-      font-size: 14pt;
-      z-index: 5;
+      position: absolute;
+      bottom: 52px;
     }
   }
 
@@ -333,7 +332,7 @@
     .title {
       color: black;
       font-family: SfUiDisplayThin;
-      font-size: 32pt;
+      font-size: 25pt;
     }
     .especialidad {
       font-family: SfUiDisplayLight;
@@ -364,8 +363,10 @@
       height: 44px;
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
-      font-size: 14pt;
+      font-size: 16pt;
       z-index: 5;
+      position: absolute;
+      bottom: 49px;
     }
   }
 </style>

@@ -5,10 +5,17 @@
     <ion-grid style="text-align: center; padding: 0; z-index: 3;">
       <table>
         <tr style="background-color: #3740C3; height: 63px;">
-          <td style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 30%;"></td>
+          <td style="width: 20px;">
+            <ion-navbar>
+              <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+              </button>
+            </ion-navbar>
+          </td>
+          <td colspan="3" style="vertical-align: bottom;"><img class="logoPosition" src="../assets/icon/logo-blanco.png" style="width: 26%;"></td>
         </tr>
         <tr>
-          <td padding class="resultsPos" style="z-index: 4; text-align: left; padding-left: 0px; padding-right: 0px;">
+          <td colspan="3" padding class="resultsPos" style="z-index: 4; text-align: left; padding-left: 0px; padding-right: 0px;">
             <div style="" *ngFor="let result of results; let i = index;">
               <table style="width: 100%;">
                 <tr>
@@ -69,6 +76,7 @@
                       <tr>
                         <td style="font-family: SfUiDisplaySemiBold;" class="infoTitle">HORARIOS DE ATENCIÓN</td>
                       </tr>
+                      <tr style="height: 6px;"></tr>
                       <tr *ngFor="let hour of result.openCloseHours; let myIndex = index;">
                         <td *ngIf="hour.dayNumber == 1" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type="" [ngClass]="day-1 == 0 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span style='font-family: SfUiDisplayBold;'>Lunes</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;" *ngIf="myIndex == 0" (click)="showHorarios();"><span class="seeEveryDay">Ver todos los días</span><ion-icon style="vertical-align: middle;" *ngIf="isOpenDays == false" name="arrow-dropup"></ion-icon><ion-icon *ngIf="isOpenDays == true" name="arrow-dropdown"></ion-icon></span></td>
                         <td *ngIf="hour.dayNumber == 2" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type="" [ngClass]="day-1 == 1 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span style='font-family: SfUiDisplayBold;'>Martes</span>&nbsp;<span>{{hour.start.substr(0,5)}} {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;" *ngIf="myIndex == 0" (click)="showHorarios();"><span class="seeEveryDay">Ver todos los días</span><ion-icon style="vertical-align: middle;" *ngIf="isOpenDays == false" name="arrow-dropup"></ion-icon><ion-icon *ngIf="isOpenDays == true" name="arrow-dropdown"></ion-icon></span></td>
@@ -179,6 +187,10 @@
     display: block;
   }
 
+  .logoPosition {
+    margin-left: -40px;
+  }
+
   @media screen and (max-width: 320px) {
     .resultsPos {
     }
@@ -225,6 +237,7 @@
       border: 1px solid;
       box-shadow: none;
       margin-right: 4px;
+      margin-left: 8px;
     }
     .todayDayButton {
       border-radius: 6px;
@@ -237,6 +250,7 @@
       border: 1px solid;
       box-shadow: none;
       margin-right: 4px;
+      margin-left: 8px;
     }
     .scoreButtonRed {
       background-color: transparent;
@@ -282,6 +296,7 @@
     }
     .infoTitle {
       font-size: 10.5pt;
+      padding-left: 8px;
     }
     .commentUser {
       font-size: 10.5pt;
@@ -301,6 +316,10 @@
       width: 39px;
       margin-left: 17px;
       margin-top: 26px;
+    }
+    .imageLogo {
+      max-width: 93px;
+      border-radius: 6px;
     }
   }
 
@@ -354,6 +373,7 @@
       border: 1px solid;
       box-shadow: none;
       margin-right: 15px;
+      margin-left: 9px;
     }
     .todayDayButton {
       border-radius: 6px;
@@ -366,6 +386,7 @@
       border: 1px solid;
       box-shadow: none;
       margin-right: 15px;
+      margin-left: 9px;
     }
     .scoreButtonRed {
       background-color: transparent;
@@ -411,6 +432,7 @@
     }
     .infoTitle {
       font-size: 10pt;
+      padding-left: 9px;
     }
     .commentUser {
       font-size: 10pt;
@@ -479,6 +501,7 @@
       border: 1px solid;
       box-shadow: none;
       margin-right: 15px;
+      margin-left: 10px;
     }
     .todayDayButton {
       border-radius: 6px;
@@ -491,6 +514,7 @@
       border: 1px solid;
       box-shadow: none;
       margin-right: 15px;
+      margin-left: 10px;
     }
     .scoreButtonRed {
       background-color: transparent;
@@ -536,6 +560,7 @@
     }
     .infoTitle {
       font-size: 11.5pt;
+      padding-left: 10px;
     }
     .commentUser {
       font-size: 10.5pt;
@@ -556,6 +581,10 @@
       margin-left: 18px;
       margin-top: 29px;
     }
+    .imageLogo {
+      max-width: 115px;
+      border-radius: 6px;
+    }
   }
 
   @media screen and (max-width: 550px) and (min-width: 450px) {
@@ -565,7 +594,7 @@
       width: 226px;
     }
     .centerName {
-      font-size: 23pt;
+      font-size: 21pt;
       color: white;
     }
     .topInfo {
@@ -604,6 +633,7 @@
       border: 1px solid;
       box-shadow: none;
       margin-right: 15px;
+      margin-left: 12px;
     }
     .todayDayButton {
       border-radius: 6px;
@@ -616,6 +646,7 @@
       border: 1px solid;
       box-shadow: none;
       margin-right: 15px;
+      margin-left: 12px;
     }
     .scoreButtonRed {
       background-color: transparent;
@@ -661,6 +692,7 @@
     }
     .infoTitle {
       font-size: 14pt;
+      padding-left: 12px;
     }
     .commentUser {
       font-size: 12pt;
@@ -680,6 +712,10 @@
       width: 66px;
       margin-left: 26px;
       margin-top: 29px;
+    }
+    .imageLogo {
+      max-width: 135px;
+      border-radius: 6px;
     }
   }
 
@@ -729,6 +765,7 @@
       border: 1px solid;
       box-shadow: none;
       margin-right: 15px;
+      margin-left: 16px;
     }
     .todayDayButton {
       border-radius: 6px;
@@ -741,6 +778,7 @@
       border: 1px solid;
       box-shadow: none;
       margin-right: 15px;
+      margin-left: 16px;
     }
     .scoreButtonRed {
       background-color: transparent;
@@ -785,7 +823,8 @@
       height: 190px;
     }
     .infoTitle {
-      font-size: 20pt;
+      font-size: 16pt;
+      padding-left: 16px;
     }
     .commentUser {
       font-size: 18pt;
@@ -804,6 +843,10 @@
       width: 80px;
       margin-left: 25px;
       margin-top: 33px;
+    }
+    .imageLogo {
+      max-width: 185px;
+      border-radius: 6px;
     }
   }
 </style>

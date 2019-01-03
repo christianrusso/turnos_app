@@ -4,14 +4,21 @@
     <ion-grid style="text-align: center; padding: 0; z-index: 3;">
       <table>
         <tr style="background-color: #3740C3; height: 63px;">
-          <td style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 26%;"></td>
+          <td style="width: 20px;">
+            <ion-navbar>
+              <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+              </button>
+            </ion-navbar>
+          </td>
+          <td colspan="3" style="vertical-align: bottom;"><img class="logoPosition" src="../assets/icon/logo-blanco.png" style="width: 26%;"></td>
         </tr>
         <tr>
-          <td class="reservaText">¿Qué vas a reservar hoy?</td>
+          <td colspan="2" class="reservaText">¿Qué vas a reservar hoy?</td>
         </tr>
         <tr><br></tr>
         <tr>
-          <td padding class="formPos" style="z-index: 3;">
+          <td colspan="2" padding class="formPos" style="z-index: 3;">
             <form style="font-family: SfUiDisplayLight; font-size: 10pt;">
               <ion-item no-lines style="text-align: center; background-color: white; border-radius: 10px;" class="backCat">
                 <span class="titlesCss">CATEGORÍA</span>
@@ -77,22 +84,30 @@
       border-top: 1px #dedede solid;
       text-align: center;
     }
+    .separatorFecha {
+      margin-top: 4%;
+      background-color: transparent;
+      padding-top: 18px;
+      border-top: 1px #dedede solid;
+      text-align: center;
+    }
     .backCat {
       width: 97%;
       margin-left: 6px;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
     .separatorButton {
-      padding-top: 15px;
+      padding-top: 27px;
     }
     .heightBlue {
-      height: 185px;
+      height: 165px;
     }
     .reservaText {
       color: white;
       font-family: SfUiDisplayThin;
-      font-size: 20pt;
-      padding-top: 30px;
+      font-size: 16pt;
+      padding-top: 19px;
+      padding-bottom: 9px;
     }
     .titlesCss {
       margin-right: 10px;
@@ -100,9 +115,13 @@
       font-size: 14px;
     }
     .marginLeftFecha {
+      margin-left: 2px;
     }
     .widthFecha {
       width: 200px;
+    }
+    .logoPosition {
+      margin-left: -40px;
     }
   }
 
@@ -147,10 +166,13 @@
       font-size: 14px;
     }
     .marginLeftFecha {
-      margin-left: 2px;
+      margin-left: 5px;
     }
     .widthFecha {
       width: 196px;
+    }
+    .logoPosition {
+      margin-left: -40px;
     }
   }
 
@@ -158,9 +180,16 @@
     .formPos {
     }
     .separator {
-      margin-top: 14%;
+      margin-top: 9%;
       background-color: transparent;
-      padding-top: 24px;
+      padding-top: 18px;
+      border-top: 1px #dedede solid;
+      text-align: center;
+    }
+    .separatorFecha {
+      margin-top: 6%;
+      background-color: transparent;
+      padding-top: 18px;
       border-top: 1px #dedede solid;
       text-align: center;
     }
@@ -173,12 +202,12 @@
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
     .heightBlue {
-      height: 200px;
+      height: 190px;
     }
     .reservaText {
       color: white;
       font-family: SfUiDisplayThin;
-      font-size: 20pt;
+      font-size: 19pt;
       padding-top: 30px;
     }
     .titlesCss {
@@ -190,6 +219,9 @@
     }
     .widthFecha {
       width: 200px;
+    }
+    .logoPosition {
+      margin-left: -40px;
     }
   }
 
@@ -203,8 +235,15 @@
       border-top: 1px #dedede solid;
       text-align: center;
     }
+    .separatorFecha {
+      margin-top: 5%;
+      background-color: transparent;
+      padding-top: 21px;
+      border-top: 1px #dedede solid;
+      text-align: center;
+    }
     .separatorButton {
-      padding-top: 15px;
+      padding-top: 37px;
     }
     .backCat {
       width: 97%;
@@ -212,7 +251,7 @@
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
     .heightBlue {
-      height: 205px;
+      height: 190px;
     }
     .reservaText {
       color: white;
@@ -230,20 +269,32 @@
     .widthFecha {
       width: 200px;
     }
+    .logoPosition {
+      margin-left: -40px;
+    }
   }
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
     .formPos {
     }
     .separator {
-      margin-top: 9%;
+      margin-top: 5%;
       background-color: transparent;
       padding-top: 24px;
       border-top: 1px #dedede solid;
       text-align: center;
+      padding-left: 0px;
+    }
+    .separatorFecha {
+      margin-top: 3%;
+      background-color: transparent;
+      padding-top: 27px;
+      border-top: 1px #dedede solid;
+      text-align: center;
+      padding-left: 0px;
     }
     .separatorButton {
-      padding-top: 15px;
+      padding-top: 40px;
     }
     .backCat {
       width: 97%;
@@ -251,12 +302,12 @@
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
     .heightBlue {
-      height: 260px;
+      height: 219px;
     }
     .reservaText {
       color: white;
       font-family: SfUiDisplayThin;
-      font-size: 31pt;
+      font-size: 28pt;
       padding-top: 40px;
     }
     .titlesCss {
@@ -268,6 +319,9 @@
     }
     .widthFecha {
       width: 200px;
+    }
+    .logoPosition {
+      margin-left: -40px;
     }
   }
 </style>
