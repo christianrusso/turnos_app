@@ -34,6 +34,8 @@ export class SearchPage {
   public infoComments;
   public infoRating;
   public infoLogo;
+  public canShowMap = false;
+  public canShowListado = false;
 
   constructor(
       public navCtrl: NavController,
@@ -100,6 +102,7 @@ export class SearchPage {
   }
 
   search(page) {
+    this.canShowMap = false;
     this.showLoading = true;
     let url = this.constants.API_URL + 'Clinic/GetByFilter';
     let cities = [];
@@ -199,6 +202,7 @@ export class SearchPage {
   doSearch(url, options) {
     this.http.post(url, options).subscribe(
         (success: any) => {
+          this.canShowMap = true;
           this.results = success;
           if (this.from == 0) {
             this.from = this.from + success.length + this.constants.quantityOfResultsToShow;
@@ -213,6 +217,7 @@ export class SearchPage {
           this.showLoading = false;
         },
         error => {
+          this.canShowMap = true;
           console.log(error);
           let alert = this.alertCtrl.create({
             title: 'Error!',
@@ -226,12 +231,17 @@ export class SearchPage {
   }
 
   showMap() {
-    this.isListado = false;
-    this.loadMap(-34.533092, -58.479169);
+    if (this.canShowMap) {
+      this.isListado = false;
+      this.loadMap(-34.533092, -58.479169);
+    }
   }
 
   showListado() {
-    this.isListado = true;
+    if (this.canShowListado) {
+      this.isListado = true;
+      this.canShowListado = false;
+    }
   }
 
   loadMap(lat, lng){
@@ -284,6 +294,8 @@ export class SearchPage {
       // Fit these bounds to the map
       this.map.fitBounds(bounds);
       this.map.panToBounds(bounds);
+
+      this.canShowListado = true;
       //this.map.setZoom(12);
     }, 1000);
   }

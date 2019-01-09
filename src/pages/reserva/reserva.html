@@ -4,10 +4,17 @@
     <ion-grid style="text-align: center; padding: 0; z-index: 3;">
       <table>
         <tr style="background-color: #3740C3; height: 63px;">
-          <td colspan="3" style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 30%;"></td>
+          <td style="width: 20px;">
+            <ion-navbar>
+              <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+              </button>
+            </ion-navbar>
+          </td>
+          <td colspan="3" style="vertical-align: bottom;"><img class="logoPosition" src="../assets/icon/logo-blanco.png" style="width: 26%;"></td>
         </tr>
         <tr style="background-color: white; border-bottom: 2px solid #454EDB;">
-          <td>
+          <td colspan="2">
             <div style="display: flex;">
               <div id="firstStep" class="circleFirst positionFirstNumber" style="background-color: #454EDB;">
                 <p>1</p>
@@ -28,24 +35,24 @@
         </tr>
         <tr><br></tr>
         <tr *ngIf="step == 1">
-          <td>
+          <td colspan="2">
             <span class="titleText">Seleccione la especialidad<br/>y profesional que está buscando</span>
           </td>
         </tr>
         <tr *ngIf="step == 2">
-          <td>
+          <td colspan="2">
             <span class="titleText">Seleccione día y hora</span>
           </td>
         </tr>
         <tr *ngIf="step == 3">
-          <td>
+          <td colspan="2">
             <span class="titleText">Confirme su reserva</span>
           </td>
         </tr>
         <tr><br></tr>
         <tr><br></tr>
         <tr *ngIf="step == 1">
-          <td>
+          <td colspan="2">
             <table class="tableStyle">
               <tr style="border-bottom: 0.1em solid grey;">
                 <td style="text-align: left; padding-left: 10px;"><span class="especialidadText">ESPECIALIDAD</span></td>
@@ -81,7 +88,7 @@
           </td>
         </tr>
         <tr *ngIf="step == 2">
-          <td>
+          <td colspan="2">
             <ion-calendar *ngIf="options.daysConfig.length > 0" [(ngModel)]="date"
                           [options] = options
                           (onChange)="showDayHours($event)"
@@ -91,7 +98,7 @@
           </td>
         </tr>
         <tr *ngIf="step == 3">
-          <td>
+          <td colspan="2">
             <table class="tableStyle" style="text-align: left;">
               <tr>
                 <td style="padding-top: 22px;" class="paddingLeft"><span class="clinicName">{{clinicName}}</span></td>
@@ -126,12 +133,12 @@
         <tr><br></tr>
         <tr><br></tr>
         <tr *ngIf="step != 3">
-          <td>
+          <td colspan="2">
             <button color="button-color" ion-button full type="submit" class="nextButton" (click)="nextStep();">SIGUIENTE</button>
           </td>
         </tr>
         <tr *ngIf="step == 3">
-          <td>
+          <td colspan="2">
             <button color="button-color" ion-button full type="submit" class="confirmButton" (click)="nextStep();">CONFIRMAR RESERVA</button>
           </td>
         </tr>
@@ -258,6 +265,9 @@
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+    .logoPosition {
+      margin-left: -40px;
+    }
   }
 
   @media screen and (max-width: 360px) and (min-width: 321px) {
@@ -367,6 +377,9 @@
     }
     .paddingLeft {
       padding-left: 15px;
+    }
+    .logoPosition {
+      margin-left: -40px;
     }
   }
 
@@ -478,6 +491,9 @@
     .paddingLeft {
       padding-left: 15px;
     }
+    .logoPosition {
+      margin-left: -40px;
+    }
   }
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
@@ -587,6 +603,9 @@
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
+    }
+    .logoPosition {
+      margin-left: -40px;
     }
   }
 
@@ -698,6 +717,9 @@
       font-family: SfUiDisplayRegular;
       font-size: 14pt;
     }
+    .logoPosition {
+      margin-left: -40px;
+    }
   }
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
@@ -807,6 +829,9 @@
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
       font-size: 17pt;
+    }
+    .logoPosition {
+      margin-left: -40px;
     }
   }
 </style>

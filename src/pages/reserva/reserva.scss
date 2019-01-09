@@ -1,3 +1,16 @@
 page-reserva {
 
+  .toolbar-background-ios {
+    background: transparent !important;
+  }
+  .item-ios {
+    background-color: transparent;
+  }
+  .item-ios.item-block .item-inner {
+    border-bottom: none;
+  }
+  .range-ios-secondary .range-bar-active, .range-ios-secondary .range-tick-active {
+    background: #3740C3;
+  }
+
 }
