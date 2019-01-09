@@ -187,16 +187,18 @@ export class ReservaPage {
 
     let orderModal = this.modalCtrl.create(HourPage, data);
     orderModal.onDidDismiss(data => {
-      this.hour   = data.hour;
-      this.doctor = data.doctor;
-      for (var i = 0; i < this.doctors.length; i++) {
-        if (this.doctors[i].id == this.doctor) {
-          this.doctorName = this.doctors[i].firstName + " " + this.doctors[i].lastName;
-        }
-      }
       (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';
-      (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0';
-      this.nextStep();
+      (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity = '0';
+      if (data.hour && data.doctor) {
+        this.hour = data.hour;
+        this.doctor = data.doctor;
+        for (var i = 0; i < this.doctors.length; i++) {
+          if (this.doctors[i].id == this.doctor) {
+            this.doctorName = this.doctors[i].firstName + " " + this.doctors[i].lastName;
+          }
+        }
+        this.nextStep();
+      }
     });
     orderModal.present();
   }

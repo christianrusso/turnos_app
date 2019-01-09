@@ -74,4 +74,8 @@ export class HourPage {
     this.viewCtrl.dismiss(data);
   }
 
+  cancelData() {
+    this.viewCtrl.dismiss({});
+  }
+
 }
