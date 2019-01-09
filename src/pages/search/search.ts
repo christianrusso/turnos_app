@@ -122,9 +122,9 @@ export class SearchPage {
       "From": 0,
       "to": 0,
       "location": {
-        "latitude": 0,
-        "longitude": 0,
-        "radiusInMeters": 0
+        "latitude": -36.383978,
+        "longitude": -64.635229,
+        "radiusInMeters": 5500000
       }
     };
     if (this.sort != 'undefined' && this.sort != "") {
@@ -189,35 +189,40 @@ export class SearchPage {
         delete options.location;
       }
 
-      this.http.post(url, options).subscribe(
-          (success: any) => {
-            this.results = success;
-            if (this.from == 0) {
-              this.from = this.from + success.length + this.constants.quantityOfResultsToShow;
-            } else {
-              this.from = this.from + (success.length - this.actualClinics);
-            }
-            if ((success.length - this.actualClinics) == this.constants.quantityOfResultsToShow) {
-              (document.querySelector('#verMasButton') as HTMLElement).style.display = 'block';
-            } else {
-              (document.querySelector('#verMasButton') as HTMLElement).style.display = 'none';
-            }
-            this.showLoading = false;
-          },
-          error => {
-            console.log(error);
-            let alert = this.alertCtrl.create({
-              title: 'Error!',
-              subTitle: error.error,
-              buttons: ['OK']
-            });
-            alert.present();
-            this.showLoading = false;
-          }
-      );
+      this.doSearch(url, options);
     }).catch((error) => {
       console.log('Error getting location', error);
+      this.doSearch(url, options);
     });
+  }
+
+  doSearch(url, options) {
+    this.http.post(url, options).subscribe(
+        (success: any) => {
+          this.results = success;
+          if (this.from == 0) {
+            this.from = this.from + success.length + this.constants.quantityOfResultsToShow;
+          } else {
+            this.from = this.from + (success.length - this.actualClinics);
+          }
+          if ((success.length - this.actualClinics) == this.constants.quantityOfResultsToShow) {
+            (document.querySelector('#verMasButton') as HTMLElement).style.display = 'block';
+          } else {
+            (document.querySelector('#verMasButton') as HTMLElement).style.display = 'none';
+          }
+          this.showLoading = false;
+        },
+        error => {
+          console.log(error);
+          let alert = this.alertCtrl.create({
+            title: 'Error!',
+            subTitle: error.error,
+            buttons: ['OK']
+          });
+          alert.present();
+          this.showLoading = false;
+        }
+    );
   }
 
   showMap() {
