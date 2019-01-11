@@ -41,12 +41,6 @@ export class LoginPage {
     let msj = '';
     this.http.post(url, params).subscribe(
       (success: any) => {
-        let alert = this.alertCtrl.create({
-          title: 'Error!',
-          subTitle: 'Login Exitoso',
-          buttons: ['OK']
-        });
-        alert.present();
         this.userService.setUserLogin(this.loginForm.value.email);
         this.userService.setUserToken(success.token);
         this.userService.setUserImage(success.logo);
