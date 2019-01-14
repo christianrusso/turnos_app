@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, NavParams, ModalController } from 'ionic-angular';
-import { InfoclinicaPage } from '../infoclinica/infoclinica';
+import { CancelTurnoPage } from '../cancel-turno/cancel-turno';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as moment from 'moment';
 import { Constants } from '../../app/constants';
@@ -63,36 +63,42 @@ export class TurnosPage {
             clinics.forEach(element => {
               if (element.appointments.length > 0) {
                 element.appointments.forEach(appoint => {
-                  var quantity = element.appointments.length;
-                  if (quantity == 1) {
-                    quantity += " turno";
-                  } else {
-                    quantity += " turnos";
+                  if (appoint.state == 1 || appoint.state == 3) {
+                    var quantity = element.appointments.length;
+                    if (quantity == 1) {
+                      quantity += " turno";
+                    } else {
+                      quantity += " turnos";
+                    }
+                    _daysConfig.push({
+                      date: new Date(appoint.dateTime),
+                      marked: true,
+                      subTitle: quantity,
+                      cssClass: 'Event',
+                      state: appoint.state
+                    })
                   }
-                  _daysConfig.push({
-                    date: new Date(appoint.dateTime),
-                    marked: true,
-                    subTitle: quantity,
-                    cssClass: 'Event'
-                  })
                 })
               }
             });
             hairdress.forEach(element => {
               if (element.appointments.length > 0) {
                 element.appointments.forEach(appoint => {
-                  var quantity = element.appointments.length;
-                  if (quantity == 1) {
-                    quantity += " turno";
-                  } else {
-                    quantity += " turnos";
+                  if (appoint.state == 1 || appoint.state == 3) {
+                    var quantity = element.appointments.length;
+                    if (quantity == 1) {
+                      quantity += " turno";
+                    } else {
+                      quantity += " turnos";
+                    }
+                    _daysConfig.push({
+                      date: new Date(appoint.dateTime),
+                      marked: true,
+                      subTitle: quantity,
+                      cssClass: 'Event',
+                      state: appoint.state
+                    })
                   }
-                  _daysConfig.push({
-                    date: new Date(appoint.dateTime),
-                    marked: true,
-                    subTitle: quantity,
-                    cssClass: 'Event'
-                  })
                 })
               }
             });
@@ -135,16 +141,20 @@ export class TurnosPage {
           clinics.forEach(element => {
             if (element.appointments.length > 0) {
               element.appointments.forEach(appoint => {
-                var date = new Date(appoint.dateTime);
-                var minutes = date.getMinutes().toString();
-                if (minutes == "0") {
-                  minutes = "00";
+                if (appoint.state == 1 || appoint.state == 3) {
+                  var date = new Date(appoint.dateTime);
+                  var minutes = date.getMinutes().toString();
+                  if (minutes == "0") {
+                    minutes = "00";
+                  }
+                  data.push({
+                    date: date.getHours() + ":" + minutes,
+                    doctor: appoint.doctor,
+                    clinica: appoint.clinic,
+                    id: appoint.id,
+                    state: appoint.state
+                  });
                 }
-                data.push({
-                  date: date.getHours() + ":" + minutes,
-                  doctor: appoint.doctor,
-                  clinica: appoint.clinic
-                });
               })
             }
           });
@@ -160,6 +170,47 @@ export class TurnosPage {
         }
     );
     return data;
+  }
+
+  cancelTurno(id) {
+    (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
+    (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
+
+    let orderModal = this.modalCtrl.create(CancelTurnoPage);
+    orderModal.onDidDismiss(data => {
+      (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';
+      (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity = '0';
+      if (data.motivo && data.motivo != "") {
+        this.cancel(id, data.motivo);
+      }
+    });
+    orderModal.present();
+  }
+
+  cancel(id, comment) {
+    let headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.userService.getUserToken(),
+    });
+    let options = {
+      Id: id,
+      Score: 0,
+      Comment: comment
+    };
+    let url = this.constants.API_URL + "Appointment/CancelAppointment";
+    this.http.post(url, options, {headers}).subscribe(
+        (success: any) => {
+          this.getReservas();
+        },
+        error => {
+          console.log(error);
+          let alert = this.alertCtrl.create({
+            title: 'Error!',
+            subTitle: error.error,
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+    );
   }
 
 }

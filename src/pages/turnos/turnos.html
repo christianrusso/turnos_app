@@ -1,3 +1,4 @@
+<div id="backBlackReserva" style="position: absolute; background-color: black; opacity: 0; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: hidden; transition: all 0.2s linear;"></div>
 <ion-content class="" style="background-color: #F9F9F9; top:0px; left:0px; width: 100%; height: 100%;">
   <ion-grid style="padding: 0;">
     <ion-grid style="text-align: center; padding: 0; z-index: 3;">
@@ -28,9 +29,13 @@
                 <td>
                     <div *ngIf="appointments.length > 0" style="font-family: SfUiDisplayMedium; font-size: 15px;">
                       <div *ngFor="let appoint of appointments; let i = index" style="display: flex;">
-                        <div>{{appoint.clinica}} - </div>
-                        <div>{{appoint.doctor}} - </div>
-                        <div>{{appoint.date}}</div>
+                        <div style="display: flex; padding-top: 13px;">
+                          <div>{{appoint.clinica}} - </div>
+                          <div>{{appoint.doctor}} - </div>
+                          <div>{{appoint.date}}</div>
+                        </div>
+                        <div *ngIf="appoint.state == 1"><ion-icon name="checkmark" class="iconsFont"></ion-icon></div>
+                        <div *ngIf="appoint.state == 1"><ion-icon name="close" class="iconsFont" (click)="cancelTurno(appoint.id)"></ion-icon></div>
                       </div>
                     </div>
                 </td>
@@ -109,6 +114,10 @@
       font-family: SfUiDisplayThin;
       font-size: 16pt;
     }
+    .iconsFont {
+      font-size: 41px;
+      width: 50px;
+    }
   }
 
     @media screen and (max-width: 400px) and (min-width: 321px) {
@@ -166,6 +175,10 @@
       font-family: SfUiDisplayThin;
       font-size: 18pt;
     }
+    .iconsFont {
+      font-size: 41px;
+      width: 50px;
+    }
   }
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
@@ -222,6 +235,10 @@
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 20pt;
+    }
+    .iconsFont {
+      font-size: 41px;
+      width: 50px;
     }
   }
 
@@ -281,6 +298,10 @@
       font-family: SfUiDisplayThin;
       font-size: 20pt;
     }
+    .iconsFont {
+      font-size: 41px;
+      width: 50px;
+    }
   }
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
@@ -338,6 +359,10 @@
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 33pt;
+    }
+    .iconsFont {
+      font-size: 41px;
+      width: 50px;
     }
   }
 </style>
