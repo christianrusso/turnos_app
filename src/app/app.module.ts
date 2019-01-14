@@ -27,6 +27,7 @@ import { PersonalesPage } from '../pages/personales/personales';
 import { CuentaPage } from '../pages/cuenta/cuenta';
 import { HourPage } from '../pages/hour/hour';
 import { CancelTurnoPage } from '../pages/cancel-turno/cancel-turno';
+import { CompleteTurnoPage } from '../pages/complete-turno/complete-turno';
 import { ReservaGeneradaPage } from '../pages/reserva-generada/reserva-generada';
 import { FiltrosPage } from '../pages/filtros/filtros';
 import { FiltrosDetailPage } from '../pages/filtros-detail/filtros-detail';
@@ -59,6 +60,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     ReservaPage,
     HourPage,
     CancelTurnoPage,
+    CompleteTurnoPage,
     FiltrosPage,
     FiltrosDetailPage,
     ReservaGeneradaPage,
@@ -99,6 +101,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     ReservaPage,
     HourPage,
     CancelTurnoPage,
+    CompleteTurnoPage,
     FiltrosPage,
     FiltrosDetailPage,
     ReservaGeneradaPage,

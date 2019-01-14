@@ -8,9 +8,27 @@
           <td colspan="2" class="titleFirst"></td>
         </tr>
         <tr><br></tr>
-        <tr style="border-bottom: 1px grey solid; text-align: left;">
+        <tr style="">
+          <td>Puntaje</td>
           <td class="selectSize">
-            <textarea placeholder="Motivo..." [(ngModel)]="motivo" style="width: 100%;"></textarea>
+            <select [(ngModel)]="score" style="border: 1px solid grey;">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </td>
+        </tr>
+        <tr><td colspan="2"><br></td></tr>
+        <tr style="border-bottom: 1px grey solid; text-align: left;">
+          <td colspan="2" class="selectSize">
+            <textarea placeholder="Comentario..." [(ngModel)]="comment" style="width: 100%;"></textarea>
           </td>
         </tr>
         <tr><br></tr>

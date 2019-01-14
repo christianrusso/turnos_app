@@ -29,13 +29,14 @@
                 <td>
                     <div *ngIf="appointments.length > 0" style="font-family: SfUiDisplayMedium; font-size: 15px;">
                       <div *ngFor="let appoint of appointments; let i = index" style="display: flex;">
-                        <div style="display: flex; padding-top: 13px;">
+                        <div style="display: flex;" [ngStyle]="{'padding-top': (appoint.state == 1 || appoint.state == 3) ? '13px' : '0px'}">
                           <div>{{appoint.clinica}} - </div>
                           <div>{{appoint.doctor}} - </div>
                           <div>{{appoint.date}}</div>
                         </div>
-                        <div *ngIf="appoint.state == 1"><ion-icon name="checkmark" class="iconsFont"></ion-icon></div>
+                        <div *ngIf="appoint.state == 1 && appoint.datePosition"><ion-icon name="checkmark" class="iconsFont" (click)="completeTurno(appoint.id)"></ion-icon></div>
                         <div *ngIf="appoint.state == 1"><ion-icon name="close" class="iconsFont" (click)="cancelTurno(appoint.id)"></ion-icon></div>
+                        <div *ngIf="appoint.state == 2">&nbsp;Cancelado</div>
                       </div>
                     </div>
                 </td>

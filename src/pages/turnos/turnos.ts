@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, NavParams, ModalController } from 'ionic-angular';
 import { CancelTurnoPage } from '../cancel-turno/cancel-turno';
+import { CompleteTurnoPage } from '../complete-turno/complete-turno';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as moment from 'moment';
 import { Constants } from '../../app/constants';
@@ -63,7 +64,7 @@ export class TurnosPage {
             clinics.forEach(element => {
               if (element.appointments.length > 0) {
                 element.appointments.forEach(appoint => {
-                  if (appoint.state == 1 || appoint.state == 3) {
+                  if (appoint.state == 1 || appoint.state == 2 || appoint.state == 3) {
                     var quantity = element.appointments.length;
                     if (quantity == 1) {
                       quantity += " turno";
@@ -74,8 +75,7 @@ export class TurnosPage {
                       date: new Date(appoint.dateTime),
                       marked: true,
                       subTitle: quantity,
-                      cssClass: 'Event',
-                      state: appoint.state
+                      cssClass: 'Event'
                     })
                   }
                 })
@@ -84,7 +84,7 @@ export class TurnosPage {
             hairdress.forEach(element => {
               if (element.appointments.length > 0) {
                 element.appointments.forEach(appoint => {
-                  if (appoint.state == 1 || appoint.state == 3) {
+                  if (appoint.state == 1 || appoint.state == 2 || appoint.state == 3) {
                     var quantity = element.appointments.length;
                     if (quantity == 1) {
                       quantity += " turno";
@@ -95,8 +95,7 @@ export class TurnosPage {
                       date: new Date(appoint.dateTime),
                       marked: true,
                       subTitle: quantity,
-                      cssClass: 'Event',
-                      state: appoint.state
+                      cssClass: 'Event'
                     })
                   }
                 })
@@ -141,18 +140,24 @@ export class TurnosPage {
           clinics.forEach(element => {
             if (element.appointments.length > 0) {
               element.appointments.forEach(appoint => {
-                if (appoint.state == 1 || appoint.state == 3) {
+                if (appoint.state == 1 || appoint.state == 2 || appoint.state == 3) {
                   var date = new Date(appoint.dateTime);
                   var minutes = date.getMinutes().toString();
                   if (minutes == "0") {
                     minutes = "00";
+                  }
+                  if (date <= new Date()) {
+                    var datePosition = true;
+                  } else {
+                    var datePosition = false;
                   }
                   data.push({
                     date: date.getHours() + ":" + minutes,
                     doctor: appoint.doctor,
                     clinica: appoint.clinic,
                     id: appoint.id,
-                    state: appoint.state
+                    state: appoint.state,
+                    datePosition: datePosition
                   });
                 }
               })
@@ -199,6 +204,49 @@ export class TurnosPage {
     let url = this.constants.API_URL + "Appointment/CancelAppointment";
     this.http.post(url, options, {headers}).subscribe(
         (success: any) => {
+          this.appointments = [];
+          this.getReservas();
+        },
+        error => {
+          console.log(error);
+          let alert = this.alertCtrl.create({
+            title: 'Error!',
+            subTitle: error.error,
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+    );
+  }
+
+  completeTurno(id) {
+    (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
+    (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
+
+    let orderModal = this.modalCtrl.create(CompleteTurnoPage);
+    orderModal.onDidDismiss(data => {
+      (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';
+      (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity = '0';
+      if (data.comment && data.comment != "" && data.score && data.score != '0') {
+        this.complete(id, data.comment, data.score);
+      }
+    });
+    orderModal.present();
+  }
+
+  complete(id, comment, score) {
+    let headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.userService.getUserToken(),
+    });
+    let options = {
+      Id: id,
+      Score: score,
+      Comment: comment
+    };
+    let url = this.constants.API_URL + "Appointment/CompleteAppointment";
+    this.http.post(url, options, {headers}).subscribe(
+        (success: any) => {
+          this.appointments = [];
           this.getReservas();
         },
         error => {
