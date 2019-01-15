@@ -80,8 +80,9 @@ export class PersonalesPage {
     }
     let url = this.constants.API_URL + 'Client/GetProfile';
     let options = {
+      headers: headers
     };
-    this.http.post(url, options, {headers}).subscribe(
+    this.http.get(url, options).subscribe(
         (success: any) => {
           this.firstName = success.firstName;
           this.lastName  = success.lastName;

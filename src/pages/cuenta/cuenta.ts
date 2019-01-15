@@ -81,8 +81,9 @@ export class CuentaPage {
     }
     let url = this.constants.API_URL + 'Client/GetProfile';
     let options = {
+      headers: headers
     };
-    this.http.post(url, options, {headers}).subscribe(
+    this.http.get(url, options).subscribe(
         (success: any) => {
           this.image = success.logo;
           if (this.image == null) {
