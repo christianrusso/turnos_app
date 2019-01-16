@@ -15,6 +15,7 @@ declare var google: any;
 export class InfoclinicaPage {
 
   private id = "";
+  private category;
   private results;
   private moment = moment();
   private day;
@@ -30,6 +31,7 @@ export class InfoclinicaPage {
       private userService: UserService
   ) {
     this.id = navParams.get("id");
+    this.category = navParams.get("category");
     this.day = this.moment.day();
   }
 
@@ -42,9 +44,9 @@ export class InfoclinicaPage {
     if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
       headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
     }
-    let url = this.constants.API_URL + 'Clinic/GetByFilter';
+
+    let businessType;
     let options = {
-      "clinicId": this.id,
       "Cities": [],
       "Specialties": [],
       "Subspecialties": [],
@@ -54,6 +56,34 @@ export class InfoclinicaPage {
       "Stars": [],
       "ScoreQuantity": ""
     };
+    let url = "";
+    switch (this.category) {
+      case "Medicina":
+        url = this.constants.API_URL + 'Clinic/GetByFilter';
+        businessType = 1;
+        options["clinicId"] = this.id;
+        options["businessType"]= businessType;
+        break;
+      case "Peluquerias":
+        url = this.constants.API_URL + 'Hairdressing/Hairdressing/GetByFilter';
+        businessType = 2;
+        options["hairdressingId"] = this.id;
+        options["businessType"]= businessType;
+        break;
+      case "Barberias":
+        url = this.constants.API_URL + 'Hairdressing/Hairdressing/GetByFilter';
+        businessType = 3;
+        options["hairdressingId"] = this.id;
+        options["businessType"]= businessType;
+        break;
+      case "Esteticas":
+        url = this.constants.API_URL + 'Hairdressing/Hairdressing/GetByFilter';
+        businessType = 4;
+        options["hairdressingId"] = this.id;
+        options["businessType"]= businessType;
+        break;
+    }
+
     this.http.post(url, options, {headers}).subscribe(
         (success: any) => {
           this.results = success;
@@ -170,10 +200,11 @@ export class InfoclinicaPage {
 
   book() {
     var data = {
-      clinicId:      this.id,
-      clinicName:    this.results[0].name,
-      clinicAddress: this.results[0].address,
-      clinicCity:    this.results[0].city
+      id:       this.id,
+      category: this.category,
+      name:     this.results[0].name,
+      address:  this.results[0].address,
+      city:     this.results[0].city
     };
 
     this.navCtrl.push(ReservaPage, data);

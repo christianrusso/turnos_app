@@ -157,7 +157,35 @@ export class TurnosPage {
                     clinica: appoint.clinic,
                     id: appoint.id,
                     state: appoint.state,
-                    datePosition: datePosition
+                    datePosition: datePosition,
+                    rubro: 1
+                  });
+                }
+              })
+            }
+          });
+          hairdress.forEach(element => {
+            if (element.appointments.length > 0) {
+              element.appointments.forEach(appoint => {
+                if (appoint.state == 1 || appoint.state == 2 || appoint.state == 3) {
+                  var date = new Date(appoint.dateTime);
+                  var minutes = date.getMinutes().toString();
+                  if (minutes == "0") {
+                    minutes = "00";
+                  }
+                  if (date <= new Date()) {
+                    var datePosition = true;
+                  } else {
+                    var datePosition = false;
+                  }
+                  data.push({
+                    date: date.getHours() + ":" + minutes,
+                    doctor: appoint.professional,
+                    clinica: appoint.hairdressing,
+                    id: appoint.id,
+                    state: appoint.state,
+                    datePosition: datePosition,
+                    rubro: 2
                   });
                 }
               })
@@ -177,7 +205,7 @@ export class TurnosPage {
     return data;
   }
 
-  cancelTurno(id) {
+  cancelTurno(id, rubro) {
     (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
     (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
 
@@ -186,13 +214,13 @@ export class TurnosPage {
       (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';
       (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity = '0';
       if (data.motivo && data.motivo != "") {
-        this.cancel(id, data.motivo);
+        this.cancel(id, data.motivo, rubro);
       }
     });
     orderModal.present();
   }
 
-  cancel(id, comment) {
+  cancel(id, comment, rubro) {
     let headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.userService.getUserToken(),
     });
@@ -201,7 +229,15 @@ export class TurnosPage {
       Score: 0,
       Comment: comment
     };
-    let url = this.constants.API_URL + "Appointment/CancelAppointment";
+    let url;
+    switch (rubro) {
+      case 1:
+        url = this.constants.API_URL + 'Appointment/CancelAppointment';
+        break;
+      case 2:
+        url = this.constants.API_URL + 'Hairdressing/HairdressingAppointment/CancelAppointment';
+        break;
+    }
     this.http.post(url, options, {headers}).subscribe(
         (success: any) => {
           this.appointments = [];
@@ -219,7 +255,7 @@ export class TurnosPage {
     );
   }
 
-  completeTurno(id) {
+  completeTurno(id, rubro) {
     (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
     (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
 
@@ -228,13 +264,13 @@ export class TurnosPage {
       (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';
       (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity = '0';
       if (data.comment && data.comment != "" && data.score && data.score != '0') {
-        this.complete(id, data.comment, data.score);
+        this.complete(id, data.comment, data.score, rubro);
       }
     });
     orderModal.present();
   }
 
-  complete(id, comment, score) {
+  complete(id, comment, score, rubro) {
     let headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.userService.getUserToken(),
     });
@@ -243,7 +279,15 @@ export class TurnosPage {
       Score: score,
       Comment: comment
     };
-    let url = this.constants.API_URL + "Appointment/CompleteAppointment";
+    let url;
+    switch (rubro) {
+      case 1:
+        url = this.constants.API_URL + 'Appointment/CompleteAppointment';
+        break;
+      case 2:
+        url = this.constants.API_URL + 'Hairdressing/HairdressingAppointment/CompleteAppointment';
+        break;
+    }
     this.http.post(url, options, {headers}).subscribe(
         (success: any) => {
           this.appointments = [];

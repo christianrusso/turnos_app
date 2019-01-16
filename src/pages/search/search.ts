@@ -75,9 +75,10 @@ export class SearchPage {
     this.search(false);
   }
 
-  goToClinicInfo(id) {
+  goToInfo(id) {
     this.navCtrl.push(InfoclinicaPage, {
-      id: id
+      id: id,
+      category: this.category
     });
   }
 
@@ -104,7 +105,26 @@ export class SearchPage {
   search(page) {
     this.canShowMap = false;
     this.showLoading = true;
-    let url = this.constants.API_URL + 'Clinic/GetByFilter';
+    let businessType;
+    let url = "";
+    switch (this.category) {
+      case "Medicina":
+          url = this.constants.API_URL + 'Clinic/GetByFilter';
+          businessType = 1;
+        break;
+      case "Peluquerias":
+        url = this.constants.API_URL + 'Hairdressing/Hairdressing/GetByFilter';
+        businessType = 2;
+        break;
+      case "Barberias":
+        url = this.constants.API_URL + 'Hairdressing/Hairdressing/GetByFilter';
+        businessType = 3;
+        break;
+      case "Esteticas":
+        url = this.constants.API_URL + 'Hairdressing/Hairdressing/GetByFilter';
+        businessType = 4;
+        break;
+    }
     let cities = [];
     if (this.place != "" && this.place != null) {
       cities.push(this.place.toString());
@@ -128,7 +148,8 @@ export class SearchPage {
         "latitude": -36.383978,
         "longitude": -64.635229,
         "radiusInMeters": 5500000
-      }
+      },
+      "businessType": businessType
     };
     if (this.sort != 'undefined' && this.sort != "") {
       options.SortField = this.sort;
@@ -204,6 +225,13 @@ export class SearchPage {
         (success: any) => {
           this.canShowMap = true;
           this.results = success;
+          for (let i = 0; i < this.results.length; i++) {
+            if (this.results[i].clinicId) {
+              this.results[i].entityId = this.results[i].clinicId;
+            } else if (this.results[i].hairdressingId) {
+              this.results[i].entityId = this.results[i].hairdressingId;
+            }
+          }
           if (this.from == 0) {
             this.from = this.from + success.length + this.constants.quantityOfResultsToShow;
           } else {

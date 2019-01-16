@@ -16,10 +16,11 @@ import { ReservaGeneradaPage } from '../reserva-generada/reserva-generada';
 })
 export class ReservaPage {
 
-  clinicId;
-  clinicName;
-  clinicAddress;
-  clinicCity;
+  id;
+  category;
+  name;
+  address;
+  city;
   specialities;
   subspecialities;
   doctors;
@@ -54,9 +55,19 @@ export class ReservaPage {
     if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
       headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
     }
-    let url = this.constants.API_URL + 'Specialty/GetAllByClinic';
+    let url = "";
+    switch (this.category) {
+      case "Medicina":
+        url = this.constants.API_URL + 'Specialty/GetAllByClinic';
+        break;
+      case "Peluquerias":
+      case "Barberias":
+      case "Esteticas":
+        url = this.constants.API_URL + 'Hairdressing/HairdressingSpecialty/GetAllByHairdressing';
+        break;
+    }
     let options = {
-      "id": this.clinicId
+      "id": this.id
     };
     this.http.post(url, options, {headers}).subscribe(
         (success: any) => {
@@ -78,10 +89,11 @@ export class ReservaPage {
     if (this.userService.getUserLogin() == null || this.userService.getUserLogin() == '') {
       this.navCtrl.parent.select(4);
     } else {
-      this.clinicId      = this.navParams.get("clinicId");
-      this.clinicName    = this.navParams.get("clinicName");
-      this.clinicAddress = this.navParams.get("clinicAddress");
-      this.clinicCity    = this.navParams.get("clinicCity");
+      this.id       = this.navParams.get("id");
+      this.category = this.navParams.get("category");
+      this.name     = this.navParams.get("name");
+      this.address  = this.navParams.get("address");
+      this.city     = this.navParams.get("city");
       this.getSpecialities();
     }
   }
@@ -97,12 +109,23 @@ export class ReservaPage {
     if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
       headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
     }
-    let url = this.constants.API_URL + 'Doctor/GetByFilter';
+    let url;
     let options = {
-      "clinicId":       this.clinicId,
       "specialtyId":    this.specialities[this.speciality].id,
       "subspecialtyId": this.specialities[this.speciality].subspecialties[this.subspeciality].id
     };
+    switch (this.category) {
+      case "Medicina":
+        url = this.constants.API_URL + 'Doctor/GetByFilter';
+        options["clinicId"] = this.id;
+        break;
+      case "Peluquerias":
+      case "Barberias":
+      case "Esteticas":
+        url = this.constants.API_URL + 'Hairdressing/HairdressingProfessional/GetByFilter';
+        options["hairdressingId"] = this.id;
+        break;
+    }
     this.http.post(url, options, {headers}).subscribe(
         (success: any) => {
           this.doctors = success;
@@ -124,17 +147,32 @@ export class ReservaPage {
     if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
       headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
     }
-    let url = this.constants.API_URL + 'Appointment/GetAvailableAppointmentsPerDay';
     let options = {
       "startDate":      this.moment.format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z",
       "endDate":        this.moment.add(30, 'days').format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z",
-      "clinicId":       this.clinicId,
       "specialtyId":    this.specialities[this.speciality].id,
       "subspecialtyId": this.specialities[this.speciality].subspecialties[this.subspeciality].id,
-      "doctorId":       null
+      "doctorId":       null,
+      "professionalId": null
     };
-    if (this.doctor != null) {
-      options.doctorId = this.doctors[this.doctor].id;
+    let url = "";
+    switch (this.category) {
+      case "Medicina":
+        url = this.constants.API_URL + 'Appointment/GetAvailableAppointmentsPerDay';
+        options["clinicId"] = this.id;
+        if (this.doctor != null) {
+          options.doctorId = this.doctors[this.doctor].id;
+        }
+        break;
+      case "Peluquerias":
+      case "Barberias":
+      case "Esteticas":
+        url = this.constants.API_URL + 'Hairdressing/HairdressingAppointment/GetAvailableAppointmentsPerDay';
+        options["hairdressingId"] = this.id;
+        if (this.doctor != null) {
+          options.professionalId = this.doctors[this.doctor].id;
+        }
+        break;
     }
     this.http.post(url, options, {headers}).subscribe(
         (success: any) => {
@@ -177,7 +215,7 @@ export class ReservaPage {
     (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
     (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
 
-    var data = {doctors: this.doctors, date: day, doctor: null, clinic: this.clinicId};
+    var data = {doctors: this.doctors, date: day, doctor: null, entity: this.id, category: this.category};
     if (this.doctor != null) {
       data.doctor = this.doctors[this.doctor].id;
     }
@@ -229,24 +267,46 @@ export class ReservaPage {
       if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
         headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
       }
-      let url = this.constants.API_URL + 'Clinic/IsPatientOfClinic';
       let options = {
-        "id": this.clinicId
+        "id": this.id
       };
+      let url = "";
+      switch (this.category) {
+        case "Medicina":
+          url = this.constants.API_URL + 'Clinic/IsPatientOfClinic';
+          break;
+        case "Peluquerias":
+        case "Barberias":
+        case "Esteticas":
+          url = this.constants.API_URL + 'Hairdressing/Hairdressing/IsPatientOfHairdressing';
+          break;
+      }
       this.http.post(url, options, {headers}).subscribe(
           (success: any) => {
-            var urlRequest = this.constants.API_URL + "Appointment";
+            var urlRequest = this.constants.API_URL;
             var optionsRequest;
             if (success == true) {
               //IS PATIENT
-              urlRequest += "/RequestAppointmentByPatient";
+
               optionsRequest = {
-                "clinicId": this.clinicId,
                 "day": this.dayUnmodified + "T" + this.hour + ".000Z",
                 "time": this.dayUnmodified + "T" + this.hour + ".000Z",
-                "doctorId": this.doctor,
                 "Source": this.constants.source
               };
+              switch (this.category) {
+                case "Medicina":
+                  urlRequest += "Appointment/RequestAppointmentByPatient";
+                  optionsRequest["clinicId"] = this.id;
+                  optionsRequest["doctorId"] = this.doctor;
+                  break;
+                case "Peluquerias":
+                case "Barberias":
+                case "Esteticas":
+                  urlRequest += "Hairdressing/HairdressingAppointment/RequestAppointmentByPatient";
+                  optionsRequest["hairdressingId"] = this.id;
+                  optionsRequest["professionalId"] = this.doctor;
+                  break;
+              }
 
               //MAKE APPOINTMENT
               this.http.post(urlRequest, optionsRequest, {headers}).subscribe(
@@ -268,39 +328,34 @@ export class ReservaPage {
               (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
               (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
 
-              let orderModal = this.modalCtrl.create(NotpacientPage, {clinic: this.clinicId});
-              orderModal.onDidDismiss(data => {
-                this.medicalPlan = data.plan;
-                urlRequest += "/RequestAppointmentByClient";
-                optionsRequest = {
-                  "clinicId": this.clinicId,
-                  "day": this.dayUnmodified + "T" + this.hour + ".000Z",
-                  "time": this.dayUnmodified + "T" + this.hour + ".000Z",
-                  "doctorId": this.doctor,
-                  "medicalPlanId": this.medicalPlan,
-                  "Source": this.constants.source
-                };
+              urlRequest += "";
+              optionsRequest = {
+                "day": this.dayUnmodified + "T" + this.hour + ".000Z",
+                "time": this.dayUnmodified + "T" + this.hour + ".000Z",
+                "Source": this.constants.source
+              };
+              if (this.category == "Medicina") {
+                let orderModal = this.modalCtrl.create(NotpacientPage, {clinic: this.id});
+                orderModal.onDidDismiss(data => {
+                  this.medicalPlan = data.plan;
+                  urlRequest += "Appointment/RequestAppointmentByClient";
+                  optionsRequest["clinicId"] = this.id;
+                  optionsRequest["doctorId"] = this.doctor;
+                  optionsRequest["medicalPlanId"] = this.medicalPlan;
 
-                (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';
-                (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0';
+                  (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';
+                  (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity = '0';
 
-                //MAKE APPOINTMENT
-                this.http.post(urlRequest, optionsRequest, {headers}).subscribe(
-                    (success: any) => {
-                      this.navCtrl.push(ReservaGeneradaPage);
-                    },
-                    error => {
-                      console.log(error);
-                      let alert = this.alertCtrl.create({
-                        title: 'Error!',
-                        subTitle: error.error,
-                        buttons: ['OK']
-                      });
-                      alert.present();
-                    }
-                );
-              });
-              orderModal.present();
+                  this.makeAppointment(urlRequest, optionsRequest, headers);
+                });
+                orderModal.present();
+              } else {
+                urlRequest += "Hairdressing/HairdressingAppointment/RequestAppointmentByClient";
+                optionsRequest["hairdressingId"] = this.id;
+                optionsRequest["professionalId"] = this.doctor;
+
+                this.makeAppointment(urlRequest, optionsRequest, headers);
+              }
             }
           },
           error => {
@@ -314,6 +369,23 @@ export class ReservaPage {
           }
       );
     }
+  }
+
+  makeAppointment(urlRequest, optionsRequest, headers) {
+    this.http.post(urlRequest, optionsRequest, {headers}).subscribe(
+        (success: any) => {
+          this.navCtrl.push(ReservaGeneradaPage);
+        },
+        error => {
+          console.log(error);
+          let alert = this.alertCtrl.create({
+            title: 'Error!',
+            subTitle: error.error,
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+    );
   }
 
 }

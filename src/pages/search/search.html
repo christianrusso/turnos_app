@@ -39,7 +39,7 @@
         </tr>
         <tr *ngIf="isListado">
           <td colspan="2" padding class="resultsPos" style="padding: 0px;">
-            <div class="result" *ngFor="let result of results; let i = index" (click)="goToClinicInfo(result.clinicId)">
+            <div class="result" *ngFor="let result of results; let i = index" (click)="goToInfo(result.entityId)">
               <table>
                 <tr>
                   <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo" src="{{result.logo}}"></td>

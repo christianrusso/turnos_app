@@ -15,10 +15,11 @@ export class HourPage {
   doctors;
   hour;
   hours;
-  clinicId;
+  entity;
   day;
   moment = moment();
   isFirst = true;
+  category;
 
   constructor(
       public navCtrl: NavController,
@@ -30,9 +31,10 @@ export class HourPage {
       private constants: Constants
   ) {
     this.doctors = navParams.get("doctors");
-    this.clinicId = navParams.get("clinic");
+    this.entity = navParams.get("entity");
     this.doctor = navParams.get("doctor");
     this.day = navParams.get("date");
+    this.category = navParams.get("category");
     if (this.doctor != null) {
       this.searchHours(this.doctor);
     }
@@ -44,12 +46,36 @@ export class HourPage {
     if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
       headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
     }
-    let url = this.constants.API_URL + 'Appointment/GetAllAvailablesForDay';
     let options = {
       "day":      this.day,
-      "clinicId": this.clinicId,
-      "doctorId": doctorId
+      "doctorId": null,
+      "professionalId": null
     };
+    let url = "";
+    switch (this.category) {
+      case "Medicina":
+        url = this.constants.API_URL + 'Appointment/GetAllAvailablesForDay';
+
+        options["clinicId"] = this.entity;
+
+        if (this.doctor != null) {
+          options.doctorId = this.doctor;
+        }
+
+        break;
+      case "Peluquerias":
+      case "Barberias":
+      case "Esteticas":
+        url = this.constants.API_URL + 'Hairdressing/HairdressingAppointment/GetAllAvailablesForDay';
+
+        options["hairdressingId"] = this.entity;
+
+        if (this.doctor != null) {
+          options.professionalId = this.doctor;
+        }
+
+        break;
+    }
     return this.http.post(url, options, {headers}).subscribe(
         (success: any) => {
           this.hours = success;

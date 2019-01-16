@@ -34,8 +34,8 @@
                           <div>{{appoint.doctor}} - </div>
                           <div>{{appoint.date}}</div>
                         </div>
-                        <div *ngIf="appoint.state == 1 && appoint.datePosition"><ion-icon name="checkmark" class="iconsFont" (click)="completeTurno(appoint.id)"></ion-icon></div>
-                        <div *ngIf="appoint.state == 1"><ion-icon name="close" class="iconsFont" (click)="cancelTurno(appoint.id)"></ion-icon></div>
+                        <div *ngIf="appoint.state == 1 && appoint.datePosition"><ion-icon name="checkmark" class="iconsFont" (click)="completeTurno(appoint.id, appoint.rubro)"></ion-icon></div>
+                        <div *ngIf="appoint.state == 1"><ion-icon name="close" class="iconsFont" (click)="cancelTurno(appoint.id, appoint.rubro)"></ion-icon></div>
                         <div *ngIf="appoint.state == 2">&nbsp;Cancelado</div>
                       </div>
                     </div>

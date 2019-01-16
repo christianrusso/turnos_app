@@ -31,7 +31,6 @@ export class PreSearchPage {
     let msj = '';
     this.http.post(url, "").subscribe(
         (success: any) => {
-          console.log(success);
           this.categories = success;
         },
         error => {
