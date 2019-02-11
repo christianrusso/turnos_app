@@ -151,7 +151,7 @@ export class ReservaPage {
       "startDate":      this.moment.format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z",
       "endDate":        this.moment.add(30, 'days').format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z",
       "specialtyId":    this.specialities[this.speciality].id,
-      "subspecialtyId": this.specialities[this.speciality].subspecialties[this.subspeciality].id,
+      "subSpecialtyId": this.specialities[this.speciality].subspecialties[this.subspeciality].id,
       "doctorId":       null,
       "professionalId": null
     };
@@ -215,7 +215,8 @@ export class ReservaPage {
     (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
     (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
 
-    var data = {doctors: this.doctors, date: day, doctor: null, entity: this.id, category: this.category};
+    var data = {doctors: this.doctors, date: day, doctor: null, entity: this.id, category: this.category,
+    subspecialty: this.specialities[this.speciality].subspecialties[this.subspeciality].id};
     if (this.doctor != null) {
       data.doctor = this.doctors[this.doctor].id;
     }
@@ -291,7 +292,8 @@ export class ReservaPage {
               optionsRequest = {
                 "day": this.dayUnmodified + "T" + this.hour + ".000Z",
                 "time": this.dayUnmodified + "T" + this.hour + ".000Z",
-                "Source": this.constants.source
+                "Source": this.constants.source,
+                "subspecialtyId": this.specialities[this.speciality].subspecialties[this.subspeciality].id
               };
               switch (this.category) {
                 case "Medicina":
@@ -332,7 +334,8 @@ export class ReservaPage {
               optionsRequest = {
                 "day": this.dayUnmodified + "T" + this.hour + ".000Z",
                 "time": this.dayUnmodified + "T" + this.hour + ".000Z",
-                "Source": this.constants.source
+                "Source": this.constants.source,
+                "subspecialtyId": this.specialities[this.speciality].subspecialties[this.subspeciality].id
               };
               if (this.category == "Medicina") {
                 let orderModal = this.modalCtrl.create(NotpacientPage, {clinic: this.id});

@@ -158,6 +158,7 @@ export class TurnosPage {
                     id: appoint.id,
                     state: appoint.state,
                     datePosition: datePosition,
+                    subspecialty: appoint.subspecialty,
                     rubro: 1
                   });
                 }
@@ -185,6 +186,7 @@ export class TurnosPage {
                     id: appoint.id,
                     state: appoint.state,
                     datePosition: datePosition,
+                    subspecialty: appoint.subspecialty,
                     rubro: 2
                   });
                 }

@@ -20,6 +20,7 @@ export class HourPage {
   moment = moment();
   isFirst = true;
   category;
+  subspecialty;
 
   constructor(
       public navCtrl: NavController,
@@ -35,6 +36,7 @@ export class HourPage {
     this.doctor = navParams.get("doctor");
     this.day = navParams.get("date");
     this.category = navParams.get("category");
+    this.subspecialty = navParams.get("subspecialty");
     if (this.doctor != null) {
       this.searchHours(this.doctor);
     }
@@ -49,7 +51,8 @@ export class HourPage {
     let options = {
       "day":      this.day,
       "doctorId": null,
-      "professionalId": null
+      "professionalId": null,
+      "subspecialtyId": this.subspecialty
     };
     let url = "";
     switch (this.category) {
@@ -59,7 +62,7 @@ export class HourPage {
         options["clinicId"] = this.entity;
 
         if (this.doctor != null) {
-          options.doctorId = this.doctor;
+          options.doctorId = parseInt(this.doctor);
         }
 
         break;
@@ -71,7 +74,7 @@ export class HourPage {
         options["hairdressingId"] = this.entity;
 
         if (this.doctor != null) {
-          options.professionalId = this.doctor;
+          options.professionalId = parseInt(this.doctor);
         }
 
         break;
