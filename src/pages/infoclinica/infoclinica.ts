@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, NavParams } from 'ionic-angular';
+import { NavController, AlertController, NavParams, ModalController } from 'ionic-angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import * as moment from 'moment';
 import { UserService } from '../../services/user.service';
 import { ReservaPage } from '../reserva/reserva';
+import { SharePage } from "../share/share";
 
 declare var google: any;
 
@@ -29,7 +30,8 @@ export class InfoclinicaPage {
       public navParams: NavParams,
       private http: HttpClient,
       private constants: Constants,
-      private userService: UserService
+      private userService: UserService,
+      public modalCtrl: ModalController
   ) {
     this.id = navParams.get("id");
     this.category = navParams.get("category");
@@ -232,6 +234,33 @@ export class InfoclinicaPage {
     };
 
     this.navCtrl.push(ReservaPage, data);
+  }
+
+  showShare() {
+    (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
+    (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
+
+    let data = {id: this.id, rubro: 0};
+    switch (this.category) {
+      case "Medicina":
+        data.rubro = 1;
+        break;
+      case "Peluquerias":
+        data.rubro = 2;
+        break;
+      case "Barberias":
+        data.rubro = 3;
+        break;
+      case "Esteticas":
+        data.rubro = 4;
+        break;
+    }
+    let shareModal = this.modalCtrl.create(SharePage, data);
+    shareModal.onDidDismiss(data => {
+      (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';
+      (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity = '0';
+    });
+    shareModal.present();
   }
 
 }

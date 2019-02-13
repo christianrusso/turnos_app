@@ -1,0 +1,252 @@
+<ion-content class="" style="background: transparent;">
+  <ion-grid style="width: 100%; height: 100%; z-index: 1;"></ion-grid>
+  <ion-grid class="modal">
+    <ion-grid style="text-align: center; padding: 0; padding-right: 6px; padding-left: 6px;">
+      <table>
+        <tr><br></tr>
+        <tr>
+          <td colspan="2" class="titleFirst">Link para compartir</td>
+        </tr>
+        <tr><br></tr>
+        <tr style="text-align: left;">
+          <td class="medico">{{link}}</td>
+        </tr>
+        <tr><br></tr>
+        <tr><br></tr>
+        <tr>
+          <td colspan="2">
+            <button color="button-color" ion-button full type="submit" class="nextButton" (click)="copyToClipboard()">COPIAR AL PORTAPAPELES</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button color="button-color" ion-button full type="submit" class="nextButtonCancel" (click)="cancelData()">CERRAR</button>
+          </td>
+        </tr>
+      </table>
+    </ion-grid>
+  </ion-grid>
+</ion-content>
+
+<style>
+
+  @media screen and (max-width: 320px) {
+    .titleFirst {
+      font-family: SfUiDisplayLight;
+      font-size: 14pt;
+    }
+    .medico {
+      font-family: SfUiDisplayMedium;
+      font-size: 12pt;
+      line-height: 65px;
+    }
+    .modal {
+      height: 347px;
+      position: absolute;
+      bottom: 0px;
+      background: white;
+      z-index: 2;
+      width: 300px;
+      top: 100px;
+      left: 50%;
+      margin-left: -150px;
+      border-radius: 10px;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 230px;
+      height: 46px;
+      left: 50%;
+      margin-left: -115px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+    .nextButtonCancel {
+      border-radius: 20px;
+      width: 230px;
+      height: 46px;
+      left: 50%;
+      margin-left: -115px;
+      background-color: #EA4140;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+  }
+
+  @media screen and (max-width: 400px) and (min-width: 321px) {
+    .titleFirst {
+      font-family: SfUiDisplayLight;
+      font-size: 14pt;
+    }
+    .medico {
+      font-family: SfUiDisplayMedium;
+      font-size: 12pt;
+      line-height: 65px;
+    }
+    .modal {
+      height: 347px;
+      position: absolute;
+      bottom: 0px;
+      background: white;
+      z-index: 2;
+      width: 300px;
+      top: 100px;
+      left: 50%;
+      margin-left: -150px;
+      border-radius: 10px;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 230px;
+      height: 46px;
+      left: 50%;
+      margin-left: -115px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+    .nextButtonCancel {
+      border-radius: 20px;
+      width: 230px;
+      height: 46px;
+      left: 50%;
+      margin-left: -115px;
+      background-color: #EA4140;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+  }
+
+  @media screen and (max-width: 450px) and (min-width: 400px) {
+    .titleFirst {
+      font-family: SfUiDisplayLight;
+      font-size: 14pt;
+    }
+    .medico {
+      font-family: SfUiDisplayMedium;
+      font-size: 12pt;
+      line-height: 65px;
+    }
+    .modal {
+      height: 347px;
+      position: absolute;
+      bottom: 0px;
+      background: white;
+      z-index: 2;
+      width: 300px;
+      top: 100px;
+      left: 50%;
+      margin-left: -150px;
+      border-radius: 10px;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 230px;
+      height: 46px;
+      left: 50%;
+      margin-left: -115px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+    .nextButtonCancel {
+      border-radius: 20px;
+      width: 230px;
+      height: 46px;
+      left: 50%;
+      margin-left: -115px;
+      background-color: #EA4140;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+  }
+
+  @media screen and (max-width: 550px) and (min-width: 450px) {
+    .titleFirst {
+      font-family: SfUiDisplayLight;
+      font-size: 14pt;
+    }
+    .medico {
+      font-family: SfUiDisplayMedium;
+      font-size: 12pt;
+      line-height: 65px;
+    }
+    .modal {
+      height: 347px;
+      position: absolute;
+      bottom: 0px;
+      background: white;
+      z-index: 2;
+      width: 300px;
+      top: 100px;
+      left: 50%;
+      margin-left: -150px;
+      border-radius: 10px;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 230px;
+      height: 46px;
+      left: 50%;
+      margin-left: -115px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+    .nextButtonCancel {
+      border-radius: 20px;
+      width: 230px;
+      height: 46px;
+      left: 50%;
+      margin-left: -115px;
+      background-color: #EA4140;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+  }
+
+  @media screen and (max-width: 1100px) and (min-width: 550px) {
+    .titleFirst {
+      font-family: SfUiDisplayLight;
+      font-size: 14pt;
+    }
+    .medico {
+      font-family: SfUiDisplayMedium;
+      font-size: 12pt;
+      line-height: 65px;
+    }
+    .modal {
+      height: 347px;
+      position: absolute;
+      bottom: 0px;
+      background: white;
+      z-index: 2;
+      width: 300px;
+      top: 100px;
+      left: 50%;
+      margin-left: -150px;
+      border-radius: 10px;
+    }
+    .nextButton {
+      border-radius: 20px;
+      width: 230px;
+      height: 46px;
+      left: 50%;
+      margin-left: -115px;
+      background-color: #00B901;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+    .nextButtonCancel {
+      border-radius: 20px;
+      width: 230px;
+      height: 46px;
+      left: 50%;
+      margin-left: -115px;
+      background-color: #EA4140;
+      font-family: SfUiDisplayRegular;
+      font-size: 12pt;
+    }
+  }
+</style>

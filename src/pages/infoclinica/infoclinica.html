@@ -1,3 +1,4 @@
+<div id="backBlackReserva" style="position: absolute; background-color: black; opacity: 0; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: hidden; transition: all 0.2s linear;"></div>
 <button color="button-color" ion-button full type="" class="reservarButton" (click)="book()">RESERVAR</button>
 <ion-content class="" style="background-color: #F9F9F9; top:0px; left:0px; width: 100%; height: 100%;">
   <ion-grid class="" style="padding: 0;">
@@ -12,7 +13,10 @@
               </button>
             </ion-navbar>
           </td>
-          <td colspan="3" style="vertical-align: bottom;"><img class="logoPosition" src="../assets/icon/logo-blanco.png" style="width: 26%;"></td>
+          <td colspan="2" style="vertical-align: bottom;">
+            <img class="logoPosition" src="../assets/icon/logo-blanco.png" style="width: 26%;">
+            <img src="../assets/icon/share.png" class="shareButton" (click)="showShare()">
+          </td>
         </tr>
         <tr>
           <td colspan="3" padding class="resultsPos" style="z-index: 4; text-align: left; padding-left: 0px; padding-right: 0px;">
@@ -234,10 +238,6 @@
     display: table-cell;
   }
 
-  .logoPosition {
-    margin-left: -40px;
-  }
-
   @media screen and (max-width: 320px) {
     .resultsPos {
     }
@@ -367,6 +367,11 @@
     .imageLogo {
       max-width: 93px;
       border-radius: 6px;
+    }
+    .shareButton {
+      float: right;
+      margin-right: 19px;
+      width: 6%;
     }
   }
 
@@ -500,6 +505,11 @@
       margin-left: 17px;
       margin-top: 26px;
     }
+    .shareButton {
+      float: right;
+      margin-right: 19px;
+      width: 6%;
+    }
   }
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
@@ -631,6 +641,11 @@
     .imageLogo {
       max-width: 115px;
       border-radius: 6px;
+    }
+    .shareButton {
+      float: right;
+      margin-right: 19px;
+      width: 6%;
     }
   }
 
@@ -764,6 +779,11 @@
       max-width: 135px;
       border-radius: 6px;
     }
+    .shareButton {
+      float: right;
+      margin-right: 19px;
+      width: 6%;
+    }
   }
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
@@ -894,6 +914,12 @@
     .imageLogo {
       max-width: 185px;
       border-radius: 6px;
+    }
+    .shareButton {
+      float: right;
+      margin-right: 19px;
+      width: 5%;
+      margin-top: 14px;
     }
   }
 </style>

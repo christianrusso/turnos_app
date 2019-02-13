@@ -6,6 +6,9 @@ export class Constants {
     API_URL = 'http://localhost:5000/api/';
     quantityOfResultsToShow = 10;
     source = 3;
+    baseUrlToSiteForShare = "http://todoreservas.com.ar/";
+    clinicShareFolder = "infoclinica/";
+    hairdressingShareFolder = "peluqueria";
     constructor(
     ){
     }

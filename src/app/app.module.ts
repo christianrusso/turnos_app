@@ -26,6 +26,7 @@ import { MisNotificacionesPage } from '../pages/mis-notificaciones/misnotificaci
 import { PersonalesPage } from '../pages/personales/personales';
 import { CuentaPage } from '../pages/cuenta/cuenta';
 import { HourPage } from '../pages/hour/hour';
+import { SharePage } from '../pages/share/share';
 import { CancelTurnoPage } from '../pages/cancel-turno/cancel-turno';
 import { CompleteTurnoPage } from '../pages/complete-turno/complete-turno';
 import { ReservaGeneradaPage } from '../pages/reserva-generada/reserva-generada';
@@ -37,6 +38,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {IonicStorageModule} from "@ionic/storage";
 import { Geolocation } from '@ionic-native/geolocation';
+import { Clipboard } from '@ionic-native/clipboard';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     NotificacionesPage,
     ReservaPage,
     HourPage,
+    SharePage,
     CancelTurnoPage,
     CompleteTurnoPage,
     FiltrosPage,
@@ -100,6 +103,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     NotificacionesPage,
     ReservaPage,
     HourPage,
+    SharePage,
     CancelTurnoPage,
     CompleteTurnoPage,
     FiltrosPage,
@@ -115,6 +119,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     StatusBar,
     SplashScreen,
     Geolocation,
+    Clipboard,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
