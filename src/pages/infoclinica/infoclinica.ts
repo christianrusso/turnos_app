@@ -20,6 +20,7 @@ export class InfoclinicaPage {
   private moment = moment();
   private day;
   private isOpenDays = false;
+  private isOpenServices = false;
   map:any;
 
   constructor(
@@ -147,6 +148,29 @@ export class InfoclinicaPage {
       this.isOpenDays = true;
     } else {
       this.isOpenDays = false;
+    }
+  }
+
+  showServices() {
+    let elements;
+    if (!this.isOpenServices) {
+      elements = document.querySelectorAll('.notShowServices');
+    } else {
+      elements = document.querySelectorAll('.showServices');
+    }
+    for (let i = 0; i < elements.length; i++) {
+      if (!this.isOpenServices) {
+        elements[i].classList.remove('notShowServices');
+        elements[i].classList.add('showServices');
+      } else {
+        elements[i].classList.remove('showServices');
+        elements[i].classList.add('notShowServices');
+      }
+    }
+    if (!this.isOpenServices) {
+      this.isOpenServices = true;
+    } else {
+      this.isOpenServices = false;
     }
   }
 

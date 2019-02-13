@@ -130,6 +130,47 @@
                   <td class="verticalTop centerInfo" colspan="3">
                     <table style="width: 100%;">
                       <tr>
+                        <td style="font-family: SfUiDisplaySemiBold;" class="infoTitle">SERVICIOS</td>
+                      </tr>
+                      <tr *ngIf="result.subspecialties?.length > 1" (click)="showServices()">
+                        <td><span class="infoTitle" style="font-family: SfUiDisplayRegular;">Ver todos los servicios</span>
+                          <ion-icon style="vertical-align: middle;" *ngIf="isOpenServices == false" name="arrow-dropup"></ion-icon><ion-icon *ngIf="isOpenServices == true" name="arrow-dropdown"></ion-icon>
+                        </td>
+                      </tr>
+                      <tr style="height: 6px;"></tr>
+                      <tr>
+                        <td>
+                          <table style="width: 100%;">
+                            <tr *ngFor="let subspecialty of result.subspecialties; let myIndexServices = index;">
+                              <td *ngIf="category != 'Medicina'" style="font-family: SfUiDisplayLight;" class="infoTitle" [ngClass]="{'notShowServices': myIndexServices > 0}">
+                                {{subspecialty.description}}
+                              </td>
+                              <td *ngIf="category != 'Medicina' && subspecialty.price != '' && subspecialty.price != null" style="font-family: SfUiDisplayLight;" class="infoTitle" [ngClass]="{'notShowServices': myIndexServices > 0}">
+                                ${{subspecialty.price}}
+                              </td>
+                              <td *ngIf="category == 'Medicina'" style="font-family: SfUiDisplayLight;" class="infoTitle" [ngClass]="{'notShowServices': myIndexServices > 0}">
+                                {{subspecialty}}
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr style="width: 100%;">
+                  <td colspan="3">
+                    <table style="width: 100%;">
+                      <tr>
+                        <td><hr></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="verticalTop centerInfo" colspan="3">
+                    <table style="width: 100%;">
+                      <tr>
                         <td style="font-family: SfUiDisplaySemiBold;" class="infoTitle">COMENTARIOS</td>
                       </tr>
                       <tr style="height: 6px;"></tr>
@@ -185,6 +226,12 @@
   }
   .show {
     display: block;
+  }
+  .notShowServices {
+    display: none;
+  }
+  .showServices {
+    display: table-cell;
   }
 
   .logoPosition {
