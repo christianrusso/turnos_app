@@ -38,6 +38,7 @@ export class ReservaPage {
   day;
   dayUnmodified;
   medicalPlan;
+  showBack = false;
 
   constructor(
       public navCtrl: NavController,
@@ -85,7 +86,7 @@ export class ReservaPage {
     );
   }
 
-  ionViewWillEnter() {
+  ionViewDidEnter() {
     if (this.userService.getUserLogin() == null || this.userService.getUserLogin() == '') {
       this.navCtrl.parent.select(4);
     } else {
@@ -212,8 +213,7 @@ export class ReservaPage {
     var dayFirst = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
     var day = this.moment.format(dayFirst + "T00:00:00.000Z");
 
-    (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
-    (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
+    this.showBack = true;
 
     var data = {doctors: this.doctors, date: day, doctor: null, entity: this.id, category: this.category,
     subspecialty: this.specialities[this.speciality].subspecialties[this.subspeciality].id};
@@ -226,8 +226,7 @@ export class ReservaPage {
 
     let orderModal = this.modalCtrl.create(HourPage, data);
     orderModal.onDidDismiss(data => {
-      (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';
-      (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity = '0';
+      this.showBack = false;
       if (data.hour && data.doctor) {
         this.hour = data.hour;
         this.doctor = data.doctor;

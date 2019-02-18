@@ -205,17 +205,26 @@ export class SearchPage {
       }
     }
     this.geolocation.getCurrentPosition().then((resp) => {
-      options.location.latitude = resp.coords.latitude;
-      options.location.longitude = resp.coords.longitude;
-      if (this.filtersService.distance > 0) {
-        options.location.radiusInMeters = this.filtersService.distance * 1000;
-      } else {
-        delete options.location;
+      if (cities.length == 0) {
+        options.location.latitude = resp.coords.latitude;
+        options.location.longitude = resp.coords.longitude;
+        if (this.filtersService.distance > 0) {
+          options.location.radiusInMeters = this.filtersService.distance * 1000;
+        } else {
+          delete options.location;
+        }
       }
 
       this.doSearch(url, options);
     }).catch((error) => {
       console.log('Error getting location', error);
+      if (cities.length == 0) {
+        //BUSCAR OBELISCO!!
+        options.location.latitude = -34.603603;
+        options.location.longitude = -58.381751;
+      } else {
+        delete options.location;
+      }
       this.doSearch(url, options);
     });
   }

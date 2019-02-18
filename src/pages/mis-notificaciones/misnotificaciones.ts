@@ -26,7 +26,7 @@ export class MisNotificacionesPage {
   ) {
   }
 
-  ionViewWillEnter() {
+  ionViewDidEnter() {
     if (this.userService.getUserLogin() == null || this.userService.getUserLogin() == '') {
       this.navCtrl.parent.select(4);
     } else {
