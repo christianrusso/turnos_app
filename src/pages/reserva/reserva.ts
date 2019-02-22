@@ -39,6 +39,7 @@ export class ReservaPage {
   dayUnmodified;
   medicalPlan;
   showBack = false;
+  professional = "";
 
   constructor(
       public navCtrl: NavController,
@@ -96,6 +97,15 @@ export class ReservaPage {
       this.address  = this.navParams.get("address");
       this.city     = this.navParams.get("city");
       this.getSpecialities();
+
+      switch (this.category) {
+        case "Medicina":
+          this.professional = "MÉDICO";
+          break;
+        default:
+          this.professional = "PROFESIONAL";
+          break;
+      }
     }
   }
 
