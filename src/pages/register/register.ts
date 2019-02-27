@@ -44,7 +44,10 @@ export class RegisterPage {
 
   register() {
     if (this.registerForm.value.clave == this.registerForm.value.reclave) {
-      let params = {Email: this.registerForm.value.email, Password: this.registerForm.value.clave};
+      let params = {email: this.registerForm.value.email,
+                    password: this.registerForm.value.clave,
+                    firstName: this.registerForm.value.nombre,
+                    lastName: this.registerForm.value.apellido};
       let d = new Date().getMilliseconds();
       let url = this.constants.API_URL + 'client/register';
       let msj = '';
