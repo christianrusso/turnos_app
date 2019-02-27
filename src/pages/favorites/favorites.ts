@@ -11,7 +11,8 @@ import { UserService } from '../../services/user.service';
 })
 export class FavoritesPage {
 
-  public  results;
+  public results;
+  public resultsHair;
 
   constructor(
       public navCtrl: NavController,
@@ -31,25 +32,17 @@ export class FavoritesPage {
     if (this.userService.getUserLogin() == null || this.userService.getUserLogin() == '') {
       this.navCtrl.parent.select(4);
     } else {
-      let url = this.constants.API_URL + 'Client/GetFavoriteClinics';
-      let cities = [];
+      let url = this.constants.API_URL + 'Client/GetFavorites';
       let headers = new HttpHeaders({
         'Authorization': 'Bearer ' + this.userService.getUserToken(),
       });
       let options = {
-        "Cities": cities,
-        "Specialties": [],
-        "Subspecialties": [],
-        "MedicalInsurances": [],
-        "medicalPlans": [],
-        "Score": "",
-        "ScoreQuantity": "",
         headers
       };
       this.http.get(url, options).subscribe(
           (success: any) => {
-            console.log(success);
-            this.results = success;
+            this.results     = success.clinicFavorites;
+            this.resultsHair = success.hairdressingFavorites;
           },
           error => {
             console.log(error);
@@ -64,9 +57,10 @@ export class FavoritesPage {
     }
   }
 
-  goToClinicInfo(id) {
+  goToClinicInfo(id, category) {
     this.navCtrl.push(InfoclinicaPage, {
-      id: id
+      id: id,
+      category: category
     });
   }
 

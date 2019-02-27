@@ -180,7 +180,22 @@ export class InfoclinicaPage {
     if (this.userService.getUserLogin() == null || this.userService.getUserLogin() == '') {
       this.navCtrl.parent.select(4);
     } else {
-      let url = this.constants.API_URL + 'Client/AddFavoriteClinic';
+      let url = "";
+      switch (this.category) {
+        case "Medicina":
+          url = this.constants.API_URL + 'Client/AddFavoriteClinic';
+          break;
+        case "Peluquerias":
+          url = this.constants.API_URL + 'Client/AddFavoriteHairdressing';
+          break;
+        case "Barberias":
+          url = this.constants.API_URL + 'Client/AddFavoriteHairdressing';
+          break;
+        case "Esteticas":
+          url = this.constants.API_URL + 'Client/AddFavoriteHairdressing';
+          break;
+      }
+
       let headers = new HttpHeaders({
         'Authorization': 'Bearer ' + this.userService.getUserToken(),
       });
@@ -203,7 +218,21 @@ export class InfoclinicaPage {
   }
 
   removeFavoriteClinic() {
-    let url = this.constants.API_URL + 'Client/RemoveFavoriteClinic';
+    let url = "";
+    switch (this.category) {
+      case "Medicina":
+        url = this.constants.API_URL + 'Client/RemoveFavoriteClinic';
+        break;
+      case "Peluquerias":
+        url = this.constants.API_URL + 'Client/RemoveFavoriteHairdressing';
+        break;
+      case "Barberias":
+        url = this.constants.API_URL + 'Client/RemoveFavoriteHairdressing';
+        break;
+      case "Esteticas":
+        url = this.constants.API_URL + 'Client/RemoveFavoriteHairdressing';
+        break;
+    }
     let headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.userService.getUserToken(),
     });

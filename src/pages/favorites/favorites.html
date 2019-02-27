@@ -11,7 +11,40 @@
         </tr>
         <tr>
           <td padding class="resultsPos">
-            <div style="padding-bottom: 13px; margin-bottom: 13px; border-bottom: 1px grey solid;" *ngFor="let result of results; let i = index" (click)="goToClinicInfo(result.clinicId)">
+            <div style="padding-bottom: 13px; margin-bottom: 13px; border-bottom: 1px grey solid;" *ngFor="let result of results; let i = index" (click)="goToClinicInfo(result.clinicId, 'Medicina')">
+              <table>
+                <tr>
+                  <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo" src="{{result.logo}}"></td>
+                  <td class="verticalTop centerInfo">
+                    <table>
+                      <tr class="spaceUnder">
+                        <td style="font-family: SfUiDisplayMedium;" class="centerName">{{result.name}}</td>
+                      </tr>
+                      <tr class="spaceUnder cityText">
+                        <td style="font-family: SfUiDisplayLight;"><ion-icon name="pin"></ion-icon> {{result.city}}</td>
+                      </tr>
+                      <tr style="display: table;">
+                        <td>
+                          <span style="background-color: #454EDB; color:white; vertical-align: middle;" class="scoreSize">{{result.score}}</span>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 0"></ion-icon>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 1"></ion-icon>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 2"></ion-icon>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 3"></ion-icon>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 4"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 0"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 1"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 2"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 3"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 4"></ion-icon>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <div style="padding-bottom: 13px; margin-bottom: 13px; border-bottom: 1px grey solid;" *ngFor="let result of resultsHair; let i = index" (click)="goToClinicInfo(result.hairdressingId, 'Peluquerias')">
               <table>
                 <tr>
                   <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo" src="{{result.logo}}"></td>
