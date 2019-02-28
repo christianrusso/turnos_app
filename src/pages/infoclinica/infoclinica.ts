@@ -6,12 +6,12 @@ import * as moment from 'moment';
 import { UserService } from '../../services/user.service';
 import { ReservaPage } from '../reserva/reserva';
 import { SharePage } from "../share/share";
-
-declare var google: any;
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
 @Component({
   selector: 'page-infoclinica',
-  templateUrl: 'infoclinica.html'
+  templateUrl: 'infoclinica.html',
+  providers :[LaunchNavigator]
 })
 export class InfoclinicaPage {
 
@@ -23,6 +23,7 @@ export class InfoclinicaPage {
   private isOpenDays = false;
   private isOpenServices = false;
   map:any;
+  destinationPoint : any;
 
   constructor(
       public navCtrl: NavController,
@@ -31,11 +32,23 @@ export class InfoclinicaPage {
       private http: HttpClient,
       private constants: Constants,
       private userService: UserService,
-      public modalCtrl: ModalController
+      public modalCtrl: ModalController,
+      private launchNavigator: LaunchNavigator
   ) {
     this.id = navParams.get("id");
     this.category = navParams.get("category");
     this.day = this.moment.day();
+  }
+
+  openMap() {
+    let options: LaunchNavigatorOptions ={
+      app: this.launchNavigator.APP.GOOGLE_MAPS
+    }
+    this.launchNavigator.navigate(this.destinationPoint,options).then(()=>{
+      console.log("launched successfully");
+    }).catch(()=>{
+      console.log("launch failed");
+    })
   }
 
   ionViewWillEnter() {
@@ -90,7 +103,7 @@ export class InfoclinicaPage {
     this.http.post(url, options, {headers}).subscribe(
         (success: any) => {
           this.results = success;
-          this.loadMap(success[0].latitude, success[0].longitude);
+          this.destinationPoint = [this.results[0].latitude, this.results[0].longitude];
         },
         error => {
           console.log(error);
@@ -102,32 +115,6 @@ export class InfoclinicaPage {
           alert.present();
         }
     );
-  }
-
-  loadMap(lat, lng){
-    let latitude = lat;
-    let longitude = lng;
-
-    setTimeout(() => {
-      // create a new map by passing HTMLElement
-      let mapEle: HTMLElement = document.getElementById('map');
-
-      // create LatLng object
-      var latlng = new google.maps.LatLng(latitude, longitude);
-
-      // create map
-      this.map = new google.maps.Map(mapEle, {
-        center: latlng,
-        zoom: 14
-      });
-
-      google.maps.event.addListenerOnce(this.map, 'idle', () => {
-        let marker = new google.maps.Marker({
-          position: latlng,
-          map: this.map
-        });
-      });
-    }, 1000);
   }
 
   showHorarios() {
