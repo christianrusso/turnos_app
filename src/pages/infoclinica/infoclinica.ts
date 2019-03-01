@@ -42,7 +42,6 @@ export class InfoclinicaPage {
 
   openMap() {
     let options: LaunchNavigatorOptions ={
-      app: this.launchNavigator.APP.GOOGLE_MAPS
     }
     this.launchNavigator.navigate(this.destinationPoint,options).then(()=>{
       console.log("launched successfully");
