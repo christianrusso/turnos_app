@@ -12,5 +12,17 @@ page-presearch {
   .range-ios-secondary .range-bar-active, .range-ios-secondary .range-tick-active {
     background: #3740C3;
   }
+  .toolbar-background-md {
+    background: transparent !important;
+  }
+  .back-button-icon-md {
+    color: #488aff;
+  }
+  .toolbar-md {
+    width: 33px;
+  }
+  .back-button-md {
+    min-width: 24px;
+  }
 
 }
