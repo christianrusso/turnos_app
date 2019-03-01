@@ -42,6 +42,7 @@ export class InfoclinicaPage {
 
   openMap() {
     let options: LaunchNavigatorOptions ={
+      app: this.launchNavigator.APP.USER_SELECT
     }
     this.launchNavigator.navigate(this.destinationPoint,options).then(()=>{
       console.log("launched successfully");
