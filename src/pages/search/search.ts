@@ -83,7 +83,9 @@ export class SearchPage {
   }
 
   goToFilters() {
-    this.navCtrl.push(FiltrosPage);
+    this.navCtrl.push(FiltrosPage, {
+      category: this.category
+    });
   }
 
   showOrder() {

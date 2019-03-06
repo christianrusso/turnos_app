@@ -14,6 +14,7 @@ import { SearchPage } from '../search/search';
 export class FiltrosDetailPage {
 
   type;
+  category;
   specialities = [];
   subspecialities = [];
   obrassociales = [];
@@ -42,6 +43,7 @@ export class FiltrosDetailPage {
 
   ionViewWillEnter() {
     this.type = this.navParams.get("type");
+    this.category = this.navParams.get("category");
     this.specialities = this.filtersService.specialities;
     this.subspecialities = this.filtersService.subspecialities;
     this.obrassociales = this.filtersService.obrassociales;
@@ -64,8 +66,22 @@ export class FiltrosDetailPage {
     if (this.type == 'especialidades') {
       url = this.constants.API_URL + 'Data/GetSpecialtiesForSelect';
       options = {
-        "id": 1
+        "Id": 1
       };
+      switch (this.category) {
+        case "Medicina":
+          options["Id"] = 1;
+          break;
+        case "Peluquerias":
+          options["Id"] = 2;
+          break;
+        case "Barberias":
+          options["Id"] = 3;
+          break;
+        case "Esteticas":
+          options["Id"] = 4;
+          break;
+      }
     }
     if (this.type == 'subespecialidades') {
       url = this.constants.API_URL + 'Data/GetSubspecialtiesForSelect';
@@ -79,6 +95,20 @@ export class FiltrosDetailPage {
         "rubro": 1,
         "ids": subChecked
       };
+      switch (this.category) {
+        case "Medicina":
+          options["rubro"] = 1;
+          break;
+        case "Peluquerias":
+          options["rubro"] = 2;
+          break;
+        case "Barberias":
+          options["rubro"] = 3;
+          break;
+        case "Esteticas":
+          options["rubro"] = 4;
+          break;
+      }
     }
     if (this.type == 'obrasocial') {
       url = this.constants.API_URL + 'Data/GetMedicalInsurancesForSelect';
