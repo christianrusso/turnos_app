@@ -44,7 +44,7 @@
               </table>
             </div>
 
-            <div style="padding-bottom: 13px; margin-bottom: 13px; border-bottom: 1px grey solid;" *ngFor="let result of resultsHair; let i = index" (click)="goToClinicInfo(result.hairdressingId, 'Peluquerias')">
+            <div style="padding-bottom: 13px; margin-bottom: 13px; border-bottom: 1px grey solid;" *ngFor="let result of resultsHair; let i = index" (click)="goToClinicInfo(result.hairdressingId, result.businessType)">
               <table>
                 <tr>
                   <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo" src="{{result.logo}}"></td>

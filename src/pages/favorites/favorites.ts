@@ -32,6 +32,7 @@ export class FavoritesPage {
     if (this.userService.getUserLogin() == null || this.userService.getUserLogin() == '') {
       this.navCtrl.parent.select(4);
     } else {
+      console.log(this.constants.API_URL);
       let url = this.constants.API_URL + 'Client/GetFavorites';
       let headers = new HttpHeaders({
         'Authorization': 'Bearer ' + this.userService.getUserToken(),
@@ -58,9 +59,21 @@ export class FavoritesPage {
   }
 
   goToClinicInfo(id, category) {
+    let cat = "";
+    switch (category) {
+      case 2:
+        cat = "Peluquerias";
+        break;
+      case 3:
+        cat = "Barberias";
+        break;
+      case 4:
+        cat = "Esteticas";
+        break;
+    }
     this.navCtrl.push(InfoclinicaPage, {
       id: id,
-      category: category
+      category: cat
     });
   }
 
