@@ -29,7 +29,7 @@ export class LoginPage {
       private tab: Tabs
   ) {
     this.loginForm = this.formBuilder.group({
-      email: [this.data['email'], [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      email: [this.data['email'], Validators.required],
       clave: [this.data['clave'], Validators.required],
     });
   }

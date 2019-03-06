@@ -18,7 +18,7 @@
             <!--<div class="backWhite"></div>-->
               <form [formGroup]="loginForm" (ngSubmit)="login()" style="padding: 17px;">
                 <ion-item>
-                  <ion-label stacked style="font-family: SfUiDisplayLight; font-size: 10pt;">Usuario</ion-label>
+                  <ion-label stacked style="font-family: SfUiDisplayLight; font-size: 10pt;">Usuario o DNI</ion-label>
                   <ion-input formControlName="email" placeholder="" type="email"></ion-input>
                   <img item-right *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
                   <img item-right *ngIf="loginForm.controls.email.valid && loginForm.controls.email.touched" src="../../assets/imgs/check.png" style="width: 10%;">

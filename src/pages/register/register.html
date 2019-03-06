@@ -33,6 +33,12 @@
           <img item-right *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
           <img item-right *ngIf="registerForm.controls.email.valid && registerForm.controls.email.touched" src="../../assets/imgs/check.png" style="width: 10%;">
         </ion-item>
+        <ion-item>
+          <ion-label floating style="font-family: SfUiDisplayLight; font-size: 10pt;">Dni</ion-label>
+          <ion-input formControlName="dni" placeholder="" type="text"></ion-input>
+          <img item-right *ngIf="registerForm.controls.dni.invalid && registerForm.controls.dni.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
+          <img item-right *ngIf="registerForm.controls.dni.valid && registerForm.controls.dni.touched" src="../../assets/imgs/check.png" style="width: 10%;">
+        </ion-item>
 
         <ion-item>
           <ion-label floating style="font-family: SfUiDisplayLight; font-size: 10pt;">Contraseña</ion-label>
