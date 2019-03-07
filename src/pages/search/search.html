@@ -108,7 +108,7 @@
           </td>
         </tr>
         <tr *ngIf="!isListado && infoName != null">
-          <td colspan="3" class="info" style="z-index: 100;">
+          <td colspan="3" class="info" style="z-index: 100;" (click)="goToInfo(entityId)">
             <table>
               <tr>
                 <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo" src="{{infoLogo}}"></td>

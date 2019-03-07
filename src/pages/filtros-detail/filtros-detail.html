@@ -102,10 +102,13 @@
         <tr *ngIf="type == 'distancia'">
           <td colspan="2">
             <ion-item>
-              <ion-range min="0" max="700" [(ngModel)]="distancia" color="secondary">
+              <ion-range min="0" max="50" [(ngModel)]="distancia" color="secondary">
               </ion-range>
             </ion-item>
           </td>
+        </tr>
+        <tr *ngIf="type == 'distancia'">
+          <br>
         </tr>
         <tr *ngIf="type == 'distancia'">
           <td colspan="2" class="kilometersPosition">

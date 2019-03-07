@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import { UserService } from '../../services/user.service';
 import { FiltrosDetailPage } from '../filtros-detail/filtros-detail';
+import { SearchPage } from '../search/search';
 
 @Component({
   selector: 'page-filtros',
@@ -29,6 +30,12 @@ export class FiltrosPage {
   goToDetail(type) {
     this.navCtrl.push(FiltrosDetailPage, {
       type: type,
+      category: this.category
+    });
+  }
+
+  goToSearch(category) {
+    this.navCtrl.push(SearchPage, {
       category: this.category
     });
   }

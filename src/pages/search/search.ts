@@ -36,6 +36,7 @@ export class SearchPage {
   public infoLogo;
   public canShowMap = false;
   public canShowListado = false;
+  public entityId;
 
   constructor(
       public navCtrl: NavController,
@@ -66,6 +67,7 @@ export class SearchPage {
       this.filtersService.locations = [];
       this.filtersService.score = 0;
       this.filtersService.obrassociales = [];
+      console.log("innnn here");
     } else {
       this.category = this.filtersService.category;
       this.AvailableAppointmentStartDate = moment().format('YYYY-MM-DD');
@@ -316,7 +318,8 @@ export class SearchPage {
           city:     this.results[i].city,
           score:    this.results[i].score,
           comments: this.results[i].ratings,
-          icon:     '/assets/icon/marker.png'
+          icon:     '/assets/icon/marker.png',
+          entityId: (typeof this.results[i].clinicId === 'number') ? this.results[i].clinicId : this.results[i].hairdressingId
         });
         markers.push(marker);
         google.maps.event.addListener(marker, 'click', function (event) {
@@ -345,6 +348,7 @@ export class SearchPage {
     this.infoCity     = data.city;
     this.infoRating   = data.score;
     this.infoComments = data.comments;
+    this.entityId     = data.entityId;
   }
 
 }
