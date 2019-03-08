@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class UserService {
@@ -7,36 +8,43 @@ export class UserService {
     userImage;
     myIndex = 0;
     constructor(
+        private storage: Storage
     ) {
-
     }
 
     setUserLogin(user) {
-        this.user = user;
+        this.storage.set('user', user);
     }
 
     setUserToken(token) {
-        this.token = token;
+        this.storage.set('token', token);
     }
 
     setUserImage(image) {
-        this.userImage = image;
+        this.storage.set('userImage', image);
     }
 
     getUserLogin() {
-        return this.user;
+        return this.storage.get('user').then((val) => {
+            return val;
+        });
     }
 
     getUserToken() {
-        return this.token;
+        return this.storage.get('token').then((val) => {
+            return val;
+        });
     }
 
     getUserImage() {
-        return this.userImage;
+        return this.storage.get('userImage').then((val) => {
+            return val;
+        });
     }
 
     destroyUserLogin() {
-        this.user = null;
+        this.storage.clear().then(() => {
+        });
     }
 
 

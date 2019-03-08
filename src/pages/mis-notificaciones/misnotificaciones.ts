@@ -27,7 +27,7 @@ export class MisNotificacionesPage {
   }
 
   ionViewDidEnter() {
-    if (this.userService.getUserLogin() == null || this.userService.getUserLogin() == '') {
+    if (this.userService.getUserLogin() == null) {
       this.navCtrl.parent.select(4);
     } else {
       this.search();
@@ -36,53 +36,59 @@ export class MisNotificacionesPage {
 
   search() {
     let headers = new HttpHeaders();
-    headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
-    let url = this.constants.API_URL + 'Client/GetWeekForClient';
-    let options = {
-      "startDate": new Date(),
-      "endDate": new Date()
-    };
-    this.http.post(url, options, {headers}).subscribe(
-        (success: any) => {
-          this.alertTurn = [];
-          var clinics = success.clinic_GetWeekForClient;
-          var hairdress = success.hairdressing_GetWeekForClient;
-          clinics.forEach(element => {
-            if (element.appointments.length > 0) {
-              element.appointments.forEach(appoint => {
-                if (appoint.state == 1) {
-                  var now = new Date().getTime();
-                  var to = new Date(appoint.dateTime).getTime();
-                  appoint.diffToAppointment = Math.round((to-now) / 60000);
-                }
-                this.alertTurn.push(appoint);
-              })
-            }
-          })
-          hairdress.forEach(element => {
-            if (element.appointments.length > 0) {
-              element.appointments.forEach(appoint => {
-                if (appoint.state == 1) {
-                  var now = new Date().getTime();
-                  var to = new Date(appoint.dateTime).getTime();
-                  appoint.diffToAppointment = Math.round((to-now) / 60000);
-                }
-                this.alertTurn.push(appoint);
-              })
-            }
-          })
-          console.log(this.alertTurn);
-        },
-        error => {
-          console.log(error);
-          let alert = this.alertCtrl.create({
-            title: 'Error!',
-            subTitle: error.error,
-            buttons: ['OK']
-          });
-          alert.present();
-        }
-    );
+    this.userService.getUserLogin().then((value) => {
+      if (value != null) {
+        this.userService.getUserToken().then((tok) => {
+          headers = headers.set('Authorization', 'Bearer ' + tok);
+          let url = this.constants.API_URL + 'Client/GetWeekForClient';
+          let options = {
+            "startDate": new Date(),
+            "endDate": new Date()
+          };
+          this.http.post(url, options, {headers}).subscribe(
+              (success: any) => {
+                this.alertTurn = [];
+                var clinics = success.clinic_GetWeekForClient;
+                var hairdress = success.hairdressing_GetWeekForClient;
+                clinics.forEach(element => {
+                  if (element.appointments.length > 0) {
+                    element.appointments.forEach(appoint => {
+                      if (appoint.state == 1) {
+                        var now = new Date().getTime();
+                        var to = new Date(appoint.dateTime).getTime();
+                        appoint.diffToAppointment = Math.round((to - now) / 60000);
+                      }
+                      this.alertTurn.push(appoint);
+                    })
+                  }
+                })
+                hairdress.forEach(element => {
+                  if (element.appointments.length > 0) {
+                    element.appointments.forEach(appoint => {
+                      if (appoint.state == 1) {
+                        var now = new Date().getTime();
+                        var to = new Date(appoint.dateTime).getTime();
+                        appoint.diffToAppointment = Math.round((to - now) / 60000);
+                      }
+                      this.alertTurn.push(appoint);
+                    })
+                  }
+                })
+                console.log(this.alertTurn);
+              },
+              error => {
+                console.log(error);
+                let alert = this.alertCtrl.create({
+                  title: 'Error!',
+                  subTitle: error.error,
+                  buttons: ['OK']
+                });
+                alert.present();
+              }
+          );
+        });
+      }
+    });
   }
 
 }

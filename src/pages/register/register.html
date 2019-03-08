@@ -18,39 +18,27 @@
         <ion-item>
           <ion-label stacked style="font-family: SfUiDisplayLight; font-size: 10pt;">Nombre</ion-label>
           <ion-input formControlName="nombre" placeholder="" type="text"></ion-input>
-          <img item-right *ngIf="registerForm.controls.nombre.invalid && registerForm.controls.nombre.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
-          <img item-right *ngIf="registerForm.controls.nombre.valid && registerForm.controls.nombre.touched" src="../../assets/imgs/check.png" style="width: 10%;">
         </ion-item>
         <ion-item>
           <ion-label floating style="font-family: SfUiDisplayLight; font-size: 10pt;">Apellido</ion-label>
           <ion-input formControlName="apellido" placeholder="" type="text"></ion-input>
-          <img item-right *ngIf="registerForm.controls.apellido.invalid && registerForm.controls.apellido.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
-          <img item-right *ngIf="registerForm.controls.apellido.valid && registerForm.controls.apellido.touched" src="../../assets/imgs/check.png" style="width: 10%;">
         </ion-item>
         <ion-item>
           <ion-label floating style="font-family: SfUiDisplayLight; font-size: 10pt;">Email</ion-label>
           <ion-input formControlName="email" placeholder="" type="email"></ion-input>
-          <img item-right *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
-          <img item-right *ngIf="registerForm.controls.email.valid && registerForm.controls.email.touched" src="../../assets/imgs/check.png" style="width: 10%;">
         </ion-item>
         <ion-item>
           <ion-label floating style="font-family: SfUiDisplayLight; font-size: 10pt;">Dni</ion-label>
           <ion-input formControlName="dni" placeholder="" type="text"></ion-input>
-          <img item-right *ngIf="registerForm.controls.dni.invalid && registerForm.controls.dni.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
-          <img item-right *ngIf="registerForm.controls.dni.valid && registerForm.controls.dni.touched" src="../../assets/imgs/check.png" style="width: 10%;">
         </ion-item>
 
         <ion-item>
           <ion-label floating style="font-family: SfUiDisplayLight; font-size: 10pt;">Contraseña</ion-label>
           <ion-input formControlName="clave" placeholder="" type="password"></ion-input>
-          <img item-right *ngIf="registerForm.controls.clave.invalid && registerForm.controls.clave.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
-          <img item-right *ngIf="registerForm.controls.clave.valid && registerForm.controls.clave.touched" src="../../assets/imgs/check.png" style="width: 10%;">
         </ion-item>
         <ion-item>
           <ion-label floating style="font-family: SfUiDisplayLight; font-size: 10pt;">Repita Contraseña</ion-label>
           <ion-input formControlName="reclave" placeholder="" type="password"></ion-input>
-          <img item-right *ngIf="registerForm.value.clave != registerForm.value.reclave && registerForm.controls.reclave.touched" src="../../assets/imgs/cross.png" style="width: 10%;">
-          <img item-right *ngIf="registerForm.value.clave == registerForm.value.reclave && registerForm.controls.reclave.touched" src="../../assets/imgs/check.png" style="width: 10%;">
         </ion-item>
         <div class="buttonRegister">
           <button color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" [disabled]="!registerForm.valid">Registrarme</button>

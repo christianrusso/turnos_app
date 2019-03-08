@@ -33,7 +33,7 @@
                           <div>{{appoint.clinica}} - {{appoint.doctor}} - {{appoint.subspecialty}} - {{appoint.date}}</div>
                         </div>
                         <div *ngIf="appoint.state == 1 && appoint.datePosition"><ion-icon name="checkmark" class="iconsFont" (click)="completeTurno(appoint.id, appoint.rubro)"></ion-icon></div>
-                        <div *ngIf="appoint.state == 1"><ion-icon name="close" class="iconsFont" (click)="cancelTurno(appoint.id, appoint.rubro)"></ion-icon></div>
+                        <div *ngIf="appoint.state == 1 && !appoint.datePosition"><ion-icon name="close" class="iconsFont" (click)="cancelTurno(appoint.id, appoint.rubro)"></ion-icon></div>
                         <div *ngIf="appoint.state == 2">&nbsp;Cancelado</div>
                       </div>
                     </div>
@@ -42,6 +42,7 @@
             </table>
           </td>
         </tr>
+        <tr *ngIf="options.daysConfig.length == 0" class="infoButton">No tiene turnos en este momento</tr>
       </table>
     </ion-grid>
   </ion-grid>
@@ -95,11 +96,8 @@
       height: 26px;
       background-color: transparent;
       font-family: SfUiDisplayRegular;
-      font-size: 9pt;
-      color: #3740C3;
-      border-color: #3740C3;
-      border: 1px solid;
-      box-shadow: none;
+      font-size: 12pt;
+      color: black;
     }
     .cityText {
       font-size: 10pt;
@@ -156,11 +154,8 @@
       height: 28px;
       background-color: transparent;
       font-family: SfUiDisplayRegular;
-      font-size: 10pt;
-      color: #3740C3;
-      border-color: #3740C3;
-      border: 1px solid;
-      box-shadow: none;
+      font-size: 15pt;
+      color: black;
     }
     .cityText {
       font-size: 10pt;
@@ -217,11 +212,8 @@
       height: 30px;
       background-color: transparent;
       font-family: SfUiDisplayRegular;
-      font-size: 10pt;
-      color: #3740C3;
-      border-color: #3740C3;
-      border: 1px solid;
-      box-shadow: none;
+      font-size: 16pt;
+      color: black;
     }
     .cityText {
       font-size: 10pt;
@@ -279,11 +271,8 @@
       height: 30px;
       background-color: transparent;
       font-family: SfUiDisplayRegular;
-      font-size: 13pt;
-      color: #3740C3;
-      border-color: #3740C3;
-      border: 1px solid;
-      box-shadow: none;
+      font-size: 18pt;
+      color: black;
     }
     .cityText {
       font-size: 13pt;
@@ -341,11 +330,8 @@
       height: 47px;
       background-color: transparent;
       font-family: SfUiDisplayRegular;
-      font-size: 19pt;
-      color: #3740C3;
-      border-color: #3740C3;
-      border: 1px solid;
-      box-shadow: none;
+      font-size: 24pt;
+      color: black;
     }
     .cityText {
       font-size: 18pt;

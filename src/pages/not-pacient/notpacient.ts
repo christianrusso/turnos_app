@@ -35,58 +35,65 @@ export class NotpacientPage {
 
   getInsurances() {
     let headers = new HttpHeaders();
-    if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
-      headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
-    }
-
-    let url = this.constants.API_URL + 'MedicalInsurance/GetAllByClinic';
-    let options = {
-      "id": this.clinicId
-    };
-    return this.http.post(url, options, {headers}).subscribe(
-        (success: any) => {
-          this.insurances = success;
-        },
-        error => {
-          console.log(error);
-          let alert = this.alertCtrl.create({
-            title: 'Error!',
-            subTitle: error.error,
-            buttons: ['OK']
-          });
-          alert.present();
-        }
-    );
+    this.userService.getUserLogin().then((value) => {
+      if (value != null) {
+        this.userService.getUserToken().then((tok) => {
+          headers = headers.set('Authorization', 'Bearer ' + tok);
+          let url = this.constants.API_URL + 'MedicalInsurance/GetAllByClinic';
+          let options = {
+            "id": this.clinicId
+          };
+          return this.http.post(url, options, {headers}).subscribe(
+              (success: any) => {
+                this.insurances = success;
+              },
+              error => {
+                console.log(error);
+                let alert = this.alertCtrl.create({
+                  title: 'Error!',
+                  subTitle: error.error,
+                  buttons: ['OK']
+                });
+                alert.present();
+              }
+          );
+        });
+      }
+    });
   }
 
   getPlans(insurance) {
     this.plan = null;
     if (insurance != "" && insurance != null) {
       let headers = new HttpHeaders();
-      if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
-        headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
-      }
+      this.userService.getUserLogin().then((value) => {
+        if (value != null) {
+          this.userService.getUserToken().then((tok) => {
+            headers = headers.set('Authorization', 'Bearer ' + tok);
 
-      let url = this.constants.API_URL + 'MedicalPlan/GetAll';
-      let options = {
-        "Id": insurance,
-        "UserId": this.clinicId
-      };
-      return this.http.post(url, options, {headers}).subscribe(
-          (success: any) => {
-            this.plans = success;
-            console.log(success);
-          },
-          error => {
-            console.log(error);
-            let alert = this.alertCtrl.create({
-              title: 'Error!',
-              subTitle: error.error,
-              buttons: ['OK']
-            });
-            alert.present();
-          }
-      );
+            let url = this.constants.API_URL + 'MedicalPlan/GetAll';
+            let options = {
+              "Id": insurance,
+              "UserId": this.clinicId
+            };
+            return this.http.post(url, options, {headers}).subscribe(
+                (success: any) => {
+                  this.plans = success;
+                  console.log(success);
+                },
+                error => {
+                  console.log(error);
+                  let alert = this.alertCtrl.create({
+                    title: 'Error!',
+                    subTitle: error.error,
+                    buttons: ['OK']
+                  });
+                  alert.present();
+                }
+            );
+          });
+        }
+      });
     }
   }
 

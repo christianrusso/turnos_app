@@ -20,16 +20,22 @@ export class TabsPage {
   tab5Root = LoginPage;
   tab6Root = ProfilePage;
   myIndex = 0;
+  showProfile = false;
 
   constructor(
       private userService: UserService,
       public navCtrl: NavController
   ) {
+    this.checkLogin();
   }
 
   checkLogin() {
-    if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != "") {
-      this.myIndex = 5;
-    }
+    this.userService.getUserLogin().then((value) => {
+      if (value != null) {
+        this.showProfile = true;
+      } else {
+        this.showProfile = false;
+      }
+    })
   }
 }

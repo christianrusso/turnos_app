@@ -36,37 +36,41 @@ export class PersonalesPage {
 
   sendData() {
     let headers = new HttpHeaders();
-    if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
-      headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
-    }
-    let url = this.constants.API_URL + 'Client/Edit';
-    let options = {
-      "FirstName": this.firstName,
-      "LastName": this.lastName,
-      "Address": this.address,
-      "PhoneNumber": this.phone,
-      "Dni": this.dni,
-      "Email": this.email
-    };
-    this.http.post(url, options, {headers}).subscribe(
-        (success: any) => {
-          this.isEditing = false;
-          let alert = this.alertCtrl.create({
-            subTitle: "Datos modificados con exito",
-            buttons: ['OK']
-          });
-          alert.present();
-        },
-        error => {
-          console.log(error);
-          let alert = this.alertCtrl.create({
-            title: 'Error!',
-            subTitle: error.error,
-            buttons: ['OK']
-          });
-          alert.present();
-        }
-    );
+    this.userService.getUserLogin().then((value) => {
+      if (value != null) {
+        this.userService.getUserToken().then((tok) => {
+          headers = headers.set('Authorization', 'Bearer ' + tok);
+          let url = this.constants.API_URL + 'Client/Edit';
+          let options = {
+            "FirstName": this.firstName,
+            "LastName": this.lastName,
+            "Address": this.address,
+            "PhoneNumber": this.phone,
+            "Dni": this.dni,
+            "Email": this.email
+          };
+          this.http.post(url, options, {headers}).subscribe(
+              (success: any) => {
+                this.isEditing = false;
+                let alert = this.alertCtrl.create({
+                  subTitle: "Datos modificados con exito",
+                  buttons: ['OK']
+                });
+                alert.present();
+              },
+              error => {
+                console.log(error);
+                let alert = this.alertCtrl.create({
+                  title: 'Error!',
+                  subTitle: error.error,
+                  buttons: ['OK']
+                });
+                alert.present();
+              }
+          );
+        });
+      }
+    });
   }
 
   ionViewWillEnter() {
@@ -75,32 +79,36 @@ export class PersonalesPage {
 
   getData() {
     let headers = new HttpHeaders();
-    if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
-      headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
-    }
-    let url = this.constants.API_URL + 'Client/GetProfile';
-    let options = {
-      headers: headers
-    };
-    this.http.get(url, options).subscribe(
-        (success: any) => {
-          this.firstName = success.firstName;
-          this.lastName  = success.lastName;
-          this.address   = success.address;
-          this.dni       = success.dni;
-          this.phone     = success.phoneNumber;
-          this.email     = this.userService.getUserLogin();
-        },
-        error => {
-          console.log(error);
-          let alert = this.alertCtrl.create({
-            title: 'Error!',
-            subTitle: error.error,
-            buttons: ['OK']
-          });
-          alert.present();
-        }
-    );
+    this.userService.getUserLogin().then((value) => {
+      if (value != null) {
+        this.userService.getUserToken().then((tok) => {
+          headers = headers.set('Authorization', 'Bearer ' + tok);
+          let url = this.constants.API_URL + 'Client/GetProfile';
+          let options = {
+            headers: headers
+          };
+          this.http.get(url, options).subscribe(
+              (success: any) => {
+                this.firstName = success.firstName;
+                this.lastName = success.lastName;
+                this.address = success.address;
+                this.dni = success.dni;
+                this.phone = success.phoneNumber;
+                this.email = value;
+              },
+              error => {
+                console.log(error);
+                let alert = this.alertCtrl.create({
+                  title: 'Error!',
+                  subTitle: error.error,
+                  buttons: ['OK']
+                });
+                alert.present();
+              }
+          );
+        });
+      }
+    });
   }
 
 }

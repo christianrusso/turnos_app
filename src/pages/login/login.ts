@@ -6,6 +6,7 @@ import { Constants } from '../../app/constants';
 import { UserService } from '../../services/user.service';
 import { RegisterPage } from '../register/register';
 import { AyudaPage } from '../ayuda/ayuda';
+import {ProfilePage} from "../profile/profile";
 
 @Component({
   selector: 'page-login',
@@ -32,6 +33,18 @@ export class LoginPage {
       email: [this.data['email'], Validators.required],
       clave: [this.data['clave'], Validators.required],
     });
+  }
+
+  ionViewWillEnter() {
+    this.checkLogin();
+  }
+
+  checkLogin() {
+    this.userService.getUserLogin().then((value) => {
+      if (value != null) {
+        this.navCtrl.push(ProfilePage);
+      }
+    })
   }
 
   login() {

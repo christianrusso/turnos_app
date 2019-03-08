@@ -7,6 +7,7 @@ import { UserService } from '../../services/user.service';
 import { CuentaPage } from '../cuenta/cuenta';
 import { PersonalesPage } from '../personales/personales';
 import { NotificacionesPage } from '../notificaciones/notificaciones';
+import {LoginPage} from "../login/login";
 
 @Component({
   selector: 'page-profile',
@@ -22,6 +23,18 @@ export class ProfilePage {
       private constants: Constants,
       private userService: UserService
   ) {
+  }
+
+  ionViewWillEnter() {
+    this.checkLogin();
+  }
+
+  checkLogin() {
+    this.userService.getUserLogin().then((value) => {
+      if (value == null) {
+        this.navCtrl.push(LoginPage);
+      }
+    })
   }
 
   goToReservas() {

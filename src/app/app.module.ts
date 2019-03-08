@@ -36,9 +36,9 @@ import { ReservaPage } from '../pages/reserva/reserva';
 import { CalendarModule } from "ion2-calendar";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {IonicStorageModule} from "@ionic/storage";
 import { Geolocation } from '@ionic-native/geolocation';
 import { Clipboard } from '@ionic-native/clipboard';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -78,8 +78,8 @@ import { Clipboard } from '@ionic-native/clipboard';
       iconMode: 'ios',
       tabsPlacement: 'bottom'
     }),
+    IonicStorageModule.forRoot(),
     HttpClientModule,
-    IonicStorageModule,
     CalendarModule
   ],
   bootstrap: [IonicApp],

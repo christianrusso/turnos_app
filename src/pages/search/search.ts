@@ -67,7 +67,6 @@ export class SearchPage {
       this.filtersService.locations = [];
       this.filtersService.score = 0;
       this.filtersService.obrassociales = [];
-      console.log("innnn here");
     } else {
       this.category = this.filtersService.category;
       this.AvailableAppointmentStartDate = moment().format('YYYY-MM-DD');
@@ -331,6 +330,24 @@ export class SearchPage {
           this.map.setCenter(marker.getPosition());
         });
         bounds.extend(new google.maps.LatLng(this.results[i].latitude, this.results[i].longitude));
+      }
+
+      var myloc = new google.maps.Marker({
+        clickable: false,
+        icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+            new google.maps.Size(22,22),
+            new google.maps.Point(0,18),
+            new google.maps.Point(11,11)),
+        shadow: null,
+        zIndex: 999,
+        map: this.map
+      });
+
+      if (navigator.geolocation){
+        this.geolocation.getCurrentPosition().then((resp) => {
+          var me = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+          myloc.setPosition(me);
+        });
       }
 
       // Fit these bounds to the map

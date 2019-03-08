@@ -59,7 +59,7 @@
                 <td>
                   <select style="background-color:transparent;
               -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize" (change)="getSubspecialities($event.target.value);">
-                    <option value=""></option>
+                    <option value="">Seleccionar</option>
                     <option *ngFor="let speciality of specialities; let i = index" value="{{i}}">{{speciality.description}}</option>
                   </select>
                 </td>
@@ -69,7 +69,7 @@
                 <td>
                   <select style="background-color:transparent;
               -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize" (change)="getDoctors($event.target.value);">
-                    <option value=""></option>
+                    <option value="">Seleccionar</option>
                     <option *ngFor="let subspeciality of subspecialities; let i = index" value="{{i}}">{{subspeciality.description}}</option>
                   </select>
                 </td>
@@ -79,7 +79,7 @@
                 <td>
                   <select style="background-color:transparent;
               -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize" [(ngModel)]="doctor">
-                    <option value=""></option>
+                    <option value="">Seleccionar</option>
                     <option *ngFor="let doctor of doctors; let i = index" value="{{i}}">{{doctor.firstName}} {{doctor.lastName}}</option>
                   </select>
                 </td>

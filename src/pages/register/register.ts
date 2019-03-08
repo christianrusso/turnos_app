@@ -61,7 +61,7 @@ export class RegisterPage {
           this.http.post(url, params).subscribe(
               (success: any) => {
                 let alert = this.alertCtrl.create({
-                  title: 'Error!',
+                  title: '',
                   subTitle: 'Registro Exitoso',
                   buttons: ['OK']
                 });

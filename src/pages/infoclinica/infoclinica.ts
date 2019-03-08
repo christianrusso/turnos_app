@@ -57,10 +57,19 @@ export class InfoclinicaPage {
 
   search() {
     let headers = new HttpHeaders();
-    if (this.userService.getUserLogin() != null && this.userService.getUserLogin() != '') {
-      headers = headers.set('Authorization', 'Bearer ' + this.userService.getUserToken())
-    }
+    this.userService.getUserLogin().then((value) => {
+      if (value != null) {
+        this.userService.getUserToken().then((tok) => {
+          headers = headers.set('Authorization', 'Bearer ' + tok);
+          this.doSearch(headers);
+        });
+      } else {
+        this.doSearch(headers);
+      }
+    });
+  }
 
+  doSearch(headers) {
     let businessType;
     let options = {
       "Cities": [],
@@ -164,44 +173,47 @@ export class InfoclinicaPage {
   }
 
   favoriteClinic() {
-    if (this.userService.getUserLogin() == null || this.userService.getUserLogin() == '') {
-      this.navCtrl.parent.select(4);
-    } else {
-      let url = "";
-      switch (this.category) {
-        case "Medicina":
-          url = this.constants.API_URL + 'Client/AddFavoriteClinic';
-          break;
-        case "Peluquerias":
-          url = this.constants.API_URL + 'Client/AddFavoriteHairdressing';
-          break;
-        case "Barberias":
-          url = this.constants.API_URL + 'Client/AddFavoriteHairdressing';
-          break;
-        case "Esteticas":
-          url = this.constants.API_URL + 'Client/AddFavoriteHairdressing';
-          break;
-      }
+    this.userService.getUserLogin().then((value) => {
+      if (value != null) {
+        let url = "";
+        switch (this.category) {
+          case "Medicina":
+            url = this.constants.API_URL + 'Client/AddFavoriteClinic';
+            break;
+          case "Peluquerias":
+            url = this.constants.API_URL + 'Client/AddFavoriteHairdressing';
+            break;
+          case "Barberias":
+            url = this.constants.API_URL + 'Client/AddFavoriteHairdressing';
+            break;
+          case "Esteticas":
+            url = this.constants.API_URL + 'Client/AddFavoriteHairdressing';
+            break;
+        }
 
-      let headers = new HttpHeaders({
-        'Authorization': 'Bearer ' + this.userService.getUserToken(),
-      });
-      let options = {headers};
-      this.http.post(url, {Id: this.id}, options).subscribe(
-          (success: any) => {
-            this.results[0].isFavorite = true;
-          },
-          error => {
-            console.log(error);
-            let alert = this.alertCtrl.create({
-              title: 'Error!',
-              subTitle: error.error,
-              buttons: ['OK']
-            });
-            alert.present();
-          }
-      );
-    }
+        this.userService.getUserToken().then((tok) => {
+          let headers = new HttpHeaders();
+          headers = headers.set('Authorization', 'Bearer ' + tok);
+          let options = {headers};
+          this.http.post(url, {Id: this.id}, options).subscribe(
+              (success: any) => {
+                this.results[0].isFavorite = true;
+              },
+              error => {
+                console.log(error);
+                let alert = this.alertCtrl.create({
+                  title: 'Error!',
+                  subTitle: error.error,
+                  buttons: ['OK']
+                });
+                alert.present();
+              }
+          );
+        });
+      } else {
+        this.navCtrl.parent.select(4);
+      }
+    });
   }
 
   removeFavoriteClinic() {
@@ -220,24 +232,25 @@ export class InfoclinicaPage {
         url = this.constants.API_URL + 'Client/RemoveFavoriteHairdressing';
         break;
     }
-    let headers = new HttpHeaders({
-      'Authorization': 'Bearer ' + this.userService.getUserToken(),
+    this.userService.getUserToken().then((tok) => {
+      let headers = new HttpHeaders();
+      headers = headers.set('Authorization', 'Bearer ' + tok);
+      let options = {headers};
+      this.http.post(url, {Id: this.id}, options).subscribe(
+          (success: any) => {
+            this.results[0].isFavorite = false;
+          },
+          error => {
+            console.log(error);
+            let alert = this.alertCtrl.create({
+              title: 'Error!',
+              subTitle: error.error,
+              buttons: ['OK']
+            });
+            alert.present();
+          }
+      );
     });
-    let options = {headers};
-    this.http.post(url, {Id: this.id}, options).subscribe(
-        (success: any) => {
-          this.results[0].isFavorite = false;
-        },
-        error => {
-          console.log(error);
-          let alert = this.alertCtrl.create({
-            title: 'Error!',
-            subTitle: error.error,
-            buttons: ['OK']
-          });
-          alert.present();
-        }
-    );
   }
 
   book() {

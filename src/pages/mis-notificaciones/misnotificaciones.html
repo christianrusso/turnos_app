@@ -39,6 +39,9 @@
             <hr>
           </td>
         </tr>
+        <tr *ngIf="alertTurn.length == 0">
+          <p class="title" style="text-align: center;">No tiene notificaciones en este momento</p>
+        </tr>
       </table>
     </ion-grid>
   </ion-grid>
