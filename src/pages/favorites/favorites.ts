@@ -13,6 +13,7 @@ export class FavoritesPage {
 
   public results = [];
   public resultsHair = [];
+  public isSearching = false;
 
   constructor(
       public navCtrl: NavController,
@@ -32,6 +33,7 @@ export class FavoritesPage {
     this.userService.getUserLogin().then((value) => {
       if (value != null) {
         this.userService.getUserToken().then((tok) => {
+          this.isSearching = true;
           let headers = new HttpHeaders();
           headers = headers.set('Authorization', 'Bearer ' + tok);
           let url = this.constants.API_URL + 'Client/GetFavorites';
@@ -42,6 +44,7 @@ export class FavoritesPage {
               (success: any) => {
                 this.results     = success.clinicFavorites;
                 this.resultsHair = success.hairdressingFavorites;
+                this.isSearching = false;
               },
               error => {
                 console.log(error);
@@ -51,6 +54,7 @@ export class FavoritesPage {
                   buttons: ['OK']
                 });
                 alert.present();
+                this.isSearching = false;
               }
           );
         });

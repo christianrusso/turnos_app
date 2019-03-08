@@ -39,10 +39,13 @@
             <hr>
           </td>
         </tr>
-        <tr *ngIf="alertTurn.length == 0">
+        <tr *ngIf="alertTurn.length == 0 && !isSearching">
           <p class="title" style="text-align: center;">No tiene notificaciones en este momento</p>
         </tr>
       </table>
+      <div *ngIf="isSearching" style="width: 50%; text-align: center; top: 50%; position: absolute; left: 50%; margin-left: -25%;">
+        <div class=""><img src="/assets/icon/loader.gif" style="width: 50%;" /></div>
+      </div>
     </ion-grid>
   </ion-grid>
 </ion-content>

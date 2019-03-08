@@ -22,6 +22,7 @@ export class TurnosPage {
     daysConfig: []
   };
   public hasAppeared = false;
+  public isSearching = false;
 
   constructor(
       public navCtrl: NavController,
@@ -43,6 +44,8 @@ export class TurnosPage {
       if (value == null) {
         this.navCtrl.parent.select(4);
       } else {
+        this.isSearching = true;
+
         let _daysConfig: DayConfig[] = [];
         this.options.daysConfig = _daysConfig;
 
@@ -104,6 +107,7 @@ export class TurnosPage {
                 });
                 this.options.daysConfig = _daysConfig;
                 this.hasAppeared = true;
+                this.isSearching = false;
               },
               error => {
                 console.log(error);
@@ -113,6 +117,7 @@ export class TurnosPage {
                   buttons: ['OK']
                 });
                 alert.present();
+                this.isSearching = false;
               }
           );
         });

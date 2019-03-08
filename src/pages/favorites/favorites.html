@@ -78,8 +78,11 @@
             </div>
           </td>
         </tr>
-        <tr *ngIf="results.length == 0 && resultsHair.length == 0" class="centerName" style="text-align: center;">No tiene favoritos actualmente</tr>
+        <tr *ngIf="results.length == 0 && resultsHair.length == 0 && !isSearching" class="centerName" style="text-align: center;">No tiene favoritos actualmente</tr>
       </table>
+      <div *ngIf="isSearching" style="width: 50%; text-align: center; top: 50%; position: absolute; left: 50%; margin-left: -25%;">
+        <div class=""><img src="/assets/icon/loader.gif" style="width: 50%;" /></div>
+      </div>
     </ion-grid>
   </ion-grid>
 </ion-content>

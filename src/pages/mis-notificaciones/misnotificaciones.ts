@@ -15,6 +15,7 @@ import { NotificacionesPage } from '../notificaciones/notificaciones';
 export class MisNotificacionesPage {
 
   alertTurn = [];
+  isSearching = false;
 
   constructor(
       public navCtrl: NavController,
@@ -39,6 +40,8 @@ export class MisNotificacionesPage {
     this.userService.getUserLogin().then((value) => {
       if (value != null) {
         this.userService.getUserToken().then((tok) => {
+          this.isSearching = true;
+          this.alertTurn = [];
           headers = headers.set('Authorization', 'Bearer ' + tok);
           let url = this.constants.API_URL + 'Client/GetWeekForClient';
           let options = {
@@ -74,7 +77,7 @@ export class MisNotificacionesPage {
                     })
                   }
                 })
-                console.log(this.alertTurn);
+                this.isSearching = false;
               },
               error => {
                 console.log(error);
@@ -84,6 +87,7 @@ export class MisNotificacionesPage {
                   buttons: ['OK']
                 });
                 alert.present();
+                this.isSearching = false;
               }
           );
         });
