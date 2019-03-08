@@ -220,6 +220,14 @@ export class ReservaPage {
                 console.log(_daysConfig);
                 this.options.daysConfig = _daysConfig;
                 this.isSearching = false;
+
+                let exists = false;
+                const interval = window.setInterval(() => {
+                  if (document.querySelector('.week-toolbar') as HTMLElement) {
+                    (document.querySelector('.week-toolbar') as HTMLElement).style.width = "100%";
+                    window.clearInterval(interval);
+                  }
+                }, 200);
               },
               error => {
                 console.log(error);

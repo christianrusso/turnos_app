@@ -4,13 +4,10 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import { UserService } from '../../services/user.service';
-import { CuentaPage } from '../cuenta/cuenta';
-import { PersonalesPage } from '../personales/personales';
-import { NotificacionesPage } from '../notificaciones/notificaciones';
 
 @Component({
   selector: 'page-mis-notificaciones',
-  templateUrl: 'misnotificaciones.html'
+  templateUrl: 'misnotificaciones.html',
 })
 export class MisNotificacionesPage {
 
