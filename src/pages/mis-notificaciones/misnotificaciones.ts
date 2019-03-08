@@ -25,11 +25,14 @@ export class MisNotificacionesPage {
   }
 
   ionViewDidEnter() {
-    if (this.userService.getUserLogin() == null) {
-      this.navCtrl.parent.select(4);
-    } else {
-      this.search();
-    }
+    let headers = new HttpHeaders();
+    this.userService.getUserLogin().then((value) => {
+      if (value == null) {
+        this.navCtrl.parent.select(4);
+      } else {
+        this.search();
+      }
+    });
   }
 
   search() {
