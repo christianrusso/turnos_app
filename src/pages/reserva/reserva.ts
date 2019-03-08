@@ -40,6 +40,7 @@ export class ReservaPage {
   medicalPlan;
   showBack = false;
   professional = "";
+  isSearching = false;
 
   constructor(
       public navCtrl: NavController,
@@ -168,6 +169,8 @@ export class ReservaPage {
     this.userService.getUserLogin().then((value) => {
       if (value != null) {
         this.userService.getUserToken().then((tok) => {
+          this.isSearching = true;
+
           headers = headers.set('Authorization', 'Bearer ' + tok);
           let options = {
             "startDate":      this.moment.format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z",
@@ -216,6 +219,7 @@ export class ReservaPage {
                 });
                 console.log(_daysConfig);
                 this.options.daysConfig = _daysConfig;
+                this.isSearching = false;
               },
               error => {
                 console.log(error);
@@ -225,6 +229,7 @@ export class ReservaPage {
                   buttons: ['OK']
                 });
                 alert.present();
+                this.isSearching = false;
               }
           );
         });

@@ -130,6 +130,9 @@
             </table>
           </td>
         </tr>
+        <tr *ngIf="isSearching">
+          <td style="width: 100%;"><img src="/assets/icon/loader.gif" style="width: 28%;" /></td>
+        </tr>
         <tr><br></tr>
         <tr><br></tr>
         <tr *ngIf="step != 3">
