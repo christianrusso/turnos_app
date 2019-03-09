@@ -7,7 +7,7 @@ export class Constants {
     quantityOfResultsToShow = 10;
     source = 3;
     baseUrlToSiteForShare = "http://todoreservas.com.ar/";
-    clinicShareFolder = "infoclinica/";
+    clinicShareFolder = "info://info/";
     hairdressingShareFolder = "peluqueria";
     dniLength = 7;
     constructor(

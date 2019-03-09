@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, NavParams } from 'ionic-angular';
-import { InfoclinicaPage } from '../infoclinica/infoclinica';
+import { InfoPage } from '../info/info';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import { UserService } from '../../services/user.service';
@@ -81,7 +81,7 @@ export class FavoritesPage {
           break;
       }
     }
-    this.navCtrl.push(InfoclinicaPage, {
+    this.navCtrl.push(InfoPage, {
       id: id,
       category: cat
     });

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, NavParams, ModalController } from 'ionic-angular';
-import { InfoclinicaPage } from '../infoclinica/infoclinica';
+import { InfoPage } from '../info/info';
 import { OrderPage } from '../order/order';
 import { FiltrosPage } from '../filtros/filtros';
 import { HttpClient } from '@angular/common/http';
@@ -77,7 +77,7 @@ export class SearchPage {
   }
 
   goToInfo(id) {
-    this.navCtrl.push(InfoclinicaPage, {
+    this.navCtrl.push(InfoPage, {
       id: id,
       category: this.category
     });

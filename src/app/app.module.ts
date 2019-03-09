@@ -11,7 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ProfilePage } from '../pages/profile/profile';
 import { PreSearchPage } from '../pages/pre-search/pre-search';
-import { InfoclinicaPage } from '../pages/infoclinica/infoclinica';
+import { InfoPage } from '../pages/info/info';
 import { SearchPage } from '../pages/search/search';
 import { AyudaPage } from '../pages/ayuda/ayuda';
 import { NotificacionesPage } from '../pages/notificaciones/notificaciones';
@@ -26,7 +26,6 @@ import { MisNotificacionesPage } from '../pages/mis-notificaciones/misnotificaci
 import { PersonalesPage } from '../pages/personales/personales';
 import { CuentaPage } from '../pages/cuenta/cuenta';
 import { HourPage } from '../pages/hour/hour';
-import { SharePage } from '../pages/share/share';
 import { CancelTurnoPage } from '../pages/cancel-turno/cancel-turno';
 import { CompleteTurnoPage } from '../pages/complete-turno/complete-turno';
 import { ReservaGeneradaPage } from '../pages/reserva-generada/reserva-generada';
@@ -37,8 +36,9 @@ import { CalendarModule } from "ion2-calendar";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
-import { Clipboard } from '@ionic-native/clipboard';
 import { IonicStorageModule } from '@ionic/storage';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 
 @NgModule({
   declarations: [
@@ -51,7 +51,7 @@ import { IonicStorageModule } from '@ionic/storage';
     TabsPage,
     PreSearchPage,
     SearchPage,
-    InfoclinicaPage,
+    InfoPage,
     AyudaPage,
     FavoritesPage,
     OrderPage,
@@ -61,7 +61,6 @@ import { IonicStorageModule } from '@ionic/storage';
     NotificacionesPage,
     ReservaPage,
     HourPage,
-    SharePage,
     CancelTurnoPage,
     CompleteTurnoPage,
     FiltrosPage,
@@ -93,7 +92,7 @@ import { IonicStorageModule } from '@ionic/storage';
     ProfilePage,
     PreSearchPage,
     SearchPage,
-    InfoclinicaPage,
+    InfoPage,
     AyudaPage,
     FavoritesPage,
     OrderPage,
@@ -103,7 +102,6 @@ import { IonicStorageModule } from '@ionic/storage';
     NotificacionesPage,
     ReservaPage,
     HourPage,
-    SharePage,
     CancelTurnoPage,
     CompleteTurnoPage,
     FiltrosPage,
@@ -119,7 +117,8 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     Geolocation,
-    Clipboard,
+    SocialSharing,
+    Deeplinks,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

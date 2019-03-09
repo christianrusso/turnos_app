@@ -1,19 +1,20 @@
-import { Component } from '@angular/core';
-import { NavController, AlertController, NavParams, ModalController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, AlertController, NavParams, ModalController, Nav, Platform } from 'ionic-angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import * as moment from 'moment';
 import { UserService } from '../../services/user.service';
 import { ReservaPage } from '../reserva/reserva';
-import { SharePage } from "../share/share";
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Deeplinks } from "@ionic-native/deeplinks/ngx";
 
 @Component({
-  selector: 'page-infoclinica',
-  templateUrl: 'infoclinica.html',
-  providers :[LaunchNavigator]
+  selector: 'page-info',
+  templateUrl: 'info.html',
+  providers :[LaunchNavigator, Deeplinks]
 })
-export class InfoclinicaPage {
+export class InfoPage {
 
   private id = "";
   private category;
@@ -24,6 +25,8 @@ export class InfoclinicaPage {
   private isOpenServices = false;
   map:any;
   destinationPoint : any;
+  private link;
+  @ViewChild(Nav) navChild:Nav;
 
   constructor(
       public navCtrl: NavController,
@@ -33,11 +36,24 @@ export class InfoclinicaPage {
       private constants: Constants,
       private userService: UserService,
       public modalCtrl: ModalController,
-      private launchNavigator: LaunchNavigator
+      private launchNavigator: LaunchNavigator,
+      private socialSharing: SocialSharing,
+      private deeplinks: Deeplinks,
+      private platform: Platform
   ) {
     this.id = navParams.get("id");
     this.category = navParams.get("category");
     this.day = this.moment.day();
+
+    platform.ready().then(() => {
+      /*this.deeplinks.routeWithNavController(this.navChild, {
+        '/info': this
+      }).subscribe((match) => {
+        console.log('Successfully routed', match);
+      }, (nomatch) => {
+        console.warn('Unmatched Route', nomatch);
+      });*/
+    });
   }
 
   openMap() {
@@ -266,8 +282,8 @@ export class InfoclinicaPage {
   }
 
   showShare() {
-    (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
-    (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
+    //(document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
+    //(document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
 
     let data = {id: this.id, rubro: 0};
     switch (this.category) {
@@ -284,12 +300,29 @@ export class InfoclinicaPage {
         data.rubro = 4;
         break;
     }
-    let shareModal = this.modalCtrl.create(SharePage, data);
-    shareModal.onDidDismiss(data => {
-      (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';
-      (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity = '0';
+
+    this.link = "";
+
+    switch(data.rubro) {
+      case 1:
+        this.link += this.constants.clinicShareFolder;
+        break;
+      case 2:
+        this.link += this.constants.hairdressingShareFolder;
+        break;
+      case 3:
+        this.link += this.constants.hairdressingShareFolder;
+        break;
+      case 4:
+        this.link += this.constants.hairdressingShareFolder;
+        break;
+    }
+
+    this.link += this.id;
+
+    this.socialSharing.share(this.results[0].name + " - " + this.results[0].address, null, null, null).then(() => {
+    }).catch(() => {
     });
-    shareModal.present();
   }
 
 }

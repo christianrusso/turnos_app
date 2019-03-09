@@ -95,7 +95,25 @@
         <variable name="OKHTTP_VERSION" value="3.12.0" />
         <variable name="LOCATION_USAGE_DESCRIPTION" value="This app requires access to your location for navigation purposes" />
     </plugin>
+    <plugin name="cordova-sqlite-storage" spec="3.1.0" />
+    <plugin name="ionic-plugin-deeplinks" spec="^1.0.17">
+        <variable name="URL_SCHEME" value="info" />
+        <variable name="DEEPLINK_SCHEME" value="https" />
+        <variable name="DEEPLINK_HOST" value="todoreservas.com.ar" />
+        <variable name="ANDROID_PATH_PREFIX" value="/" />
+        <variable name="ANDROID_2_PATH_PREFIX" value="/" />
+        <variable name="ANDROID_3_PATH_PREFIX" value="/" />
+        <variable name="ANDROID_4_PATH_PREFIX" value="/" />
+        <variable name="ANDROID_5_PATH_PREFIX" value="/" />
+        <variable name="DEEPLINK_2_SCHEME" value=" " />
+        <variable name="DEEPLINK_2_HOST" value=" " />
+        <variable name="DEEPLINK_3_SCHEME" value=" " />
+        <variable name="DEEPLINK_3_HOST" value=" " />
+        <variable name="DEEPLINK_4_SCHEME" value=" " />
+        <variable name="DEEPLINK_4_HOST" value=" " />
+        <variable name="DEEPLINK_5_SCHEME" value=" " />
+        <variable name="DEEPLINK_5_HOST" value=" " />
+    </plugin>
     <engine name="android" spec="^7.1.4" />
     <engine name="ios" spec="4.5.5" />
-    <plugin name="cordova-sqlite-storage" spec="3.1.0" />
 </widget>
