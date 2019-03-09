@@ -320,7 +320,7 @@ export class InfoPage {
 
     this.link += this.id;
 
-    this.socialSharing.share(this.results[0].name + " - " + this.results[0].address, null, null, null).then(() => {
+    this.socialSharing.share(this.results[0].name + " - " + this.results[0].address, null, null, this.link).then(() => {
     }).catch(() => {
     });
   }
