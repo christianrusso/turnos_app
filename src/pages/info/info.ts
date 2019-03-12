@@ -214,6 +214,13 @@ export class InfoPage {
           this.http.post(url, {Id: this.id}, options).subscribe(
               (success: any) => {
                 this.results[0].isFavorite = true;
+
+                let alert = this.alertCtrl.create({
+                  title: '',
+                  subTitle: "El centro fue agregado a su lista de favoritos!",
+                  buttons: ['OK']
+                });
+                alert.present();
               },
               error => {
                 console.log(error);
@@ -255,6 +262,13 @@ export class InfoPage {
       this.http.post(url, {Id: this.id}, options).subscribe(
           (success: any) => {
             this.results[0].isFavorite = false;
+
+            let alert = this.alertCtrl.create({
+              title: '',
+              subTitle: "El centro fue eliminado de su lista de favoritos!",
+              buttons: ['OK']
+            });
+            alert.present();
           },
           error => {
             console.log(error);

@@ -273,6 +273,7 @@ export class SearchPage {
   showMap() {
     if (this.canShowMap) {
       this.isListado = false;
+      this.showLoading = true;
       this.loadMap(-34.533092, -58.479169);
     }
   }
@@ -355,6 +356,7 @@ export class SearchPage {
       this.map.panToBounds(bounds);
 
       this.canShowListado = true;
+      this.showLoading = false;
       //this.map.setZoom(12);
     }, 1000);
   }

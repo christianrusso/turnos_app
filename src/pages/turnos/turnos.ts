@@ -23,6 +23,7 @@ export class TurnosPage {
   };
   public hasAppeared = false;
   public isSearching = false;
+  public showBack = false;
 
   constructor(
       public navCtrl: NavController,
@@ -218,13 +219,11 @@ export class TurnosPage {
   }
 
   cancelTurno(id, rubro) {
-    (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
-    (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
+    this.showBack = true;
 
     let orderModal = this.modalCtrl.create(CancelTurnoPage);
     orderModal.onDidDismiss(data => {
-      (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';
-      (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity = '0';
+      this.showBack = false;
       if (data.motivo && data.motivo != "") {
         this.cancel(id, data.motivo, rubro);
       }
@@ -269,13 +268,11 @@ export class TurnosPage {
   }
 
   completeTurno(id, rubro) {
-    (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
-    (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
+    this.showBack = true;
 
     let orderModal = this.modalCtrl.create(CompleteTurnoPage);
     orderModal.onDidDismiss(data => {
-      (document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'hidden';
-      (document.querySelector('#backBlackReserva') as HTMLElement).style.opacity = '0';
+      this.showBack = false;
       if (data.comment && data.comment != "" && data.score && data.score != '0') {
         this.complete(id, data.comment, data.score, rubro);
       }

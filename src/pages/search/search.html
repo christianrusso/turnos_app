@@ -158,6 +158,11 @@
           </td>
         </tr>
         <tr *ngIf="!isListado" style="height: 100%;">
+          <td *ngIf="showLoading">
+            <div style="width: 50%; text-align: center; top: 50%; position: absolute; left: 50%; margin-left: -25%;">
+              <div class=""><img src="/assets/icon/loader.gif" style="width: 50%;" /></div>
+            </div>
+          </td>
           <td colspan="3">
             <div id="map"></div>
           </td>
