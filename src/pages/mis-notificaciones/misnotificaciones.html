@@ -26,13 +26,15 @@
               <div *ngIf="row.state == 2" style="display: flex;">
                 <div style="margin-right: 8px;"><img class="logo" src="{{row.logo}}" /></div>
                 <div>
-                  <p class="title" style="margin-top: 0px;">No te olvides de puntuar tu reserva en {{row.clinic}}</p>
+                  <p class="title" style="margin-top: 0px;" *ngIf="row.clinic">No te olvides de puntuar tu reserva en {{row.clinic}}</p>
+                  <p class="title" style="margin-top: 0px;" *ngIf="row.hairdressing">No te olvides de puntuar tu reserva en {{row.hairdressing}}</p>
                 </div>
               </div>
               <div *ngIf="row.state == 3">
                 <div>
                   <p class="title">¡Lo sentimos!</p>
-                  <p class="subTitle">Tu reserva en {{row.clinic}} ha sido cancelada</p>
+                  <p class="subTitle" *ngIf="row.clinic">Tu reserva en {{row.clinic}} ha sido cancelada</p>
+                  <p class="subTitle" *ngIf="row.hairdressing">Tu reserva en {{row.hairdressing}} ha sido cancelada</p>
                 </div>
               </div>
             </div>

@@ -19,6 +19,8 @@ export class TurnosPage {
   private moment = moment();
   public appointments = [];
   public options: CalendarModalOptions = {
+    from: new Date(),
+    to: 0,
     daysConfig: []
   };
   public hasAppeared = false;
@@ -34,6 +36,10 @@ export class TurnosPage {
       private userService: UserService,
       private modalCtrl: ModalController
   ) {
+    var dateOffset = (24*60*60*1000) * 120;
+    var myDate = new Date();
+    myDate.setTime(myDate.getTime() - dateOffset);
+    this.options.from = myDate;
   }
 
   ionViewDidEnter() {
@@ -58,8 +64,8 @@ export class TurnosPage {
             this.moment.subtract(30, 'days');
           }
           let options = {
-            "startDate": this.moment.format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z",
-            "endDate": this.moment.add(30, 'days').format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z"
+            "startDate": this.moment.subtract(30, 'days').format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z",
+            "endDate": this.moment.add(120, 'days').format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z"
           };
 
           this.http.post(url, options, {headers}).subscribe(

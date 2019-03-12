@@ -2,15 +2,15 @@
   <ion-grid style="width: 100%; height: 100%; z-index: 1;"></ion-grid>
   <ion-grid class="modal">
     <ion-grid style="text-align: center; padding: 0; padding-right: 6px; padding-left: 6px;">
-      <table>
+      <table style="width: 100%;">
         <tr><br></tr>
         <tr>
           <td colspan="2" class="titleFirst"></td>
         </tr>
         <tr><br></tr>
         <tr style="">
-          <td>Puntaje</td>
-          <td class="selectSize">
+          <td colspan="2">Puntaje</td>
+          <td class="selectSize" colspan="2">
             <select [(ngModel)]="score" style="background-color:transparent;
               -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px; height: 35px;">
               <option value="1">1</option>
@@ -26,21 +26,21 @@
             </select>
           </td>
         </tr>
-        <tr><td colspan="2"><br></td></tr>
+        <tr><td colspan="4"><br></td></tr>
         <tr style="border-bottom: 1px grey solid; text-align: left;">
-          <td colspan="2" class="selectSize">
-            <textarea placeholder="Comentario..." [(ngModel)]="comment" style="width: 100%;"></textarea>
+          <td colspan="4" class="selectSize">
+            <textarea placeholder="Comentario..." [(ngModel)]="comment" style="width: 100%; border: none;"></textarea>
           </td>
         </tr>
         <tr><br></tr>
         <tr><br></tr>
         <tr>
-          <td colspan="2">
+          <td colspan="4">
             <button color="button-color" ion-button full type="submit" class="nextButton" (click)="returnData()">CONFIRMAR</button>
           </td>
         </tr>
         <tr>
-          <td colspan="2">
+          <td colspan="4">
             <button color="button-color" ion-button full type="submit" class="nextButtonCancel" (click)="cancelData()">CANCELAR</button>
           </td>
         </tr>
