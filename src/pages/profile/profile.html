@@ -19,7 +19,7 @@
         <tr (click)="openCuenta()">
           <td class="lineStyle"><p style="width: 200px; margin-left: 10px;">Mi cuenta</p></td>
         </tr>
-        <tr id="cuenta" style="display: none;">
+        <tr id="cuenta" *ngIf="showCuenta">
           <td>
             <table class="cuentaStyle">
               <tr style="border-bottom: 1px grey solid;" (click)="openDatosDeCuenta()">

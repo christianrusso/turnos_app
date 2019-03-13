@@ -15,6 +15,8 @@ import {LoginPage} from "../login/login";
 })
 export class ProfilePage {
 
+  public showCuenta = false;
+
   constructor(
       public navCtrl: NavController,
       private http: HttpClient,
@@ -42,10 +44,10 @@ export class ProfilePage {
   }
 
   openCuenta() {
-    if (document.getElementById("cuenta").style.display == "table-row") {
-      document.getElementById("cuenta").style.display = "none";
+    if (this.showCuenta == true) {
+      this.showCuenta = false;
     } else {
-      document.getElementById("cuenta").style.display = "table-row";
+      this.showCuenta = true;
     }
   }
 

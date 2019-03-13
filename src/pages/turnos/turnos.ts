@@ -26,6 +26,8 @@ export class TurnosPage {
   public hasAppeared = false;
   public isSearching = false;
   public showBack = false;
+  public startDate;
+  public endDate;
 
   constructor(
       public navCtrl: NavController,
@@ -43,6 +45,9 @@ export class TurnosPage {
   }
 
   ionViewDidEnter() {
+    this.moment = moment();
+    this.startDate = this.moment.subtract(30, 'days').format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z";
+    this.endDate = this.moment.add(120, 'days').format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z";
     this.getReservas();
   }
 
@@ -64,8 +69,8 @@ export class TurnosPage {
             this.moment.subtract(30, 'days');
           }
           let options = {
-            "startDate": this.moment.subtract(30, 'days').format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z",
-            "endDate": this.moment.add(120, 'days').format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS) + ".000Z"
+            "startDate": this.startDate,
+            "endDate": this.endDate
           };
 
           this.http.post(url, options, {headers}).subscribe(
