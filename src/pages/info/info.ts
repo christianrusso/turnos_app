@@ -128,6 +128,7 @@ export class InfoPage {
     this.http.post(url, options, {headers}).subscribe(
         (success: any) => {
           this.results = success;
+          console.log(this.results);
           this.destinationPoint = [this.results[0].latitude, this.results[0].longitude];
         },
         error => {

@@ -123,18 +123,21 @@ export class FiltrosDetailPage {
             for (var i = 0; i < this.specialities.length; i++) {
               this.specialities[i].checked = false;
             }
+            this.specialities.sort(this.compare);
           }
           if (this.type == 'subespecialidades') {
             this.subspecialities = success;
             for (var i = 0; i < this.subspecialities.length; i++) {
               this.subspecialities[i].checked = false;
             }
+            this.subspecialities.sort(this.compare);
           }
           if (this.type == 'obrasocial' && this.filtersService.obrassociales.length == 0) {
             this.obrassociales = success;
             for (var i = 0; i < this.obrassociales.length; i++) {
               this.obrassociales[i].checked = false;
             }
+            this.obrassociales.sort(this.compare);
           }
           if (this.type == 'ubicacion' && this.filtersService.locations.length == 0) {
             this.ubicaciones = success;
@@ -153,6 +156,16 @@ export class FiltrosDetailPage {
           alert.present();
         }
     );
+  }
+
+  compare(a, b) {
+    a.text = a.text[0].toUpperCase() + a.text.substr(1).toLowerCase();
+    b.text = b.text[0].toUpperCase() + b.text.substr(1).toLowerCase();
+    if (a.text < b.text) {
+      return -1;
+    } else {
+      return 1;
+    }
   }
 
   applyFilters() {
