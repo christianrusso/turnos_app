@@ -59,8 +59,15 @@
         </tr>
         <tr *ngIf="type == 'subespecialidades'">
           <td colspan="2">
+            <ion-searchbar showCancelButton="true" placeholder="Buscar" [(ngModel)]="searchKeyword"
+                           (ionInput)="onSearchSubEsp()">
+            </ion-searchbar>
+          </td>
+        </tr>
+        <tr *ngIf="type == 'subespecialidades'">
+          <td colspan="2">
             <table style="width: 100%;">
-              <tr *ngFor="let subespecialidad of subspecialities; let i = index" style="border-bottom: 0.1em solid #dedede;">
+              <tr *ngFor="let subespecialidad of subspecialitiesAll; let i = index" style="border-bottom: 0.1em solid #dedede;">
                 <td><input type="checkbox" style="transform:scale(1.5); width: 40px;" id="{{subespecialidad.id}}" value="{{subespecialidad.id}}" [(ngModel)]="subspecialities[i].checked"></td>
                 <td style="text-align: left;"><span class="especialidad">{{subespecialidad.text}}</span></td>
               </tr>

@@ -17,6 +17,7 @@ export class FiltrosDetailPage {
   category;
   specialities = [];
   subspecialities = [];
+  subspecialitiesAll = [];
   obrassociales = [];
   distancia = 0;
   puntuacion = 0.0;
@@ -28,6 +29,7 @@ export class FiltrosDetailPage {
     {value:4, checked: false},
     {value:5, checked: false}
   ];
+  public searchKeyword;
 
   constructor(
       public navCtrl: NavController,
@@ -131,6 +133,7 @@ export class FiltrosDetailPage {
               this.subspecialities[i].checked = false;
             }
             this.subspecialities.sort(this.compare);
+            this.subspecialitiesAll = this.subspecialities;
           }
           if (this.type == 'obrasocial' && this.filtersService.obrassociales.length == 0) {
             this.obrassociales = success;
@@ -177,6 +180,17 @@ export class FiltrosDetailPage {
     this.filtersService.score = this.puntuacion / 2;
     this.filtersService.stars = this.star;
     this.navCtrl.push(SearchPage);
+  }
+
+  onSearchSubEsp() {
+    this.subspecialitiesAll = this.subspecialities;
+    this.subspecialitiesAll = this.filterItems(this.searchKeyword);
+  }
+
+  filterItems(searchTerm){
+    return this.subspecialitiesAll.filter((item) => {
+      return item.text.toLowerCase().includes(searchTerm.toLowerCase());
+    });
   }
 
 }
