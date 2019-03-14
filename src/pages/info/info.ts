@@ -8,6 +8,7 @@ import { ReservaPage } from '../reserva/reserva';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Deeplinks } from "@ionic-native/deeplinks/ngx";
+import {HomePage} from "../home/home";
 
 @Component({
   selector: 'page-info',
@@ -46,13 +47,17 @@ export class InfoPage {
     this.day = this.moment.day();
 
     platform.ready().then(() => {
-      /*this.deeplinks.routeWithNavController(this.navChild, {
-        '/info': this
-      }).subscribe((match) => {
-        console.log('Successfully routed', match);
-      }, (nomatch) => {
-        console.warn('Unmatched Route', nomatch);
-      });*/
+      this.deeplinks.route({
+        '/info': HomePage
+      }).subscribe(match => {
+        // match.$route - the route we matched, which is the matched entry from the arguments to route()
+        // match.$args - the args passed in the link
+        // match.$link - the full link data
+        console.log('Successfully matched route', match);
+      }, nomatch => {
+        // nomatch.$link - the full link data
+        console.error('Got a deeplink that didn\'t match', nomatch);
+      });
     });
   }
 
@@ -335,7 +340,8 @@ export class InfoPage {
 
     this.link += this.id;
 
-    this.socialSharing.share(this.results[0].name + " - " + this.results[0].address, null, null, this.link).then(() => {
+    this.socialSharing.share(
+        this.results[0].name + " - " + this.results[0].address, null, null, "todoreservas://info").then(() => {
     }).catch(() => {
     });
   }
