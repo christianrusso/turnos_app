@@ -173,7 +173,7 @@ export class TurnosPage {
                       var datePosition = false;
                     }
                     data.push({
-                      date: date.getHours() + ":" + minutes,
+                      date: appoint.dateTime.substring(11, 16),
                       doctor: appoint.doctor,
                       clinica: appoint.clinic,
                       id: appoint.id,
@@ -201,7 +201,7 @@ export class TurnosPage {
                       var datePosition = false;
                     }
                     data.push({
-                      date: date.getHours() + ":" + minutes,
+                      date: appoint.dateTime.substring(11, 16),
                       doctor: appoint.professional,
                       clinica: appoint.hairdressing,
                       id: appoint.id,
