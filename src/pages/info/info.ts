@@ -7,13 +7,12 @@ import { UserService } from '../../services/user.service';
 import { ReservaPage } from '../reserva/reserva';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { Deeplinks } from "@ionic-native/deeplinks/ngx";
 import {HomePage} from "../home/home";
 
 @Component({
   selector: 'page-info',
   templateUrl: 'info.html',
-  providers :[LaunchNavigator, Deeplinks]
+  providers :[LaunchNavigator]
 })
 export class InfoPage {
 
@@ -39,26 +38,11 @@ export class InfoPage {
       public modalCtrl: ModalController,
       private launchNavigator: LaunchNavigator,
       private socialSharing: SocialSharing,
-      private deeplinks: Deeplinks,
       private platform: Platform
   ) {
     this.id = navParams.get("id");
     this.category = navParams.get("category");
     this.day = this.moment.day();
-
-    platform.ready().then(() => {
-      this.deeplinks.route({
-        '/info': HomePage
-      }).subscribe(match => {
-        // match.$route - the route we matched, which is the matched entry from the arguments to route()
-        // match.$args - the args passed in the link
-        // match.$link - the full link data
-        console.log('Successfully matched route', match);
-      }, nomatch => {
-        // nomatch.$link - the full link data
-        console.error('Got a deeplink that didn\'t match', nomatch);
-      });
-    });
   }
 
   openMap() {
