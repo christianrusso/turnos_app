@@ -27,6 +27,8 @@ export class InfoPage {
   destinationPoint : any;
   private link;
   @ViewChild(Nav) navChild:Nav;
+  private specialties = [];
+  private showSpe = false;
 
   constructor(
       public navCtrl: NavController,
@@ -119,6 +121,15 @@ export class InfoPage {
           this.results = success;
           console.log(this.results);
           this.destinationPoint = [this.results[0].latitude, this.results[0].longitude];
+          for (var i = 0; i < this.results[0].subspecialties.length; i++) {
+            if (!Array.isArray(this.specialties[this.results[0].subspecialties[i].specialtyDescription])) {
+              this.specialties[this.results[0].subspecialties[i].specialtyDescription] = new Array();
+            }
+          }
+          for (var i = 0; i < this.results[0].subspecialties.length; i++) {
+            this.specialties[this.results[0].subspecialties[i].specialtyDescription].push(this.results[0].subspecialties[i]);
+          }
+          console.log(this.specialties);
         },
         error => {
           console.log(error);
@@ -130,6 +141,10 @@ export class InfoPage {
           alert.present();
         }
     );
+  }
+
+  objectKeys(obj) {
+    return Object.keys(obj);
   }
 
   showHorarios() {
@@ -156,20 +171,10 @@ export class InfoPage {
   }
 
   showServices() {
-    let elements;
     if (!this.isOpenServices) {
-      elements = document.querySelectorAll('.notShowServices');
+      this.showSpe = true;
     } else {
-      elements = document.querySelectorAll('.showServices');
-    }
-    for (let i = 0; i < elements.length; i++) {
-      if (!this.isOpenServices) {
-        elements[i].classList.remove('notShowServices');
-        elements[i].classList.add('showServices');
-      } else {
-        elements[i].classList.remove('showServices');
-        elements[i].classList.add('notShowServices');
-      }
+      this.showSpe = false;
     }
     if (!this.isOpenServices) {
       this.isOpenServices = true;

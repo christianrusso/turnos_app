@@ -140,17 +140,24 @@
                       <tr style="height: 6px;"></tr>
                       <tr>
                         <td>
-                          <table style="width: 100%;">
-                            <tr *ngFor="let subspecialty of result.subspecialties; let myIndexServices = index;">
-                              <td style="font-family: SfUiDisplayLight;" class="infoTitle" [ngClass]="{'notShowServices': myIndexServices > 0}">
-                                - {{subspecialty.description}} ({{subspecialty.specialtyDescription}})
-                              </td>
-                              <td *ngIf="category != 'Medicina' && subspecialty.price != '' && subspecialty.price != null" style="font-family: SfUiDisplayLight;" class="infoTitle" [ngClass]="{'notShowServices': myIndexServices > 0}">
-                                ${{subspecialty.price}}
-                              </td>
-                              <td *ngIf="category != 'Medicina' && (subspecialty.price == null || subspecialty.price == 'undefined')" style="font-family: SfUiDisplayLight;" class="infoTitle" [ngClass]="{'notShowServices': myIndexServices > 0}">
-                                Sin Definir
-                              </td>
+                          <table style="width: 100%;" *ngIf="showSpe">
+                            <tr *ngFor="let key of objectKeys(specialties)">
+                              <table>
+                                <tr>
+                                  <td class="infoTitle" style="font-family: SfUiDisplayBold;">{{key}}</td>
+                                </tr>
+                                <tr *ngFor="let subspecialty of specialties[key]; let myIndexServices = index;">
+                                  <td style="font-family: SfUiDisplayLight; width: 180px;" class="infoTitle">
+                                    &nbsp;&nbsp;- {{subspecialty.description}}
+                                  </td>
+                                  <td *ngIf="category != 'Medicina' && subspecialty.price != '' && subspecialty.price != null" style="font-family: SfUiDisplayLight;" class="infoTitle">
+                                    ${{subspecialty.price}}
+                                  </td>
+                                  <td *ngIf="category != 'Medicina' && (subspecialty.price == null || subspecialty.price == 'undefined')" style="font-family: SfUiDisplayLight;" class="infoTitle">
+                                    Sin Definir
+                                  </td>
+                                </tr>
+                              </table>
                             </tr>
                           </table>
                         </td>
