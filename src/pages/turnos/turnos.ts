@@ -18,6 +18,7 @@ export class TurnosPage {
   public  alertTurn = [];
   private moment = moment();
   public appointments = [];
+  public appointmentsListado = [];
   public options: CalendarModalOptions = {
     from: new Date(),
     to: 0,
@@ -28,6 +29,7 @@ export class TurnosPage {
   public showBack = false;
   public startDate;
   public endDate;
+  public showCalendar = true;
 
   constructor(
       public navCtrl: NavController,
@@ -58,6 +60,8 @@ export class TurnosPage {
       } else {
         this.isSearching = true;
 
+        this.appointmentsListado = [];
+
         let _daysConfig: DayConfig[] = [];
         this.options.daysConfig = _daysConfig;
 
@@ -87,6 +91,14 @@ export class TurnosPage {
                         } else {
                           quantity += " turnos";
                         }
+                        if (new Date(appoint.dateTime) >= new Date()) {
+                          var fecha = appoint.dateTime.substr(0, 10);
+                          var fechaOrdenada = appoint.dateTime.substr(8, 2) + "/" + appoint.dateTime.substr(5, 2) + "/" + appoint.dateTime.substr(0, 4) + " - " + appoint.dateTime.substr(11, 5);
+                          if (!Array.isArray(this.appointmentsListado[fecha])) {
+                            this.appointmentsListado[fecha] = new Array();
+                          }
+                          this.appointmentsListado[fecha].push(fechaOrdenada + " - " + appoint.clinic + " - " + appoint.doctor + " - " + appoint.subspecialty);
+                        }
                         _daysConfig.push({
                           date: new Date(appoint.dateTime),
                           marked: true,
@@ -106,6 +118,14 @@ export class TurnosPage {
                           quantity += " turno";
                         } else {
                           quantity += " turnos";
+                        }
+                        if (new Date(appoint.dateTime) >= new Date()) {
+                          var fecha = appoint.dateTime.substr(0, 10);
+                          var fechaOrdenada = appoint.dateTime.substr(8, 2) + "/" + appoint.dateTime.substr(5, 2) + "/" + appoint.dateTime.substr(0, 4) + " - " + appoint.dateTime.substr(11, 5);
+                          if (!Array.isArray(this.appointmentsListado[fecha])) {
+                            this.appointmentsListado[fecha] = new Array();
+                          }
+                          this.appointmentsListado[fecha].push(fechaOrdenada + " - " + appoint.hairdressing + " - " + appoint.professional + " - " + appoint.subspecialty);
                         }
                         _daysConfig.push({
                           date: new Date(appoint.dateTime),
@@ -325,6 +345,18 @@ export class TurnosPage {
           }
       );
     });
+  }
+
+  showCalendarToogle() {
+    if (this.showCalendar) {
+      this.showCalendar = false;
+    } else {
+      this.showCalendar = true;
+    }
+  }
+
+  objectKeys(obj) {
+    return Object.keys(obj);
   }
 
 }

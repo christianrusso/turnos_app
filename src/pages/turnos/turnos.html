@@ -7,9 +7,18 @@
           <td colspan="3" style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 26%;"></td>
         </tr>
         <tr class="heightBlue" style="background-color: #454EDB;">
-          <td colspan="3" class="categoryStyle">Mis Reservas</td>
+          <td colspan="3" class="categoryStyle">Reservas</td>
         </tr>
+        <tr><br></tr>
         <tr>
+          <table style="width:100%;">
+            <tr>
+              <td style="font-family: SfUiDisplayThin; font-size: 15pt; color: #454EDB; width: 50%;" (click)="showCalendarToogle()">Calendario</td>
+              <td style="font-family: SfUiDisplayThin; font-size: 15pt; color: #454EDB; width: 50%;" (click)="showCalendarToogle()">Listado</td>
+            </tr>
+          </table>
+        </tr>
+        <tr *ngIf="showCalendar">
           <td padding class="resultsPos">
             <table>
               <tr>
@@ -27,7 +36,7 @@
               </tr>
               <tr>
                 <td>
-                    <div *ngIf="appointments.length > 0" style="font-family: SfUiDisplayMedium; font-size: 15px;">
+                    <div *ngIf="appointments.length > 0" style="">
                       <div *ngFor="let appoint of appointments; let i = index" style="display: flex;">
                         <div style="display: flex;" [ngStyle]="{'padding-top': (appoint.state == 1 || appoint.state == 3) ? '13px' : '0px'}">
                           <div>{{appoint.clinica}} - {{appoint.doctor}} - {{appoint.subspecialty}} - {{appoint.date}}</div>
@@ -40,6 +49,16 @@
                 </td>
               </tr>
             </table>
+          </td>
+        </tr>
+        <tr *ngIf="!showCalendar"><br></tr>
+        <tr *ngIf="!showCalendar">
+          <td>
+            <div *ngFor="let key of objectKeys(appointmentsListado);">
+              <div *ngFor="let appoint of appointmentsListado[key]">
+                <div style="padding-bottom: 10px;">{{appoint}}</div>
+              </div>
+            </div>
           </td>
         </tr>
         <tr *ngIf="options.daysConfig.length == 0 && !isSearching" class="infoButton">No tiene turnos en este momento</tr>
