@@ -44,13 +44,11 @@
               <tr>
                 <td>
                     <div *ngIf="appointments.length > 0" style="">
-                      <div *ngFor="let appoint of appointments; let i = index" style="display: flex;">
-                        <div style="display: flex;" [ngStyle]="{'padding-top': (appoint.state == 1 || appoint.state == 3) ? '13px' : '0px'}">
-                          <div>{{appoint.clinica}} - {{appoint.doctor}} - {{appoint.subspecialty}} - {{appoint.date}}</div>
-                        </div>
-                        <div *ngIf="appoint.state == 1 && appoint.datePosition"><ion-icon name="checkmark" class="iconsFont" (click)="completeTurno(appoint.id, appoint.rubro)"></ion-icon></div>
-                        <div *ngIf="appoint.state == 1 && !appoint.datePosition"><ion-icon name="close" class="iconsFont" (click)="cancelTurno(appoint.id, appoint.rubro)"></ion-icon></div>
-                        <div *ngIf="appoint.state == 2">&nbsp;Cancelado</div>
+                      <div *ngFor="let appoint of appointments; let i = index" class="cardStyles">
+                        <div class="cardCrossCalendar" *ngIf="appoint.state == 1 && appoint.datePosition" (click)="completeTurno(appoint.id, appoint.rubro);"><ion-icon name="checkmark" class="iconsFont" style="color: green;"></ion-icon></div>
+                        <div class="cardCrossCalendar" *ngIf="appoint.state == 1 && !appoint.datePosition" (click)="cancelTurno(appoint.id, appoint.rubro);">X</div>
+                        <div class="cardTitle"><span>{{appoint.clinica}}</span> <span *ngIf="appoint.state == 2" class="cardCancel">- Cancelado</span></div>
+                        <div class="cardSub">{{appoint.subspecialty}} - {{appoint.date}}</div>
                       </div>
                     </div>
                 </td>
@@ -207,6 +205,15 @@
       width: 87%;
       font-family: SfUiDisplaySemiBold;
     }
+    .cardCrossCalendar {
+      text-align: right;
+      padding-top: 10px;
+      color: red;
+      position: absolute;
+      float: right;
+      width: 78%;
+      font-family: SfUiDisplaySemiBold;
+    }
     .tabsText {
       font-family: SfUiDisplayThin;
       font-size: 15pt;
@@ -320,6 +327,15 @@
       width: 87%;
       font-family: SfUiDisplaySemiBold;
     }
+    .cardCrossCalendar {
+      text-align: right;
+      padding-top: 10px;
+      color: red;
+      position: absolute;
+      float: right;
+      width: 78%;
+      font-family: SfUiDisplaySemiBold;
+    }
     .tabsText {
       font-family: SfUiDisplayThin;
       font-size: 15pt;
@@ -431,6 +447,15 @@
       position: absolute;
       float: right;
       width: 87%;
+      font-family: SfUiDisplaySemiBold;
+    }
+    .cardCrossCalendar {
+      text-align: right;
+      padding-top: 10px;
+      color: red;
+      position: absolute;
+      float: right;
+      width: 78%;
       font-family: SfUiDisplaySemiBold;
     }
     .tabsText {
@@ -548,6 +573,16 @@
       font-family: SfUiDisplaySemiBold;
       font-size: 14pt;
     }
+    .cardCrossCalendar {
+      text-align: right;
+      padding-top: 10px;
+      color: red;
+      position: absolute;
+      float: right;
+      width: 81%;
+      font-family: SfUiDisplaySemiBold;
+      font-size: 14pt;
+    }
     .tabsText {
       font-family: SfUiDisplayThin;
       font-size: 17pt;
@@ -660,6 +695,16 @@
       position: absolute;
       float: right;
       width: 87%;
+      font-family: SfUiDisplaySemiBold;
+      font-size: 18pt;
+    }
+    .cardCrossCalendar {
+      text-align: right;
+      padding-top: 10px;
+      color: red;
+      position: absolute;
+      float: right;
+      width: 81%;
       font-family: SfUiDisplaySemiBold;
       font-size: 18pt;
     }
