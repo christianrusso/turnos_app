@@ -9,12 +9,19 @@
         <tr class="heightBlue" style="background-color: #454EDB;">
           <td colspan="3" class="categoryStyle">Reservas</td>
         </tr>
-        <tr><br></tr>
         <tr>
           <table style="width:100%;">
             <tr>
-              <td style="font-family: SfUiDisplayThin; font-size: 15pt; color: #454EDB; width: 50%;" (click)="showCalendarToogle()">Calendario</td>
-              <td style="font-family: SfUiDisplayThin; font-size: 15pt; color: #454EDB; width: 50%;" (click)="showCalendarToogle()">Listado</td>
+              <td>
+                <div style="display: flex;">
+                  <div style="width: 50%;" (click)="showCalendarTab()">
+                    <p class="tabsText" [ngClass]="showCalendar ? 'borderTab' : 'noBorderTab'">Calendario</p>
+                  </div>
+                  <div style="width: 50%;" (click)="noShowCalendarTab()">
+                    <p class="tabsText" [ngClass]="!showCalendar ? 'borderTab' : 'noBorderTab'">Listado</p>
+                  </div>
+                </div>
+              </td>
             </tr>
           </table>
         </tr>
@@ -55,8 +62,12 @@
         <tr *ngIf="!showCalendar">
           <td>
             <div *ngFor="let key of objectKeys(appointmentsListado);">
-              <div *ngFor="let appoint of appointmentsListado[key]">
-                <div style="padding-bottom: 10px;">{{appoint}}</div>
+              <div *ngFor="let appoint of appointmentsListado[key]" class="cardStyles">
+                <div class="cardCross" *ngIf="appoint.state == 1" (click)="cancelTurno(appoint.id, appoint.rubro);">X</div>
+                <div class="cardTitle"><span>{{appoint.clinic}}</span> <span *ngIf="appoint.state == 2" class="cardCancel">- Cancelado</span></div>
+                <div class="cardFecha">Fecha: {{appoint.date}}</div>
+                <div class="cardHour">Horario: {{appoint.hour}}</div>
+                <div class="cardSub">Reserva: {{appoint.subspeciality}}</div>
               </div>
             </div>
           </td>
@@ -79,6 +90,23 @@
 
   .small {
     font-size: 69%;
+  }
+
+  .borderTab {
+    background-color: white;
+    border: 2px solid #DCDCDC;
+  }
+  .noBorderTab {
+    background-color: #F4F4F4;
+    border: 2px solid #DCDCDC;
+  }
+
+  .cardStyles {
+    background-color: white;
+    width: 90%;
+    margin-left: 5%;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+    margin-bottom: 15px;
   }
 
   @media screen and (max-width: 320px) {
@@ -136,6 +164,61 @@
     .iconsFont {
       font-size: 41px;
       width: 50px;
+    }
+    .cardTitle {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplaySemiBold;
+      font-size: 16pt;
+      padding-left: 12px;
+      padding-top: 12px;
+    }
+    .cardFecha {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayLight;
+      font-size: 11pt;
+      margin-top: 7px;
+      padding-left: 12px;
+    }
+    .cardHour {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayLight;
+      font-size: 11pt;
+      margin-bottom: 7px;
+      padding-left: 12px;
+    }
+    .cardSub {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayMedium;
+      font-size: 11pt;
+      color: #454EDB;
+      padding-left: 12px;
+      padding-bottom: 12px;
+    }
+    .cardCross {
+      text-align: right;
+      padding-top: 10px;
+      color: red;
+      position: absolute;
+      float: right;
+      width: 87%;
+      font-family: SfUiDisplaySemiBold;
+    }
+    .tabsText {
+      font-family: SfUiDisplayThin;
+      font-size: 15pt;
+      color: #454EDB;
+      margin: 0;
+      width: 100%;
+      height: 45px;
+      padding-top: 7px;
+    }
+    .cardCancel {
+      font-family: SfUiDisplayThin;
+      font-size: 10pt;
     }
   }
 
@@ -195,6 +278,61 @@
       font-size: 41px;
       width: 50px;
     }
+    .cardTitle {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplaySemiBold;
+      font-size: 16pt;
+      padding-left: 12px;
+      padding-top: 12px;
+    }
+    .cardFecha {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayLight;
+      font-size: 11pt;
+      margin-top: 7px;
+      padding-left: 12px;
+    }
+    .cardHour {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayLight;
+      font-size: 11pt;
+      margin-bottom: 7px;
+      padding-left: 12px;
+    }
+    .cardSub {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayMedium;
+      font-size: 11pt;
+      color: #454EDB;
+      padding-left: 12px;
+      padding-bottom: 12px;
+    }
+    .cardCross {
+      text-align: right;
+      padding-top: 10px;
+      color: red;
+      position: absolute;
+      float: right;
+      width: 87%;
+      font-family: SfUiDisplaySemiBold;
+    }
+    .tabsText {
+      font-family: SfUiDisplayThin;
+      font-size: 15pt;
+      color: #454EDB;
+      margin: 0;
+      width: 100%;
+      height: 45px;
+      padding-top: 7px;
+    }
+    .cardCancel {
+      font-family: SfUiDisplayThin;
+      font-size: 11pt;
+    }
   }
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
@@ -252,6 +390,61 @@
     .iconsFont {
       font-size: 41px;
       width: 50px;
+    }
+    .cardTitle {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplaySemiBold;
+      font-size: 16pt;
+      padding-left: 12px;
+      padding-top: 12px;
+    }
+    .cardFecha {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayLight;
+      font-size: 11pt;
+      margin-top: 7px;
+      padding-left: 12px;
+    }
+    .cardHour {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayLight;
+      font-size: 11pt;
+      margin-bottom: 7px;
+      padding-left: 12px;
+    }
+    .cardSub {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayMedium;
+      font-size: 11pt;
+      color: #454EDB;
+      padding-left: 12px;
+      padding-bottom: 12px;
+    }
+    .cardCross {
+      text-align: right;
+      padding-top: 10px;
+      color: red;
+      position: absolute;
+      float: right;
+      width: 87%;
+      font-family: SfUiDisplaySemiBold;
+    }
+    .tabsText {
+      font-family: SfUiDisplayThin;
+      font-size: 16pt;
+      color: #454EDB;
+      margin: 0;
+      width: 100%;
+      height: 45px;
+      padding-top: 7px;
+    }
+    .cardCancel {
+      font-family: SfUiDisplayThin;
+      font-size: 11pt;
     }
   }
 
@@ -312,6 +505,62 @@
       font-size: 41px;
       width: 50px;
     }
+    .cardTitle {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplaySemiBold;
+      font-size: 18pt;
+      padding-left: 12px;
+      padding-top: 12px;
+    }
+    .cardFecha {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayLight;
+      font-size: 13pt;
+      margin-top: 7px;
+      padding-left: 12px;
+    }
+    .cardHour {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayLight;
+      font-size: 13pt;
+      margin-bottom: 7px;
+      padding-left: 12px;
+    }
+    .cardSub {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayMedium;
+      font-size: 13pt;
+      color: #454EDB;
+      padding-left: 12px;
+      padding-bottom: 12px;
+    }
+    .cardCross {
+      text-align: right;
+      padding-top: 10px;
+      color: red;
+      position: absolute;
+      float: right;
+      width: 87%;
+      font-family: SfUiDisplaySemiBold;
+      font-size: 14pt;
+    }
+    .tabsText {
+      font-family: SfUiDisplayThin;
+      font-size: 17pt;
+      color: #454EDB;
+      margin: 0;
+      width: 100%;
+      height: 48px;
+      padding-top: 7px;
+    }
+    .cardCancel {
+      font-family: SfUiDisplayThin;
+      font-size: 13pt;
+    }
   }
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
@@ -370,6 +619,62 @@
     .iconsFont {
       font-size: 41px;
       width: 50px;
+    }
+    .cardTitle {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplaySemiBold;
+      font-size: 24pt;
+      padding-left: 12px;
+      padding-top: 12px;
+    }
+    .cardFecha {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayLight;
+      font-size: 19pt;
+      margin-top: 7px;
+      padding-left: 12px;
+    }
+    .cardHour {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayLight;
+      font-size: 19pt;
+      margin-bottom: 7px;
+      padding-left: 12px;
+    }
+    .cardSub {
+      padding-bottom: 10px;
+      text-align: left;
+      font-family: SfUiDisplayMedium;
+      font-size: 19pt;
+      color: #454EDB;
+      padding-left: 12px;
+      padding-bottom: 12px;
+    }
+    .cardCross {
+      text-align: right;
+      padding-top: 10px;
+      color: red;
+      position: absolute;
+      float: right;
+      width: 87%;
+      font-family: SfUiDisplaySemiBold;
+      font-size: 18pt;
+    }
+    .tabsText {
+      font-family: SfUiDisplayThin;
+      font-size: 22pt;
+      color: #454EDB;
+      margin: 0;
+      width: 100%;
+      height: 57px;
+      padding-top: 7px;
+    }
+    .cardCancel {
+      font-family: SfUiDisplayThin;
+      font-size: 17pt;
     }
   }
 </style>
