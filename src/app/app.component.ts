@@ -14,29 +14,10 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, keyboard: Keyboard, private deeplinks: Deeplinks, private alertCtrl: AlertController) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
+      statusBar.styleLightContent();
+      statusBar.backgroundColorByHexString('#454EDA');
       splashScreen.hide();
-
-      /*this.deeplinks.route({
-        '/': this
-      }).subscribe(match => {
-        let alert = this.alertCtrl.create({
-          title: 'Error!',
-          subTitle: JSON.stringify(match),
-          buttons: ['OK']
-        });
-        alert.present();
-      }, noMatch => {
-        let alert = this.alertCtrl.create({
-          title: 'Error!',
-          subTitle: JSON.stringify(noMatch),
-          buttons: ['OK']
-        });
-        alert.present();
-      });*/
-
       keyboard.hideFormAccessoryBar(false);
     });
   }
