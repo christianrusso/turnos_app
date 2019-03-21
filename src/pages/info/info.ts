@@ -29,6 +29,7 @@ export class InfoPage {
   @ViewChild(Nav) navChild:Nav;
   private specialties = [];
   private showSpe = false;
+  private images = [];
 
   constructor(
       public navCtrl: NavController,
@@ -77,6 +78,7 @@ export class InfoPage {
   }
 
   doSearch(headers) {
+    this.images = [];
     let businessType;
     let options = {
       "Cities": [],
@@ -119,7 +121,10 @@ export class InfoPage {
     this.http.post(url, options, {headers}).subscribe(
         (success: any) => {
           this.results = success;
-          console.log(this.results);
+          this.images.push(this.results[0].logo);
+          for (var i = 0; i < this.results[0].images.length; i++) {
+            this.images.push(this.results[0].images[i]);
+          }
           this.destinationPoint = [this.results[0].latitude, this.results[0].longitude];
           for (var i = 0; i < this.results[0].subspecialties.length; i++) {
             if (!Array.isArray(this.specialties[this.results[0].subspecialties[i].specialtyDescription])) {
@@ -129,7 +134,6 @@ export class InfoPage {
           for (var i = 0; i < this.results[0].subspecialties.length; i++) {
             this.specialties[this.results[0].subspecialties[i].specialtyDescription].push(this.results[0].subspecialties[i]);
           }
-          console.log(this.specialties);
         },
         error => {
           console.log(error);
