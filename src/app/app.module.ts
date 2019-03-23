@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ProfilePage } from '../pages/profile/profile';
 import { PreSearchPage } from '../pages/pre-search/pre-search';
+import { OneSignal } from '@ionic-native/onesignal';
 import { InfoPage } from '../pages/info/info';
 import { SearchPage } from '../pages/search/search';
 import { AyudaPage } from '../pages/ayuda/ayuda';
@@ -119,6 +120,7 @@ import { Deeplinks } from '@ionic-native/deeplinks/ngx';
     Geolocation,
     SocialSharing,
     Deeplinks,
+    OneSignal,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
