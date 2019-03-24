@@ -45,7 +45,6 @@
                 <td>
                     <div *ngIf="appointments.length > 0" style="">
                       <div *ngFor="let appoint of appointments; let i = index" class="cardStyles">
-                        <div class="cardCrossCalendar" *ngIf="appoint.state == 1 && appoint.datePosition" (click)="completeTurno(appoint.id, appoint.rubro);"><ion-icon name="checkmark" class="iconsFont" style="color: green;"></ion-icon></div>
                         <div class="cardCrossCalendar" *ngIf="appoint.state == 1 && !appoint.datePosition" (click)="cancelTurno(appoint.id, appoint.rubro);">X</div>
                         <div class="cardTitle"><span>{{appoint.clinica}}</span> <span *ngIf="appoint.state == 2" class="cardCancel">- Cancelado</span></div>
                         <div class="cardSub">{{appoint.subspecialty}} - {{appoint.date}}</div>
