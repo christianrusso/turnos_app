@@ -39,7 +39,6 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { IonicStorageModule } from '@ionic/storage';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
-import { LocalNotifications } from '@ionic-native/local-notifications';
 import { OneSignal } from '@ionic-native/onesignal';
 import { OneSignalService } from "../services/onesignal.service";
 
@@ -122,7 +121,6 @@ import { OneSignalService } from "../services/onesignal.service";
     Geolocation,
     SocialSharing,
     Deeplinks,
-    LocalNotifications,
     OneSignal,
     OneSignalService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
