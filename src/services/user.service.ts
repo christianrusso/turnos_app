@@ -20,6 +20,10 @@ export class UserService {
         this.storage.set('token', token);
     }
 
+    setUserId(userId) {
+        this.storage.set('userId', userId);
+    }
+
     setUserImage(image) {
         this.storage.set('userImage', image);
     }
@@ -32,6 +36,12 @@ export class UserService {
 
     getUserToken() {
         return this.storage.get('token').then((val) => {
+            return val;
+        });
+    }
+
+    getUserId() {
+        return this.storage.get('userId').then((val) => {
             return val;
         });
     }

@@ -7,6 +7,7 @@ import { UserService } from '../../services/user.service';
 import { RegisterPage } from '../register/register';
 import { AyudaPage } from '../ayuda/ayuda';
 import {ProfilePage} from "../profile/profile";
+import { OneSignalService } from '../../services/onesignal.service';
 
 @Component({
   selector: 'page-login',
@@ -27,7 +28,8 @@ export class LoginPage {
       private formBuilder: FormBuilder,
       private constants: Constants,
       private userService: UserService,
-      private tab: Tabs
+      private tab: Tabs,
+      private oneSignalService: OneSignalService
   ) {
     this.loginForm = this.formBuilder.group({
       email: [this.data['email'], Validators.required],
@@ -57,6 +59,8 @@ export class LoginPage {
         this.userService.setUserLogin(this.loginForm.value.email);
         this.userService.setUserToken(success.token);
         this.userService.setUserImage(success.logo);
+        this.userService.setUserId(success.userId);
+        this.oneSignalService.suscribe(success.userId);
         this.goToHome();
       },
       error => {
