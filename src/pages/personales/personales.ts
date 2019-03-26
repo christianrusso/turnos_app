@@ -15,7 +15,6 @@ export class PersonalesPage {
   isEditing = false;
   firstName;
   lastName;
-  dni;
   address;
   email;
   phone;
@@ -46,7 +45,6 @@ export class PersonalesPage {
             "LastName": this.lastName,
             "Address": this.address,
             "PhoneNumber": this.phone,
-            "Dni": this.dni,
             "Email": this.email
           };
           this.http.post(url, options, {headers}).subscribe(
@@ -92,7 +90,6 @@ export class PersonalesPage {
                 this.firstName = success.firstName;
                 this.lastName = success.lastName;
                 this.address = success.address;
-                this.dni = success.dni;
                 this.phone = success.phoneNumber;
                 this.email = value;
               },

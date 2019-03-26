@@ -13,8 +13,7 @@ import {LoginPage} from "../login/login";
 export class RegisterPage {
 
   data = {
-    email:    '',
-    dni:      '',
+    username:    '',
     clave:    '',
     nombre:   '',
     apellido: '',
@@ -33,10 +32,9 @@ export class RegisterPage {
     this.registerForm = this.formBuilder.group({
       nombre:   [this.data['nombre'], Validators.required],
       apellido: [this.data['apellido'], Validators.required],
-      email:    [this.data['email'], [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      dni:      [this.data['dni'], Validators.required],
       clave:    [this.data['clave'], Validators.required],
-      reclave:  [this.data['reclave'], Validators.required]
+      reclave:  [this.data['reclave'], Validators.required],
+      username:  [this.data['username'], Validators.required]
     });
   }
 
@@ -45,15 +43,13 @@ export class RegisterPage {
   }
 
   register() {
-    if (this.registerForm.value.dni.length >= this.constants.dniLength) {
       if (this.registerForm.value.clave.length >= 6) {
         if (this.registerForm.value.clave == this.registerForm.value.reclave) {
           let params = {
-            email: this.registerForm.value.email,
+            username: this.registerForm.value.username,
             password: this.registerForm.value.clave,
             firstName: this.registerForm.value.nombre,
-            lastName: this.registerForm.value.apellido,
-            dni: this.registerForm.value.dni
+            lastName: this.registerForm.value.apellido
           };
           let d = new Date().getMilliseconds();
           let url = this.constants.API_URL + 'client/register';
@@ -94,14 +90,6 @@ export class RegisterPage {
         });
         alert.present();
       }
-    } else {
-      let alert = this.alertCtrl.create({
-        title: 'Error!',
-        subTitle: "El DNI debe tener un mínimo de 7 caracteres",
-        buttons: ['OK']
-      });
-      alert.present();
-    }
   }
 
 }

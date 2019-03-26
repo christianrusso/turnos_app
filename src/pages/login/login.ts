@@ -16,7 +16,7 @@ import { OneSignalService } from '../../services/onesignal.service';
 export class LoginPage {
 
   data = {
-    email: '',
+    username: '',
     clave: '',
   }
   loginForm: FormGroup;
@@ -32,7 +32,7 @@ export class LoginPage {
       private oneSignalService: OneSignalService
   ) {
     this.loginForm = this.formBuilder.group({
-      email: [this.data['email'], Validators.required],
+      username: [this.data['username'], Validators.required],
       clave: [this.data['clave'], Validators.required],
     });
   }
@@ -50,13 +50,14 @@ export class LoginPage {
   }
 
   login() {
-    let params = {Email: this.loginForm.value.email, Password: this.loginForm.value.clave};
+    let params = {username: this.loginForm.value.username, Password: this.loginForm.value.clave};
     let d = new Date().getMilliseconds();
     let url = this.constants.API_URL + 'account/login';
     let msj = '';
     this.http.post(url, params).subscribe(
       (success: any) => {
-        this.userService.setUserLogin(this.loginForm.value.email);
+        
+        this.userService.setUserLogin(this.loginForm.value.username);
         this.userService.setUserToken(success.token);
         this.userService.setUserImage(success.logo);
         this.userService.setUserId(success.userId);
