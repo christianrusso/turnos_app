@@ -1,19 +1,17 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title mode="ios">
+      <img src="assets/icon/logo-blanco.png" height="40" alt="Todo Reservas Logo">
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
 <div id="backBlack" style="position: absolute; background-color: black; opacity: 0; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: hidden; transition: all 0.2s linear;"></div>
 <ion-content class="" style="background-color: #F9F9F9; top:0px; left:0px; width: 100%; height: 100%;">
   <ion-grid style="padding: 0; height: 100%;">
     <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; z-index: 2;" class="heightBlue"></div>
     <ion-grid style="text-align: center; padding: 0; z-index: 3; height: 100%;">
       <table id="data" [ngStyle]="{'height': isListado == true ? '' : '100%' }">
-        <tr style="background-color: #3740C3; height: 63px;">
-          <td style="width: 20px;">
-            <ion-navbar>
-              <button ion-button menuToggle>
-                <ion-icon name="menu"></ion-icon>
-              </button>
-            </ion-navbar>
-          </td>
-          <td colspan="3" style="vertical-align: bottom;"><img class="logoPosition" src="../assets/icon/logo-blanco.png" style="width: 26%;"></td>
-        </tr>
         <tr><br></tr>
         <tr>
           <td colspan="3" class="categoryStyle">{{category}}</td>
@@ -186,8 +184,6 @@
   }
 
   @media screen and (max-width: 320px) {
-    .resultsPos {
-    }
     #map {
       width: 100%;
       height: 100%;
@@ -257,7 +253,7 @@
       padding-bottom: 8px;
     }
     .heightBlue {
-      height: 138px;
+      height: 75px;
     }
     .cityText {
       font-size: 10pt;
@@ -303,8 +299,6 @@
   }
 
     @media screen and (max-width: 400px) and (min-width: 321px) {
-    .resultsPos {
-    }
     #map {
       width: 100%;
       height: 100%;
@@ -374,7 +368,7 @@
       padding-bottom: 8px;
     }
     .heightBlue {
-      height: 138px;
+      height: 75px;
     }
     .cityText {
       font-size: 10pt;
@@ -420,8 +414,6 @@
   }
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
-    .resultsPos {
-    }
     #map {
       width: 100%;
       height: 100%;
@@ -491,7 +483,7 @@
       padding-bottom: 8px;
     }
     .heightBlue {
-      height: 142px;
+      height: 79px;
     }
     .cityText {
       font-size: 10pt;
@@ -537,8 +529,6 @@
   }
 
   @media screen and (max-width: 550px) and (min-width: 450px) {
-    .resultsPos {
-    }
     #map {
       width: 100%;
       height: 100%;
@@ -608,7 +598,7 @@
       padding-bottom: 8px;
     }
     .heightBlue {
-      height: 155px;
+      height: 92px;
     }
     .cityText {
       font-size: 13pt;
@@ -654,8 +644,6 @@
   }
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
-    .resultsPos {
-    }
     #map {
       width: 100%;
       height: 100%;
@@ -725,7 +713,7 @@
       padding-bottom: 8px;
     }
     .heightBlue {
-      height: 174px;
+      height: 111px;
     }
     .cityText {
       font-size: 18pt;
@@ -768,9 +756,5 @@
       border-bottom: 1px #dedede solid;
       padding-left: 44px;
     }
-  }
-
-  .resultsPos {
-    padding-top: 25px !important;
   }
 </style>
