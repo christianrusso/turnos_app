@@ -60,6 +60,34 @@
       </ion-col>
       <hr width="100%">
     </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <h3>INFORMACIÓN</h3>
+        <p [innerText]="result.description"></p>
+      </ion-col>
+      <hr width="100%">
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <h3>HORARIOS DE ATENCIÓN</h3>
+        <!-- TODO: Agregar los horarios -->
+      </ion-col>
+      <hr width="100%">
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <h3>UBICACIÓN</h3>
+        <!-- TODO: Agregar la ubicación -->
+      </ion-col>
+      <hr width="100%">
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <h3>SERVICIOS</h3>
+        <!-- TODO: Agregar los servicios -->
+      </ion-col>
+      <hr width="100%">
+    </ion-row>
     <table>
       <tr>
         <td colspan="3" padding class="resultsPos"
@@ -148,23 +176,23 @@
               <tr>
                 <td class="verticalTop centerInfo" colspan="3">
                   <table style="width: 100%;">
-                    <tr>
+                    <!-- <tr>
                       <td style="font-family: SfUiDisplaySemiBold;" class="infoTitle">INFORMACIÓN</td>
-                    </tr>
-                    <tr style="height: 6px;"></tr>
-                    <tr>
+                    </tr> -->
+                    <!-- <tr style="height: 6px;"></tr> -->
+                    <!-- <tr>
                       <td style="font-family: SfUiDisplayLight" class="infoTitle">{{result.description}}</td>
-                    </tr>
-                    <tr style="height: 11px;"></tr>
+                    </tr> -->
+                    <!-- <tr style="height: 11px;"></tr>
                     <tr>
                       <td>
                         <hr>
                       </td>
-                    </tr>
+                    </tr> -->
                     <tr style="height: 6px;"></tr>
-                    <tr>
+                    <!-- <tr>
                       <td style="font-family: SfUiDisplaySemiBold;" class="infoTitle">HORARIOS DE ATENCIÓN</td>
-                    </tr>
+                    </tr> -->
                     <tr style="height: 6px;"></tr>
                     <tr *ngFor="let hour of result.openCloseHours; let myIndex = index;">
                       <td *ngIf="hour.dayNumber == 1" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type=""
@@ -263,9 +291,9 @@
               <tr>
                 <td class="verticalTop centerInfo" colspan="3">
                   <table style="width: 100%;">
-                    <tr>
+                    <!-- <tr>
                       <td style="font-family: SfUiDisplaySemiBold;" class="infoTitle">UBICACIÓN</td>
-                    </tr>
+                    </tr> -->
                     <tr style="height: 6px;"></tr>
                     <tr>
                       <td style="font-family: SfUiDisplayLight" class="infoTitle">{{result.address}}</td>
