@@ -41,6 +41,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { OneSignal } from '@ionic-native/onesignal';
 import { OneSignalService } from "../services/onesignal.service";
+import { Facebook } from '@ionic-native/facebook';
 
 @NgModule({
   declarations: [
@@ -123,6 +124,7 @@ import { OneSignalService } from "../services/onesignal.service";
     Deeplinks,
     OneSignal,
     OneSignalService,
+    Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
