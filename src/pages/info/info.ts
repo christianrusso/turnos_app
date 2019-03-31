@@ -16,19 +16,19 @@ import { HomePage } from "../home/home";
 })
 export class InfoPage {
 
-  private id = "";
-  private category;
+  private id = '';
+  category;
   private results;
   private moment = moment();
   private day;
   private isOpenDays = false;
-  private isOpenServices = false;
+  isOpenServices = false;
   map: any;
   destinationPoint: any;
   private link;
   @ViewChild(Nav) navChild: Nav;
-  private specialties = [];
-  private showSpe = false;
+  specialties = [];
+  showSpe = false;
   private images = [];
 
   slideOptions: {};

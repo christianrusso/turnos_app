@@ -14,8 +14,61 @@ page-info {
 
   ion-slides {
     height: auto;
-    // &>ion-slide {
-    //   width: 100% !important;
-    // }
+  }
+
+  ion-grid.grid-content {
+    margin-bottom: 50px;
+  }
+
+  ion-grid.grid-content>ion-row {
+    border-bottom: 1px #E5E5E5 solid;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  ion-icon[padding-right].icon {
+    padding-right: 8px;
+  }
+
+  .starts {
+    padding-right: 8px !important;
+  }
+
+  .service-price {
+    border: 1px #E5E5E5 solid;
+    border-top: 0;
+    padding: 8px;
+
+    &:first-of-type {
+      border-top: 1px #E5E5E5 solid;
+    }
+
+    &:nth-child(odd) {
+      background-color: #fff;
+    }
+  }
+
+  .comments {
+    border-bottom: 1px #E5E5E5 solid;
+    padding: 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    ion-row {
+      margin: 0 -5px;
+    }
+
+    .commentUser,
+    .dateText {
+      display: block;
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
   }
 }
