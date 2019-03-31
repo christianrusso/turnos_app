@@ -6,10 +6,13 @@
   </ion-navbar>
 </ion-header>
 
-<div id="backBlack" style="position: absolute; background-color: black; opacity: 0; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: hidden; transition: all 0.2s linear;"></div>
+<div id="backBlack"
+  style="position: absolute; background-color: black; opacity: 0; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: hidden; transition: all 0.2s linear;">
+</div>
 <ion-content class="" style="background-color: #F9F9F9; top:0px; left:0px; width: 100%; height: 100%;">
   <ion-grid style="padding: 0; height: 100%;">
-    <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; z-index: 2;" class="heightBlue"></div>
+    <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; z-index: 2;"
+      class="heightBlue"></div>
     <ion-grid style="text-align: center; padding: 0; z-index: 3; height: 100%;">
       <table id="data" [ngStyle]="{'height': isListado == true ? '' : '100%' }">
         <tr><br></tr>
@@ -21,16 +24,27 @@
           <td colspan="3">
             <table style="width: 100%;">
               <tr>
-                <td *ngIf="isListado" padding class="backOrdenar backOrdenarAndFiltrar" (click)="showOrder()" style="z-index: 3; font-family: SfUiDisplayLight;">
+                <td *ngIf="isListado" padding class="backOrdenar backOrdenarAndFiltrar" (click)="showOrder()"
+                  style="z-index: 3; font-family: SfUiDisplayLight;">
                   <ion-icon span name="reorder" class="ordenarIcon"></ion-icon>
-                  <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;" class="filterText">&nbsp;Ordenar</span></td>
+                  <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;"
+                    class="filterText">&nbsp;Ordenar</span>
+                </td>
                 <td class="backOrdenar backOrdenarAndFiltrar" (click)="goToFilters()">
                   <ion-icon span name="funnel" class="ordenarIcon"></ion-icon>
-                  <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;" class="filterText">&nbsp;Filtros</span></td>
-                <td *ngIf="isListado" (click)="showMap()" class="backOrdenar"><ion-icon span name="pin" class="ordenarIcon"></ion-icon>
-                  <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;" class="filterText">&nbsp;Ver Mapa</span></td>
-                <td *ngIf="!isListado" (click)="showListado()" class="backOrdenar"><ion-icon span name="reorder" class="ordenarIcon"></ion-icon>
-                  <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;" class="filterText">&nbsp;Ver Listado</span></td>
+                  <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;"
+                    class="filterText">&nbsp;Filtros</span>
+                </td>
+                <td *ngIf="isListado" (click)="showMap()" class="backOrdenar">
+                  <ion-icon span name="pin" class="ordenarIcon"></ion-icon>
+                  <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;"
+                    class="filterText">&nbsp;Ver Mapa</span>
+                </td>
+                <td *ngIf="!isListado" (click)="showListado()" class="backOrdenar">
+                  <ion-icon span name="reorder" class="ordenarIcon"></ion-icon>
+                  <span style="display: table-cell; vertical-align: middle; color: #3740C3; text-align: left;"
+                    class="filterText">&nbsp;Ver Listado</span>
+                </td>
               </tr>
               <br>
             </table>
@@ -41,18 +55,23 @@
             <div class="result" *ngFor="let result of results; let i = index" (click)="goToInfo(result.entityId)">
               <table>
                 <tr>
-                  <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo" src="{{result.logo}}"></td>
+                  <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo"
+                      src="{{result.logo}}"></td>
                   <td class="verticalTop centerInfo">
                     <table>
                       <tr class="spaceUnder">
                         <td style="font-family: SfUiDisplayMedium;" class="centerName">{{result.name}}</td>
                       </tr>
                       <tr class="spaceUnder cityText">
-                        <td style="font-family: SfUiDisplayLight;"><ion-icon name="pin"></ion-icon> {{result.city}}</td>
+                        <td style="font-family: SfUiDisplayLight;">
+                          <ion-icon name="pin"></ion-icon> {{result.city}}
+                        </td>
                       </tr>
-                      <tr style="text-align: left; font-family: SfUiDisplayRegular; color: #454EDB;" class="commentsSize">
+                      <tr style="text-align: left; font-family: SfUiDisplayRegular; color: #454EDB;"
+                        class="commentsSize">
                         <td *ngIf="result.ratings.length == 1">{{result.ratings.length}} comentario</td>
-                        <td *ngIf="result.ratings.length == 0 || result.ratings.length > 1">{{result.ratings.length}} comentarios</td>
+                        <td *ngIf="result.ratings.length == 0 || result.ratings.length > 1">{{result.ratings.length}}
+                          comentarios</td>
                       </tr>
                     </table>
                   </td>
@@ -61,7 +80,8 @@
                       <tr>
                         <td>
                           <div class="heightScore">
-                            <span style="background-color: #454EDB; color:white; vertical-align: middle;" class="scoreSize">
+                            <span style="background-color: #454EDB; color:white; vertical-align: middle;"
+                              class="scoreSize">
                               <p>{{result.score | number:'1.0-1'}}</p>
                             </span>
                           </div>
@@ -69,16 +89,26 @@
                       </tr>
                       <tr style="display: table;">
                         <td>
-                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 0"></ion-icon>
-                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 1"></ion-icon>
-                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 2"></ion-icon>
-                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 3"></ion-icon>
-                          <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((result.score*5) / 10) > 4"></ion-icon>
-                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 0"></ion-icon>
-                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 1"></ion-icon>
-                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 2"></ion-icon>
-                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 3"></ion-icon>
-                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((result.score*5) / 10) <= 4"></ion-icon>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;"
+                            *ngIf="((result.score*5) / 10) > 0"></ion-icon>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;"
+                            *ngIf="((result.score*5) / 10) > 1"></ion-icon>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;"
+                            *ngIf="((result.score*5) / 10) > 2"></ion-icon>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;"
+                            *ngIf="((result.score*5) / 10) > 3"></ion-icon>
+                          <ion-icon class="starFont" name="star" style="color: #FDD309;"
+                            *ngIf="((result.score*5) / 10) > 4"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;"
+                            *ngIf="((result.score*5) / 10) <= 0"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;"
+                            *ngIf="((result.score*5) / 10) <= 1"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;"
+                            *ngIf="((result.score*5) / 10) <= 2"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;"
+                            *ngIf="((result.score*5) / 10) <= 3"></ion-icon>
+                          <ion-icon class="starFont" name="star-outline" style="color: #FDD309;"
+                            *ngIf="((result.score*5) / 10) <= 4"></ion-icon>
                         </td>
                       </tr>
                     </table>
@@ -86,7 +116,8 @@
                 </tr>
               </table>
             </div>
-            <div *ngIf="showLoading" style="width: 50%; text-align: center; top: 50%; position: absolute; left: 50%; margin-left: -25%;">
+            <div *ngIf="showLoading"
+              style="width: 50%; text-align: center; top: 50%; position: absolute; left: 50%; margin-left: -25%;">
               <div class=""><img src="/assets/icon/loader.gif" style="width: 50%;" /></div>
             </div>
             <div *ngIf="!showLoading && results.length == 0" style="width: 100%; text-align: center; margin-top: 20px;">
@@ -98,11 +129,14 @@
                 <span class="resultados">No hemos encontrado resultados para su búsqueda</span>
               </div>
               <div>
-                <button color="button-color" ion-button full type="submit" class="nextButton" (click)="goToFilters();">VOLVER A LA BÚSQUEDA</button>
+                <button color="button-color" ion-button full type="submit" class="nextButton"
+                  (click)="goToFilters();">VOLVER A LA BÚSQUEDA</button>
               </div>
             </div>
             <div style="text-align: center; margin-top: 10px; display: none;" id="verMasButton">
-              <button style="background: #50ae20; color: #fff; border-radius: 50px; padding: 10px 3px; transition: all 0.3s ease-in-out; font-family: SfUiDisplaySemiBold; width: 150px;" (click)="search(true);">VER MÁS</button>
+              <button
+                style="background: #50ae20; color: #fff; border-radius: 50px; padding: 10px 3px; transition: all 0.3s ease-in-out; font-family: SfUiDisplaySemiBold; width: 150px;"
+                (click)="search(true);">VER MÁS</button>
             </div>
             <br>
           </td>
@@ -111,18 +145,22 @@
           <td colspan="3" class="info" style="z-index: 100;" (click)="goToInfo(entityId)">
             <table>
               <tr>
-                <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo" src="{{infoLogo}}"></td>
+                <td class="verticalTop topInfo" style="text-align: center;"><img class="imageLogo" src="{{infoLogo}}">
+                </td>
                 <td class="verticalTop centerInfo">
                   <table>
                     <tr class="spaceUnder">
                       <td style="font-family: SfUiDisplayMedium;" class="centerName">{{infoName}}</td>
                     </tr>
                     <tr class="spaceUnder cityText">
-                      <td style="font-family: SfUiDisplayLight;"><ion-icon name="pin"></ion-icon> {{infoCity}}</td>
+                      <td style="font-family: SfUiDisplayLight;">
+                        <ion-icon name="pin"></ion-icon> {{infoCity}}
+                      </td>
                     </tr>
                     <tr style="text-align: left; font-family: SfUiDisplayRegular; color: #454EDB;" class="commentsSize">
                       <td *ngIf="infoComments.length == 1">{{infoComments.length}} comentario</td>
-                      <td *ngIf="infoComments.length == 0 || infoComments.length > 1">{{infoComments.length}} comentarios</td>
+                      <td *ngIf="infoComments.length == 0 || infoComments.length > 1">{{infoComments.length}}
+                        comentarios</td>
                     </tr>
                   </table>
                 </td>
@@ -131,7 +169,8 @@
                     <tr>
                       <td>
                         <div class="heightScore">
-                          <span style="background-color: #454EDB; color:white; vertical-align: middle;" class="scoreSize">
+                          <span style="background-color: #454EDB; color:white; vertical-align: middle;"
+                            class="scoreSize">
                             <p>{{infoRating | number:'1.0-1'}}</p>
                           </span>
                         </div>
@@ -139,16 +178,26 @@
                     </tr>
                     <tr style="display: table;">
                       <td>
-                        <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) > 0"></ion-icon>
-                        <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) > 1"></ion-icon>
-                        <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) > 3"></ion-icon>
-                        <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) > 4"></ion-icon>
-                        <ion-icon class="starFont" name="star" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) > 2"></ion-icon>
-                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) <= 0"></ion-icon>
-                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) <= 1"></ion-icon>
-                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) <= 2"></ion-icon>
-                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) <= 3"></ion-icon>
-                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;" *ngIf="((infoRating*5) / 10) <= 4"></ion-icon>
+                        <ion-icon class="starFont" name="star" style="color: #FDD309;"
+                          *ngIf="((infoRating*5) / 10) > 0"></ion-icon>
+                        <ion-icon class="starFont" name="star" style="color: #FDD309;"
+                          *ngIf="((infoRating*5) / 10) > 1"></ion-icon>
+                        <ion-icon class="starFont" name="star" style="color: #FDD309;"
+                          *ngIf="((infoRating*5) / 10) > 3"></ion-icon>
+                        <ion-icon class="starFont" name="star" style="color: #FDD309;"
+                          *ngIf="((infoRating*5) / 10) > 4"></ion-icon>
+                        <ion-icon class="starFont" name="star" style="color: #FDD309;"
+                          *ngIf="((infoRating*5) / 10) > 2"></ion-icon>
+                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;"
+                          *ngIf="((infoRating*5) / 10) <= 0"></ion-icon>
+                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;"
+                          *ngIf="((infoRating*5) / 10) <= 1"></ion-icon>
+                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;"
+                          *ngIf="((infoRating*5) / 10) <= 2"></ion-icon>
+                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;"
+                          *ngIf="((infoRating*5) / 10) <= 3"></ion-icon>
+                        <ion-icon class="starFont" name="star-outline" style="color: #FDD309;"
+                          *ngIf="((infoRating*5) / 10) <= 4"></ion-icon>
                       </td>
                     </tr>
                   </table>
@@ -164,6 +213,12 @@
             </div>
           </td>
           <td colspan="3">
+            <ion-fab right bottom (click)="centerMe(); $event.stopPropagation();">
+              <button ion-fab>
+                <ion-icon name="pin"></ion-icon>
+              </button>
+            </ion-fab>
+
             <div id="map"></div>
           </td>
         </tr>
@@ -191,6 +246,7 @@
       display: block;
       z-index: 5;
     }
+
     .info {
       position: absolute;
       bottom: 40px;
@@ -201,41 +257,50 @@
       padding-top: 10px;
       padding-bottom: 10px;
     }
+
     .backOrdenar {
       width: 96px;
       height: 34px;
       background-color: #FFFFFF;
       border-radius: 8px;
-      left:50%;
+      left: 50%;
       text-align: center;
       display: inline-table;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
+
     .backOrdenarAndFiltrar {
       margin-right: 10px;
     }
+
     .ordenarIcon {
       margin-top: 8px;
       margin-left: 8px;
       color: #454EDB;
     }
+
     .filterText {
       font-size: 10.5pt;
     }
+
     .centerInfo {
       width: 117px;
     }
+
     .centerName {
       font-size: 13pt;
       text-align: left;
     }
+
     .topInfo {
       width: 78px;
     }
+
     .imageLogo {
       max-width: 58px;
       border-radius: 6px;
     }
+
     .scoreSize {
       width: 43px;
       display: inline-table;
@@ -246,37 +311,46 @@
       font-size: 9pt;
       font-family: SfUiDisplayBold;
     }
+
     .commentsSize {
       font-size: 14px;
     }
+
     tr.spaceUnder>td {
       padding-bottom: 8px;
     }
+
     .heightBlue {
       height: 75px;
     }
+
     .cityText {
       font-size: 10pt;
       text-align: left;
     }
+
     .starFont {
       font-size: 1.2em;
     }
+
     .categoryStyle {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 14pt;
     }
+
     .loSentimos {
       font-family: SfUiDisplayHeavy;
       font-size: 12pt;
       color: #454EDB;
     }
+
     .resultados {
       font-family: SfUiDisplayLight;
       font-size: 18pt;
       color: #454EDB;
     }
+
     .nextButton {
       border-radius: 20px;
       width: 212px;
@@ -287,9 +361,11 @@
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+
     .heightScore {
       height: 51px;
     }
+
     .result {
       padding-bottom: 18px;
       margin-bottom: 18px;
@@ -298,7 +374,7 @@
     }
   }
 
-    @media screen and (max-width: 400px) and (min-width: 321px) {
+  @media screen and (max-width: 400px) and (min-width: 321px) {
     #map {
       width: 100%;
       height: 100%;
@@ -306,6 +382,7 @@
       display: block;
       z-index: 5;
     }
+
     .info {
       position: absolute;
       bottom: 45px;
@@ -316,41 +393,50 @@
       padding-top: 10px;
       padding-bottom: 10px;
     }
+
     .backOrdenar {
       width: 96px;
       height: 34px;
       background-color: #FFFFFF;
       border-radius: 8px;
-      left:50%;
+      left: 50%;
       text-align: center;
       display: inline-table;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
+
     .backOrdenarAndFiltrar {
       margin-right: 10px;
     }
+
     .ordenarIcon {
       margin-top: 8px;
       margin-left: 8px;
       color: #454EDB;
     }
+
     .filterText {
       font-size: 10.5pt;
     }
+
     .centerInfo {
       width: 147px;
     }
+
     .centerName {
       font-size: 12pt;
       text-align: left;
     }
+
     .topInfo {
       width: 100px;
     }
+
     .imageLogo {
       max-width: 63px;
       border-radius: 6px;
     }
+
     .scoreSize {
       width: 48px;
       display: inline-table;
@@ -361,37 +447,46 @@
       font-size: 10pt;
       font-family: SfUiDisplayBold;
     }
+
     .commentsSize {
       font-size: 14px;
     }
+
     tr.spaceUnder>td {
       padding-bottom: 8px;
     }
+
     .heightBlue {
       height: 75px;
     }
+
     .cityText {
       font-size: 10pt;
       text-align: left;
     }
+
     .starFont {
       font-size: 1.2em;
     }
+
     .categoryStyle {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 14pt;
     }
+
     .loSentimos {
       font-family: SfUiDisplayHeavy;
       font-size: 12pt;
       color: #454EDB;
     }
+
     .resultados {
       font-family: SfUiDisplayLight;
       font-size: 18pt;
       color: #454EDB;
     }
+
     .nextButton {
       border-radius: 20px;
       width: 212px;
@@ -402,9 +497,11 @@
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+
     .heightScore {
       height: 51px;
     }
+
     .result {
       padding-bottom: 18px;
       margin-bottom: 18px;
@@ -421,6 +518,7 @@
       display: block;
       z-index: 5;
     }
+
     .info {
       position: absolute;
       bottom: 55px;
@@ -431,41 +529,50 @@
       padding-top: 10px;
       padding-bottom: 10px;
     }
+
     .backOrdenar {
       width: 113px;
       height: 37px;
       background-color: #FFFFFF;
       border-radius: 8px;
-      left:50%;
+      left: 50%;
       text-align: center;
       display: inline-table;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
+
     .backOrdenarAndFiltrar {
       margin-right: 10px;
     }
+
     .ordenarIcon {
       margin-top: 8px;
       margin-left: 8px;
       color: #454EDB;
     }
+
     .filterText {
       font-size: 10.5pt;
     }
+
     .centerInfo {
       width: 150px;
     }
+
     .centerName {
       font-size: 14pt;
       text-align: left;
     }
+
     .topInfo {
       width: 125px;
     }
+
     .imageLogo {
       max-width: 100px;
       border-radius: 6px;
     }
+
     .scoreSize {
       width: 48px;
       display: inline-table;
@@ -476,37 +583,46 @@
       font-size: 10pt;
       font-family: SfUiDisplayBold;
     }
+
     .commentsSize {
       font-size: 15px;
     }
+
     tr.spaceUnder>td {
       padding-bottom: 8px;
     }
+
     .heightBlue {
       height: 79px;
     }
+
     .cityText {
       font-size: 10pt;
       text-align: left;
     }
+
     .starFont {
       font-size: 1.2em;
     }
+
     .categoryStyle {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 16pt;
     }
+
     .loSentimos {
       font-family: SfUiDisplayHeavy;
       font-size: 12pt;
       color: #454EDB;
     }
+
     .resultados {
       font-family: SfUiDisplayLight;
       font-size: 18pt;
       color: #454EDB;
     }
+
     .nextButton {
       border-radius: 20px;
       width: 212px;
@@ -517,9 +633,11 @@
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+
     .heightScore {
       height: 51px;
     }
+
     .result {
       padding-bottom: 18px;
       margin-bottom: 18px;
@@ -536,6 +654,7 @@
       display: block;
       z-index: 5;
     }
+
     .info {
       position: absolute;
       bottom: 60px;
@@ -546,41 +665,50 @@
       padding-top: 10px;
       padding-bottom: 10px;
     }
+
     .backOrdenar {
       width: 139px;
       height: 47px;
       background-color: #FFFFFF;
       border-radius: 8px;
-      left:50%;
+      left: 50%;
       text-align: center;
       display: inline-table;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
+
     .backOrdenarAndFiltrar {
       margin-right: 10px;
     }
+
     .ordenarIcon {
       margin-top: 14px;
       margin-left: 10px;
       color: #454EDB;
     }
+
     .filterText {
       font-size: 14pt;
     }
+
     .centerInfo {
       width: 198px;
     }
+
     .centerName {
       font-size: 18pt;
       text-align: left;
     }
+
     .topInfo {
       width: 130px;
     }
+
     .imageLogo {
       max-width: 110px;
       border-radius: 6px;
     }
+
     .scoreSize {
       width: 48px;
       display: inline-table;
@@ -591,37 +719,46 @@
       font-size: 12pt;
       font-family: SfUiDisplayBold;
     }
+
     .commentsSize {
       font-size: 18px;
     }
+
     tr.spaceUnder>td {
       padding-bottom: 8px;
     }
+
     .heightBlue {
       height: 92px;
     }
+
     .cityText {
       font-size: 13pt;
       text-align: left;
     }
+
     .starFont {
       font-size: 19px;
     }
+
     .categoryStyle {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 19pt;
     }
+
     .loSentimos {
       font-family: SfUiDisplayHeavy;
       font-size: 12pt;
       color: #454EDB;
     }
+
     .resultados {
       font-family: SfUiDisplayLight;
       font-size: 18pt;
       color: #454EDB;
     }
+
     .nextButton {
       border-radius: 20px;
       width: 212px;
@@ -632,9 +769,11 @@
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+
     .heightScore {
       height: 61px;
     }
+
     .result {
       padding-bottom: 24px;
       margin-bottom: 24px;
@@ -651,6 +790,7 @@
       display: block;
       z-index: 5;
     }
+
     .info {
       position: absolute;
       bottom: 60px;
@@ -661,41 +801,50 @@
       padding-top: 10px;
       padding-bottom: 10px;
     }
+
     .backOrdenar {
       width: 193px;
       height: 55px;
       background-color: #FFFFFF;
       border-radius: 8px;
-      left:50%;
+      left: 50%;
       text-align: center;
       display: inline-table;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
+
     .backOrdenarAndFiltrar {
       margin-right: 10px;
     }
+
     .ordenarIcon {
       margin-top: 18px;
       margin-left: 10px;
       color: #454EDB;
     }
+
     .filterText {
       font-size: 18pt;
     }
+
     .centerInfo {
       width: 250px;
     }
+
     .centerName {
       font-size: 29pt;
       text-align: left;
     }
+
     .topInfo {
       width: 246px;
     }
+
     .imageLogo {
       max-width: 225px;
       border-radius: 6px;
     }
+
     .scoreSize {
       width: 75px;
       display: inline-table;
@@ -706,37 +855,46 @@
       font-size: 18pt;
       font-family: SfUiDisplayBold;
     }
+
     .commentsSize {
       font-size: 24px;
     }
+
     tr.spaceUnder>td {
       padding-bottom: 8px;
     }
+
     .heightBlue {
       height: 111px;
     }
+
     .cityText {
       font-size: 18pt;
       text-align: left;
     }
+
     .starFont {
       font-size: 28.5px;
     }
+
     .categoryStyle {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 26pt;
     }
+
     .loSentimos {
       font-family: SfUiDisplayHeavy;
       font-size: 16pt;
       color: #454EDB;
     }
+
     .resultados {
       font-family: SfUiDisplayLight;
       font-size: 23pt;
       color: #454EDB;
     }
+
     .nextButton {
       border-radius: 20px;
       width: 276px;
@@ -747,9 +905,11 @@
       font-family: SfUiDisplayRegular;
       font-size: 16pt;
     }
+
     .heightScore {
       height: 92px;
     }
+
     .result {
       padding-bottom: 27px;
       margin-bottom: 27px;
@@ -757,4 +917,5 @@
       padding-left: 44px;
     }
   }
+
 </style>
