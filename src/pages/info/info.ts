@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, AlertController, NavParams, ModalController, Nav, Platform } from 'ionic-angular';
+import { NavController, AlertController, NavParams, ModalController, Nav, Platform, Slides } from 'ionic-angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import * as moment from 'moment';
@@ -8,6 +8,7 @@ import { ReservaPage } from '../reserva/reserva';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { HomePage } from "../home/home";
+
 
 @Component({
   selector: 'page-info',
@@ -27,6 +28,7 @@ export class InfoPage {
   destinationPoint: any;
   private link;
   @ViewChild(Nav) navChild: Nav;
+  @ViewChild('slider') slides: Slides;
   specialties = [];
   showSpe = false;
   private images = [];
@@ -63,6 +65,7 @@ export class InfoPage {
 
   ionViewWillEnter() {
     this.search();
+    this.slides.autoHeight = true;
   }
 
   search() {
