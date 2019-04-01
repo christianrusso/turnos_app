@@ -1,28 +1,74 @@
 page-info {
-
-  .toolbar-background-ios {
-    background: transparent !important;
-  }
   .item-ios {
     background-color: transparent;
   }
+
   .item-ios.item-block .item-inner {
     border-bottom: none;
   }
-  .range-ios-secondary .range-bar-active, .range-ios-secondary .range-tick-active {
+
+  .range-ios-secondary .range-bar-active,
+  .range-ios-secondary .range-tick-active {
     background: #3740C3;
   }
-  .toolbar-background-md {
-    background: transparent !important;
-  }
-  .back-button-icon-md {
-    color: #488aff;
-  }
-  .toolbar-md {
-    width: 33px;
-  }
-  .back-button-md {
-    min-width: 24px;
+
+  ion-slides {
+    height: auto;
   }
 
+  ion-grid.grid-content {
+    margin-bottom: 50px;
+  }
+
+  ion-grid.grid-content>ion-row {
+    border-bottom: 1px #E5E5E5 solid;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  ion-icon[padding-right].icon {
+    padding-right: 8px;
+  }
+
+  .starts {
+    padding-right: 8px !important;
+  }
+
+  .service-price {
+    border: 1px #E5E5E5 solid;
+    border-top: 0;
+    padding: 8px;
+
+    &:first-of-type {
+      border-top: 1px #E5E5E5 solid;
+    }
+
+    &:nth-child(odd) {
+      background-color: #fff;
+    }
+  }
+
+  .comments {
+    border-bottom: 1px #E5E5E5 solid;
+    padding: 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    ion-row {
+      margin: 0 -5px;
+    }
+
+    .commentUser,
+    .dateText {
+      display: block;
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+  }
 }

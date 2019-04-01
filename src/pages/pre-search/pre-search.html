@@ -1,19 +1,20 @@
-<div id="backBlack" style="position: absolute; background-color: black; opacity: 0; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: hidden; transition: all 0.2s linear;"></div>
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title mode="ios">
+      <img src="assets/icon/logo-blanco.png" height="30" alt="Todo Reservas Logo">
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<div id="backBlack"
+  style="position: absolute; background-color: black; opacity: 0; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: hidden; transition: all 0.2s linear;">
+</div>
 <ion-content class="" style="background-color: #F9F9F9; top:0px; left:0px; width: 100%; height: 100%;">
   <ion-grid style="padding: 0;">
-    <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; z-index: 2;" class="heightBlue"></div>
+    <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; z-index: 2;"
+      class="heightBlue"></div>
     <ion-grid style="text-align: center; padding: 0; z-index: 3;">
-      <table>
-        <tr style="background-color: #3740C3; height: 63px;">
-          <td style="width: 20px;">
-            <ion-navbar>
-              <button ion-button menuToggle>
-                <ion-icon name="menu"></ion-icon>
-              </button>
-            </ion-navbar>
-          </td>
-          <td colspan="3" style="vertical-align: bottom;"><img class="logoPosition" src="../assets/icon/logo-blanco.png" style="width: 26%;"></td>
-        </tr>
+      <table width="100%">
         <tr>
           <td colspan="2" class="reservaText">¿Qué vas a reservar hoy?</td>
         </tr>
@@ -21,10 +22,12 @@
         <tr>
           <td colspan="2" padding class="formPos" style="z-index: 3; padding: 0px;">
             <form style="font-family: SfUiDisplayLight; font-size: 10pt;">
-              <ion-item no-lines style="text-align: center; background-color: white; border-radius: 10px;" class="backCat">
+              <ion-item no-lines style="text-align: center; background-color: white; border-radius: 10px;"
+                class="backCat">
                 <span class="titlesCss">CATEGORÍA</span>
                 <select id="categorySelect" name="categorySelect" style="background-color:transparent;
-              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px; height: 35px;" [(ngModel)]="category">
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px; height: 35px;"
+                  [(ngModel)]="category">
                   <option value="medicina">Medicina</option>
                   <option value="peluquerias">Peluquerías</option>
                   <option value="barberias">Barberias</option>
@@ -34,7 +37,8 @@
               <ion-item no-lines class="separator">
                 <span class="titlesCss">UBICACIÓN</span>
                 <select id="positionSelect" name="positionSelect" style="background-color:transparent;
-              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px; height: 35px;" [(ngModel)]="place">
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important; width: 170px; height: 35px;"
+                  [(ngModel)]="place">
                   <option value="">¿Dónde?</option>
                   <option *ngFor="let cat of categories; let i = index" value="{{cat.id}}">
                     {{cat.text}}
@@ -52,7 +56,9 @@
                 </select>
               </ion-item>
               <div class="separatorButton">
-                <button color="button-color" ion-button full type="submit" style="border-radius: 30px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 10pt;" (click)="search()">BUSCAR</button>
+                <button color="button-color" ion-button full type="submit"
+                  style="border-radius: 30px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 10pt;"
+                  (click)="search()">BUSCAR</button>
               </div>
 
             </form>
@@ -66,16 +72,17 @@
 </ion-content>
 
 <style>
-  .formPos {
-  }
+  .formPos {}
+
   .heightBlue {
-    height: 250px;
+    height: 187px;
   }
 
   @media screen and (max-width: 320px) {
     .formPos {
       padding: 0px !important;
     }
+
     .separator {
       margin-top: 9%;
       background-color: transparent;
@@ -83,6 +90,7 @@
       border-top: 1px #dedede solid;
       text-align: center;
     }
+
     .separatorFecha {
       margin-top: 4%;
       background-color: transparent;
@@ -90,17 +98,21 @@
       border-top: 1px #dedede solid;
       text-align: center;
     }
+
     .backCat {
       width: 92%;
       margin-left: 13px;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
+
     .separatorButton {
       padding-top: 27px;
     }
+
     .heightBlue {
-      height: 165px;
+      height: 102px;
     }
+
     .reservaText {
       color: white;
       font-family: SfUiDisplayThin;
@@ -108,25 +120,29 @@
       padding-top: 19px;
       padding-bottom: 9px;
     }
+
     .titlesCss {
       margin-right: 10px;
       font-family: SfUiDisplaySemiBold;
       font-size: 14px;
     }
+
     .marginLeftFecha {
       margin-left: 2px;
     }
+
     .widthFecha {
       width: 200px;
     }
+
     .logoPosition {
       margin-left: -40px;
     }
   }
 
-    @media screen and (max-width: 400px) and (min-width: 321px) {
-    .formPos {
-    }
+  @media screen and (max-width: 400px) and (min-width: 321px) {
+    .formPos {}
+
     .separator {
       margin-top: 9%;
       background-color: transparent;
@@ -134,6 +150,7 @@
       border-top: 1px #dedede solid;
       text-align: center;
     }
+
     .separatorFecha {
       margin-top: 4%;
       background-color: transparent;
@@ -141,43 +158,51 @@
       border-top: 1px #dedede solid;
       text-align: center;
     }
+
     .separatorButton {
       padding-top: 45px;
     }
+
     .backCat {
       width: 92%;
       margin-left: 16px;
       height: 74px;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
+
     .heightBlue {
-      height: 175px;
+      height: 112px;
     }
+
     .reservaText {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 16pt;
       padding-top: 30px;
     }
+
     .titlesCss {
       margin-right: 10px;
       font-family: SfUiDisplaySemiBold;
       font-size: 14px;
     }
+
     .marginLeftFecha {
       margin-left: 5px;
     }
+
     .widthFecha {
       width: 196px;
     }
+
     .logoPosition {
       margin-left: -40px;
     }
   }
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
-    .formPos {
-    }
+    .formPos {}
+
     .separator {
       margin-top: 9%;
       background-color: transparent;
@@ -185,6 +210,7 @@
       border-top: 1px #dedede solid;
       text-align: center;
     }
+
     .separatorFecha {
       margin-top: 6%;
       background-color: transparent;
@@ -192,41 +218,48 @@
       border-top: 1px #dedede solid;
       text-align: center;
     }
+
     .separatorButton {
       padding-top: 65px;
     }
+
     .backCat {
       width: 92%;
       margin-left: 16px;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
+
     .heightBlue {
-      height: 170px;
+      height: 107px;
     }
+
     .reservaText {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 19pt;
       padding-top: 30px;
     }
+
     .titlesCss {
       margin-right: 10px;
       font-family: SfUiDisplaySemiBold;
       font-size: 14px;
     }
-    .marginLeftFecha {
-    }
+
+    .marginLeftFecha {}
+
     .widthFecha {
       width: 200px;
     }
+
     .logoPosition {
       margin-left: -40px;
     }
   }
 
   @media screen and (max-width: 550px) and (min-width: 450px) {
-    .formPos {
-    }
+    .formPos {}
+
     .separator {
       margin-top: 9%;
       background-color: transparent;
@@ -234,6 +267,7 @@
       border-top: 1px #dedede solid;
       text-align: center;
     }
+
     .separatorFecha {
       margin-top: 5%;
       background-color: transparent;
@@ -241,41 +275,48 @@
       border-top: 1px #dedede solid;
       text-align: center;
     }
+
     .separatorButton {
       padding-top: 37px;
     }
+
     .backCat {
       width: 92%;
       margin-left: 20px;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
+
     .heightBlue {
-      height: 173px;
+      height: 110px;
     }
+
     .reservaText {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 20pt;
       padding-top: 30px;
     }
+
     .titlesCss {
       margin-right: 10px;
       font-family: SfUiDisplaySemiBold;
       font-size: 14px;
     }
-    .marginLeftFecha {
-    }
+
+    .marginLeftFecha {}
+
     .widthFecha {
       width: 200px;
     }
+
     .logoPosition {
       margin-left: -40px;
     }
   }
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
-    .formPos {
-    }
+    .formPos {}
+
     .separator {
       margin-top: 5%;
       background-color: transparent;
@@ -284,6 +325,7 @@
       text-align: center;
       padding-left: 0px;
     }
+
     .separatorFecha {
       margin-top: 3%;
       background-color: transparent;
@@ -292,35 +334,43 @@
       text-align: center;
       padding-left: 0px;
     }
+
     .separatorButton {
       padding-top: 40px;
     }
+
     .backCat {
       width: 87%;
       margin-left: 44px;
       box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.10);
     }
+
     .heightBlue {
-      height: 204px;
+      height: 141px;
     }
+
     .reservaText {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 28pt;
       padding-top: 40px;
     }
+
     .titlesCss {
       margin-right: 10px;
       font-family: SfUiDisplaySemiBold;
       font-size: 14px;
     }
-    .marginLeftFecha {
-    }
+
+    .marginLeftFecha {}
+
     .widthFecha {
       width: 200px;
     }
+
     .logoPosition {
       margin-left: -40px;
     }
   }
+
 </style>

@@ -1,11 +1,18 @@
-<div *ngIf="showBack" id="backBlackReserva" style="position: absolute; background-color: black; opacity: 0.7; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; transition: all 0.2s linear;"></div>
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title mode="ios">
+      <img src="assets/icon/logo-blanco.png" height="30" alt="Todo Reservas Logo">
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<div *ngIf="showBack" id="backBlackReserva"
+  style="position: absolute; background-color: black; opacity: 0.7; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; transition: all 0.2s linear;">
+</div>
 <ion-content class="" style="background-color: #F9F9F9; top:0px; left:0px; width: 100%; height: 100%;">
   <ion-grid style="padding: 0;">
     <ion-grid style="text-align: center; padding: 0; z-index: 3;">
       <table>
-        <tr style="background-color: #3740C3; height: 63px;">
-          <td colspan="3" style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 26%;"></td>
-        </tr>
         <tr class="heightBlue" style="background-color: #454EDB;">
           <td colspan="3" class="categoryStyle">Reservas</td>
         </tr>
@@ -30,11 +37,8 @@
             <table>
               <tr>
                 <td>
-                  <ion-calendar *ngIf="options.daysConfig.length > 0" [(ngModel)]="date"
-                                [options] = options
-                                (onChange)="showDayEvents($event)"
-                                [type]="type"
-                                [format]="'YYYY-MM-DD'">
+                  <ion-calendar *ngIf="options.daysConfig.length > 0" [(ngModel)]="date" [options]=options
+                    (onChange)="showDayEvents($event)" [type]="type" [format]="'YYYY-MM-DD'">
                   </ion-calendar>
                 </td>
               </tr>
@@ -43,13 +47,15 @@
               </tr>
               <tr>
                 <td>
-                    <div *ngIf="appointments.length > 0" style="">
-                      <div *ngFor="let appoint of appointments; let i = index" class="cardStyles">
-                        <div class="cardCrossCalendar" *ngIf="appoint.state == 1 && !appoint.datePosition" (click)="cancelTurno(appoint.id, appoint.rubro);">X</div>
-                        <div class="cardTitle"><span>{{appoint.clinica}}</span> <span *ngIf="appoint.state == 2" class="cardCancel">- Cancelado</span></div>
-                        <div class="cardSub">{{appoint.subspecialty}} - {{appoint.date}}</div>
-                      </div>
+                  <div *ngIf="appointments.length > 0" style="">
+                    <div *ngFor="let appoint of appointments; let i = index" class="cardStyles">
+                      <div class="cardCrossCalendar" *ngIf="appoint.state == 1 && !appoint.datePosition"
+                        (click)="cancelTurno(appoint.id, appoint.rubro);">X</div>
+                      <div class="cardTitle"><span>{{appoint.clinica}}</span> <span *ngIf="appoint.state == 2"
+                          class="cardCancel">- Cancelado</span></div>
+                      <div class="cardSub">{{appoint.subspecialty}} - {{appoint.date}}</div>
                     </div>
+                  </div>
                 </td>
               </tr>
             </table>
@@ -60,8 +66,10 @@
           <td>
             <div *ngFor="let key of objectKeys(appointmentsListado);">
               <div *ngFor="let appoint of appointmentsListado[key]" class="cardStyles">
-                <div class="cardCross" *ngIf="appoint.state == 1" (click)="cancelTurno(appoint.id, appoint.rubro);">X</div>
-                <div class="cardTitle"><span>{{appoint.clinic}}</span> <span *ngIf="appoint.state == 2" class="cardCancel">- Cancelado</span></div>
+                <div class="cardCross" *ngIf="appoint.state == 1" (click)="cancelTurno(appoint.id, appoint.rubro);">X
+                </div>
+                <div class="cardTitle"><span>{{appoint.clinic}}</span> <span *ngIf="appoint.state == 2"
+                    class="cardCancel">- Cancelado</span></div>
                 <div class="cardFecha">Fecha: {{appoint.date}}</div>
                 <div class="cardHour">Horario: {{appoint.hour}}</div>
                 <div class="cardSub">Reserva: {{appoint.subspeciality}}</div>
@@ -69,9 +77,11 @@
             </div>
           </td>
         </tr>
-        <tr *ngIf="options.daysConfig.length == 0 && !isSearching" class="infoButton">No tiene turnos en este momento</tr>
+        <tr *ngIf="options.daysConfig.length == 0 && !isSearching" class="infoButton">No tiene turnos en este momento
+        </tr>
       </table>
-      <div *ngIf="isSearching" style="width: 50%; text-align: center; top: 50%; position: absolute; left: 50%; margin-left: -25%;">
+      <div *ngIf="isSearching"
+        style="width: 50%; text-align: center; top: 50%; position: absolute; left: 50%; margin-left: -25%;">
         <div class=""><img src="/assets/icon/loader.gif" style="width: 50%;" /></div>
       </div>
     </ion-grid>
@@ -93,6 +103,7 @@
     background-color: white;
     border: 2px solid #DCDCDC;
   }
+
   .noBorderTab {
     background-color: #F4F4F4;
     border: 2px solid #DCDCDC;
@@ -107,22 +118,26 @@
   }
 
   @media screen and (max-width: 320px) {
-    .resultsPos {
-    }
+    .resultsPos {}
+
     .centerInfo {
       width: 158px;
     }
+
     .centerName {
       font-size: 15pt;
       text-align: left;
     }
+
     .topInfo {
       width: 78px;
     }
+
     .imageLogo {
       max-width: 58px;
       border-radius: 6px;
     }
+
     .scoreSize {
       width: 25px;
       display: inline-table;
@@ -131,12 +146,15 @@
       border: none;
       border-radius: 4px;
     }
+
     tr.spaceUnder>td {
       padding-bottom: 8px;
     }
+
     .heightBlue {
       height: 66px;
     }
+
     .infoButton {
       border-radius: 17px;
       width: 84px;
@@ -146,22 +164,27 @@
       font-size: 12pt;
       color: black;
     }
+
     .cityText {
       font-size: 10pt;
       text-align: left;
     }
+
     .starFont {
       font-size: 1.2em;
     }
+
     .categoryStyle {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 16pt;
     }
+
     .iconsFont {
       font-size: 41px;
       width: 50px;
     }
+
     .cardTitle {
       padding-bottom: 10px;
       text-align: left;
@@ -170,6 +193,7 @@
       padding-left: 12px;
       padding-top: 12px;
     }
+
     .cardFecha {
       padding-bottom: 10px;
       text-align: left;
@@ -178,6 +202,7 @@
       margin-top: 7px;
       padding-left: 12px;
     }
+
     .cardHour {
       padding-bottom: 10px;
       text-align: left;
@@ -186,6 +211,7 @@
       margin-bottom: 7px;
       padding-left: 12px;
     }
+
     .cardSub {
       padding-bottom: 10px;
       text-align: left;
@@ -195,6 +221,7 @@
       padding-left: 12px;
       padding-bottom: 12px;
     }
+
     .cardCross {
       text-align: right;
       padding-top: 10px;
@@ -204,6 +231,7 @@
       width: 87%;
       font-family: SfUiDisplaySemiBold;
     }
+
     .cardCrossCalendar {
       text-align: right;
       padding-top: 10px;
@@ -213,6 +241,7 @@
       width: 78%;
       font-family: SfUiDisplaySemiBold;
     }
+
     .tabsText {
       font-family: SfUiDisplayThin;
       font-size: 15pt;
@@ -222,29 +251,34 @@
       height: 45px;
       padding-top: 7px;
     }
+
     .cardCancel {
       font-family: SfUiDisplayThin;
       font-size: 10pt;
     }
   }
 
-    @media screen and (max-width: 400px) and (min-width: 321px) {
-    .resultsPos {
-    }
+  @media screen and (max-width: 400px) and (min-width: 321px) {
+    .resultsPos {}
+
     .centerInfo {
       width: 154px;
     }
+
     .centerName {
       font-size: 15pt;
       text-align: left;
     }
+
     .topInfo {
       width: 100px;
     }
+
     .imageLogo {
       max-width: 63px;
       border-radius: 6px;
     }
+
     .scoreSize {
       width: 32px;
       display: inline-table;
@@ -253,12 +287,15 @@
       border: none;
       border-radius: 4px;
     }
+
     tr.spaceUnder>td {
       padding-bottom: 8px;
     }
+
     .heightBlue {
       height: 73px;
     }
+
     .infoButton {
       border-radius: 17px;
       width: 108px;
@@ -268,22 +305,27 @@
       font-size: 15pt;
       color: black;
     }
+
     .cityText {
       font-size: 10pt;
       text-align: left;
     }
+
     .starFont {
       font-size: 1.2em;
     }
+
     .categoryStyle {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 18pt;
     }
+
     .iconsFont {
       font-size: 41px;
       width: 50px;
     }
+
     .cardTitle {
       padding-bottom: 10px;
       text-align: left;
@@ -292,6 +334,7 @@
       padding-left: 12px;
       padding-top: 12px;
     }
+
     .cardFecha {
       padding-bottom: 10px;
       text-align: left;
@@ -300,6 +343,7 @@
       margin-top: 7px;
       padding-left: 12px;
     }
+
     .cardHour {
       padding-bottom: 10px;
       text-align: left;
@@ -308,6 +352,7 @@
       margin-bottom: 7px;
       padding-left: 12px;
     }
+
     .cardSub {
       padding-bottom: 10px;
       text-align: left;
@@ -317,6 +362,7 @@
       padding-left: 12px;
       padding-bottom: 12px;
     }
+
     .cardCross {
       text-align: right;
       padding-top: 10px;
@@ -326,6 +372,7 @@
       width: 87%;
       font-family: SfUiDisplaySemiBold;
     }
+
     .cardCrossCalendar {
       text-align: right;
       padding-top: 10px;
@@ -335,6 +382,7 @@
       width: 78%;
       font-family: SfUiDisplaySemiBold;
     }
+
     .tabsText {
       font-family: SfUiDisplayThin;
       font-size: 15pt;
@@ -344,6 +392,7 @@
       height: 45px;
       padding-top: 7px;
     }
+
     .cardCancel {
       font-family: SfUiDisplayThin;
       font-size: 11pt;
@@ -351,22 +400,26 @@
   }
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
-    .resultsPos {
-    }
+    .resultsPos {}
+
     .centerInfo {
       width: 150px;
     }
+
     .centerName {
       font-size: 15pt;
       text-align: left;
     }
+
     .topInfo {
       width: 125px;
     }
+
     .imageLogo {
       max-width: 100px;
       border-radius: 6px;
     }
+
     .scoreSize {
       width: 32px;
       display: inline-table;
@@ -375,12 +428,15 @@
       border: none;
       border-radius: 4px;
     }
+
     tr.spaceUnder>td {
       padding-bottom: 8px;
     }
+
     .heightBlue {
       height: 72px;
     }
+
     .infoButton {
       border-radius: 17px;
       width: 119px;
@@ -390,22 +446,27 @@
       font-size: 16pt;
       color: black;
     }
+
     .cityText {
       font-size: 10pt;
       text-align: left;
     }
+
     .starFont {
       font-size: 1.2em;
     }
+
     .categoryStyle {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 20pt;
     }
+
     .iconsFont {
       font-size: 41px;
       width: 50px;
     }
+
     .cardTitle {
       padding-bottom: 10px;
       text-align: left;
@@ -414,6 +475,7 @@
       padding-left: 12px;
       padding-top: 12px;
     }
+
     .cardFecha {
       padding-bottom: 10px;
       text-align: left;
@@ -422,6 +484,7 @@
       margin-top: 7px;
       padding-left: 12px;
     }
+
     .cardHour {
       padding-bottom: 10px;
       text-align: left;
@@ -430,6 +493,7 @@
       margin-bottom: 7px;
       padding-left: 12px;
     }
+
     .cardSub {
       padding-bottom: 10px;
       text-align: left;
@@ -439,6 +503,7 @@
       padding-left: 12px;
       padding-bottom: 12px;
     }
+
     .cardCross {
       text-align: right;
       padding-top: 10px;
@@ -448,6 +513,7 @@
       width: 87%;
       font-family: SfUiDisplaySemiBold;
     }
+
     .cardCrossCalendar {
       text-align: right;
       padding-top: 10px;
@@ -457,6 +523,7 @@
       width: 78%;
       font-family: SfUiDisplaySemiBold;
     }
+
     .tabsText {
       font-family: SfUiDisplayThin;
       font-size: 16pt;
@@ -466,6 +533,7 @@
       height: 45px;
       padding-top: 7px;
     }
+
     .cardCancel {
       font-family: SfUiDisplayThin;
       font-size: 11pt;
@@ -473,22 +541,26 @@
   }
 
   @media screen and (max-width: 550px) and (min-width: 450px) {
-    .resultsPos {
-    }
+    .resultsPos {}
+
     .centerInfo {
       width: 175px;
     }
+
     .centerName {
       font-size: 19pt;
       text-align: left;
     }
+
     .topInfo {
       width: 130px;
     }
+
     .imageLogo {
       max-width: 125px;
       border-radius: 6px;
     }
+
     .scoreSize {
       width: 32px;
       display: inline-table;
@@ -498,12 +570,15 @@
       border-radius: 4px;
       font-size: 14pt;
     }
+
     tr.spaceUnder>td {
       padding-bottom: 8px;
     }
+
     .heightBlue {
       height: 82px;
     }
+
     .infoButton {
       border-radius: 17px;
       width: 151px;
@@ -513,22 +588,27 @@
       font-size: 18pt;
       color: black;
     }
+
     .cityText {
       font-size: 13pt;
       text-align: left;
     }
+
     .starFont {
       font-size: 19px;
     }
+
     .categoryStyle {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 20pt;
     }
+
     .iconsFont {
       font-size: 41px;
       width: 50px;
     }
+
     .cardTitle {
       padding-bottom: 10px;
       text-align: left;
@@ -537,6 +617,7 @@
       padding-left: 12px;
       padding-top: 12px;
     }
+
     .cardFecha {
       padding-bottom: 10px;
       text-align: left;
@@ -545,6 +626,7 @@
       margin-top: 7px;
       padding-left: 12px;
     }
+
     .cardHour {
       padding-bottom: 10px;
       text-align: left;
@@ -553,6 +635,7 @@
       margin-bottom: 7px;
       padding-left: 12px;
     }
+
     .cardSub {
       padding-bottom: 10px;
       text-align: left;
@@ -562,6 +645,7 @@
       padding-left: 12px;
       padding-bottom: 12px;
     }
+
     .cardCross {
       text-align: right;
       padding-top: 10px;
@@ -572,6 +656,7 @@
       font-family: SfUiDisplaySemiBold;
       font-size: 14pt;
     }
+
     .cardCrossCalendar {
       text-align: right;
       padding-top: 10px;
@@ -582,6 +667,7 @@
       font-family: SfUiDisplaySemiBold;
       font-size: 14pt;
     }
+
     .tabsText {
       font-family: SfUiDisplayThin;
       font-size: 17pt;
@@ -591,6 +677,7 @@
       height: 48px;
       padding-top: 7px;
     }
+
     .cardCancel {
       font-family: SfUiDisplayThin;
       font-size: 13pt;
@@ -598,22 +685,26 @@
   }
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
-    .resultsPos {
-    }
+    .resultsPos {}
+
     .centerInfo {
       width: 250px;
     }
+
     .centerName {
       font-size: 29pt;
       text-align: left;
     }
+
     .topInfo {
       width: 246px;
     }
+
     .imageLogo {
       max-width: 225px;
       border-radius: 6px;
     }
+
     .scoreSize {
       width: 32px;
       display: inline-table;
@@ -623,12 +714,15 @@
       border-radius: 4px;
       font-size: 20pt;
     }
+
     tr.spaceUnder>td {
       padding-bottom: 8px;
     }
+
     .heightBlue {
       height: 113px;
     }
+
     .infoButton {
       border-radius: 17px;
       width: 226px;
@@ -638,22 +732,27 @@
       font-size: 24pt;
       color: black;
     }
+
     .cityText {
       font-size: 18pt;
       text-align: left;
     }
+
     .starFont {
       font-size: 28.5px;
     }
+
     .categoryStyle {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 33pt;
     }
+
     .iconsFont {
       font-size: 41px;
       width: 50px;
     }
+
     .cardTitle {
       padding-bottom: 10px;
       text-align: left;
@@ -662,6 +761,7 @@
       padding-left: 12px;
       padding-top: 12px;
     }
+
     .cardFecha {
       padding-bottom: 10px;
       text-align: left;
@@ -670,6 +770,7 @@
       margin-top: 7px;
       padding-left: 12px;
     }
+
     .cardHour {
       padding-bottom: 10px;
       text-align: left;
@@ -678,6 +779,7 @@
       margin-bottom: 7px;
       padding-left: 12px;
     }
+
     .cardSub {
       padding-bottom: 10px;
       text-align: left;
@@ -687,6 +789,7 @@
       padding-left: 12px;
       padding-bottom: 12px;
     }
+
     .cardCross {
       text-align: right;
       padding-top: 10px;
@@ -697,6 +800,7 @@
       font-family: SfUiDisplaySemiBold;
       font-size: 18pt;
     }
+
     .cardCrossCalendar {
       text-align: right;
       padding-top: 10px;
@@ -707,6 +811,7 @@
       font-family: SfUiDisplaySemiBold;
       font-size: 18pt;
     }
+
     .tabsText {
       font-family: SfUiDisplayThin;
       font-size: 22pt;
@@ -716,9 +821,11 @@
       height: 57px;
       padding-top: 7px;
     }
+
     .cardCancel {
       font-family: SfUiDisplayThin;
       font-size: 17pt;
     }
   }
+
 </style>

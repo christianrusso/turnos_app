@@ -1,0 +1,20 @@
+ion-header {
+  &.header:after {
+    border: 0;
+    border-bottom-color: transparent;
+    background-image: none;
+    border-bottom: none;
+  }
+
+  .back-button {
+    z-index: 1;
+  }
+
+  .show-back-button+.toolbar-content {
+    margin-left: -54px;
+  }
+  .show-back-button+.bar-buttons+.toolbar-content {
+    margin-left: -54px;
+    margin-right: -34px;
+  }
+}
