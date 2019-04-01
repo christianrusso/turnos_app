@@ -1,17 +1,24 @@
-<div id="backBlack" style="position: absolute; background-color: black; opacity: 0; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: hidden; transition: all 0.2s linear;"></div>
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title mode="ios">
+      <img src="assets/icon/logo-blanco.png" height="30" alt="Todo Reservas Logo">
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<div id="backBlack"
+  style="position: absolute; background-color: black; opacity: 0; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: hidden; transition: all 0.2s linear;">
+</div>
 <ion-content class="" style="background-color: #F4F4F4; top:0px; left:0px; width: 100%; height: 100%;">
   <ion-grid style="padding: 0;">
-    <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; z-index: 2;" class="heightBlue"></div>
+    <div style="position: absolute; background-color: #454EDB; top:0px; left:0px; width: 100%; z-index: 2;"
+      class="heightBlue"></div>
     <ion-grid style="text-align: center; padding: 0; z-index: 3;">
       <table>
-        <tr style="background-color: #3740C3; height: 63px;">
-          <td colspan="3" style="vertical-align: bottom;"><img src="../assets/icon/logo-blanco.png" style="width: 26%;"></td>
-        </tr>
         <tr><br></tr>
         <tr>
           <td class="title">Datos de cuenta</td>
         </tr>
-        <tr><br></tr>
         <tr><br></tr>
         <tr>
           <td>
@@ -24,25 +31,32 @@
             <form style="padding-top: 5px;">
               <ion-item style="background-color: #F4F4F4;">
                 <ion-label stacked class="fields">Nombre de usuario</ion-label>
-                <ion-input type="text" value="{{username}}" name="username" [(ngModel)]="username" [readonly]="!isEditing || isEditing"></ion-input>
+                <ion-input type="text" value="{{username}}" name="username" [(ngModel)]="username"
+                  [readonly]="!isEditing || isEditing"></ion-input>
               </ion-item>
 
               <ion-item style="background-color: #F4F4F4;">
                 <ion-label stacked class="fields">Contraseña Actual</ion-label>
-                <ion-input type="password" name="actualPassword" [(ngModel)]="actualPassword" [readonly]="!isEditing"></ion-input>
+                <ion-input type="password" name="actualPassword" [(ngModel)]="actualPassword" [readonly]="!isEditing">
+                </ion-input>
               </ion-item>
 
               <ion-item style="background-color: #F4F4F4;">
                 <ion-label stacked class="fields">Contraseña Nueva</ion-label>
-                <ion-input type="password" name="newPassword" [(ngModel)]="newPassword" [readonly]="!isEditing"></ion-input>
+                <ion-input type="password" name="newPassword" [(ngModel)]="newPassword" [readonly]="!isEditing">
+                </ion-input>
               </ion-item>
               <p class="passCars">Debe ser de al menos 8 caracteres y contener mayúscula, números</p>
 
-              <br/>
+              <br />
 
               <div class="buttonIng">
-                <button *ngIf="!isEditing" (click)="enableEdit()" color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" [disabled]="">Modificar</button>
-                <button *ngIf="isEditing" (click)="sendData()" color="button-color" ion-button full type="submit" style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;" [disabled]="">Confirmar</button>
+                <button *ngIf="!isEditing" (click)="enableEdit()" color="button-color" ion-button full type="submit"
+                  style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;"
+                  [disabled]="">Modificar</button>
+                <button *ngIf="isEditing" (click)="sendData()" color="button-color" ion-button full type="submit"
+                  style="border-radius: 20px; width: 160px; height: 48px; left: 50%; margin-left: -80px; background-color: #454EDB; font-family: SfUiDisplayRegular; font-size: 12pt;"
+                  [disabled]="">Confirmar</button>
               </div>
 
             </form>
@@ -56,31 +70,42 @@
 <style>
   .splitDiv {
     background-color: #454EDB;
-    border-bottom: 430px solid #F9F9F9; height: 900px;
+    border-bottom: 430px solid #F9F9F9;
+    height: 900px;
   }
 
   .formPos {
-    top: 868px; position: absolute; width: 95%; left: 50%; margin-left: -47.5%; height: 370px; margin-top: -500px
+    top: 868px;
+    position: absolute;
+    width: 95%;
+    left: 50%;
+    margin-left: -47.5%;
+    height: 370px;
+    margin-top: -500px
   }
 
   @media screen and (max-width: 320px) {
     .heightBlue {
-      height: 196px;
+      height: 133px;
     }
+
     .title {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 17pt;
     }
+
     .logo {
       max-width: 138px;
     }
+
     .passCars {
       font-family: SfUiDisplayLight;
       font-size: 10pt;
       text-align: left;
       margin-left: 18px;
     }
+
     .fields {
       font-family: SfUiDisplayLight;
       font-size: 10pt;
@@ -89,22 +114,26 @@
 
   @media screen and (max-width: 400px) and (min-width: 321px) {
     .heightBlue {
-      height: 200px;
+      height: 137px;
     }
+
     .title {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 17pt;
     }
+
     .logo {
       max-width: 142px;
     }
+
     .passCars {
       font-family: SfUiDisplayLight;
       font-size: 10pt;
       text-align: left;
       margin-left: 18px;
     }
+
     .fields {
       font-family: SfUiDisplayLight;
       font-size: 10pt;
@@ -113,22 +142,26 @@
 
   @media screen and (max-width: 450px) and (min-width: 400px) {
     .heightBlue {
-      height: 215px;
+      height: 152px;
     }
+
     .title {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 18pt;
     }
+
     .logo {
       max-width: 166px;
     }
+
     .passCars {
       font-family: SfUiDisplayLight;
       font-size: 10pt;
       text-align: left;
       margin-left: 18px;
     }
+
     .fields {
       font-family: SfUiDisplayLight;
       font-size: 10pt;
@@ -137,22 +170,26 @@
 
   @media screen and (max-width: 550px) and (min-width: 450px) {
     .heightBlue {
-      height: 235px;
+      height: 172px
     }
+
     .title {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 24pt;
     }
+
     .logo {
       max-width: 208px;
     }
+
     .passCars {
       font-family: SfUiDisplayLight;
       font-size: 15pt;
       text-align: left;
       margin-left: 18px;
     }
+
     .fields {
       font-family: SfUiDisplayLight;
       font-size: 15pt;
@@ -161,25 +198,30 @@
 
   @media screen and (max-width: 1100px) and (min-width: 550px) {
     .heightBlue {
-      height: 300px;
+      height: 237px;
     }
+
     .title {
       color: white;
       font-family: SfUiDisplayThin;
       font-size: 32pt;
     }
+
     .logo {
       max-width: 263px;
     }
+
     .passCars {
       font-family: SfUiDisplayLight;
       font-size: 20pt;
       text-align: left;
       margin-left: 18px;
     }
+
     .fields {
       font-family: SfUiDisplayLight;
       font-size: 20pt;
     }
   }
+
 </style>

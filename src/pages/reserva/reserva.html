@@ -1,18 +1,18 @@
-<div id="backBlackReserva" *ngIf="showBack" style="position: absolute; background-color: black; opacity: 0.7; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: visible; transition: all 0.2s linear;"></div>
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title mode="ios">
+      <img src="assets/icon/logo-blanco.png" height="30" alt="Todo Reservas Logo">
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<div id="backBlackReserva" *ngIf="showBack"
+  style="position: absolute; background-color: black; opacity: 0.7; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: visible; transition: all 0.2s linear;">
+</div>
 <ion-content class="" style="background-color: #F4F4F4; top:0px; left:0px; width: 100%; height: 100%;">
   <ion-grid style="padding: 0;">
     <ion-grid style="text-align: center; padding: 0; z-index: 3;">
       <table>
-        <tr style="background-color: #3740C3; height: 63px;">
-          <td style="width: 20px;">
-            <ion-navbar>
-              <button ion-button menuToggle>
-                <ion-icon name="menu"></ion-icon>
-              </button>
-            </ion-navbar>
-          </td>
-          <td colspan="3" style="vertical-align: bottom;"><img class="logoPosition" src="../assets/icon/logo-blanco.png" style="width: 26%;"></td>
-        </tr>
         <tr style="background-color: white; border-bottom: 2px solid #454EDB;">
           <td colspan="2">
             <div style="display: flex;">
@@ -36,7 +36,7 @@
         <tr><br></tr>
         <tr *ngIf="step == 1">
           <td colspan="2">
-            <span class="titleText">Seleccione la especialidad<br/>y profesional que está buscando</span>
+            <span class="titleText">Seleccione la especialidad<br />y profesional que está buscando</span>
           </td>
         </tr>
         <tr *ngIf="step == 2">
@@ -55,32 +55,41 @@
           <td colspan="2">
             <table class="tableStyle">
               <tr style="border-bottom: 0.1em solid grey;">
-                <td style="text-align: left; padding-left: 10px;"><span class="especialidadText">ESPECIALIDAD</span></td>
+                <td style="text-align: left; padding-left: 10px;"><span class="especialidadText">ESPECIALIDAD</span>
+                </td>
                 <td>
                   <select style="background-color:transparent;
-              -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize" (change)="getSubspecialities($event.target.value);">
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize"
+                    (change)="getSubspecialities($event.target.value);">
                     <option value="">Seleccionar</option>
-                    <option *ngFor="let speciality of specialities; let i = index" value="{{i}}">{{speciality.description}}</option>
+                    <option *ngFor="let speciality of specialities; let i = index" value="{{i}}">
+                      {{speciality.description}}</option>
                   </select>
                 </td>
               </tr>
               <tr style="border-bottom: 0.1em solid grey;">
-                <td style="text-align: left; padding-left: 10px;"><span class="especialidadText">SUBESPECIALIDAD</span></td>
+                <td style="text-align: left; padding-left: 10px;"><span class="especialidadText">SUBESPECIALIDAD</span>
+                </td>
                 <td>
                   <select style="background-color:transparent;
-              -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize" (change)="getDoctors($event.target.value);">
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize"
+                    (change)="getDoctors($event.target.value);">
                     <option value="">Seleccionar</option>
-                    <option *ngFor="let subspeciality of subspecialities; let i = index" value="{{i}}">{{subspeciality.description}}</option>
+                    <option *ngFor="let subspeciality of subspecialities; let i = index" value="{{i}}">
+                      {{subspeciality.description}}</option>
                   </select>
                 </td>
               </tr>
               <tr style="border-bottom: 0.1em solid grey;">
-                <td style="text-align: left; padding-left: 10px;"><span class="especialidadText">{{professional}}</span></td>
+                <td style="text-align: left; padding-left: 10px;"><span class="especialidadText">{{professional}}</span>
+                </td>
                 <td>
                   <select style="background-color:transparent;
-              -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize" [(ngModel)]="doctor">
+              -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize"
+                    [(ngModel)]="doctor">
                     <option value="">Seleccionar</option>
-                    <option *ngFor="let doctor of doctors; let i = index" value="{{i}}">{{doctor.firstName}} {{doctor.lastName}}</option>
+                    <option *ngFor="let doctor of doctors; let i = index" value="{{i}}">{{doctor.firstName}}
+                      {{doctor.lastName}}</option>
                   </select>
                 </td>
               </tr>
@@ -89,11 +98,8 @@
         </tr>
         <tr *ngIf="step == 2">
           <td colspan="2">
-            <ion-calendar *ngIf="options.daysConfig.length > 0" [(ngModel)]="date"
-                          [options] = options
-                          (onChange)="showDayHours($event)"
-                          [type]="type"
-                          [format]="'YYYY-MM-DD'">
+            <ion-calendar *ngIf="options.daysConfig.length > 0" [(ngModel)]="date" [options]=options
+              (onChange)="showDayHours($event)" [type]="type" [format]="'YYYY-MM-DD'">
             </ion-calendar>
           </td>
         </tr>
@@ -104,14 +110,17 @@
                 <td style="padding-top: 22px;" class="paddingLeft"><span class="clinicName">{{name}}</span></td>
               </tr>
               <tr style="border-bottom: 0.1em solid grey;">
-                <td style="padding-bottom: 30px;" class="paddingLeft"><span class="clinicAddress">{{address}},{{city}}</span></td>
+                <td style="padding-bottom: 30px;" class="paddingLeft"><span
+                    class="clinicAddress">{{address}},{{city}}</span></td>
               </tr>
               <tr><br></tr>
               <tr>
-                <td style="padding-top: 25px;" class="paddingLeft"><span class="especialidadTitle">Especialidad</span></td>
+                <td style="padding-top: 25px;" class="paddingLeft"><span class="especialidadTitle">Especialidad</span>
+                </td>
               </tr>
               <tr>
-                <td class="paddingLeft"><span class="especialidadDesc">{{specialities[speciality].description}}</span></td>
+                <td class="paddingLeft"><span class="especialidadDesc">{{specialities[speciality].description}}</span>
+                </td>
               </tr>
               <tr><br></tr>
               <tr>
@@ -125,7 +134,8 @@
                 <td class="paddingLeft"><span class="especialidadTitle">Fecha y hora de la reserva</span></td>
               </tr>
               <tr>
-                <td style="padding-bottom: 25px;" class="paddingLeft"><span class="especialidadDesc">{{day}} {{hour}}</span></td>
+                <td style="padding-bottom: 25px;" class="paddingLeft"><span class="especialidadDesc">{{day}}
+                    {{hour}}</span></td>
               </tr>
             </table>
           </td>
@@ -137,12 +147,14 @@
         <tr><br></tr>
         <tr *ngIf="step != 3">
           <td colspan="2">
-            <button color="button-color" ion-button full type="submit" class="nextButton" (click)="nextStep();">SIGUIENTE</button>
+            <button color="button-color" ion-button full type="submit" class="nextButton"
+              (click)="nextStep();">SIGUIENTE</button>
           </td>
         </tr>
         <tr *ngIf="step == 3">
           <td colspan="2">
-            <button color="button-color" ion-button full type="submit" class="confirmButton" (click)="nextStep();">CONFIRMAR RESERVA</button>
+            <button color="button-color" ion-button full type="submit" class="confirmButton"
+              (click)="nextStep();">CONFIRMAR RESERVA</button>
           </td>
         </tr>
       </table>
@@ -168,11 +180,13 @@
       width: 2em;
       text-align: center;
     }
+
     .circleFirst p {
       margin-top: 0.10em;
       font-size: 14pt;
       font-family: SfUiDisplaySemiBold;
     }
+
     .circleSecond {
       border: 0.1em solid #454EDB;
       border-radius: 100%;
@@ -180,31 +194,37 @@
       width: 2em;
       text-align: center;
     }
+
     .circleSecond p {
       margin-top: 0.10em;
       font-size: 14pt;
       font-family: SfUiDisplaySemiBold;
     }
+
     .positionFirstNumber {
       margin-left: 86px;
       margin-top: 21px;
       margin-bottom: 24px;
       color: white;
     }
+
     .positionSecondNumber {
       margin-left: 32px;
       margin-top: 21px;
       margin-bottom: 24px;
       color: #454EDB;
     }
+
     .titleText {
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+
     .especialidadText {
       font-family: SfUiDisplaySemiBold;
       font-size: 9pt;
     }
+
     .tableStyle {
       width: 295px;
       height: 230px;
@@ -213,15 +233,19 @@
       margin-left: 12px;
       box-shadow: 1px 2px 4px rgba(0, 0, 0, .2);
     }
+
     .firstArrow {
       margin-left: 88px;
     }
+
     .secondArrow {
       margin-left: 148px;
     }
+
     .thirdArrow {
       margin-left: 207px;
     }
+
     .nextButton {
       border-radius: 20px;
       width: 160px;
@@ -232,33 +256,40 @@
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+
     .selectSize {
       width: 153px;
       height: 35px;
     }
+
     .clinicName {
       font-size: 15pt;
       font-family: SfUiDisplayBold;
       color: #454EDB;
     }
+
     .clinicAddress {
       font-family: SfUiDisplayRegular;
       font-size: 15pt;
       color: #454EDB;
     }
+
     .especialidadTitle {
       font-family: SfUiDisplayBold;
       font-size: 12pt;
       color: black;
     }
+
     .especialidadDesc {
       font-family: SfUiDisplayLight;
       font-size: 15pt;
       color: black;
     }
+
     .paddingLeft {
       padding-left: 15px;
     }
+
     .confirmButton {
       border-radius: 20px;
       width: 186px;
@@ -269,6 +300,7 @@
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+
     .logoPosition {
       margin-left: -40px;
     }
@@ -282,11 +314,13 @@
       width: 2em;
       text-align: center;
     }
+
     .circleFirst p {
       margin-top: 0.10em;
       font-size: 14pt;
       font-family: SfUiDisplaySemiBold;
     }
+
     .circleSecond {
       border: 0.1em solid #454EDB;
       border-radius: 100%;
@@ -294,31 +328,37 @@
       width: 2em;
       text-align: center;
     }
+
     .circleSecond p {
       margin-top: 0.10em;
       font-size: 14pt;
       font-family: SfUiDisplaySemiBold;
     }
+
     .positionFirstNumber {
       margin-left: 105px;
       margin-top: 21px;
       margin-bottom: 24px;
       color: white;
     }
+
     .positionSecondNumber {
       margin-left: 32px;
       margin-top: 21px;
       margin-bottom: 24px;
       color: #454EDB;
     }
+
     .titleText {
       font-family: SfUiDisplayRegular;
       font-size: 13pt;
     }
+
     .especialidadText {
       font-family: SfUiDisplaySemiBold;
       font-size: 9pt;
     }
+
     .tableStyle {
       width: 328px;
       height: 230px;
@@ -327,15 +367,19 @@
       margin-left: 16px;
       box-shadow: 1px 2px 4px rgba(0, 0, 0, .2);
     }
+
     .firstArrow {
       margin-left: 107px;
     }
+
     .secondArrow {
       margin-left: 166px;
     }
+
     .thirdArrow {
       margin-left: 226px;
     }
+
     .nextButton {
       border-radius: 20px;
       width: 160px;
@@ -346,6 +390,7 @@
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+
     .confirmButton {
       border-radius: 20px;
       width: 186px;
@@ -356,33 +401,40 @@
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+
     .selectSize {
       width: 170px;
       height: 35px;
     }
+
     .clinicName {
       font-size: 15pt;
       font-family: SfUiDisplayBold;
       color: #454EDB;
     }
+
     .clinicAddress {
       font-family: SfUiDisplayRegular;
       font-size: 15pt;
       color: #454EDB;
     }
+
     .especialidadTitle {
       font-family: SfUiDisplayBold;
       font-size: 12pt;
       color: black;
     }
+
     .especialidadDesc {
       font-family: SfUiDisplayLight;
       font-size: 15pt;
       color: black;
     }
+
     .paddingLeft {
       padding-left: 15px;
     }
+
     .logoPosition {
       margin-left: -40px;
     }
@@ -396,11 +448,13 @@
       width: 2em;
       text-align: center;
     }
+
     .circleFirst p {
       margin-top: 0.10em;
       font-size: 14pt;
       font-family: SfUiDisplaySemiBold;
     }
+
     .circleSecond {
       border: 0.1em solid #454EDB;
       border-radius: 100%;
@@ -408,31 +462,37 @@
       width: 2em;
       text-align: center;
     }
+
     .circleSecond p {
       margin-top: 0.10em;
       font-size: 14pt;
       font-family: SfUiDisplaySemiBold;
     }
+
     .positionFirstNumber {
       margin-left: 120px;
       margin-top: 21px;
       margin-bottom: 24px;
       color: white;
     }
+
     .positionSecondNumber {
       margin-left: 32px;
       margin-top: 21px;
       margin-bottom: 24px;
       color: #454EDB;
     }
+
     .titleText {
       font-family: SfUiDisplayRegular;
       font-size: 13pt;
     }
+
     .especialidadText {
       font-family: SfUiDisplaySemiBold;
       font-size: 9pt;
     }
+
     .tableStyle {
       width: 328px;
       height: 230px;
@@ -441,15 +501,19 @@
       margin-left: 25px;
       box-shadow: 1px 2px 4px rgba(0, 0, 0, .2);
     }
+
     .firstArrow {
       margin-left: 122px;
     }
+
     .secondArrow {
       margin-left: 181px;
     }
+
     .thirdArrow {
       margin-left: 241px;
     }
+
     .nextButton {
       border-radius: 20px;
       width: 160px;
@@ -460,6 +524,7 @@
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+
     .confirmButton {
       border-radius: 20px;
       width: 186px;
@@ -470,33 +535,40 @@
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+
     .selectSize {
       width: 170px;
       height: 35px;
     }
+
     .clinicName {
       font-size: 15pt;
       font-family: SfUiDisplayBold;
       color: #454EDB;
     }
+
     .clinicAddress {
       font-family: SfUiDisplayRegular;
       font-size: 15pt;
       color: #454EDB;
     }
+
     .especialidadTitle {
       font-family: SfUiDisplayBold;
       font-size: 12pt;
       color: black;
     }
+
     .especialidadDesc {
       font-family: SfUiDisplayLight;
       font-size: 15pt;
       color: black;
     }
+
     .paddingLeft {
       padding-left: 15px;
     }
+
     .logoPosition {
       margin-left: -40px;
     }
@@ -510,11 +582,13 @@
       width: 2em;
       text-align: center;
     }
+
     .circleFirst p {
       margin-top: 0.10em;
       font-size: 15pt;
       font-family: SfUiDisplaySemiBold;
     }
+
     .circleSecond {
       border: 0.1em solid #454EDB;
       border-radius: 100%;
@@ -522,31 +596,37 @@
       width: 2em;
       text-align: center;
     }
+
     .circleSecond p {
       margin-top: 0.10em;
       font-size: 15pt;
       font-family: SfUiDisplaySemiBold;
     }
+
     .positionFirstNumber {
       margin-left: 134px;
       margin-top: 21px;
       margin-bottom: 24px;
       color: white;
     }
+
     .positionSecondNumber {
       margin-left: 32px;
       margin-top: 21px;
       margin-bottom: 24px;
       color: #454EDB;
     }
+
     .titleText {
       font-family: SfUiDisplayRegular;
       font-size: 14pt;
     }
+
     .especialidadText {
       font-family: SfUiDisplaySemiBold;
       font-size: 12pt;
     }
+
     .tableStyle {
       width: 363px;
       height: 268px;
@@ -555,15 +635,19 @@
       margin-left: 25px;
       box-shadow: 1px 2px 4px rgba(0, 0, 0, .2);
     }
+
     .firstArrow {
       margin-left: 136px;
     }
+
     .secondArrow {
       margin-left: 196px;
     }
+
     .thirdArrow {
       margin-left: 256px;
     }
+
     .nextButton {
       border-radius: 20px;
       width: 160px;
@@ -574,33 +658,40 @@
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+
     .selectSize {
       width: 170px;
       height: 35px;
     }
+
     .clinicName {
       font-size: 15pt;
       font-family: SfUiDisplayBold;
       color: #454EDB;
     }
+
     .clinicAddress {
       font-family: SfUiDisplayRegular;
       font-size: 15pt;
       color: #454EDB;
     }
+
     .especialidadTitle {
       font-family: SfUiDisplayBold;
       font-size: 12pt;
       color: black;
     }
+
     .especialidadDesc {
       font-family: SfUiDisplayLight;
       font-size: 15pt;
       color: black;
     }
+
     .paddingLeft {
       padding-left: 15px;
     }
+
     .confirmButton {
       border-radius: 20px;
       width: 186px;
@@ -611,6 +702,7 @@
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
     }
+
     .logoPosition {
       margin-left: -40px;
     }
@@ -624,11 +716,13 @@
       width: 2.5em;
       text-align: center;
     }
+
     .circleFirst p {
       margin-top: 0.10em;
       font-size: 17pt;
       font-family: SfUiDisplaySemiBold;
     }
+
     .circleSecond {
       border: 0.1em solid #454EDB;
       border-radius: 100%;
@@ -636,31 +730,37 @@
       width: 2.5em;
       text-align: center;
     }
+
     .circleSecond p {
       margin-top: 0.10em;
       font-size: 17pt;
       font-family: SfUiDisplaySemiBold;
     }
+
     .positionFirstNumber {
       margin-left: 158px;
       margin-top: 21px;
       margin-bottom: 24px;
       color: white;
     }
+
     .positionSecondNumber {
       margin-left: 32px;
       margin-top: 21px;
       margin-bottom: 24px;
       color: #454EDB;
     }
+
     .titleText {
       font-family: SfUiDisplayRegular;
       font-size: 16pt;
     }
+
     .especialidadText {
       font-family: SfUiDisplaySemiBold;
       font-size: 12pt;
     }
+
     .tableStyle {
       width: 435px;
       height: 305px;
@@ -669,15 +769,19 @@
       margin-left: 25px;
       box-shadow: 1px 2px 4px rgba(0, 0, 0, .2);
     }
+
     .firstArrow {
       margin-left: 160px;
     }
+
     .secondArrow {
       margin-left: 229px;
     }
+
     .thirdArrow {
       margin-left: 297px;
     }
+
     .nextButton {
       border-radius: 20px;
       width: 160px;
@@ -688,33 +792,40 @@
       font-family: SfUiDisplayRegular;
       font-size: 14pt;
     }
+
     .selectSize {
       width: 185px;
       height: 35px;
     }
+
     .clinicName {
       font-size: 17pt;
       font-family: SfUiDisplayBold;
       color: #454EDB;
     }
+
     .clinicAddress {
       font-family: SfUiDisplayRegular;
       font-size: 17pt;
       color: #454EDB;
     }
+
     .especialidadTitle {
       font-family: SfUiDisplayBold;
       font-size: 14pt;
       color: black;
     }
+
     .especialidadDesc {
       font-family: SfUiDisplayLight;
       font-size: 17pt;
       color: black;
     }
+
     .paddingLeft {
       padding-left: 17px;
     }
+
     .confirmButton {
       border-radius: 20px;
       width: 208px;
@@ -725,6 +836,7 @@
       font-family: SfUiDisplayRegular;
       font-size: 14pt;
     }
+
     .logoPosition {
       margin-left: -40px;
     }
@@ -738,11 +850,13 @@
       width: 3.4em;
       text-align: center;
     }
+
     .circleFirst p {
       margin-top: 0.10em;
       font-size: 21pt;
       font-family: SfUiDisplaySemiBold;
     }
+
     .circleSecond {
       border: 0.1em solid #454EDB;
       border-radius: 100%;
@@ -750,31 +864,37 @@
       width: 3.4em;
       text-align: center;
     }
+
     .circleSecond p {
       margin-top: 0.10em;
       font-size: 21pt;
       font-family: SfUiDisplaySemiBold;
     }
+
     .positionFirstNumber {
       margin-left: 283px;
       margin-top: 21px;
       margin-bottom: 24px;
       color: white;
     }
+
     .positionSecondNumber {
       margin-left: 32px;
       margin-top: 21px;
       margin-bottom: 24px;
       color: #454EDB;
     }
+
     .titleText {
       font-family: SfUiDisplayRegular;
       font-size: 19pt;
     }
+
     .especialidadText {
       font-family: SfUiDisplaySemiBold;
       font-size: 12pt;
     }
+
     .tableStyle {
       width: 716px;
       height: 380px;
@@ -783,15 +903,19 @@
       margin-left: 25px;
       box-shadow: 1px 2px 4px rgba(0, 0, 0, .2);
     }
+
     .firstArrow {
       margin-left: 293px;
     }
+
     .secondArrow {
       margin-left: 374px;
     }
+
     .thirdArrow {
       margin-left: 454px;
     }
+
     .nextButton {
       border-radius: 20px;
       width: 160px;
@@ -802,33 +926,40 @@
       font-family: SfUiDisplayRegular;
       font-size: 16pt;
     }
+
     .selectSize {
       width: 240px;
       height: 35px;
     }
+
     .clinicName {
       font-size: 20pt;
       font-family: SfUiDisplayBold;
       color: #454EDB;
     }
+
     .clinicAddress {
       font-family: SfUiDisplayRegular;
       font-size: 20pt;
       color: #454EDB;
     }
+
     .especialidadTitle {
       font-family: SfUiDisplayBold;
       font-size: 17pt;
       color: black;
     }
+
     .especialidadDesc {
       font-family: SfUiDisplayLight;
       font-size: 20pt;
       color: black;
     }
+
     .paddingLeft {
       padding-left: 17px;
     }
+
     .confirmButton {
       border-radius: 20px;
       width: 260px;
@@ -839,8 +970,10 @@
       font-family: SfUiDisplayRegular;
       font-size: 17pt;
     }
+
     .logoPosition {
       margin-left: -40px;
     }
   }
+
 </style>

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, AlertController, NavParams, ModalController, Nav, Platform } from 'ionic-angular';
+import { NavController, AlertController, NavParams, ModalController, Nav, Platform, Slides } from 'ionic-angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import * as moment from 'moment';
@@ -7,41 +7,45 @@ import { UserService } from '../../services/user.service';
 import { ReservaPage } from '../reserva/reserva';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import {HomePage} from "../home/home";
+import { HomePage } from "../home/home";
+
 
 @Component({
   selector: 'page-info',
   templateUrl: 'info.html',
-  providers :[LaunchNavigator]
+  providers: [LaunchNavigator]
 })
 export class InfoPage {
 
-  private id = "";
-  private category;
+  private id = '';
+  category;
   private results;
   private moment = moment();
   private day;
   private isOpenDays = false;
-  private isOpenServices = false;
-  map:any;
-  destinationPoint : any;
+  isOpenServices = false;
+  map: any;
+  destinationPoint: any;
   private link;
-  @ViewChild(Nav) navChild:Nav;
-  private specialties = [];
-  private showSpe = false;
+  @ViewChild(Nav) navChild: Nav;
+  @ViewChild('slider') slides: Slides;
+  specialties = [];
+  showSpe = false;
   private images = [];
 
+  slideOptions: {};
+
   constructor(
-      public navCtrl: NavController,
-      public alertCtrl: AlertController,
-      public navParams: NavParams,
-      private http: HttpClient,
-      private constants: Constants,
-      private userService: UserService,
-      public modalCtrl: ModalController,
-      private launchNavigator: LaunchNavigator,
-      private socialSharing: SocialSharing,
-      private platform: Platform
+    public navCtrl: NavController,
+    public alertCtrl: AlertController,
+    public navParams: NavParams,
+    private http: HttpClient,
+    private constants: Constants,
+    private userService: UserService,
+    public modalCtrl: ModalController,
+    private launchNavigator: LaunchNavigator,
+    private socialSharing: SocialSharing,
+    private platform: Platform
   ) {
     this.id = navParams.get("id");
     this.category = navParams.get("category");
@@ -49,18 +53,19 @@ export class InfoPage {
   }
 
   openMap() {
-    let options: LaunchNavigatorOptions ={
+    let options: LaunchNavigatorOptions = {
       app: this.launchNavigator.APP.USER_SELECT
     }
-    this.launchNavigator.navigate(this.destinationPoint,options).then(()=>{
+    this.launchNavigator.navigate(this.destinationPoint, options).then(() => {
       console.log("launched successfully");
-    }).catch(()=>{
+    }).catch(() => {
       console.log("launch failed");
     })
   }
 
   ionViewWillEnter() {
     this.search();
+    this.slides.autoHeight = true;
   }
 
   search() {
@@ -96,54 +101,54 @@ export class InfoPage {
         url = this.constants.API_URL + 'Clinic/GetByFilter';
         businessType = 1;
         options["clinicId"] = this.id;
-        options["businessType"]= businessType;
+        options["businessType"] = businessType;
         break;
       case "Peluquerias":
         url = this.constants.API_URL + 'Hairdressing/Hairdressing/GetByFilter';
         businessType = 2;
         options["hairdressingId"] = this.id;
-        options["businessType"]= businessType;
+        options["businessType"] = businessType;
         break;
       case "Barberias":
         url = this.constants.API_URL + 'Hairdressing/Hairdressing/GetByFilter';
         businessType = 3;
         options["hairdressingId"] = this.id;
-        options["businessType"]= businessType;
+        options["businessType"] = businessType;
         break;
       case "Esteticas":
         url = this.constants.API_URL + 'Hairdressing/Hairdressing/GetByFilter';
         businessType = 4;
         options["hairdressingId"] = this.id;
-        options["businessType"]= businessType;
+        options["businessType"] = businessType;
         break;
     }
 
-    this.http.post(url, options, {headers}).subscribe(
-        (success: any) => {
-          this.results = success;
-          this.images.push(this.results[0].logo);
-          for (var i = 0; i < this.results[0].images.length; i++) {
-            this.images.push(this.results[0].images[i]);
-          }
-          this.destinationPoint = [this.results[0].latitude, this.results[0].longitude];
-          for (var i = 0; i < this.results[0].subspecialties.length; i++) {
-            if (!Array.isArray(this.specialties[this.results[0].subspecialties[i].specialtyDescription])) {
-              this.specialties[this.results[0].subspecialties[i].specialtyDescription] = new Array();
-            }
-          }
-          for (var i = 0; i < this.results[0].subspecialties.length; i++) {
-            this.specialties[this.results[0].subspecialties[i].specialtyDescription].push(this.results[0].subspecialties[i]);
-          }
-        },
-        error => {
-          console.log(error);
-          let alert = this.alertCtrl.create({
-            title: 'Error!',
-            subTitle: error.error,
-            buttons: ['OK']
-          });
-          alert.present();
+    this.http.post(url, options, { headers }).subscribe(
+      (success: any) => {
+        this.results = success;
+        this.images.push(this.results[0].logo);
+        for (var i = 0; i < this.results[0].images.length; i++) {
+          this.images.push(this.results[0].images[i]);
         }
+        this.destinationPoint = [this.results[0].latitude, this.results[0].longitude];
+        for (var i = 0; i < this.results[0].subspecialties.length; i++) {
+          if (!Array.isArray(this.specialties[this.results[0].subspecialties[i].specialtyDescription])) {
+            this.specialties[this.results[0].subspecialties[i].specialtyDescription] = new Array();
+          }
+        }
+        for (var i = 0; i < this.results[0].subspecialties.length; i++) {
+          this.specialties[this.results[0].subspecialties[i].specialtyDescription].push(this.results[0].subspecialties[i]);
+        }
+      },
+      error => {
+        console.log(error);
+        let alert = this.alertCtrl.create({
+          title: 'Error!',
+          subTitle: error.error,
+          buttons: ['OK']
+        });
+        alert.present();
+      }
     );
   }
 
@@ -209,27 +214,27 @@ export class InfoPage {
         this.userService.getUserToken().then((tok) => {
           let headers = new HttpHeaders();
           headers = headers.set('Authorization', 'Bearer ' + tok);
-          let options = {headers};
-          this.http.post(url, {Id: this.id}, options).subscribe(
-              (success: any) => {
-                this.results[0].isFavorite = true;
+          let options = { headers };
+          this.http.post(url, { Id: this.id }, options).subscribe(
+            (success: any) => {
+              this.results[0].isFavorite = true;
 
-                let alert = this.alertCtrl.create({
-                  title: '',
-                  subTitle: "El centro fue agregado a su lista de favoritos!",
-                  buttons: ['OK']
-                });
-                alert.present();
-              },
-              error => {
-                console.log(error);
-                let alert = this.alertCtrl.create({
-                  title: 'Error!',
-                  subTitle: error.error,
-                  buttons: ['OK']
-                });
-                alert.present();
-              }
+              let alert = this.alertCtrl.create({
+                title: '',
+                subTitle: "El centro fue agregado a su lista de favoritos!",
+                buttons: ['OK']
+              });
+              alert.present();
+            },
+            error => {
+              console.log(error);
+              let alert = this.alertCtrl.create({
+                title: 'Error!',
+                subTitle: error.error,
+                buttons: ['OK']
+              });
+              alert.present();
+            }
           );
         });
       } else {
@@ -257,38 +262,38 @@ export class InfoPage {
     this.userService.getUserToken().then((tok) => {
       let headers = new HttpHeaders();
       headers = headers.set('Authorization', 'Bearer ' + tok);
-      let options = {headers};
-      this.http.post(url, {Id: this.id}, options).subscribe(
-          (success: any) => {
-            this.results[0].isFavorite = false;
+      let options = { headers };
+      this.http.post(url, { Id: this.id }, options).subscribe(
+        (success: any) => {
+          this.results[0].isFavorite = false;
 
-            let alert = this.alertCtrl.create({
-              title: '',
-              subTitle: "El centro fue eliminado de su lista de favoritos!",
-              buttons: ['OK']
-            });
-            alert.present();
-          },
-          error => {
-            console.log(error);
-            let alert = this.alertCtrl.create({
-              title: 'Error!',
-              subTitle: error.error,
-              buttons: ['OK']
-            });
-            alert.present();
-          }
+          let alert = this.alertCtrl.create({
+            title: '',
+            subTitle: "El centro fue eliminado de su lista de favoritos!",
+            buttons: ['OK']
+          });
+          alert.present();
+        },
+        error => {
+          console.log(error);
+          let alert = this.alertCtrl.create({
+            title: 'Error!',
+            subTitle: error.error,
+            buttons: ['OK']
+          });
+          alert.present();
+        }
       );
     });
   }
 
   book() {
     var data = {
-      id:       this.id,
+      id: this.id,
       category: this.category,
-      name:     this.results[0].name,
-      address:  this.results[0].address,
-      city:     this.results[0].city
+      name: this.results[0].name,
+      address: this.results[0].address,
+      city: this.results[0].city
     };
 
     this.navCtrl.push(ReservaPage, data);
@@ -298,7 +303,7 @@ export class InfoPage {
     //(document.querySelector('#backBlackReserva') as HTMLElement).style.visibility = 'visible';
     //(document.querySelector('#backBlackReserva') as HTMLElement).style.opacity    = '0.7';
 
-    let data = {id: this.id, rubro: 0};
+    let data = { id: this.id, rubro: 0 };
     switch (this.category) {
       case "Medicina":
         data.rubro = 1;
@@ -316,7 +321,7 @@ export class InfoPage {
 
     this.link = "";
 
-    switch(data.rubro) {
+    switch (data.rubro) {
       case 1:
         this.link += this.constants.clinicShareFolder;
         break;
@@ -334,9 +339,9 @@ export class InfoPage {
     this.link += this.id;
 
     this.socialSharing.share(
-        this.results[0].name + " - " + this.results[0].address, null, null, "todoreservas://info").then(() => {
-    }).catch(() => {
-    });
+      this.results[0].name + " - " + this.results[0].address, null, null, "todoreservas://info").then(() => {
+      }).catch(() => {
+      });
   }
 
 }

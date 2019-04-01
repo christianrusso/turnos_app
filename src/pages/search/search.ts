@@ -18,7 +18,7 @@ declare var google: any;
 export class SearchPage {
 
   private category = "";
-  public  results;
+  public results;
   private place = "";
   private AvailableAppointmentStartDate = "";
   private AvailableAppointmentEndDate = "";
@@ -28,7 +28,7 @@ export class SearchPage {
   public showLoading = true;
   public actualClinics: any;
   public isListado = true;
-  map:any;
+  map: any;
   public infoName;
   public infoCity;
   public infoComments;
@@ -39,29 +39,29 @@ export class SearchPage {
   public entityId;
 
   constructor(
-      public navCtrl: NavController,
-      public alertCtrl: AlertController,
-      public navParams: NavParams,
-      private http: HttpClient,
-      private constants: Constants,
-      public modalCtrl: ModalController,
-      public filtersService: FiltersService,
-      private geolocation: Geolocation
+    public navCtrl: NavController,
+    public alertCtrl: AlertController,
+    public navParams: NavParams,
+    private http: HttpClient,
+    private constants: Constants,
+    public modalCtrl: ModalController,
+    public filtersService: FiltersService,
+    private geolocation: Geolocation
   ) {
     if (navParams.get("category")) {
       this.category = navParams.get("category")[0].toUpperCase() + navParams.get("category").slice(1).toLowerCase();
       this.filtersService.category = this.category;
-      this.place    = navParams.get("place");
+      this.place = navParams.get("place");
       this.AvailableAppointmentStartDate = navParams.get("AvailableAppointmentStartDate");
       this.AvailableAppointmentEndDate = navParams.get("AvailableAppointmentEndDate");
       this.filtersService.specialities = [];
       this.filtersService.subspecialities = [];
       this.filtersService.stars = [
-        {value:1, checked: false},
-        {value:2, checked: false},
-        {value:3, checked: false},
-        {value:4, checked: false},
-        {value:5, checked: false}
+        { value: 1, checked: false },
+        { value: 2, checked: false },
+        { value: 3, checked: false },
+        { value: 4, checked: false },
+        { value: 5, checked: false }
       ];
       this.filtersService.distance = 0;
       this.filtersService.locations = [];
@@ -91,16 +91,16 @@ export class SearchPage {
 
   showOrder() {
     (document.querySelector('#backBlack') as HTMLElement).style.visibility = 'visible';
-    (document.querySelector('#backBlack') as HTMLElement).style.opacity    = '0.7';
+    (document.querySelector('#backBlack') as HTMLElement).style.opacity = '0.7';
     let orderModal = this.modalCtrl.create(OrderPage);
     orderModal.onDidDismiss(data => {
-      this.sort  = data.sort;
+      this.sort = data.sort;
       this.order = data.order;
       if (data.sort != '') {
         this.search(false);
       }
       (document.querySelector('#backBlack') as HTMLElement).style.visibility = 'hidden';
-      (document.querySelector('#backBlack') as HTMLElement).style.opacity    = '0';
+      (document.querySelector('#backBlack') as HTMLElement).style.opacity = '0';
     });
     orderModal.present();
   }
@@ -112,8 +112,8 @@ export class SearchPage {
     let url = "";
     switch (this.category) {
       case "Medicina":
-          url = this.constants.API_URL + 'Clinic/GetByFilter';
-          businessType = 1;
+        url = this.constants.API_URL + 'Clinic/GetByFilter';
+        businessType = 1;
         break;
       case "Peluquerias":
         url = this.constants.API_URL + 'Hairdressing/Hairdressing/GetByFilter';
@@ -234,39 +234,39 @@ export class SearchPage {
 
   doSearch(url, options) {
     this.http.post(url, options).subscribe(
-        (success: any) => {
-          this.canShowMap = true;
-          this.results = success;
-          for (let i = 0; i < this.results.length; i++) {
-            if (this.results[i].clinicId) {
-              this.results[i].entityId = this.results[i].clinicId;
-            } else if (this.results[i].hairdressingId) {
-              this.results[i].entityId = this.results[i].hairdressingId;
-            }
+      (success: any) => {
+        this.canShowMap = true;
+        this.results = success;
+        for (let i = 0; i < this.results.length; i++) {
+          if (this.results[i].clinicId) {
+            this.results[i].entityId = this.results[i].clinicId;
+          } else if (this.results[i].hairdressingId) {
+            this.results[i].entityId = this.results[i].hairdressingId;
           }
-          if (this.from == 0) {
-            this.from = this.from + success.length + this.constants.quantityOfResultsToShow;
-          } else {
-            this.from = this.from + (success.length - this.actualClinics);
-          }
-          if ((success.length - this.actualClinics) == this.constants.quantityOfResultsToShow) {
-            (document.querySelector('#verMasButton') as HTMLElement).style.display = 'block';
-          } else {
-            (document.querySelector('#verMasButton') as HTMLElement).style.display = 'none';
-          }
-          this.showLoading = false;
-        },
-        error => {
-          this.canShowMap = true;
-          console.log(error);
-          let alert = this.alertCtrl.create({
-            title: 'Error!',
-            subTitle: error.error,
-            buttons: ['OK']
-          });
-          alert.present();
-          this.showLoading = false;
         }
+        if (this.from == 0) {
+          this.from = this.from + success.length + this.constants.quantityOfResultsToShow;
+        } else {
+          this.from = this.from + (success.length - this.actualClinics);
+        }
+        if ((success.length - this.actualClinics) == this.constants.quantityOfResultsToShow) {
+          (document.querySelector('#verMasButton') as HTMLElement).style.display = 'block';
+        } else {
+          (document.querySelector('#verMasButton') as HTMLElement).style.display = 'none';
+        }
+        this.showLoading = false;
+      },
+      error => {
+        this.canShowMap = true;
+        console.log(error);
+        let alert = this.alertCtrl.create({
+          title: 'Error!',
+          subTitle: error.error,
+          buttons: ['OK']
+        });
+        alert.present();
+        this.showLoading = false;
+      }
     );
   }
 
@@ -285,7 +285,7 @@ export class SearchPage {
     }
   }
 
-  loadMap(lat, lng){
+  loadMap(lat, lng) {
     let latitude = lat;
     let longitude = lng;
 
@@ -312,13 +312,13 @@ export class SearchPage {
       for (var i = 0; i < this.results.length; i++) {
         let marker = new google.maps.Marker({
           position: new google.maps.LatLng(this.results[i].latitude, this.results[i].longitude),
-          map:      this.map,
-          name:     this.results[i].name,
-          logo:     this.results[i].logo,
-          city:     this.results[i].city,
-          score:    this.results[i].score,
+          map: this.map,
+          name: this.results[i].name,
+          logo: this.results[i].logo,
+          city: this.results[i].city,
+          score: this.results[i].score,
           comments: this.results[i].ratings,
-          icon:     '/assets/icon/marker.png',
+          icon: '/assets/icon/marker.png',
           entityId: (typeof this.results[i].clinicId === 'number') ? this.results[i].clinicId : this.results[i].hairdressingId
         });
         markers.push(marker);
@@ -335,16 +335,19 @@ export class SearchPage {
 
       var myloc = new google.maps.Marker({
         clickable: false,
-        icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-            new google.maps.Size(22,22),
-            new google.maps.Point(0,18),
-            new google.maps.Point(11,11)),
+        icon: {
+          fillColor: "#4285f4",
+          fillOpacity: 1,
+          strokeColor: "#4285f4",
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 4
+        },
         shadow: null,
         zIndex: 999,
         map: this.map
       });
 
-      if (navigator.geolocation){
+      if (navigator.geolocation) {
         this.geolocation.getCurrentPosition().then((resp) => {
           var me = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
           myloc.setPosition(me);
@@ -362,12 +365,19 @@ export class SearchPage {
   }
 
   setInfoData(data) {
-    this.infoName     = data.name;
-    this.infoLogo     = data.logo;
-    this.infoCity     = data.city;
-    this.infoRating   = data.score;
+    this.infoName = data.name;
+    this.infoLogo = data.logo;
+    this.infoCity = data.city;
+    this.infoRating = data.score;
     this.infoComments = data.comments;
-    this.entityId     = data.entityId;
+    this.entityId = data.entityId;
+  }
+  centerMe() {
+    if (navigator.geolocation) {
+      this.geolocation.getCurrentPosition().then(({ coords }) => {
+        this.map.setCenter(new google.maps.LatLng(coords.latitude, coords.longitude));
+      });
+    }
   }
 
 }
