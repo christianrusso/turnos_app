@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title mode="ios">
-      <img src="assets/icon/logo-blanco.png" height="40" alt="Todo Reservas Logo">
+      <img src="assets/icon/logo-blanco.png" height="30" alt="Todo Reservas Logo">
     </ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="showShare()">
@@ -14,7 +14,6 @@
 <div id="backBlackReserva"
   style="position: absolute; background-color: black; opacity: 0; top:0px; left:0px; width: 100%; height: 100%; z-index: 101; visibility: hidden; transition: all 0.2s linear;">
 </div>
-<button color="button-color" ion-button full type="" class="reservarButton" (click)="book()">RESERVAR</button>
 <ion-content class="" style="background-color: #F9F9F9; top:0px; left:0px; width: 100%; height: 100%;">
   <ion-slides #slider [pager]="true">
     <ion-slide *ngFor="let image of images" item-start>
@@ -92,8 +91,9 @@
               <ion-icon *ngIf="isOpenDays == true" name="arrow-dropup"></ion-icon>
             </span>
           </ion-col>
-          <ion-col no-padding *ngIf="hour.dayNumber == 2" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type=""
-              [ngClass]="day-1 == 1 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span
+          <ion-col no-padding *ngIf="hour.dayNumber == 2" [ngClass]="{'notShow': myIndex > 0}"><button ion-button
+              type="" [ngClass]="day-1 == 1 ? 'todayDayButton' : 'notTodayDayButton'"
+              style="vertical-align: middle;"><span
                 style='font-family: SfUiDisplayBold;'>Martes</span>&nbsp;<span>{{hour.start.substr(0,5)}}
                 {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;"
               *ngIf="myIndex == 0 && result.openCloseHours.length > 1" (click)="showHorarios();"><span
@@ -102,8 +102,9 @@
               </ion-icon>
               <ion-icon *ngIf="isOpenDays == true" name="arrow-dropup"></ion-icon>
             </span></ion-col>
-          <ion-col no-padding *ngIf="hour.dayNumber == 3" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type=""
-              [ngClass]="day-1 == 2 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span
+          <ion-col no-padding *ngIf="hour.dayNumber == 3" [ngClass]="{'notShow': myIndex > 0}"><button ion-button
+              type="" [ngClass]="day-1 == 2 ? 'todayDayButton' : 'notTodayDayButton'"
+              style="vertical-align: middle;"><span
                 style='font-family: SfUiDisplayBold;'>Miércoles</span>&nbsp;<span>{{hour.start.substr(0,5)}}
                 {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;"
               *ngIf="myIndex == 0 && result.openCloseHours.length > 1" (click)="showHorarios();"><span
@@ -112,8 +113,9 @@
               </ion-icon>
               <ion-icon *ngIf="isOpenDays == true" name="arrow-dropup"></ion-icon>
             </span></ion-col>
-          <ion-col no-padding *ngIf="hour.dayNumber == 4" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type=""
-              [ngClass]="day-1 == 3 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span
+          <ion-col no-padding *ngIf="hour.dayNumber == 4" [ngClass]="{'notShow': myIndex > 0}"><button ion-button
+              type="" [ngClass]="day-1 == 3 ? 'todayDayButton' : 'notTodayDayButton'"
+              style="vertical-align: middle;"><span
                 style='font-family: SfUiDisplayBold;'>Jueves</span>&nbsp;<span>{{hour.start.substr(0,5)}}
                 {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;"
               *ngIf="myIndex == 0 && result.openCloseHours.length > 1" (click)="showHorarios();"><span
@@ -122,8 +124,9 @@
               </ion-icon>
               <ion-icon *ngIf="isOpenDays == true" name="arrow-dropup"></ion-icon>
             </span></ion-col>
-          <ion-col no-padding *ngIf="hour.dayNumber == 5" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type=""
-              [ngClass]="day-1 == 4 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span
+          <ion-col no-padding *ngIf="hour.dayNumber == 5" [ngClass]="{'notShow': myIndex > 0}"><button ion-button
+              type="" [ngClass]="day-1 == 4 ? 'todayDayButton' : 'notTodayDayButton'"
+              style="vertical-align: middle;"><span
                 style='font-family: SfUiDisplayBold;'>Viernes</span>&nbsp;<span>{{hour.start.substr(0,5)}}
                 {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;"
               *ngIf="myIndex == 0 && result.openCloseHours.length > 1" (click)="showHorarios();"><span
@@ -132,8 +135,9 @@
               </ion-icon>
               <ion-icon *ngIf="isOpenDays == true" name="arrow-dropup"></ion-icon>
             </span></ion-col>
-          <ion-col no-padding *ngIf="hour.dayNumber == 6" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type=""
-              [ngClass]="day-1 == 5 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span
+          <ion-col no-padding *ngIf="hour.dayNumber == 6" [ngClass]="{'notShow': myIndex > 0}"><button ion-button
+              type="" [ngClass]="day-1 == 5 ? 'todayDayButton' : 'notTodayDayButton'"
+              style="vertical-align: middle;"><span
                 style='font-family: SfUiDisplayBold;'>Sábado</span>&nbsp;<span>{{hour.start.substr(0,5)}}
                 {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;"
               *ngIf="myIndex == 0 && result.openCloseHours.length > 1" (click)="showHorarios();"><span
@@ -142,8 +146,9 @@
               </ion-icon>
               <ion-icon *ngIf="isOpenDays == true" name="arrow-dropup"></ion-icon>
             </span></ion-col>
-          <ion-col no-padding *ngIf="hour.dayNumber == 0" [ngClass]="{'notShow': myIndex > 0}"><button ion-button type=""
-              [ngClass]="day-1 == -1 ? 'todayDayButton' : 'notTodayDayButton'" style="vertical-align: middle;"><span
+          <ion-col no-padding *ngIf="hour.dayNumber == 0" [ngClass]="{'notShow': myIndex > 0}"><button ion-button
+              type="" [ngClass]="day-1 == -1 ? 'todayDayButton' : 'notTodayDayButton'"
+              style="vertical-align: middle;"><span
                 style='font-family: SfUiDisplayBold;'>Domingo</span>&nbsp;<span>{{hour.start.substr(0,5)}}
                 {{hour.end.substr(0,5)}}</span></button><span style="font-family: SfUiDisplayRegular;"
               *ngIf="myIndex == 0 && result.openCloseHours.length > 1" (click)="showHorarios();"><span
@@ -210,6 +215,9 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+<ion-footer>
+  <button color="button-color" ion-button full no-margin class="reservarButton" (click)="book()">RESERVAR</button>
+</ion-footer>
 
 <style>
   .verticalTop {
@@ -344,10 +352,6 @@
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
-      position: absolute;
-      z-index: 5;
-      bottom: 46px;
-      left: 0px;
     }
 
     #map {
@@ -515,10 +519,6 @@
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
       font-size: 12pt;
-      position: absolute;
-      z-index: 5;
-      bottom: 46px;
-      left: 0px;
     }
 
     #map {
@@ -674,10 +674,6 @@
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
       font-size: 14pt;
-      position: absolute;
-      z-index: 5;
-      bottom: 46px;
-      left: 0px;
     }
 
     #map {
@@ -840,10 +836,6 @@
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
       font-size: 17pt;
-      position: absolute;
-      z-index: 5;
-      bottom: 46px;
-      left: 0px;
     }
 
     #map {
@@ -1006,10 +998,6 @@
       background-color: #00B901;
       font-family: SfUiDisplayRegular;
       font-size: 22pt;
-      position: absolute;
-      z-index: 5;
-      bottom: 46px;
-      left: 0px;
     }
 
     #map {
