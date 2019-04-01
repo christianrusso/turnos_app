@@ -61,7 +61,7 @@
                   <select style="background-color:transparent;
               -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize"
                     (change)="getSubspecialities($event.target.value);">
-                    <option value="">Seleccionar</option>
+                    <option value="{{-1}}">Seleccionar</option>
                     <option *ngFor="let speciality of specialities; let i = index" value="{{i}}">
                       {{speciality.description}}</option>
                   </select>
@@ -74,7 +74,7 @@
                   <select style="background-color:transparent;
               -webkit-box-shadow: none !important; -moz-box-shadow: none !important;" class="selectSize"
                     (change)="getDoctors($event.target.value);">
-                    <option value="">Seleccionar</option>
+                    <option value="{{-1}}">Seleccionar</option>
                     <option *ngFor="let subspeciality of subspecialities; let i = index" value="{{i}}">
                       {{subspeciality.description}}</option>
                   </select>

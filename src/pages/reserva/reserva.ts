@@ -117,51 +117,62 @@ export class ReservaPage {
   }
 
   getSubspecialities(index) {
-    this.speciality = index;
-    this.subspecialities = this.specialities[index].subspecialties;
+    if(index == -1 )
+    {
+        this.speciality = null;
+        this.subspecialities = [];
+    }
+    else{
+      this.speciality = index;
+      this.subspecialities = this.specialities[index].subspecialties;
+    }
   }
 
   getDoctors(id) {
-    this.subspeciality = id;
-    let headers = new HttpHeaders();
-    this.userService.getUserLogin().then((value) => {
-      if (value != null) {
-        this.userService.getUserToken().then((tok) => {
-          headers = headers.set('Authorization', 'Bearer ' + tok);
-          let url;
-          let options = {
-            "specialtyId":    this.specialities[this.speciality].id,
-            "subspecialtyId": this.specialities[this.speciality].subspecialties[this.subspeciality].id
-          };
-          switch (this.category) {
-            case "Medicina":
-              url = this.constants.API_URL + 'Doctor/GetByFilter';
-              options["clinicId"] = this.id;
-              break;
-            case "Peluquerias":
-            case "Barberias":
-            case "Esteticas":
-              url = this.constants.API_URL + 'Hairdressing/HairdressingProfessional/GetByFilter';
-              options["hairdressingId"] = this.id;
-              break;
-          }
-          this.http.post(url, options, {headers}).subscribe(
-              (success: any) => {
-                this.doctors = success;
-              },
-              error => {
-                console.log(error);
-                let alert = this.alertCtrl.create({
-                  title: 'Error!',
-                  subTitle: error.error,
-                  buttons: ['OK']
-                });
-                alert.present();
-              }
-          );
-        });
-      }
-    });
+    if(id == -1){
+      this.subspeciality = null;
+    }else{
+      this.subspeciality = id;
+      let headers = new HttpHeaders();
+      this.userService.getUserLogin().then((value) => {
+        if (value != null) {
+          this.userService.getUserToken().then((tok) => {
+            headers = headers.set('Authorization', 'Bearer ' + tok);
+            let url;
+            let options = {
+              "specialtyId":    this.specialities[this.speciality].id,
+              "subspecialtyId": this.specialities[this.speciality].subspecialties[this.subspeciality].id
+            };
+            switch (this.category) {
+              case "Medicina":
+                url = this.constants.API_URL + 'Doctor/GetByFilter';
+                options["clinicId"] = this.id;
+                break;
+              case "Peluquerias":
+              case "Barberias":
+              case "Esteticas":
+                url = this.constants.API_URL + 'Hairdressing/HairdressingProfessional/GetByFilter';
+                options["hairdressingId"] = this.id;
+                break;
+            }
+            this.http.post(url, options, {headers}).subscribe(
+                (success: any) => {
+                  this.doctors = success;
+                },
+                error => {
+                  console.log(error);
+                  let alert = this.alertCtrl.create({
+                    title: 'Error!',
+                    subTitle: error.error,
+                    buttons: ['OK']
+                  });
+                  alert.present();
+                }
+            );
+          });
+        }
+      });
+    }
   }
 
   getTurnos() {
