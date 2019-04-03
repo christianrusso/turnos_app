@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/clipboard": "^4.20.0",
     "@ionic-native/core": "^4.20.0",
-    "@ionic-native/deeplinks": "^5.2.0",
+    "@ionic-native/deeplinks": "^4.20.0",
     "@ionic-native/facebook": "^4.20.0",
     "@ionic-native/geolocation": "^4.17.0",
     "@ionic-native/launch-navigator": "^4.20.0",
@@ -52,7 +52,7 @@
     "es6-promise-plugin": "^4.2.2",
     "ion2-calendar": "^2.2.0",
     "ionic-angular": "3.9.2",
-    "ionic-plugin-deeplinks": "^1.0.17",
+    "ionic-plugin-deeplinks": "1.0.17",
     "ionicons": "3.0.0",
     "moment": "^2.22.2",
     "onesignal-cordova-plugin": "^2.4.6",
@@ -94,6 +94,8 @@
       "cordova-plugin-x-socialsharing": {
         "ANDROID_SUPPORT_V4_VERSION": "24.1.1+"
       },
+      "cordova-plugin-local-notification": {},
+      "onesignal-cordova-plugin": {},
       "ionic-plugin-deeplinks": {
         "URL_SCHEME": "todoreservas",
         "DEEPLINK_SCHEME": "https",
@@ -111,9 +113,7 @@
         "DEEPLINK_4_HOST": " ",
         "DEEPLINK_5_SCHEME": " ",
         "DEEPLINK_5_HOST": " "
-      },
-      "cordova-plugin-local-notification": {},
-      "onesignal-cordova-plugin": {}
+      }
     },
     "platforms": [
       "android",

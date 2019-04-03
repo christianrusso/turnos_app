@@ -47,6 +47,8 @@ export class InfoPage {
     private socialSharing: SocialSharing,
     private platform: Platform
   ) {
+    console.log('navParams', this.navParams.data)
+
     this.id = navParams.get("id");
     this.category = navParams.get("category");
     this.day = this.moment.day();

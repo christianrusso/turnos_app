@@ -38,7 +38,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { IonicStorageModule } from '@ionic/storage';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { Deeplinks } from '@ionic-native/deeplinks/ngx';
+import { Deeplinks } from '@ionic-native/deeplinks';
 import { OneSignal } from '@ionic-native/onesignal';
 import { OneSignalService } from "../services/onesignal.service";
 import { Facebook } from '@ionic-native/facebook';
@@ -79,7 +79,15 @@ import { Facebook } from '@ionic-native/facebook';
       backButtonIcon: 'ios-arrow-back',
       iconMode: 'ios',
       tabsPlacement: 'bottom'
-    }),
+    }, {
+        links: [
+          { component: TabsPage, name: 'tabs', segment: 'tabs' },
+          { component: HomePage, name: 'home', segment: 'home' },
+          { component: PreSearchPage, name: 'presearch', segment: 'presearch/:category', defaultHistory: ['tabs', 'home'] },
+          { component: SearchPage, name: 'search', segment: 'presearch/:category/search', defaultHistory: ['tabs', 'home'] },
+          { component: InfoPage, name: 'info', segment: 'presearch/:category/search/:id', defaultHistory: ['tabs', 'home'] },
+        ]
+      }),
     IonicStorageModule.forRoot(),
     HttpClientModule,
     CalendarModule
@@ -125,7 +133,7 @@ import { Facebook } from '@ionic-native/facebook';
     OneSignal,
     OneSignalService,
     Facebook,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
