@@ -341,7 +341,7 @@ export class InfoPage {
     this.link += this.id;
 
     this.socialSharing.share(
-      this.results[0].name + " - " + this.results[0].address, null, null, "todoreservas://info").then(() => {
+      this.results[0].name + " - " + this.results[0].address, null, null, `https://todoreservas.com.ar/presearch/${this.category}/search/${this.id}`).then(() => {
       }).catch(() => {
       });
   }
