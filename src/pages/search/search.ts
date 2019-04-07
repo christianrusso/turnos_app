@@ -48,6 +48,7 @@ export class SearchPage {
     public filtersService: FiltersService,
     private geolocation: Geolocation
   ) {
+    console.log('navParams', this.navParams.data)
     if (navParams.get("category")) {
       this.category = navParams.get("category")[0].toUpperCase() + navParams.get("category").slice(1).toLowerCase();
       this.filtersService.category = this.category;

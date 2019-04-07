@@ -1,5 +1,5 @@
 <ion-tabs [selectedIndex]="myIndex">
-  <ion-tab [root]="tab1Root" tabTitle="Buscar" tabIcon="search"></ion-tab>
+  <ion-tab [root]="tab1Root" tabUrlPath='home' tabTitle="Buscar" tabIcon="search"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="Favoritos" tabIcon="heart"></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="Reservas" tabIcon="calendar"></ion-tab>
   <ion-tab [root]="tab4Root" tabTitle="Notificaciones" tabIcon="notifications" tabBadge="{{(quantity) > 0 ? quantity : ''}}" (ionSelect)="resetQuantity()"></ion-tab>

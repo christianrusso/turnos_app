@@ -47,6 +47,8 @@ export class InfoPage {
     private socialSharing: SocialSharing,
     private platform: Platform
   ) {
+    console.log('navParams', this.navParams.data)
+
     this.id = navParams.get("id");
     this.category = navParams.get("category");
     this.day = this.moment.day();
@@ -339,7 +341,7 @@ export class InfoPage {
     this.link += this.id;
 
     this.socialSharing.share(
-      this.results[0].name + " - " + this.results[0].address, null, null, "todoreservas://info").then(() => {
+      this.results[0].name + " - " + this.results[0].address, null, null, `https://todoreservas.com.ar/presearch/${this.category}/search/${this.id}`).then(() => {
       }).catch(() => {
       });
   }
