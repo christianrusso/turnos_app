@@ -3,15 +3,10 @@ page-home {
     background: color($colors, blue);
     content: "";
     display: block;
-    padding-top: 170px;
+    padding-top: 160px;
     position: absolute;
     width: 100%;
     z-index: -1;
-  }
-
-  h2 {
-    color: color($colors, white);
-    margin: 40px auto;
   }
 
   ion-grid {
