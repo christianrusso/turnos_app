@@ -9,26 +9,32 @@ $font-path: "../assets/fonts";
   font-family: 'SfUiDisplayLight';
   src: url('../assets/fonts/SF UI Display Light.otf');
 }
+
 @font-face {
   font-family: 'SfUiDisplayRegular';
   src: url('../assets/fonts/SF UI Display Regular.otf');
 }
+
 @font-face {
   font-family: 'SfUiDisplayThin';
   src: url('../assets/fonts/SF UI Display Thin.otf');
 }
+
 @font-face {
   font-family: 'SfUiDisplayBold';
   src: url('../assets/fonts/SF UI Display Bold.otf');
 }
+
 @font-face {
   font-family: 'SfUiDisplayMedium';
   src: url('../assets/fonts/SF UI Display Medium.otf');
 }
+
 @font-face {
   font-family: 'SfUiDisplaySemiBold';
   src: url('../assets/fonts/SF UI Display Semibold.otf');
 }
+
 @font-face {
   font-family: 'SfUiDisplayHeavy';
   src: url('../assets/fonts/SF UI Display Heavy.otf');
@@ -63,11 +69,13 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #373fc2,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  primary: #373fc2,
+  secondary: #32db64,
+  danger: #f53d3d,
+  light: #f4f4f4,
+  dark: #222,
+  white: #fff,
+  blue: #454edb,
 );
 
 
@@ -115,4 +123,5 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+@import './overrides/typography';
 @import './overrides/header';

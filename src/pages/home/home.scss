@@ -1,3 +1,57 @@
 page-home {
+  .scroll-content:before {
+    background: color($colors, blue);
+    content: "";
+    display: block;
+    padding-top: 170px;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
 
+  h2 {
+    color: color($colors, white);
+    margin: 40px auto;
+  }
+
+  ion-grid {
+    padding: 5px 40px !important;
+  }
+
+  ion-col {
+    ion-card.card {
+      border-radius: 6px;
+      margin: 0 !important;
+      position: relative;
+      width: 100% !important;
+
+      >.inner {
+        align-items: center;
+        display: flex;
+        bottom: 0;
+        flex-direction: column;
+        justify-content: center;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      &:before {
+        content: "";
+        display: block;
+        padding-top: (26 / 29) * 100%;
+        width: 100%;
+      }
+
+      >.inner>h3 {
+        color: color($colors, blue);
+        font-size: 16px;
+      }
+
+      img {
+        width: 50%;
+      }
+    }
+  }
 }
