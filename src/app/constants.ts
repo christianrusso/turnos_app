@@ -11,6 +11,26 @@ export class Constants {
     hairdressingShareFolder = "peluqueria";
     dniLength = 7;
     constructor(
-    ){
+    ) {
     }
+}
+
+export const configs = {
+    pages: [{
+        name: 'Médicos',
+        route: 'medicina',
+        image: '../../assets/icon/medicos.png'
+    }, {
+        name: 'Estéticas',
+        route: 'esteticas',
+        image: '../../assets/icon/esteticas.png'
+    }, {
+        name: 'Peluquerías',
+        route: 'peluquerias',
+        image: '../../assets/icon/peluquerias.png'
+    }, {
+        name: 'Barberías',
+        route: 'barberias',
+        image: '../../assets/icon/barberias.png'
+    }]
 }

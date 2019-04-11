@@ -1,28 +1,22 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, NavParams, IonicPage } from 'ionic-angular';
+import { NavController, AlertController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../../app/constants';
 import { SearchPage } from '../search/search';
 import * as moment from 'moment';
 
-
-// @IonicPage({
-//   name: 'presearch',
-//   segment: 'presearch',
-//   defaultHistory: ['HomePage']
-// })
 @Component({
   selector: 'page-presearch',
   templateUrl: 'pre-search.html'
 })
 export class PreSearchPage {
 
-  private category = "";
-  private categories;
-  private place = "";
-  private days = [];
-  private when = "";
+  category = '';
+  categories;
+  place = "";
+  days = [];
+  when = "";
 
   constructor(
     public navCtrl: NavController,

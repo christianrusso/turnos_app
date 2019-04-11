@@ -1,9 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController, AlertController, Platform } from 'ionic-angular';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { Constants } from '../../app/constants';
-import { UserService } from '../../services/user.service';
+import { Component, OnInit } from '@angular/core';
+import { NavController, AlertController } from 'ionic-angular';
+import { configs } from '../../app/constants';
 import { LoginPage } from '../login/login';
 import { PreSearchPage } from '../pre-search/pre-search';
 
@@ -11,18 +8,21 @@ import { PreSearchPage } from '../pre-search/pre-search';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  pages: Array<{
+    name: string;
+    image: string;
+    route: string
+  }>;
 
   constructor(
-    private platform: Platform,
     public navCtrl: NavController,
-    private http: HttpClient,
     public alertCtrl: AlertController,
-    private formBuilder: FormBuilder,
-    private constants: Constants,
-    private userService: UserService,
   ) { }
 
+  ngOnInit() {
+    this.pages = configs.pages;
+  }
   goToLogin() {
     this.navCtrl.push(LoginPage);
   }
